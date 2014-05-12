@@ -1,0 +1,9 @@
+/bulldog.tools/
+/.metadata/
+target/
+.project
+.cproject
+.classpath
+.settings/
+Debug/
+Release/
