@@ -2,9 +2,9 @@ package org.bulldog.beagleboneblack.gpio;
 
 import java.io.File;
 
+import org.bulldog.beagleboneblack.BeagleBonePin;
 import org.bulldog.beagleboneblack.sysfs.SysFs;
 import org.bulldog.beagleboneblack.sysfs.SysFsPwm;
-import org.bulldog.bulldog.beagleboneblack.BeagleBonePin;
 import org.bulldog.core.Polarity;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.base.AbstractPwm;

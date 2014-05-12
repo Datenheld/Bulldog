@@ -1,4 +1,4 @@
-package org.bulldog.bulldog.devices;
+package org.bulldog.beagleboneblack;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

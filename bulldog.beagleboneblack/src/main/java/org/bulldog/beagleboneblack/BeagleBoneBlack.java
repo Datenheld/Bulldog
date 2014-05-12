@@ -1,4 +1,4 @@
-package org.bulldog.bulldog.beagleboneblack;
+package org.bulldog.beagleboneblack;
 
 import org.bulldog.beagleboneblack.bus.BBBI2cBus;
 import org.bulldog.beagleboneblack.gpio.BBBAnalogInput;

@@ -1,4 +1,4 @@
-package org.bulldog.bulldog.examples;
+package org.bulldog.examples;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

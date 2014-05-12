@@ -1,8 +1,8 @@
 package org.bulldog.beagleboneblack.gpio;
 
+import org.bulldog.beagleboneblack.BeagleBonePin;
 import org.bulldog.beagleboneblack.jni.NativeGpio;
 import org.bulldog.beagleboneblack.sysfs.SysFsPin;
-import org.bulldog.bulldog.beagleboneblack.BeagleBonePin;
 import org.bulldog.core.Edge;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.Pin;

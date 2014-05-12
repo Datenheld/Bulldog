@@ -2,7 +2,7 @@ package org.bulldog.examples;
 
 import java.io.IOException;
 
-import org.bulldog.bulldog.beagleboneblack.BeagleBoneBlack;
+import org.bulldog.beagleboneblack.BeagleBoneBlack;
 import org.bulldog.core.Board;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalInput;

@@ -1,7 +1,7 @@
 package org.bulldog.beagleboneblack.gpio;
 
+import org.bulldog.beagleboneblack.BeagleBonePin;
 import org.bulldog.beagleboneblack.jni.NativeGpio;
-import org.bulldog.bulldog.beagleboneblack.BeagleBonePin;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.base.AbstractDigitalOutput;

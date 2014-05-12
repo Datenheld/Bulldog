@@ -1,4 +1,4 @@
-package org.bulldog.bulldog.beagleboneblack;
+package org.bulldog.beagleboneblack;
 
 import org.bulldog.core.gpio.Pin;
 
