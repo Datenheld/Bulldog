@@ -38,7 +38,6 @@ public class BBBPinInterruptControl implements Runnable {
 	}
 	
 	public void start() {
-		System.out.println("START LISTEN ON " + filename);
 		if(running) { return; }
 		if(interruptThread.isAlive()) { return; }
 		running = true;

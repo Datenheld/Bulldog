@@ -7,6 +7,7 @@ import org.bulldog.core.Edge;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.base.AbstractDigitalInput;
+import org.bulldog.core.gpio.event.InterruptListener;
 
 public class BBBDigitalInput extends AbstractDigitalInput {
 
@@ -14,6 +15,7 @@ public class BBBDigitalInput extends AbstractDigitalInput {
 	
 	private BBBPinInterruptControl interruptControl;
 	private SysFsPin sysFsPin;
+	private boolean areInterruptsEnabled = true;
 	
 	public BBBDigitalInput(Pin pin) {
 		super(pin);
@@ -22,11 +24,21 @@ public class BBBDigitalInput extends AbstractDigitalInput {
 	}
 
 	public void enableInterrupts() {
-		interruptControl.start();
+		if(getInterruptListeners().size() > 0 && !interruptControl.isRunning()) {
+			interruptControl.start();
+		}
+		areInterruptsEnabled = true;
 	}
 
 	public void disableInterrupts() {
-		interruptControl.stop();
+		if(interruptControl.isRunning()) {
+			interruptControl.stop();
+		}
+		areInterruptsEnabled = false;
+	}
+	
+	public boolean areInterruptsEnabled() {
+		return areInterruptsEnabled;
 	}
 
 	public Signal readSignal() {
@@ -36,6 +48,28 @@ public class BBBDigitalInput extends AbstractDigitalInput {
 
 	public void shutdown() {
 		interruptControl.shutdown();
+	}
+	
+	@Override
+	public void addInterruptListener(InterruptListener listener) {
+		super.addInterruptListener(listener);
+		if(areInterruptsEnabled() && interruptControl.isRunning()) {
+			interruptControl.start();
+		}
+	}
+	
+	@Override
+	public void removeInterruptListener(InterruptListener listener) {
+		super.removeInterruptListener(listener);
+		if(getInterruptListeners().size() == 0) {
+			interruptControl.stop();
+		}
+	}
+	
+	@Override
+	public void clearInterruptListeners() {
+		super.clearInterruptListeners();
+		interruptControl.stop();
 	}
 
 	public Signal readSignalDebounced(int debounceTime) {
@@ -88,10 +122,6 @@ public class BBBDigitalInput extends AbstractDigitalInput {
 	
 	private void unexportPin() {
 		sysFsPin.unexport();
-	}
-
-	public boolean areInterruptsEnabled() {
-		return interruptControl.isRunning();
 	}
 
 	@Override
