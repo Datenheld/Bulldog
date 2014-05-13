@@ -3,6 +3,10 @@ package org.bulldog.beagleboneblack.gpio;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import org.bulldog.beagleboneblack.jni.NativeAdc;
 import org.bulldog.core.gpio.Pin;
@@ -31,13 +35,12 @@ public class BBBAnalogInput extends AbstractAnalogInput {
 		NativeAdc.disableChannel(channelId);
 	}
 
-	@Override
 	public double readValue() {
 		return sample(1)[0];
 	}
 
-	@Override
-	public double[] sample(int amountSamples) {
+	public synchronized double[] sample(int amountSamples) {
+		NativeAdc.configureModule(NativeAdc.BBBIO_ADC_WORK_MODE_BUSY_POLLING, 1);
 		if(buffer.limit() < amountSamples) {
 			buffer = ByteBuffer.allocateDirect(4 * amountSamples).order(ByteOrder.LITTLE_ENDIAN).asIntBuffer();
 			NativeAdc.configureChannel(channelId, NativeAdc.BBBIO_ADC_STEP_MODE_SW_CONTINUOUS, 0, 1, 1, buffer, amountSamples);
@@ -54,9 +57,36 @@ public class BBBAnalogInput extends AbstractAnalogInput {
 	    return doubles;
 	}
 
-	@Override
-	public double[] sample(double frequency, int amountSamples) {
-		throw new UnsupportedOperationException();
+	public synchronized double[] sample(int amountSamples, float frequency) {
+		int divisor = NativeAdc.calculateNearestDivisorForFrequency(frequency);
+		NativeAdc.configureModule(NativeAdc.BBBIO_ADC_WORK_MODE_BUSY_POLLING, divisor);
+		return sample(amountSamples);
+	}
+
+	public Future<double[]> sampleAsync(final int amountSamples) {
+		ExecutorService executor = Executors.newSingleThreadExecutor();
+		Callable<double[]> callable = new Callable<double[]>() {
+
+			public double[] call() throws Exception {
+				return sample(amountSamples);
+			}
+			
+		};
+		
+		return executor.submit(callable);
+	}
+
+	public Future<double[]> sampleAsync(final int amountSamples, final float frequency) {
+		ExecutorService executor = Executors.newSingleThreadExecutor();
+		Callable<double[]> callable = new Callable<double[]>() {
+
+			public double[] call() throws Exception {
+				return sample(amountSamples, frequency);
+			}
+			
+		};
+		
+		return executor.submit(callable);
 	}
 
 }

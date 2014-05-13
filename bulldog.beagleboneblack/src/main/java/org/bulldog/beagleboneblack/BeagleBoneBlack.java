@@ -27,7 +27,6 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 	}
 	
 	private void createPins() {
-		System.out.println("CREATE DIGITAL PINS");
 		getPins().add(createDigitalIOPin("P8_3", 	"GPIO1_6",	1,  6, 	8, 	 3));
 		getPins().add(createDigitalIOPin("P8_4", 	"GPIO1_7", 	1,  7,  8, 	 4));
 		getPins().add(createDigitalIOPin("P8_5", 	"GPIO1_2", 	1,  2,  8, 	 5));
@@ -46,12 +45,54 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		getPins().add(createDigitalIOPin("P8_18", 	"GPIO2_1", 	2,  1,	8,	18));
 		getPins().add(createDigitalIOPin("P8_19", 	"EHRPWM2A", 0, 22,	8,	19));
 		getPins().add(createDigitalIOPin("P8_20", 	"GPIO1_31", 1, 31,	8,	20));
-		System.out.println("CREATEd DIGITAL PINS");
+		getPins().add(createDigitalIOPin("P8_21", 	"GPIO1_30",	1, 30,  8, 	21));
+		getPins().add(createDigitalIOPin("P8_22", 	"GPIO1_5", 	1,  5,  8, 	22));
+		getPins().add(createDigitalIOPin("P8_23", 	"GPIO1_4",	1,  4, 	8, 	23));
+		getPins().add(createDigitalIOPin("P8_24", 	"GPIO1_1", 	1,  1,  8, 	24));
+		getPins().add(createDigitalIOPin("P8_25", 	"GPIO1_0",	1,  0, 	8, 	25));
+		getPins().add(createDigitalIOPin("P8_26", 	"GPIO1_29", 1,  29, 8, 	26));
+		getPins().add(createDigitalIOPin("P8_27", 	"GPIO2_22",	2,  22, 8, 	27));
+		getPins().add(createDigitalIOPin("P8_28", 	"GPIO2_24", 2,  24, 8, 	28));
+		getPins().add(createDigitalIOPin("P8_29", 	"GPIO2_23",	2,  23, 8, 	29));
+		getPins().add(createDigitalIOPin("P8_30", 	"GPIO2_25", 2,  25, 8, 	30));
+		getPins().add(createDigitalIOPin("P8_31", 	"GPIO0_10",	0,  10,	8, 	31));
+		getPins().add(createDigitalIOPin("P8_32", 	"GPIO0_11",	0,  11, 8,	32));
+		getPins().add(createDigitalIOPin("P8_33", 	"GPIO0_9",	0,   9,	8, 	33));
+		getPins().add(createDigitalIOPin("P8_34", 	"GPIO2_17",	2,  17, 8, 	34));
+		getPins().add(createDigitalIOPin("P8_35", 	"GPIO0_8",	0,   8,	8, 	35));
+		getPins().add(createDigitalIOPin("P8_36", 	"GPIO2_16",	2,  16, 8, 	36));
+		getPins().add(createDigitalIOPin("P8_37", 	"GPIO2_14",	2,  14,	8, 	37));
+		getPins().add(createDigitalIOPin("P8_38", 	"GPIO2_1", 	2,   1, 8, 	38));
+		getPins().add(createDigitalIOPin("P8_39", 	"GPIO2_12",	2,  12,	8, 	39));
+		getPins().add(createDigitalIOPin("P8_40", 	"GPIO2_13",	2,  14, 8, 	40));
+		getPins().add(createDigitalIOPin("P8_41", 	"GPIO2_10",	2,  10,	8, 	41));
+		getPins().add(createDigitalIOPin("P8_42", 	"GPIO2_11",	2,  11, 8, 	42));
+		getPins().add(createDigitalIOPin("P8_43", 	"GPIO2_8",	2,   8,	8, 	43));
+		getPins().add(createDigitalIOPin("P8_44", 	"GPIO2_9", 	2,   9, 8, 	44));
+		getPins().add(createDigitalIOPin("P8_45", 	"GPIO2_6",	2,   6,	8, 	45));
+		getPins().add(createDigitalIOPin("P8_46", 	"GPIO2_27",	2,  27, 8, 	46));
 		
-		
-		getPins().add(createDigitalIOPin("P9_29",	"EHRPWM0B",	3,	25,	9,	29));
-		getPins().add(createDigitalIOPin("P9_30",	"GPIO3_26",	3,	26,	9,	30));
-		getPins().add(createDigitalIOPin("P9_31",	"EHRPWM0A",	3,	24,	9,	31));
+		getPins().add(createDigitalIOPin("P9_11", 	"UART4_RX", 0, 30,	9,	11));
+		getPins().add(createDigitalIOPin("P9_12", 	"GPIO1_28", 1, 28,	9,	12));
+		getPins().add(createDigitalIOPin("P9_13", 	"UART4_TX", 0, 31,	9,	13));
+		getPins().add(createDigitalIOPin("P9_14", 	"EHRPWM1A", 1, 18,	9,	14));
+		getPins().add(createDigitalIOPin("P9_15", 	"GPIO1_16", 1, 16,	9,	15));
+		getPins().add(createDigitalIOPin("P9_16", 	"EHRPWM1B", 1, 19,	9,	16));
+		getPins().add(createDigitalIOPin("P9_17", 	"GPIO0_5",  0,  5,	9,	17));
+		getPins().add(createDigitalIOPin("P9_18", 	"GPIO0_4", 	0,  4,	9,	18));
+		getPins().add(createDigitalIOPin("P9_19", 	"GPIO0_15", 0, 15,	9,	19));
+		getPins().add(createDigitalIOPin("P9_20", 	"GPIO0_14", 0, 14,	9,	20));
+		getPins().add(createDigitalIOPin("P9_21", 	"UART2TX",	0,  3,  9, 	21));
+		getPins().add(createDigitalIOPin("P9_22", 	"UART2RX", 	0,  2,  9, 	22));
+		getPins().add(createDigitalIOPin("P9_23", 	"GPIO1_17",	1,  17,	9, 	23));
+		getPins().add(createDigitalIOPin("P9_24", 	"UART1TX", 	0,  12, 9, 	24));
+		getPins().add(createDigitalIOPin("P9_25", 	"GPIO3_21",	3,  21, 9, 	25));
+		getPins().add(createDigitalIOPin("P9_26", 	"UART1RX",  0,  13, 9, 	26));
+		getPins().add(createDigitalIOPin("P9_27", 	"GPIO3_19",	3,  19, 9, 	27));
+		getPins().add(createDigitalIOPin("P9_28", 	"GPIO3_17", 3,  17, 9, 	28));
+		getPins().add(createDigitalIOPin("P9_29",	"GPIO3_15",	3,	15,	9,	29));
+		getPins().add(createDigitalIOPin("P9_30",	"GPIO3_16",	3,	16,	9,	30));
+		getPins().add(createDigitalIOPin("P9_31",	"EHRPWM0A",	3,	14,	9,	31));
 		
 		getPins().add(createAnalogInputPin("P9_33",	"AIN4",		2,	7,	9,	33, 	4));
 		getPins().add(createAnalogInputPin("P9_35",	"AIN6",		2,	9,	9,	35,		6));
@@ -60,6 +101,10 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		getPins().add(createAnalogInputPin("P9_38",	"AIN3",		2,	6,	9,	38,		3));
 		getPins().add(createAnalogInputPin("P9_39",	"AIN0",		2,	3,	9,	39,		0));
 		getPins().add(createAnalogInputPin("P9_40",	"AIN1",		2,	4,	9,	40,		1));
+		
+		getPins().add(createDigitalIOPin("P9_41",	"GPIO0_20",	0,	20,	9,	31));
+		getPins().add(createDigitalIOPin("P9_42",	"GPIO0_7",	0,	 7,	9,	31));
+		
 		
 		addPwmToPin(getPinByName("P8_13"));
 		addPwmToPin(getPinByName("P8_19"));

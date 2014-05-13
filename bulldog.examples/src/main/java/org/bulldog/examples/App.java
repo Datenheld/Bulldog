@@ -7,7 +7,6 @@ import org.bulldog.core.Board;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalInput;
 import org.bulldog.core.gpio.Pwm;
-import org.bulldog.core.gpio.base.AbstractPwm;
 import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.devices.servo.Servo;
 import org.bulldog.devices.servo.TowerProMicroSG90;

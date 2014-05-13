@@ -26,12 +26,6 @@ public abstract class AbstractAnalogInput extends AbstractPinFeature implements 
 		return String.format(NAME_FORMAT, getPin().getName());
 	}
 	
-	public abstract double readValue();
-	
-	public abstract double[] sample(int amountSamples);
-	
-	public abstract double[] sample(double frequency, int amountSamples);
-	
 	public void startMonitor(int periodMicroSeconds, final ThresholdListener listener) {
 		if(listener == null) {
 			throw new IllegalArgumentException();
@@ -42,8 +36,8 @@ public abstract class AbstractAnalogInput extends AbstractPinFeature implements 
 			public void run() {
 				double[] samples = sample(10);
 				for(int i = 0; i < samples.length; i++) {
-					if(samples[i] >= listener.getThreshold()) {
-						
+					if(listener.isThresholdReached(samples[i])) {
+						listener.thresholdReached();
 					}
 				}
 			}

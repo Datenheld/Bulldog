@@ -1,0 +1,2836 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+PortIDSet_ptr       0x8               ./src/main/c/BBBIOlib/BBBiolib.o
+ADCTSC              0x130             ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+PortSet_ptr         0x8               ./src/main/c/BBBIOlib/BBBiolib.o
+
+Discarded input sections
+
+ .data          0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ .bss           0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ .note.GNU-stack
+                0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ .data          0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtbeginS.o
+ .note.GNU-stack
+                0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtbeginS.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .text          0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .data          0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .bss           0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_setup
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_teardown
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_fetchSamples
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_configureModule
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_configureChannel
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_enableChannel
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_disableChannel
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .note.GNU-stack
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .text          0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .data          0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .bss           0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_epollCreate
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_addFile
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_waitForInterrupt
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_stopWait
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_shutdown
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000      0x892 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000      0x18c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000      0x16f ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x35 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x70 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x5e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x2e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x1e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000      0x1c2 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x27 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x1f ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00000000       0x82 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .note.GNU-stack
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .text          0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .data          0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .bss           0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_pinMode
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_digitalWrite
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_debouncePin
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000      0x892 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000      0x18c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000      0x16f ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x35 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x70 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x5e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x2e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x1e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000      0x1c2 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x4a ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x27 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x1f ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x82 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00000000       0x82 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .note.GNU-stack
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .text          0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .data          0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .bss           0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cWrite
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cSelectSlave
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cOpen
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cClose
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000      0x892 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000      0x18c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000      0x16f ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x35 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x70 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x5e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x2e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x1e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000      0x1c2 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x4a ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x27 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x1f ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00000000       0x82 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .note.GNU-stack
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .text          0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .data          0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .bss           0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativePwm_setup
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativePwm_teardown
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativePwm_setPwm
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativePwm_enable
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativePwm_disable
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000      0x892 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000      0x18c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000      0x16f ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x35 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x70 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x5e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x2e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x1e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000      0x1c2 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x4a ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x27 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x1f ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x82 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .note.GNU-stack
+                0x00000000        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/i2c/i2c.o
+ .text          0x00000000        0x0 ./src/main/c/i2c/i2c.o
+ .data          0x00000000        0x0 ./src/main/c/i2c/i2c.o
+ .bss           0x00000000        0x0 ./src/main/c/i2c/i2c.o
+ .ARM.extab.text.i2cRead
+                0x00000000        0x0 ./src/main/c/i2c/i2c.o
+ .ARM.extab.text.i2cWrite
+                0x00000000        0x0 ./src/main/c/i2c/i2c.o
+ .ARM.extab.text.i2cSelectSlave
+                0x00000000        0x0 ./src/main/c/i2c/i2c.o
+ .ARM.extab.text.i2cClose
+                0x00000000        0x0 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000      0x18c ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000      0x16f ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x35 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x70 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x5e ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x2e ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x1e ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000      0x1c2 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x4a ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x27 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x1f ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x62 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x12 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000      0x1b7 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0xe6 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0xf9 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x6a ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000      0x190 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x52 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000       0x27 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00000000      0x824 ./src/main/c/i2c/i2c.o
+ .note.GNU-stack
+                0x00000000        0x0 ./src/main/c/i2c/i2c.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/datastructures/linkedlist.o
+ .text          0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .data          0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .bss           0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.listInsert
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.listAppend
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.listRemove
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.__List_newNode
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.debugListInit
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_new
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_move
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.__List_insert
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_copy
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_duplicate
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.__List_append
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_remove
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_getFirst
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.__List_deleteNode
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_clear
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_delete
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_getLast
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_findFirst
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_findNext
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_sort
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_debugDumpInfo
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_debugPrintInfo
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_debugPrintStatistics
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_debugDone
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000      0x892 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000      0x18c ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000      0x16f ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x35 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x70 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x5e ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x62 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x12 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x2e ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x1e ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000      0x1c2 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x27 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x1f ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/datastructures/linkedlist.o
+ .note.GNU-stack
+                0x00000000        0x0 ./src/main/c/datastructures/linkedlist.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .text          0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .data          0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .bss           0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.iolib_init
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.iolib_setdir
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.pin_high
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.pin_low
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.is_high
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.is_low
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.iolib_delay_ms
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_sys_GPIO_CLK_status
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_sys_Expansion_Header_status
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_sys_pinmux_check
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_sys_Enable_Debouncing
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_sys_Disable_Debouncing
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_sys_delay_ms
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_sys_delay_us
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_GPIO_set_dir
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_GPIO_high
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_GPIO_low
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_GPIO_get
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000      0x892 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000      0x18c ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000      0x16f ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x35 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x70 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x5e ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x2e ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x1e ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000      0x1c2 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x4a ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x27 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x1f ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x62 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x67 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x12 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0xe6 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000      0x1b7 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0xf9 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000      0x256 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x29 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x88 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000       0x82 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00000000      0x52e ./src/main/c/BBBIOlib/BBBiolib.o
+ .note.GNU-stack
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .text          0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .data          0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .bss           0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .ARM.extab.text._ADCTSC_work
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .ARM.extab.text.BBBIO_ADCTSC_channel_status
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .ARM.extab.text.BBBIO_ADCTSC_module_ctrl
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .ARM.extab.text.BBBIO_ADCTSC_channel_ctrl
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .ARM.extab.text.BBBIO_ADCTSC_work
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .ARM.extab.text.BBBIO_ADCTSC_Init
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000      0x892 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000      0x18c ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000      0x16f ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x35 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x70 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x5e ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x2e ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x1e ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000      0x1c2 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x4a ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x27 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x1f ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x62 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x67 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x12 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0xf4 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0xe6 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000      0x11a ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x86 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000      0x1b7 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0xf9 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000      0x256 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x29 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x88 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x82 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000      0x52e ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x6a ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000      0x190 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x52 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x27 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000       0x4a ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00000000      0x824 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .note.GNU-stack
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .text          0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .data          0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .bss           0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.extab.text.write_reg
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.extab.text.read_reg
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.extab.text.BBBIO_McSPI_Init
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.extab.text.BBBIO_McSPI_Tx
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.extab.text.BBBIO_McSPI_Rx
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.extab.text.BBBIO_McSPI_work
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.extab.text.BBBIO_McSPI_Setting
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.extab.text.BBBIO_McSPI_EP_check
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.extab.text.BBBIO_McSPI_CLK_set
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.extab.text.BBBIO_McSPI_Reset
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000      0x892 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000      0x18c ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000      0x16f ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x35 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x70 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x5e ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x2e ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x1e ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000      0x1c2 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x4a ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x27 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x1f ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x62 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x67 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x12 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0xf4 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0xe6 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000      0x11a ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x86 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000      0x1b7 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0xf9 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000      0x256 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x29 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x88 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000       0x82 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00000000      0x52e ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .note.GNU-stack
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .group         0x00000000        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .text          0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .data          0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .bss           0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .ARM.extab.text.BBBIO_PWM_Release
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .ARM.extab.text.BBBIO_PWM_Init
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .ARM.extab.text.BBBIO_PWMSS_Status
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .ARM.extab.text.BBBIO_ehrPWM_Enable
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .ARM.extab.text.BBBIO_ehrPWM_Disable
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000      0x892 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000      0x18c ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000      0x16f ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x35 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x70 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x5e ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x2e ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x1e ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000      0x1c2 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x4a ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x27 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x1f ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x97 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x62 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x67 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x12 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x28 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x20 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x4c ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x3a ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0xf4 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0xe6 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000      0x11a ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x1c ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000      0x1b7 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0xf9 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0xd6 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000      0x256 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x10 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x16 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x58 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x29 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x22 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x88 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000       0x82 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .debug_macro   0x00000000      0x52e ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .note.GNU-stack
+                0x00000000        0x0 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .text          0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtendS.o
+ .data          0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtendS.o
+ .bss           0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtendS.o
+ .note.GNU-stack
+                0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtendS.o
+ .text          0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crtn.o
+ .data          0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crtn.o
+ .bss           0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crtn.o
+ .note.GNU-stack
+                0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+LOAD c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtbeginS.o
+LOAD ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+LOAD ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+LOAD ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+LOAD ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+LOAD ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+LOAD ./src/main/c/i2c/i2c.o
+LOAD ./src/main/c/datastructures/linkedlist.o
+LOAD ./src/main/c/BBBIOlib/BBBiolib.o
+LOAD ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+LOAD ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+LOAD ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+LOAD c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2\libgcc.a
+LOAD c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/lib/libgcc_s.so
+START GROUP
+LOAD c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/lib\libgcc_s.so.1
+LOAD c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2\libgcc.a
+END GROUP
+LOAD c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/libc.so
+START GROUP
+LOAD c:\david\projects\bulldog\bulldog.tools\sourcery\bin\../arm-none-linux-gnueabi/libc/thumb2/lib/libc.so.6
+LOAD c:\david\projects\bulldog\bulldog.tools\sourcery\bin\../arm-none-linux-gnueabi/libc/thumb2/usr/lib/libc_nonshared.a
+LOAD c:\david\projects\bulldog\bulldog.tools\sourcery\bin\../arm-none-linux-gnueabi/libc/thumb2/lib/ld-linux.so.3
+END GROUP
+LOAD c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2\libgcc.a
+LOAD c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/lib/libgcc_s.so
+START GROUP
+LOAD c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/lib\libgcc_s.so.1
+LOAD c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2\libgcc.a
+END GROUP
+LOAD c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtendS.o
+LOAD c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crtn.o
+                0x000000d4                . = (0x0 + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x000000d4      0x51c
+ *(.hash)
+ .hash          0x000000d4      0x51c c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym         0x000005f0      0xc20
+ *(.dynsym)
+ .dynsym        0x000005f0      0xc20 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+
+.dynstr         0x00001210      0xf0a
+ *(.dynstr)
+ .dynstr        0x00001210      0xf0a c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+
+.gnu.version    0x0000211a      0x184
+ *(.gnu.version)
+ .gnu.version   0x0000211a      0x184 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+
+.gnu.version_d  0x000022a0        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+
+.gnu.version_r  0x000022a0       0x40
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x000022a0       0x40 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+
+.rel.dyn        0x000022e0      0x110
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ .rel.text      0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ .rel.data.rel  0x000022e0        0x8 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ .rel.data.rel.ExpHeader_MODE0
+                0x000022e8       0x10 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ .rel.got       0x000022f8       0xe8 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+ *(.rel.iplt)
+ .rel.iplt      0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ .rel.init_array
+                0x000023e0        0x8 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ .rel.fini_array
+                0x000023e8        0x8 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+
+.rela.dyn
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.iplt)
+
+.rel.plt        0x000023f0      0x278
+ *(.rel.plt)
+ .rel.plt       0x000023f0      0x278 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+
+.rela.plt
+ *(.rela.plt)
+
+.init           0x00002668        0xc
+ *(SORT(.init))
+ .init          0x00002668        0x8 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+                0x00002668                _init
+ .init          0x00002670        0x4 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crtn.o
+
+.plt            0x00002674      0x438
+ *(.plt)
+ .plt           0x00002674      0x438 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+
+.iplt           0x00002aac        0x0
+ *(.iplt)
+ .iplt          0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+
+.text           0x00002ab0     0x3a74
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ .text.unlikely.List_isEmpty.part.0
+                0x00002ab0       0x24 ./src/main/c/datastructures/linkedlist.o
+ .text.unlikely.List_count.part.1
+                0x00002ad4       0x24 ./src/main/c/datastructures/linkedlist.o
+ .text.unlikely.listInsert.part.2
+                0x00002af8       0x20 ./src/main/c/datastructures/linkedlist.o
+ .text.unlikely.listRemove.part.3
+                0x00002b18       0x20 ./src/main/c/datastructures/linkedlist.o
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x00002b38       0x24 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ .text          0x00002b5c       0xd8 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtbeginS.o
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_setup
+                0x00002c34        0x4 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+                0x00002c34                Java_org_bulldog_beagleboneblack_jni_NativeAdc_setup
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_teardown
+                0x00002c38        0x4 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+                0x00002c38                Java_org_bulldog_beagleboneblack_jni_NativeAdc_teardown
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_fetchSamples
+                0x00002c3c        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+                0x00002c3c                Java_org_bulldog_beagleboneblack_jni_NativeAdc_fetchSamples
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_configureModule
+                0x00002c44        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+                0x00002c44                Java_org_bulldog_beagleboneblack_jni_NativeAdc_configureModule
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_configureChannel
+                0x00002c4c       0x34 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+                0x00002c4c                Java_org_bulldog_beagleboneblack_jni_NativeAdc_configureChannel
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_enableChannel
+                0x00002c80        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+                0x00002c80                Java_org_bulldog_beagleboneblack_jni_NativeAdc_enableChannel
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_disableChannel
+                0x00002c88        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+                0x00002c88                Java_org_bulldog_beagleboneblack_jni_NativeAdc_disableChannel
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_epollCreate
+                0x00002c90       0x2c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+                0x00002c90                Java_org_bulldog_beagleboneblack_jni_NativeEpoll_epollCreate
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_addFile
+                0x00002cbc       0x84 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+                0x00002cbc                Java_org_bulldog_beagleboneblack_jni_NativeEpoll_addFile
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_waitForInterrupt
+                0x00002d40      0x12c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+                0x00002d40                Java_org_bulldog_beagleboneblack_jni_NativeEpoll_waitForInterrupt
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_stopWait
+                0x00002e6c       0x5c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+                0x00002e6c                Java_org_bulldog_beagleboneblack_jni_NativeEpoll_stopWait
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_shutdown
+                0x00002ec8        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+                0x00002ec8                Java_org_bulldog_beagleboneblack_jni_NativeEpoll_shutdown
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_setup
+                0x00002ed0        0xc ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+                0x00002ed0                Java_org_bulldog_beagleboneblack_jni_NativeGpio_setup
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_teardown
+                0x00002edc        0xc ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+                0x00002edc                Java_org_bulldog_beagleboneblack_jni_NativeGpio_teardown
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_pinMode
+                0x00002ee8        0xc ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+                0x00002ee8                Java_org_bulldog_beagleboneblack_jni_NativeGpio_pinMode
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_digitalRead
+                0x00002ef4       0x14 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+                0x00002ef4                Java_org_bulldog_beagleboneblack_jni_NativeGpio_digitalRead
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_digitalWrite
+                0x00002f08       0x1c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+                0x00002f08                Java_org_bulldog_beagleboneblack_jni_NativeGpio_digitalWrite
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_debouncePin
+                0x00002f24       0x20 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+                0x00002f24                Java_org_bulldog_beagleboneblack_jni_NativeGpio_debouncePin
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cRead
+                0x00002f44        0xc ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+                0x00002f44                Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cRead
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cWrite
+                0x00002f50        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+                0x00002f50                Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cWrite
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cSelectSlave
+                0x00002f58        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+                0x00002f58                Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cSelectSlave
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cOpen
+                0x00002f60       0x30 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+                0x00002f60                Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cOpen
+ .text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cClose
+                0x00002f90        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+                0x00002f90                Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cClose
+ .text.Java_org_bulldog_beagleboneblack_jni_NativePwm_setup
+                0x00002f98        0x4 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+                0x00002f98                Java_org_bulldog_beagleboneblack_jni_NativePwm_setup
+ .text.Java_org_bulldog_beagleboneblack_jni_NativePwm_teardown
+                0x00002f9c        0x4 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+                0x00002f9c                Java_org_bulldog_beagleboneblack_jni_NativePwm_teardown
+ .text.Java_org_bulldog_beagleboneblack_jni_NativePwm_setPwm
+                0x00002fa0        0xc ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+                0x00002fa0                Java_org_bulldog_beagleboneblack_jni_NativePwm_setPwm
+ .text.Java_org_bulldog_beagleboneblack_jni_NativePwm_enable
+                0x00002fac        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+                0x00002fac                Java_org_bulldog_beagleboneblack_jni_NativePwm_enable
+ .text.Java_org_bulldog_beagleboneblack_jni_NativePwm_disable
+                0x00002fb4        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+                0x00002fb4                Java_org_bulldog_beagleboneblack_jni_NativePwm_disable
+ .text.i2cRead  0x00002fbc       0x18 ./src/main/c/i2c/i2c.o
+                0x00002fbc                i2cRead
+ .text.i2cWrite
+                0x00002fd4       0x18 ./src/main/c/i2c/i2c.o
+                0x00002fd4                i2cWrite
+ .text.i2cSelectSlave
+                0x00002fec       0x1c ./src/main/c/i2c/i2c.o
+                0x00002fec                i2cSelectSlave
+ .text.i2cOpen  0x00003008       0x10 ./src/main/c/i2c/i2c.o
+                0x00003008                i2cOpen
+ .text.i2cClose
+                0x00003018        0x4 ./src/main/c/i2c/i2c.o
+                0x00003018                i2cClose
+ .text.List_isEmpty
+                0x0000301c       0x48 ./src/main/c/datastructures/linkedlist.o
+                0x0000301c                List_isEmpty
+ .text.List_count
+                0x00003064       0x44 ./src/main/c/datastructures/linkedlist.o
+                0x00003064                List_count
+ .text.List_first
+                0x000030a8       0x60 ./src/main/c/datastructures/linkedlist.o
+                0x000030a8                List_first
+ .text.List_last
+                0x00003108       0x60 ./src/main/c/datastructures/linkedlist.o
+                0x00003108                List_last
+ .text.listInsert
+                0x00003168       0xd4 ./src/main/c/datastructures/linkedlist.o
+                0x00003168                listInsert
+ .text.listAppend
+                0x0000323c       0x9c ./src/main/c/datastructures/linkedlist.o
+                0x0000323c                listAppend
+ .text.listRemove
+                0x000032d8       0xe8 ./src/main/c/datastructures/linkedlist.o
+                0x000032d8                listRemove
+ .text.listContains
+                0x000033c0       0x54 ./src/main/c/datastructures/linkedlist.o
+                0x000033c0                listContains
+ .text.__List_newNode
+                0x00003414      0x1c0 ./src/main/c/datastructures/linkedlist.o
+                0x00003414                __List_newNode
+ .text.List_init
+                0x000035d4       0x30 ./src/main/c/datastructures/linkedlist.o
+                0x000035d4                List_init
+ .text.debugListInit
+                0x00003604       0x44 ./src/main/c/datastructures/linkedlist.o
+ .text.List_new
+                0x00003648       0x14 ./src/main/c/datastructures/linkedlist.o
+                0x00003648                List_new
+ .text.List_move
+                0x0000365c      0x328 ./src/main/c/datastructures/linkedlist.o
+                0x0000365c                List_move
+ .text.__List_insert
+                0x00003984      0x138 ./src/main/c/datastructures/linkedlist.o
+                0x00003984                __List_insert
+ .text.List_copy
+                0x00003abc       0xe0 ./src/main/c/datastructures/linkedlist.o
+                0x00003abc                List_copy
+ .text.List_duplicate
+                0x00003b9c       0x80 ./src/main/c/datastructures/linkedlist.o
+                0x00003b9c                List_duplicate
+ .text.__List_append
+                0x00003c1c       0x54 ./src/main/c/datastructures/linkedlist.o
+                0x00003c1c                __List_append
+ .text.List_remove
+                0x00003c70      0x114 ./src/main/c/datastructures/linkedlist.o
+                0x00003c70                List_remove
+ .text.List_getFirst
+                0x00003d84       0xb0 ./src/main/c/datastructures/linkedlist.o
+                0x00003d84                List_getFirst
+ .text.__List_deleteNode
+                0x00003e34      0x280 ./src/main/c/datastructures/linkedlist.o
+                0x00003e34                __List_deleteNode
+ .text.List_clear
+                0x000040b4       0x90 ./src/main/c/datastructures/linkedlist.o
+                0x000040b4                List_clear
+ .text.List_done
+                0x00004144       0x2c ./src/main/c/datastructures/linkedlist.o
+                0x00004144                List_done
+ .text.List_delete
+                0x00004170       0x34 ./src/main/c/datastructures/linkedlist.o
+                0x00004170                List_delete
+ .text.List_getLast
+                0x000041a4       0xb4 ./src/main/c/datastructures/linkedlist.o
+                0x000041a4                List_getLast
+ .text.List_findFirst
+                0x00004258       0x68 ./src/main/c/datastructures/linkedlist.o
+                0x00004258                List_findFirst
+ .text.List_findNext
+                0x000042c0       0x68 ./src/main/c/datastructures/linkedlist.o
+                0x000042c0                List_findNext
+ .text.List_sort
+                0x00004328      0x140 ./src/main/c/datastructures/linkedlist.o
+                0x00004328                List_sort
+ .text.List_debugDumpInfo
+                0x00004468       0x64 ./src/main/c/datastructures/linkedlist.o
+                0x00004468                List_debugDumpInfo
+ .text.List_debugPrintInfo
+                0x000044cc       0x18 ./src/main/c/datastructures/linkedlist.o
+                0x000044cc                List_debugPrintInfo
+ .text.List_debugPrintStatistics
+                0x000044e4       0xc8 ./src/main/c/datastructures/linkedlist.o
+                0x000044e4                List_debugPrintStatistics
+ .text.List_debugCheck
+                0x000045ac       0x80 ./src/main/c/datastructures/linkedlist.o
+                0x000045ac                List_debugCheck
+ .text.List_debugDone
+                0x0000462c       0x94 ./src/main/c/datastructures/linkedlist.o
+                0x0000462c                List_debugDone
+ .text.iolib_init
+                0x000046c0      0x16c ./src/main/c/BBBIOlib/BBBiolib.o
+                0x000046c0                iolib_init
+ .text.iolib_free
+                0x0000482c       0x20 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x0000482c                iolib_free
+ .text.iolib_setdir
+                0x0000484c       0xe8 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x0000484c                iolib_setdir
+ .text.pin_high
+                0x00004934       0x48 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00004934                pin_high
+ .text.pin_low  0x0000497c       0x48 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x0000497c                pin_low
+ .text.is_high  0x000049c4       0x50 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x000049c4                is_high
+ .text.is_low   0x00004a14       0x50 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00004a14                is_low
+ *fill*         0x00004a64        0x4 
+ .text.iolib_delay_ms
+                0x00004a68       0x90 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00004a68                iolib_delay_ms
+ .text.BBBIO_sys_GPIO_CLK_status
+                0x00004af8      0x22c ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00004af8                BBBIO_sys_GPIO_CLK_status
+ .text.BBBIO_sys_Expansion_Header_status
+                0x00004d24      0x1c8 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00004d24                BBBIO_sys_Expansion_Header_status
+ .text.BBBIO_sys_pinmux_check
+                0x00004eec       0xcc ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00004eec                BBBIO_sys_pinmux_check
+ .text.BBBIO_sys_Enable_Debouncing
+                0x00004fb8       0xf8 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00004fb8                BBBIO_sys_Enable_Debouncing
+ .text.BBBIO_sys_Disable_Debouncing
+                0x000050b0       0xf8 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x000050b0                BBBIO_sys_Disable_Debouncing
+ .text.BBBIO_sys_Enable_GPIO
+                0x000051a8       0x7c ./src/main/c/BBBIOlib/BBBiolib.o
+                0x000051a8                BBBIO_sys_Enable_GPIO
+ .text.BBBIO_sys_Disable_GPIO
+                0x00005224       0x7c ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00005224                BBBIO_sys_Disable_GPIO
+ .text.BBBIO_sys_delay_ms
+                0x000052a0       0x5c ./src/main/c/BBBIOlib/BBBiolib.o
+                0x000052a0                BBBIO_sys_delay_ms
+ .text.BBBIO_sys_delay_us
+                0x000052fc       0x50 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x000052fc                BBBIO_sys_delay_us
+ .text.BBBIO_GPIO_set_dir
+                0x0000534c       0x60 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x0000534c                BBBIO_GPIO_set_dir
+ .text.BBBIO_GPIO_high
+                0x000053ac       0x30 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x000053ac                BBBIO_GPIO_high
+ .text.BBBIO_GPIO_low
+                0x000053dc       0x30 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x000053dc                BBBIO_GPIO_low
+ .text.BBBIO_GPIO_get
+                0x0000540c       0x1c ./src/main/c/BBBIOlib/BBBiolib.o
+                0x0000540c                BBBIO_GPIO_get
+ .text._ADCTSC_work
+                0x00005428       0x8c ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .text.BBBIO_ADCTSC_channel_status
+                0x000054b4       0x7c ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+                0x000054b4                BBBIO_ADCTSC_channel_status
+ .text.BBBIO_ADCTSC_module_ctrl
+                0x00005530       0x68 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+                0x00005530                BBBIO_ADCTSC_module_ctrl
+ .text.BBBIO_ADCTSC_channel_ctrl
+                0x00005598      0x10c ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+                0x00005598                BBBIO_ADCTSC_channel_ctrl
+ .text.BBBIO_ADCTSC_work
+                0x000056a4      0x300 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+                0x000056a4                BBBIO_ADCTSC_work
+ .text.BBBIO_ADCTSC_Init
+                0x000059a4      0x100 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+                0x000059a4                BBBIO_ADCTSC_Init
+ .text.write_reg
+                0x00005aa4        0x4 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                0x00005aa4                write_reg
+ .text.read_reg
+                0x00005aa8        0x4 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                0x00005aa8                read_reg
+ .text.BBBIO_McSPI_Init
+                0x00005aac       0x8c ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                0x00005aac                BBBIO_McSPI_Init
+ .text.BBBIO_McSPI_Tx
+                0x00005b38       0x28 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                0x00005b38                BBBIO_McSPI_Tx
+ .text.BBBIO_McSPI_Rx
+                0x00005b60       0x20 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                0x00005b60                BBBIO_McSPI_Rx
+ .text.BBBIO_McSPI_work
+                0x00005b80       0xdc ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                0x00005b80                BBBIO_McSPI_work
+ .text.BBBIO_McSPI_Setting
+                0x00005c5c       0xf0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                0x00005c5c                BBBIO_McSPI_Setting
+ .text.BBBIO_McSPI_EP_check
+                0x00005d4c       0xd0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                0x00005d4c                BBBIO_McSPI_EP_check
+ .text.BBBIO_McSPI_CLK_set
+                0x00005e1c       0xac ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                0x00005e1c                BBBIO_McSPI_CLK_set
+ .text.BBBIO_McSPI_Reset
+                0x00005ec8       0x40 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                0x00005ec8                BBBIO_McSPI_Reset
+ .text.BBBIO_PWM_Release
+                0x00005f08       0x4c ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                0x00005f08                BBBIO_PWM_Release
+ .text.BBBIO_PWM_Init
+                0x00005f54      0x178 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                0x00005f54                BBBIO_PWM_Init
+ .text.BBBIO_PWMSS_Status
+                0x000060cc       0x9c ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                0x000060cc                BBBIO_PWMSS_Status
+ .text.BBBIO_PWMSS_Setting
+                0x00006168      0x378 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                0x00006168                BBBIO_PWMSS_Setting
+ .text.BBBIO_ehrPWM_Enable
+                0x000064e0       0x24 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                0x000064e0                BBBIO_ehrPWM_Enable
+ .text.BBBIO_ehrPWM_Disable
+                0x00006504       0x20 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                0x00006504                BBBIO_ehrPWM_Disable
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00000000        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00000000        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+ *(.v4_bx)
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.fini           0x00006524        0x8
+ *(SORT(.fini))
+ .fini          0x00006524        0x4 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+                0x00006524                _fini
+ .fini          0x00006528        0x4 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crtn.o
+                0x0000652c                PROVIDE (__etext, .)
+                0x0000652c                PROVIDE (_etext, .)
+                0x0000652c                PROVIDE (etext, .)
+
+.rodata         0x0000652c     0x14e4
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.4
+                0x0000652c       0xca ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+                                 0xcc (size before relaxing)
+ *fill*         0x000065f6        0x2 
+ .rodata.__PRETTY_FUNCTION__.6004
+                0x000065f8       0x10 ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5981
+                0x00006608       0x10 ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5757
+                0x00006618       0x10 ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5846
+                0x00006628        0xc ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5988
+                0x00006634       0x10 ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5852
+                0x00006644       0x10 ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5994
+                0x00006654        0xc ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5999
+                0x00006660       0x10 ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5907
+                0x00006670        0xc ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5913
+                0x0000667c        0xc ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.6011
+                0x00006688       0x10 ./src/main/c/datastructures/linkedlist.o
+ .rodata.str1.4
+                0x00006698      0x3b5 ./src/main/c/datastructures/linkedlist.o
+                                0x3bc (size before relaxing)
+ *fill*         0x00006a4d        0x3 
+ .rodata.__PRETTY_FUNCTION__.5837
+                0x00006a50        0xc ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5926
+                0x00006a5c       0x10 ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5891
+                0x00006a6c       0x14 ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5932
+                0x00006a80        0xc ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5779
+                0x00006a8c        0xc ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.6021
+                0x00006a98       0x10 ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5761
+                0x00006aa8        0xc ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5939
+                0x00006ab4        0xc ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5957
+                0x00006ac0        0xc ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.6041
+                0x00006acc        0xc ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5783
+                0x00006ad8        0xc ./src/main/c/datastructures/linkedlist.o
+ .rodata.__PRETTY_FUNCTION__.5970
+                0x00006ae4        0xc ./src/main/c/datastructures/linkedlist.o
+ .rodata        0x00006af0      0x160 ./src/main/c/BBBIOlib/BBBiolib.o
+ .rodata.ExpHeader_MODE0_P9
+                0x00006c50       0xb8 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00006c50                ExpHeader_MODE0_P9
+ .rodata.BBBIO_GPIO_SAFE_MASK
+                0x00006d08       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00006d08                BBBIO_GPIO_SAFE_MASK
+ .rodata.p8_PortSet
+                0x00006d18       0x30 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00006d18                p8_PortSet
+ .rodata.GPIO_AddressOffset
+                0x00006d48       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00006d48                GPIO_AddressOffset
+ .rodata.ExpHeader_MODE0_P8
+                0x00006d58       0xb8 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00006d58                ExpHeader_MODE0_P8
+ .rodata.p9_PortSet
+                0x00006e10       0x30 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00006e10                p9_PortSet
+ .rodata.p9_PortIDSet
+                0x00006e40       0xb8 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00006e40                p9_PortIDSet
+ .rodata.p8_PortIDSet
+                0x00006ef8       0xb8 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00006ef8                p8_PortIDSet
+ .rodata.str1.4
+                0x00006fb0      0x599 ./src/main/c/BBBIOlib/BBBiolib.o
+                                0x59c (size before relaxing)
+ *fill*         0x00007549        0x3 
+ .rodata.str1.4
+                0x0000754c      0x135 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+                                0x138 (size before relaxing)
+ *fill*         0x00007681        0x3 
+ .rodata        0x00007684        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .rodata.McSPI_AddressOffset
+                0x0000768c        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                0x0000768c                McSPI_AddressOffset
+ .rodata.str1.4
+                0x00007694      0x135 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                                0x138 (size before relaxing)
+ *fill*         0x000077c9        0x3 
+ .rodata        0x000077cc       0x58 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .rodata.str1.4
+                0x00007824      0x1e0 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                                0x204 (size before relaxing)
+ .rodata.PWMSS_AddressOffset
+                0x00007a04        0xc ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                0x00007a04                PWMSS_AddressOffset
+
+.rodata1
+ *(.rodata1)
+
+.ARM.extab      0x00007a10      0x12c
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ .ARM.extab     0x00007a10       0x30 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtbeginS.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_setup
+                0x00007a40        0xc ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_teardown
+                0x00007a4c        0xc ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_digitalRead
+                0x00007a58        0xc ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .ARM.extab.text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cRead
+                0x00007a64        0xc ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .ARM.extab.text.i2cOpen
+                0x00007a70        0xc ./src/main/c/i2c/i2c.o
+ .ARM.extab.text.unlikely.List_isEmpty.part.0
+                0x00007a7c        0xc ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.unlikely.List_count.part.1
+                0x00007a88        0xc ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.unlikely.listInsert.part.2
+                0x00007a94        0xc ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.unlikely.listRemove.part.3
+                0x00007aa0        0xc ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_isEmpty
+                0x00007aac        0xc ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_count
+                0x00007ab8        0xc ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_first
+                0x00007ac4        0xc ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_last
+                0x00007ad0        0xc ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.listContains
+                0x00007adc        0xc ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_init
+                0x00007ae8        0xc ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_done
+                0x00007af4        0xc ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.List_debugCheck
+                0x00007b00        0xc ./src/main/c/datastructures/linkedlist.o
+ .ARM.extab.text.iolib_free
+                0x00007b0c        0xc ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_sys_Enable_GPIO
+                0x00007b18        0xc ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_sys_Disable_GPIO
+                0x00007b24        0xc ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.extab.text.BBBIO_PWMSS_Setting
+                0x00007b30        0xc ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                0x00007b3c                PROVIDE (__exidx_start, .)
+
+.ARM.exidx      0x00007b3c      0x300
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+ .ARM.exidx     0x00007b64       0x20 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtbeginS.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_setup
+                0x00007b84        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_teardown
+                0x00007b8c        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_fetchSamples
+                0x00007b8c        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_configureModule
+                0x00007b8c        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_configureChannel
+                0x00007b8c        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_enableChannel
+                0x00007b94        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeAdc_disableChannel
+                0x00007b9c        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_epollCreate
+                0x00007b9c        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_addFile
+                0x00007ba4        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_waitForInterrupt
+                0x00007bac        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_stopWait
+                0x00007bb4        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeEpoll_shutdown
+                0x00007bbc        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_setup
+                0x00007bc4        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_teardown
+                0x00007bcc        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_pinMode
+                0x00007bd4        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_digitalRead
+                0x00007bdc        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_digitalWrite
+                0x00007be4        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeGpio_debouncePin
+                0x00007bec        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cRead
+                0x00007bec        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cWrite
+                0x00007bf4        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cSelectSlave
+                0x00007bfc        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cOpen
+                0x00007bfc        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cClose
+                0x00007c04        0x8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativePwm_setup
+                0x00007c0c        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativePwm_teardown
+                0x00007c0c        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativePwm_setPwm
+                0x00007c0c        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativePwm_enable
+                0x00007c0c        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.Java_org_bulldog_beagleboneblack_jni_NativePwm_disable
+                0x00007c0c        0x0 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.i2cRead
+                0x00007c0c        0x8 ./src/main/c/i2c/i2c.o
+ .ARM.exidx.text.i2cWrite
+                0x00007c14        0x0 ./src/main/c/i2c/i2c.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.i2cSelectSlave
+                0x00007c14        0x8 ./src/main/c/i2c/i2c.o
+ .ARM.exidx.text.i2cOpen
+                0x00007c1c        0x8 ./src/main/c/i2c/i2c.o
+ .ARM.exidx.text.i2cClose
+                0x00007c24        0x8 ./src/main/c/i2c/i2c.o
+ .ARM.exidx.text.unlikely.List_isEmpty.part.0
+                0x00007b3c        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.unlikely.List_count.part.1
+                0x00007b44        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.unlikely.listInsert.part.2
+                0x00007b4c        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.unlikely.listRemove.part.3
+                0x00007b54       0x10 ./src/main/c/datastructures/linkedlist.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.List_isEmpty
+                0x00007c2c        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_count
+                0x00007c34        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_first
+                0x00007c3c        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_last
+                0x00007c44        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.listInsert
+                0x00007c4c        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.listAppend
+                0x00007c54        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.listRemove
+                0x00007c5c        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.listContains
+                0x00007c64        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.__List_newNode
+                0x00007c6c        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_init
+                0x00007c74        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.debugListInit
+                0x00007c7c        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_new
+                0x00007c84        0x0 ./src/main/c/datastructures/linkedlist.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.List_move
+                0x00007c84        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.__List_insert
+                0x00007c8c        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_copy
+                0x00007c94        0x0 ./src/main/c/datastructures/linkedlist.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.List_duplicate
+                0x00007c94        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.__List_append
+                0x00007c9c        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_remove
+                0x00007ca4        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_getFirst
+                0x00007cac        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.__List_deleteNode
+                0x00007cb4        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_clear
+                0x00007cbc        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_done
+                0x00007cc4        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_delete
+                0x00007ccc        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_getLast
+                0x00007cd4        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_findFirst
+                0x00007cdc        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_findNext
+                0x00007ce4        0x0 ./src/main/c/datastructures/linkedlist.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.List_sort
+                0x00007ce4        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_debugDumpInfo
+                0x00007cec        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_debugPrintInfo
+                0x00007cf4        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_debugPrintStatistics
+                0x00007cfc        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_debugCheck
+                0x00007d04        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.List_debugDone
+                0x00007d0c        0x8 ./src/main/c/datastructures/linkedlist.o
+ .ARM.exidx.text.iolib_init
+                0x00007d14        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.iolib_free
+                0x00007d1c        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.iolib_setdir
+                0x00007d24        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.pin_high
+                0x00007d2c        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.pin_low
+                0x00007d34        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.is_high
+                0x00007d34        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.is_low
+                0x00007d34        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.iolib_delay_ms
+                0x00007d34        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.BBBIO_sys_GPIO_CLK_status
+                0x00007d3c        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.BBBIO_sys_Expansion_Header_status
+                0x00007d44        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.BBBIO_sys_pinmux_check
+                0x00007d4c        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.BBBIO_sys_Enable_Debouncing
+                0x00007d54        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.BBBIO_sys_Disable_Debouncing
+                0x00007d5c        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.BBBIO_sys_Enable_GPIO
+                0x00007d5c        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.BBBIO_sys_Disable_GPIO
+                0x00007d64        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.BBBIO_sys_delay_ms
+                0x00007d6c        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.BBBIO_sys_delay_us
+                0x00007d74        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.BBBIO_GPIO_set_dir
+                0x00007d7c        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.BBBIO_GPIO_high
+                0x00007d84        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text.BBBIO_GPIO_low
+                0x00007d8c        0x0 ./src/main/c/BBBIOlib/BBBiolib.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.BBBIO_GPIO_get
+                0x00007d8c        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.exidx.text._ADCTSC_work
+                0x00007d94        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .ARM.exidx.text.BBBIO_ADCTSC_channel_status
+                0x00007d9c        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .ARM.exidx.text.BBBIO_ADCTSC_module_ctrl
+                0x00007da4        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .ARM.exidx.text.BBBIO_ADCTSC_channel_ctrl
+                0x00007dac        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .ARM.exidx.text.BBBIO_ADCTSC_work
+                0x00007db4        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .ARM.exidx.text.BBBIO_ADCTSC_Init
+                0x00007dbc        0x8 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .ARM.exidx.text.write_reg
+                0x00007dc4        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.exidx.text.read_reg
+                0x00007dcc        0x0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text.BBBIO_McSPI_Init
+                0x00007dcc        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.exidx.text.BBBIO_McSPI_Tx
+                0x00007dd4        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.exidx.text.BBBIO_McSPI_Rx
+                0x00007ddc        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.exidx.text.BBBIO_McSPI_work
+                0x00007de4        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.exidx.text.BBBIO_McSPI_Setting
+                0x00007dec        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.exidx.text.BBBIO_McSPI_EP_check
+                0x00007df4        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.exidx.text.BBBIO_McSPI_CLK_set
+                0x00007dfc        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.exidx.text.BBBIO_McSPI_Reset
+                0x00007e04        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.exidx.text.BBBIO_PWM_Release
+                0x00007e0c        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .ARM.exidx.text.BBBIO_PWM_Init
+                0x00007e14        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .ARM.exidx.text.BBBIO_PWMSS_Status
+                0x00007e1c        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .ARM.exidx.text.BBBIO_PWMSS_Setting
+                0x00007e24        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .ARM.exidx.text.BBBIO_ehrPWM_Enable
+                0x00007e2c        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .ARM.exidx.text.BBBIO_ehrPWM_Disable
+                0x00007e34        0x8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                0x00007e3c                PROVIDE (__exidx_end, .)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x00007e3c        0x4
+ *(.eh_frame)
+ .eh_frame      0x00007e3c        0x4 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtendS.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+                0x00007e40                . = (ALIGN (0x8000) - ((0x8000 - .) & 0x7fff))
+                0x00008000                . = DATA_SEGMENT_ALIGN (0x8000, 0x1000)
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x00008000        0x4
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x00008000        0x4 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtbeginS.o
+
+.fini_array     0x00008004        0x4
+ *(SORT(.fini_array.*))
+ *(.fini_array)
+ .fini_array    0x00008004        0x4 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+
+.jcr            0x00008008        0x4
+ *(.jcr)
+ .jcr           0x00008008        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtbeginS.o
+ .jcr           0x00008008        0x4 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtendS.o
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+
+.dynamic        0x0000800c       0xe8
+ *(.dynamic)
+ .dynamic       0x0000800c       0xe8 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+                0x0000800c                _DYNAMIC
+                0x000080f4                . = DATA_SEGMENT_RELRO_END (., 0x0)
+
+.got            0x000080f4      0x1bc
+ *(.got.plt)
+ .got.plt       0x000080f4      0x148 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+                0x000080f4                _GLOBAL_OFFSET_TABLE_
+ *(.igot.plt)
+ .igot.plt      0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ *(.got)
+ .got           0x0000823c       0x74 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ *(.igot)
+
+.data           0x000082b0        0xc
+                0x000082b0                PROVIDE (__data_start, .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data.rel      0x000082b0        0x4 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtbeginS.o
+                0x000082b0                __dso_handle
+ .data.rel.ExpHeader_MODE0
+                0x000082b4        0x8 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x000082b4                ExpHeader_MODE0
+
+.tm_clone_table
+                0x000082bc        0x0
+ .tm_clone_table
+                0x000082bc        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtbeginS.o
+ .tm_clone_table
+                0x000082bc        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtendS.o
+
+.data1
+ *(.data1)
+                0x000082bc                _edata = .
+                0x000082bc                PROVIDE (edata, .)
+                0x000082bc                . = .
+                0x000082bc                __bss_start = .
+                0x000082bc                __bss_start__ = .
+
+.bss            0x000082bc      0x224
+ *(.dynbss)
+ .dynbss        0x00000000        0x0 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x000082bc        0x1 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtbeginS.o
+ *fill*         0x000082bd        0x3 
+ .bss.debugListFreeNodeList
+                0x000082c0        0xc ./src/main/c/datastructures/linkedlist.o
+ .bss.debugListLock
+                0x000082cc       0x18 ./src/main/c/datastructures/linkedlist.o
+ .bss.debugListInitFlag
+                0x000082e4        0x4 ./src/main/c/datastructures/linkedlist.o
+ .bss.debugListAllocNodeList
+                0x000082e8        0xc ./src/main/c/datastructures/linkedlist.o
+ .bss.debugListLockAttributes
+                0x000082f4        0x4 ./src/main/c/datastructures/linkedlist.o
+ .bss.cm_per_addr
+                0x000082f8        0x4 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x000082f8                cm_per_addr
+ .bss.memh      0x000082fc        0x4 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x000082fc                memh
+ .bss.ctrlh     0x00008300        0x4 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00008300                ctrlh
+ .bss.gpio_addr
+                0x00008304       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00008304                gpio_addr
+ .bss.CM_ptr    0x00008314        0x4 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00008314                CM_ptr
+ .bss.cm_wkup_addr
+                0x00008318        0x4 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x00008318                cm_wkup_addr
+ .bss.adctsc_ptr
+                0x0000831c        0x4 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+                0x0000831c                adctsc_ptr
+ .bss.McSPI_Module
+                0x00008320       0x48 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                0x00008320                McSPI_Module
+ .bss.mcspi_ptr
+                0x00008368        0x8 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                0x00008368                mcspi_ptr
+ .bss.epwm_ptr  0x00008370        0xc ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                0x00008370                epwm_ptr
+ .bss.eqep_ptr  0x0000837c        0xc ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                0x0000837c                eqep_ptr
+ .bss.pwmss_ptr
+                0x00008388        0xc ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                0x00008388                pwmss_ptr
+ .bss.ecap_ptr  0x00008394        0xc ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                0x00008394                ecap_ptr
+ *(COMMON)
+ COMMON         0x000083a0       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+                0x000083a0                PortIDSet_ptr
+                0x000083a8                PortSet_ptr
+ COMMON         0x000083b0      0x130 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+                0x000083b0                ADCTSC
+                0x000084e0                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x000084e0                _bss_end__ = .
+                0x000084e0                __bss_end__ = .
+                0x000084e0                . = ALIGN (0x4)
+                0x000084e0                . = SEGMENT_START ("ldata-segment", .)
+                0x000084e0                . = ALIGN (0x4)
+                0x000084e0                __end__ = .
+                0x000084e0                _end = .
+                0x000084e0                PROVIDE (end, .)
+                0x000084e0                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x30
+ *(.comment)
+ .comment       0x00000000       0x30 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+                                 0x31 (size before relaxing)
+ .comment       0x00000000       0x31 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .comment       0x00000000       0x31 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .comment       0x00000000       0x31 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .comment       0x00000000       0x31 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .comment       0x00000000       0x31 ./src/main/c/i2c/i2c.o
+ .comment       0x00000000       0x31 ./src/main/c/datastructures/linkedlist.o
+ .comment       0x00000000       0x31 ./src/main/c/BBBIOlib/BBBiolib.o
+ .comment       0x00000000       0x31 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .comment       0x00000000       0x31 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .comment       0x00000000       0x31 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+
+.ARM.attributes
+                0x00000000       0x35
+ .ARM.attributes
+                0x00000000       0x21 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crti.o
+ .ARM.attributes
+                0x00000021       0x2f c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtbeginS.o
+ .ARM.attributes
+                0x00000050       0x3b ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .ARM.attributes
+                0x0000008b       0x3b ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .ARM.attributes
+                0x000000c6       0x3b ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .ARM.attributes
+                0x00000101       0x3b ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .ARM.attributes
+                0x0000013c       0x3b ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .ARM.attributes
+                0x00000177       0x3b ./src/main/c/i2c/i2c.o
+ .ARM.attributes
+                0x000001b2       0x3b ./src/main/c/datastructures/linkedlist.o
+ .ARM.attributes
+                0x000001ed       0x3b ./src/main/c/BBBIOlib/BBBiolib.o
+ .ARM.attributes
+                0x00000228       0x3b ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .ARM.attributes
+                0x00000263       0x3b ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .ARM.attributes
+                0x0000029e       0x3b ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+ .ARM.attributes
+                0x000002d9       0x2f c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../lib/gcc/arm-none-linux-gnueabi/4.8.1/thumb2/crtendS.o
+ .ARM.attributes
+                0x00000308       0x21 c:/david/projects/bulldog/bulldog.tools/sourcery/bin/../arm-none-linux-gnueabi/libc/thumb2/usr/lib/crtn.o
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x488
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x50 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_aranges
+                0x00000050       0x40 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_aranges
+                0x00000090       0x48 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_aranges
+                0x000000d8       0x40 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_aranges
+                0x00000118       0x40 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_aranges
+                0x00000158       0x40 ./src/main/c/i2c/i2c.o
+ .debug_aranges
+                0x00000198      0x138 ./src/main/c/datastructures/linkedlist.o
+ .debug_aranges
+                0x000002d0       0xc0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_aranges
+                0x00000390       0x48 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_aranges
+                0x000003d8       0x68 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_aranges
+                0x00000440       0x48 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000    0x15e72
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x3217 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_info    0x00003217     0x3837 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_info    0x00006a4e     0x322b ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_info    0x00009c79     0x3184 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_info    0x0000cdfd     0x30ef ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_info    0x0000feec      0x4e5 ./src/main/c/i2c/i2c.o
+ .debug_info    0x000103d1     0x2634 ./src/main/c/datastructures/linkedlist.o
+ .debug_info    0x00012a05     0x12fa ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_info    0x00013cff      0xd22 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_info    0x00014a21      0xc22 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_info    0x00015643      0x82f ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+
+.debug_abbrev   0x00000000     0x1e2e
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x250 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_abbrev  0x00000250      0x33c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_abbrev  0x0000058c      0x26d ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_abbrev  0x000007f9      0x20e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_abbrev  0x00000a07      0x238 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_abbrev  0x00000c3f      0x177 ./src/main/c/i2c/i2c.o
+ .debug_abbrev  0x00000db6      0x3fe ./src/main/c/datastructures/linkedlist.o
+ .debug_abbrev  0x000011b4      0x2f3 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_abbrev  0x000014a7      0x348 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_abbrev  0x000017ef      0x36e ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_abbrev  0x00001b5d      0x2d1 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+
+.debug_line     0x00000000     0x5299
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x4ca ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_line    0x000004ca      0x86f ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_line    0x00000d39      0x4cd ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_line    0x00001206      0x499 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_line    0x0000169f      0x470 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_line    0x00001b0f      0x6ef ./src/main/c/i2c/i2c.o
+ .debug_line    0x000021fe      0xcd6 ./src/main/c/datastructures/linkedlist.o
+ .debug_line    0x00002ed4      0xa72 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_line    0x00003946      0x931 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_line    0x00004277      0x83c ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_line    0x00004ab3      0x7e6 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+
+.debug_frame    0x00000000      0xc64
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x94 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_frame   0x00000094       0xa8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_frame   0x0000013c       0x98 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_frame   0x000001d4       0x78 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_frame   0x0000024c       0x60 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_frame   0x000002ac       0x80 ./src/main/c/i2c/i2c.o
+ .debug_frame   0x0000032c      0x3f8 ./src/main/c/datastructures/linkedlist.o
+ .debug_frame   0x00000724      0x27c ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_frame   0x000009a0       0xe0 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_frame   0x00000a80      0x11c ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_frame   0x00000b9c       0xc8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+
+.debug_str      0x00000000    0x1747f
+ *(.debug_str)
+ .debug_str     0x00000000     0x6d93 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+                               0x6f3e (size before relaxing)
+ .debug_str     0x00006d93     0x878b ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+                               0xee4f (size before relaxing)
+ .debug_str     0x0000f51e     0x1c11 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+                               0x8372 (size before relaxing)
+ .debug_str     0x0001112f      0x18f ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+                               0x66d1 (size before relaxing)
+ .debug_str     0x000112be      0x1c8 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+                               0x6711 (size before relaxing)
+ .debug_str     0x00011486     0x1816 ./src/main/c/i2c/i2c.o
+                               0xbe1b (size before relaxing)
+ .debug_str     0x00012c9c     0x1acc ./src/main/c/datastructures/linkedlist.o
+                               0x7ec4 (size before relaxing)
+ .debug_str     0x00014768      0x97d ./src/main/c/BBBIOlib/BBBiolib.o
+                               0x9ca1 (size before relaxing)
+ .debug_str     0x000150e5     0x1bf7 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+                               0xf4e3 (size before relaxing)
+ .debug_str     0x00016cdc      0x46a ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+                               0xa398 (size before relaxing)
+ .debug_str     0x00017146      0x339 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+                               0x9c5f (size before relaxing)
+
+.debug_loc      0x00000000     0x63ce
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x36a ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_loc     0x0000036a      0x604 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_loc     0x0000096e      0x35b ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_loc     0x00000cc9      0x27b ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_loc     0x00000f44      0x1e6 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_loc     0x0000112a      0x10c ./src/main/c/i2c/i2c.o
+ .debug_loc     0x00001236     0x25a5 ./src/main/c/datastructures/linkedlist.o
+ .debug_loc     0x000037db     0x10e0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_loc     0x000048bb      0xb11 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_loc     0x000053cc      0x8b5 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_loc     0x00005c81      0x74d ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x00000000      0x848
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x40 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_ranges  0x00000040       0x60 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_ranges  0x000000a0       0x38 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_ranges  0x000000d8       0x30 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_ranges  0x00000108       0x30 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_ranges  0x00000138       0x30 ./src/main/c/i2c/i2c.o
+ .debug_ranges  0x00000168      0x3c0 ./src/main/c/datastructures/linkedlist.o
+ .debug_ranges  0x00000528       0xb0 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_ranges  0x000005d8       0x88 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_ranges  0x00000660       0xf0 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_ranges  0x00000750       0xf8 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+
+.debug_macro    0x00000000     0x701d
+ *(.debug_macro)
+ .debug_macro   0x00000000      0x140 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00000140      0x892 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x000009d2       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x000009e8       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x000009f8      0x18c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00000b84      0x16f ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00000cf3       0x35 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00000d28       0x70 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00000d98       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00000da8       0x97 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00000e3f       0x5e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00000e9d       0xd6 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00000f73       0x2e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00000fa1       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00000fb7       0x20 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00000fd7       0x1e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00000ff5       0x28 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x0000101d       0x58 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00001075       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00001085      0x1c2 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00001247       0x4a ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00001291       0x28 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x000012b9       0x27 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x000012e0       0x1f ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x000012ff       0x4c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x0000134b       0x1c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x00001367       0x82 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x000013e9       0x76 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x0000145f       0x82 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o
+ .debug_macro   0x000014e1      0x39c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x0000187d       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00001893       0xd6 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00001969      0x256 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00001bbf       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00001bcf       0x1c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00001beb      0x1b7 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00001da2       0x1c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00001dbe       0x28 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00001de6       0xe6 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00001ecc       0xf9 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00001fc5       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00001fdb       0x44 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x0000201f       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002035       0x97 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x000020cc       0x3a ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002106       0x4c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002152       0x1c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x0000216e       0x28 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002196       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x000021a6       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x000021b6       0x4c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002202       0x22 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002224       0x62 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002286       0x5b ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x000022e1       0x3a ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x0000231b       0x12 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x0000232d       0x20 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x0000234d       0x1c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002369       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002379       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x0000238f       0x22 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x000023b1       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x000023c1       0x4c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x0000240d       0x1c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002429       0x20 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002449       0x4c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002495       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x000024a5       0x10 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x000024b5       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x000024cb       0xaf ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x0000257a       0x16 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002590      0x1c9 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002759       0x70 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x000027c9       0x6a ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002833      0x190 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x000029c3       0x52 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002a15       0x27 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002a3c       0x43 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00002a7f      0x824 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x000032a3       0xb2 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o
+ .debug_macro   0x00003355      0x158 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x000034ad       0x22 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x000034cf       0x88 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00003557      0x52e ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o
+ .debug_macro   0x00003a85      0x13c ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o
+ .debug_macro   0x00003bc1      0x137 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o
+ .debug_macro   0x00003cf8      0x38b ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00004083      0x892 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00004915       0x67 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x0000497c       0x10 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x0000498c       0xd0 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00004a5c      0x1f0 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00004c4c      0x148 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00004d94       0xac ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00004e40       0xac ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00004eec       0x10 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00004efc       0x10 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00004f0c       0x22 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00004f2e       0x22 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00004f50       0x40 ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00004f90       0x4a ./src/main/c/i2c/i2c.o
+ .debug_macro   0x00004fda      0x2ea ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x000052c4      0x10e ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x000053d2       0x73 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00005445       0x3e ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00005483       0x22 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x000054a5       0x10 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x000054b5       0x10 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x000054c5       0x86 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x0000554b       0x16 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00005561       0x58 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x000055b9       0x29 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x000055e2       0x9a ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x0000567c       0x28 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x000056a4       0x3a ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x000056de       0x65 ./src/main/c/datastructures/linkedlist.o
+ .debug_macro   0x00005743      0x347 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00005a8a       0x10 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00005a9a       0x3a ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00005ad4       0xf4 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00005bc8       0x16 ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00005bde      0x11a ./src/main/c/BBBIOlib/BBBiolib.o
+ .debug_macro   0x00005cf8      0x62b ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00006323       0x10 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00006333       0x39 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x0000636c       0x34 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x000063a0       0x16 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x000063b6      0x106 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x000064bc      0x213 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x000066cf       0x12 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x000066e1       0x64 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00006745       0x20 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00006765       0x19 ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x0000677e       0x1c ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x0000679a       0x6a ./src/main/c/BBBIOlib/BBBiolib_ADCTSC.o
+ .debug_macro   0x00006804      0x424 ./src/main/c/BBBIOlib/BBBiolib_McSPI.o
+ .debug_macro   0x00006c28      0x3f5 ./src/main/c/BBBIOlib/BBBiolib_PWMSS.o
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(libbulldog.so elf32-littlearm)

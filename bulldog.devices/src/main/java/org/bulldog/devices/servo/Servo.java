@@ -6,7 +6,7 @@ public class Servo {
 
 	private static final float MIN_ANGLE_DEFAULT = 0.05f;
 	private static final float MAX_ANGLE_DEFAULT = 0.10f;
-	private static final long FREQUENCY_HZ = 50;
+	private static final float FREQUENCY_HZ = 50.0f;
 	private static final float INITIAL_POSITION_DEFAULT = 0.0f;
 	
 	private Pwm pwm;

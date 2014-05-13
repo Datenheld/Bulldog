@@ -39,7 +39,7 @@ public class BBBPwm extends AbstractPwm {
 	}
 
 	@Override
-	protected void setPwmImpl(long frequency, float duty) {
+	protected void setPwmImpl(float frequency, float duty) {
 		long period = (long) ((1.0 / frequency) * (float)NANOSECONDS_PER_SECOND);
 		long dutyCycle = (long) (period * duty);
 		sysFsPwm.setPolarity(Polarity.Negative);   //period to negative - that means the pulse will be high

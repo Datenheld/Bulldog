@@ -19,6 +19,8 @@ public class NativeAdc {
 	public static final int BBBIO_ADC_WORK_MODE_BUSY_POLLING =	0x1;
 	public static final int BBBIO_ADC_WORK_MODE_TIMER_INT 	 =	0x2;
 	
+	public static final float SYSCLOCK_HZ = 24000000 / 14;
+	
 	public static native int setup();
 	public static native void teardown();
 	public static native void fetchSamples(int amountSamples);
@@ -54,4 +56,10 @@ public class NativeAdc {
 			isInitialized = false;
 		}
 	}
+	
+	public static int calculateNearestDivisorForFrequency(float desiredFrequency) {
+		float divisor = SYSCLOCK_HZ / desiredFrequency;
+		return Math.round(divisor);
+	}
+	
 }

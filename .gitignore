@@ -5,5 +5,3 @@ target/
 .cproject
 .classpath
 .settings/
-Debug/
-Release/
