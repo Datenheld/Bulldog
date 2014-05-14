@@ -63,9 +63,9 @@ public class BBBPinInterruptControl implements Runnable {
 			if(results == null) { continue; }
 			
 			for(NativePollResult result : results) {
-				if(lastEdge != null && lastEdge.equals(result.getEdge())) { continue; }
-				
 				Edge edge = result.getEdge();
+				if(lastEdge != null && lastEdge.equals(edge)) { continue; }
+				
 				long delta = System.currentTimeMillis() - lastInterruptTime;
 				if(delta <= this.debounceMilliseconds) {
 					continue;

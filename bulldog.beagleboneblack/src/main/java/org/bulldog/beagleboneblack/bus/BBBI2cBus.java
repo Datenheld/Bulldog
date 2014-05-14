@@ -19,6 +19,7 @@ public class BBBI2cBus implements I2cBus {
 	private boolean isOpen = false;
 	private int fileDescriptor;
 	private int selectedAddress;
+	private String alias;
 	
 	public BBBI2cBus(String busDeviceFilePath) {
 		this.busDeviceFilePath = busDeviceFilePath;
@@ -107,6 +108,18 @@ public class BBBI2cBus implements I2cBus {
 	public Pin getSCL() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public String getName() {
+		return busDeviceFilePath;
+	}
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
 	}
 	
 }

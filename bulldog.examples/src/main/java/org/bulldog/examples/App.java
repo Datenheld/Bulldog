@@ -44,7 +44,7 @@ public class App
     		
     	});
     	
-    	final Pwm pwm = board.getPinByName("P8_13").as(Pwm.class);
+    	final Pwm pwm = board.getPinByName("P9_14").as(Pwm.class);
     	final Servo servo = new TowerProMicroSG90(pwm);
     	
     	encoder.addListener(new RotaryEncoderListener() {

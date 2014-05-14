@@ -4,6 +4,10 @@ import java.io.IOException;
 
 public interface Bus {
 
+	public String getName();
+	public String getAlias();
+	public void setAlias(String alias);
+	
 	public void open() throws IOException;
 	public boolean isOpen();
 	public void close() throws IOException;
@@ -15,4 +19,5 @@ public interface Bus {
 	public int getSelectedAddress();	
 	
 	public BusConnection createConnection(int address);
+
 }

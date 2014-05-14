@@ -53,7 +53,7 @@ public class BBBDigitalInput extends AbstractDigitalInput {
 	@Override
 	public void addInterruptListener(InterruptListener listener) {
 		super.addInterruptListener(listener);
-		if(areInterruptsEnabled() && interruptControl.isRunning()) {
+		if(areInterruptsEnabled() && !interruptControl.isRunning()) {
 			interruptControl.start();
 		}
 	}

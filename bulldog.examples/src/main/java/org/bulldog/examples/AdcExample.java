@@ -17,9 +17,9 @@ public class AdcExample {
     	Board board = new BeagleBoneBlack();
     	
     	//Get some analogInputs
-    	AnalogInput analogInput0 = board.getPinByInternalName("AIN0").as(AnalogInput.class);
-    	AnalogInput analogInput1 = board.getPinByInternalName("AIN1").as(AnalogInput.class);
-    	AnalogInput analogInput2 = board.getPinByInternalName("AIN2").as(AnalogInput.class);
+    	AnalogInput analogInput0 = board.getPinByName("P9_39").as(AnalogInput.class);
+    	AnalogInput analogInput1 = board.getPinByName("P9_40").as(AnalogInput.class);
+    	AnalogInput analogInput2 = board.getPinByName("P9_37").as(AnalogInput.class);
     	
     	//Sample those asynchronously
     	Future<double[]> futureChannel0 = analogInput0.sampleAsync(10);

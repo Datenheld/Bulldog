@@ -36,7 +36,6 @@ public class ButtonExample {
     		
     	});
     	
-    	//The program aborts when the value is smaller than -100 or greater 100
     	while(true) {
     		BulldogUtil.sleepMs(50);
     	}

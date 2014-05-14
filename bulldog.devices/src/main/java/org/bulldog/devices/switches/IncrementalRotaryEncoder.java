@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.bulldog.core.Edge;
+import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalInput;
 import org.bulldog.core.gpio.event.InterruptEventArgs;
 import org.bulldog.core.gpio.event.InterruptListener;
@@ -28,13 +29,12 @@ public class IncrementalRotaryEncoder {
 
 	private void initializeCounterClockwiseInterrupt(DigitalInput counterClockwise) {
 		this.interruptSignalA.setInterruptTrigger(Edge.Both);
-		this.interruptSignalA.setInterruptDebounceTime(0);
 		counterClockwise.addInterruptListener(new InterruptListener() {
 
 			@Override
 			public void interruptRequest(InterruptEventArgs args) {
 				signalB = args.getEdge() == Edge.Rising;
-				if (signalB && !signalA) {
+				if (signalB && !(interruptSignalA.readSignal() == Signal.High)) {
 					position--;
 					fireValueChanged(position - 1, position);
 					fireCounterclockwiseTurn();
@@ -46,13 +46,12 @@ public class IncrementalRotaryEncoder {
 
 	private void initializeClockwiseInterrupt(DigitalInput clockwise) {
 		this.interruptSignalB.setInterruptTrigger(Edge.Both);
-		this.interruptSignalB.setInterruptDebounceTime(0);
 		clockwise.addInterruptListener(new InterruptListener() {
 
 			@Override
 			public void interruptRequest(InterruptEventArgs args) {
 				signalA = args.getEdge() == Edge.Rising;
-				if (signalA && !signalB) {
+				if (signalA && !(interruptSignalB.readSignal() == Signal.High)) {
 					position++;
 					fireValueChanged(position - 1, position);
 					fireClockwiseTurn();

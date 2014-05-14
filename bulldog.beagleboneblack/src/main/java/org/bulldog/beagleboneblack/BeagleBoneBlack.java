@@ -1,6 +1,9 @@
 package org.bulldog.beagleboneblack;
 
+import java.io.File;
+
 import org.bulldog.beagleboneblack.bus.BBBI2cBus;
+import org.bulldog.beagleboneblack.bus.BBBSerialBus;
 import org.bulldog.beagleboneblack.gpio.BBBAnalogInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalOutput;
@@ -15,7 +18,13 @@ import org.bulldog.core.gpio.event.ActivationListener;
 public class BeagleBoneBlack extends AbstractBoard implements ActivationListener {
 	
 	static {
-		System.loadLibrary("bulldog");
+		String workingDirectory = System.getProperty("user.dir");
+		File file = new File(workingDirectory + "/libbulldog.so");
+		if(file.exists()) {
+			System.load(file.getAbsolutePath());
+		}  else {
+			System.loadLibrary("bulldog");
+		}
 	}
 	
 	private static final String NAME = "BeagleBone Black";
@@ -108,6 +117,12 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		
 		addPwmToPin(getPinByName("P8_13"));
 		addPwmToPin(getPinByName("P8_19"));
+		addPwmToPin(getPinByName("P8_45"));
+		addPwmToPin(getPinByName("P8_46"));
+		addPwmToPin(getPinByName("P9_14"));
+		addPwmToPin(getPinByName("P9_16"));
+		addPwmToPin(getPinByName("P9_21"));
+		addPwmToPin(getPinByName("P9_22"));
 		addPwmToPin(getPinByName("P9_29"));
 		addPwmToPin(getPinByName("P9_31"));
 	}
@@ -132,10 +147,27 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 	
 
 	private void createBuses() {
-		getI2cBuses().add(new BBBI2cBus("/dev/i2c-0"));
-		getI2cBuses().add(new BBBI2cBus("/dev/i2c-1"));
+		detectI2cBuses();
+		detectSerialBuses();
 	}
 
+	private void detectI2cBuses() {
+		for(int i = 0; i < 3; i++) {
+			File i2cDevice = new File("/dev/i2c-" + i);
+			if(i2cDevice.exists()) {
+				getI2cBuses().add(new BBBI2cBus(i2cDevice.getAbsolutePath()));
+			}
+		}
+	}
+
+	private void detectSerialBuses() {
+		for(int i = 0; i < 6; i++) {
+			File serialDevice = new File("/dev/ttyO" + i);
+			if(serialDevice.exists()) {
+				getSerialBuses().add(new BBBSerialBus(serialDevice.getAbsolutePath()));
+			}
+		}
+	}
 
 	@Override
 	public String getName() {
@@ -187,4 +219,10 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 			}
 		});
 	}
+
+	public Pin getPinByPortIndex(int port, int pinIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -11,18 +11,12 @@ public class Pin {
 	private List<PinFeature> features = new ArrayList<PinFeature>();
 	private int address = 0;
 	private String name = "";
-	private String internalName = "";
 	private String alias = "";
 	private PinFeature activeFeature = null;
 	private List<ActivationListener> activationListeners = new ArrayList<ActivationListener>();
 
 	public Pin(String name, int address) {
-		this(name, null, address);
-	}
-	
-	public Pin(String name, String internalName, int address) {
 		this.name = name;
-		this.internalName = internalName;
 		this.address = address;
 	}
 	
@@ -115,10 +109,6 @@ public class Pin {
 	
 	public List<PinFeature> getFeatures() {
 		return features;
-	}
-	
-	public String getInternalName() {
-		return internalName;
 	}
 	
 	public String getName() {

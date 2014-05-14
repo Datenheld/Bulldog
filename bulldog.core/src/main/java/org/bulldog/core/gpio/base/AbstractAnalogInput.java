@@ -28,7 +28,7 @@ public abstract class AbstractAnalogInput extends AbstractPinFeature implements 
 	
 	public void startMonitor(int periodMicroSeconds, final ThresholdListener listener) {
 		if(listener == null) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("listener cannot be null");
 		}
 		
 		setBlocking(true);
