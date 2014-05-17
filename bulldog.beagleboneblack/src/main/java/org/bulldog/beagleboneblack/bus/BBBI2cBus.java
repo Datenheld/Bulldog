@@ -122,4 +122,31 @@ public class BBBI2cBus implements I2cBus {
 		this.alias = alias;
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime
+				* result
+				+ ((busDeviceFilePath == null) ? 0 : busDeviceFilePath
+						.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BBBI2cBus other = (BBBI2cBus) obj;
+		if (busDeviceFilePath == null) {
+			if (other.busDeviceFilePath != null)
+				return false;
+		} else if (!busDeviceFilePath.equals(other.busDeviceFilePath))
+			return false;
+		return true;
+	}
 }

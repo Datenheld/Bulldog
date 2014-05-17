@@ -1,4 +1,4 @@
-package org.bulldog.core;
+package org.bulldog.core.platform;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +15,25 @@ public abstract class AbstractBoard implements Board {
 	private List<SerialBus> serialBuses = new ArrayList<SerialBus>();
 
 	public List<Pin> getPins() {
-		return pins;
+		return  pins;
 	}
 
 	public Pin getPinByAddress(int address) {
 		for(Pin pin : getPins()) {
 			if(pin.getAddress() == address) {
+				return pin;
+			}
+		}
+		
+		return null;
+	}
+	
+	public Pin getPin(String port, int index) {
+		if(port == null) 	{ throw new IllegalArgumentException("Null may not be passed as a name for a port."); }
+		if(index < 0) 		{ throw new IllegalArgumentException("Index cannot be smaller than 0"); }
+		
+		for(Pin pin : getPins()) {
+			if(port.equals(pin.getPort()) && index == pin.getIndexOnPort()) {
 				return pin;
 			}
 		}

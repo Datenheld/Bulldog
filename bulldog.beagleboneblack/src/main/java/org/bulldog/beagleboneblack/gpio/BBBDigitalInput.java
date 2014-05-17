@@ -43,7 +43,7 @@ public class BBBDigitalInput extends AbstractDigitalInput {
 
 	public Signal readSignal() {
 		BeagleBonePin bbbPin = (BeagleBonePin)getPin();
-		return NativeGpio.digitalRead(bbbPin.getPort(), bbbPin.getIndexOnPort()) > 0 ? Signal.High : Signal.Low;
+		return NativeGpio.digitalRead(bbbPin.getPortNumeric(), bbbPin.getIndexOnPort()) > 0 ? Signal.High : Signal.Low;
 	}
 
 	public void shutdown() {
@@ -106,7 +106,7 @@ public class BBBDigitalInput extends AbstractDigitalInput {
 		interruptControl.setup();
 		
 		BeagleBonePin bbbPin = (BeagleBonePin)getPin();
-		NativeGpio.pinMode(bbbPin.getPort(), bbbPin.getIndexOnPort(), NativeGpio.DIRECTION_IN);
+		NativeGpio.pinMode(bbbPin.getPortNumeric(), bbbPin.getIndexOnPort(), NativeGpio.DIRECTION_IN);
 	}
 
 	public void teardown() {

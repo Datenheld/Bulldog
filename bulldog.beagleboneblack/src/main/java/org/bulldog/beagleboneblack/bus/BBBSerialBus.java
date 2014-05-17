@@ -7,8 +7,10 @@ import org.bulldog.core.bus.SerialBus;
 
 public class BBBSerialBus implements SerialBus {
 
+	private String deviceFilePath;
+	
 	public BBBSerialBus(String filename) {
-		
+		this.deviceFilePath = filename;
 	}
 	
 	public void open() throws IOException {
@@ -64,6 +66,32 @@ public class BBBSerialBus implements SerialBus {
 	public void setAlias(String alias) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((deviceFilePath == null) ? 0 : deviceFilePath.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BBBSerialBus other = (BBBSerialBus) obj;
+		if (deviceFilePath == null) {
+			if (other.deviceFilePath != null)
+				return false;
+		} else if (!deviceFilePath.equals(other.deviceFilePath))
+			return false;
+		return true;
 	}
 
 }

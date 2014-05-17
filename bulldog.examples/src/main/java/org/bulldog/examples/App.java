@@ -2,11 +2,11 @@ package org.bulldog.examples;
 
 import java.io.IOException;
 
-import org.bulldog.beagleboneblack.BeagleBoneBlack;
-import org.bulldog.core.Board;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalInput;
 import org.bulldog.core.gpio.Pwm;
+import org.bulldog.core.platform.Board;
+import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.devices.servo.Servo;
 import org.bulldog.devices.servo.TowerProMicroSG90;
@@ -23,13 +23,13 @@ public class App
 {
     public static void main(String[] args) throws IOException
     {
-    	final Board board = new BeagleBoneBlack();
+    	final Board board = Platform.detectBoard();
     	
-    	final DigitalInput interrupt = board.getPinByName("P8_11").as(DigitalInput.class);
-    	final DigitalInput interrupt2 = board.getPinByName("P8_12").as(DigitalInput.class);
+    	final DigitalInput interrupt = board.getPin("P8", 11).as(DigitalInput.class);
+    	final DigitalInput interrupt2 = board.getPin("P8", 12).as(DigitalInput.class);
     	final IncrementalRotaryEncoder encoder = new IncrementalRotaryEncoder(interrupt, interrupt2);
     	
-    	final DigitalInput buttonInput = board.getPinByName("P8_14").as(DigitalInput.class);
+    	final DigitalInput buttonInput = board.getPin("P8", 14).as(DigitalInput.class);
     	Button button = new Button(buttonInput, Signal.High);
     	button.addListener(new ButtonListener() {
 

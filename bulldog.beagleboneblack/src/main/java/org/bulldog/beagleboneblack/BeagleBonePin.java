@@ -6,14 +6,10 @@ public class BeagleBonePin extends Pin {
 
 	private int bank;
 	private int pinIndex;
-	private int port;
-	private int indexOnPort;
 	private String am335xName;
 	
-	public BeagleBonePin(String name, String am335xName, int bank, int pinIndex, int port, int indexOnPort) {
-		super(name, 32 * bank + pinIndex);
-		this.port = port;
-		this.indexOnPort = indexOnPort;
+	public BeagleBonePin(String name, String am335xName, int bank, int pinIndex, String port, int indexOnPort) {
+		super(name, 32 * bank + pinIndex, port, indexOnPort);
 		this.am335xName = am335xName;
 	}
 	
@@ -25,12 +21,9 @@ public class BeagleBonePin extends Pin {
 		return pinIndex;
 	}
 	
-	public int getPort() {
-		return port;
-	}
-	
-	public int getIndexOnPort() {
-		return indexOnPort;
+	public int getPortNumeric() {
+		int portNumber = Integer.parseInt(getPort().substring(1));
+		return portNumber;
 	}
 	
 	public String getAm335xName() {

@@ -12,12 +12,16 @@ public class Pin {
 	private int address = 0;
 	private String name = "";
 	private String alias = "";
+	private String port = "";
+	private int indexOnPort = -0;
 	private PinFeature activeFeature = null;
 	private List<ActivationListener> activationListeners = new ArrayList<ActivationListener>();
 
-	public Pin(String name, int address) {
+	public Pin(String name, int address, String port, int indexOnPort) {
 		this.name = name;
 		this.address = address;
+		this.port = port;
+		this.indexOnPort = indexOnPort;
 	}
 	
 	public <T extends PinFeature> void activateFeature(Class<T> feature) {
@@ -105,6 +109,14 @@ public class Pin {
 	
 	public int getAddress() {
 		return address;
+	}
+	
+	public String getPort() {
+		return port;
+	}
+	
+	public int getIndexOnPort() {
+		return indexOnPort;
 	}
 	
 	public List<PinFeature> getFeatures() {

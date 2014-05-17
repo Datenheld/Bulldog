@@ -1,0 +1,87 @@
+apply plugin: 'c'
+
+model {
+    toolChains {
+		   gcc(Gcc) {
+	              path "../bulldog.tools/toolchains/Sourcery/bin"
+	              cCompiler.executable = 'arm-none-linux-gnueabi-gcc.exe'
+            	  cppCompiler.executable = 'arm-none-linux-gnueabi-g++.exe'
+            	  linker.executable = 'arm-none-linux-gnueabi-ld.exe'
+            	  assembler.executable = 'arm-none-linux-gnueabi-as.exe'
+            	  staticLibArchiver.executable = 'arm-none-linux-gnueabi-ar.exe'
+	              addPlatformConfiguration(new ArmArchitecture())
+	        }
+    }
+    
+    platforms {
+        arm {
+            architecture "arm"
+            operatingSystem "linux"
+        }
+    }
+}
+
+sources {
+    bulldog {
+        c {
+            source {
+                srcDir "./src/main/c"
+                include "**/*.c"
+            }
+            
+            exportedHeaders {
+            	srcDirs "../bulldog.tools/jdk/jdk1.7.0_55_arm_softfp/include/linux", 
+            		    "../bulldog.tools/jdk/jdk1.7.0_55_arm_softfp/include/",
+            		    "../bulldog.tools/toolchains/Sourcery/arm-none-linux-gnueabi/libc/usr/include",
+            		    "../src/main/c/BBBIOLib/",
+            		    "../src/main/c/i2c/",
+            		    "../src/main/c/jni"
+            }
+        }
+    }   
+}
+
+libraries() {
+	bulldog() {
+		baseName "libbulldog_bbb"
+		targetPlatform = "arm"
+	}	
+}
+    
+class ArmArchitecture implements TargetPlatformConfiguration {
+
+	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline"]
+	def linkerArgs =  ["--gc-sections", "-shared"]
+
+    boolean supportsPlatform(Platform element) {
+    	return true
+    }
+
+    List<String> getCppCompilerArgs() {
+       compilerArgs
+    }
+
+    List<String> getCCompilerArgs() {
+       compilerArgs
+    }
+
+    List<String> getObjectiveCCompilerArgs() {
+        []
+    }
+
+    List<String> getObjectiveCppCompilerArgs() {
+        []
+    }
+
+    List<String> getAssemblerArgs() {
+        []
+    }
+
+    List<String> getLinkerArgs() {
+       linkerArgs
+    }
+
+    List<String> getStaticLibraryArchiverArgs() {
+        []
+    }
+}

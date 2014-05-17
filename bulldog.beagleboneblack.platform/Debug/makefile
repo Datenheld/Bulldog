@@ -4,7 +4,7 @@
 
 -include ../makefile.init
 
-RM := cs-rm -rf
+RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
@@ -32,19 +32,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: libbulldog.so
+all: libbulldog.beagleboneblack.platform.so
 
 # Tool invocations
-libbulldog.so: $(OBJS) $(USER_OBJS)
+libbulldog.beagleboneblack.platform.so: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C Linker'
-	arm-none-linux-gnueabi-gcc -mcpu=cortex-a8 -mthumb -mfloat-abi=softfp -O3 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fPIC  -g3 -Xlinker --gc-sections -Wl,-Map,"bulldog.map" -shared -o "libbulldog.so" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -mcpu=cortex-a8 -mthumb -mfloat-abi=softfp -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -Xlinker --gc-sections -Wl,-Map,"bulldog.beagleboneblack.platform.map" -shared -o "libbulldog.beagleboneblack.platform.so" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(ASM_DEPS)$(S_UPPER_DEPS) libbulldog.so
+	-$(RM) $(OBJS)$(C_DEPS)$(ASM_DEPS)$(S_UPPER_DEPS) libbulldog.beagleboneblack.platform.so
 	-@echo ' '
 
 .PHONY: all clean dependents

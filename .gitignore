@@ -5,3 +5,8 @@ target/
 .cproject
 .classpath
 .settings/
+.gradle/
+Debug/
+Release/
+build/
+bulldog.repository/

@@ -14,7 +14,7 @@ public class BBBDigitalOutput extends AbstractDigitalOutput {
 
 	public void setup() {
 		BeagleBonePin bbbPin = (BeagleBonePin)getPin();
-		NativeGpio.pinMode(bbbPin.getPort(), bbbPin.getIndexOnPort(), NativeGpio.DIRECTION_OUT);
+		NativeGpio.pinMode(bbbPin.getPortNumeric(), bbbPin.getIndexOnPort(), NativeGpio.DIRECTION_OUT);
 		applySignal(getAppliedSignal());
 	}
 
@@ -24,7 +24,7 @@ public class BBBDigitalOutput extends AbstractDigitalOutput {
 	@Override
 	protected void applySignalImpl(Signal signal) {
 		BeagleBonePin bbbPin = (BeagleBonePin)getPin();
-		NativeGpio.digitalWrite(bbbPin.getPort(), bbbPin.getIndexOnPort(), signal == Signal.High ? NativeGpio.HIGH : NativeGpio.LOW);
+		NativeGpio.digitalWrite(bbbPin.getPortNumeric(), bbbPin.getIndexOnPort(), signal == Signal.High ? NativeGpio.HIGH : NativeGpio.LOW);
 	}
 
 }

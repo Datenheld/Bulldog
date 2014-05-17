@@ -2,9 +2,9 @@ package org.bulldog.examples;
 
 import java.io.IOException;
 
-import org.bulldog.beagleboneblack.BeagleBoneBlack;
-import org.bulldog.core.Board;
 import org.bulldog.core.gpio.DigitalInput;
+import org.bulldog.core.platform.Board;
+import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.devices.switches.IncrementalRotaryEncoder;
 import org.bulldog.devices.switches.RotaryEncoderListener;
@@ -14,12 +14,12 @@ public class RotaryEncoderExample {
     public static void main(String[] args) throws IOException
     {
     	//Instantiate the board
-    	Board board = new BeagleBoneBlack();
+    	Board board = Platform.detectBoard();
     	
     	//Set up two interrupts for the clockwise resp. counter clockwise signals on
     	//the encoder
-    	DigitalInput clockwiseSignal = board.getPinByName("P8_12").as(DigitalInput.class);
-    	DigitalInput counterClockwiseSignal = board.getPinByName("P8_13").as(DigitalInput.class);
+    	DigitalInput clockwiseSignal = board.getPin("P8", 12).as(DigitalInput.class);
+    	DigitalInput counterClockwiseSignal = board.getPin("P8", 13).as(DigitalInput.class);
     		
     	//Create the encoder with these interrupts
     	IncrementalRotaryEncoder encoder = new IncrementalRotaryEncoder(clockwiseSignal, counterClockwiseSignal);

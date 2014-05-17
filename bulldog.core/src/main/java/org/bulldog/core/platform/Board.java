@@ -1,4 +1,4 @@
-package org.bulldog.core;
+package org.bulldog.core.platform;
 
 import java.util.List;
 
@@ -14,6 +14,7 @@ public interface Board {
 	public Pin getPinByAddress(int address);
 	public Pin getPinByName(String name);
 	public Pin getPinByAlias(String alias);
+	public Pin getPin(String port, int indexOnPort);
 	
 	public List<I2cBus> getI2cBuses();
 	public List<SerialBus> getSerialBuses();

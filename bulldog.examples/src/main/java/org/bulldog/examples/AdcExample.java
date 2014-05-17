@@ -4,22 +4,22 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import org.bulldog.beagleboneblack.BeagleBoneBlack;
-import org.bulldog.core.Board;
 import org.bulldog.core.gpio.AnalogInput;
+import org.bulldog.core.platform.Board;
+import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;
 
 public class AdcExample {
 	
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException
     {
-    	//Instantiate the board
-    	Board board = new BeagleBoneBlack();
+    	//Detect the board
+    	Board board = Platform.detectBoard();
     	
     	//Get some analogInputs
-    	AnalogInput analogInput0 = board.getPinByName("P9_39").as(AnalogInput.class);
-    	AnalogInput analogInput1 = board.getPinByName("P9_40").as(AnalogInput.class);
-    	AnalogInput analogInput2 = board.getPinByName("P9_37").as(AnalogInput.class);
+    	AnalogInput analogInput0 = board.getPin("P9", 39).as(AnalogInput.class);
+    	AnalogInput analogInput1 = board.getPin("P9", 40).as(AnalogInput.class);
+    	AnalogInput analogInput2 = board.getPin("P9", 37).as(AnalogInput.class);
     	
     	//Sample those asynchronously
     	Future<double[]> futureChannel0 = analogInput0.sampleAsync(10);
