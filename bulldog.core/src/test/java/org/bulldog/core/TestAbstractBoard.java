@@ -6,14 +6,9 @@ import org.bulldog.core.bus.Bus;
 import org.bulldog.core.bus.I2cBus;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.mocks.MockedBoard;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 public class TestAbstractBoard {
-
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
 
 	private String[] aliases = new String[] { "HanSolo" , "Princess Leia", "Chewbacca", "R2D2", "C3PO" };
 	
@@ -36,11 +31,10 @@ public class TestAbstractBoard {
 			Assert.assertSame(pin, crossCheck);
 		}
 		
-		exception.expect(IllegalArgumentException.class);
-		board.getPinByName(null);
-
-		exception.expect(IllegalArgumentException.class);
-		board.getPinByName("");
+		try {
+			board.getPinByName(null);
+			Assert.fail();
+		} catch(IllegalArgumentException ex) {}
 	}
 	
 	@Test
@@ -63,14 +57,20 @@ public class TestAbstractBoard {
 			Assert.assertSame(pin, crossCheck);
 		}
 		
-		exception.expect(IllegalArgumentException.class);
-		board.getPin(null, 1);
+		try {
+			board.getPin(null, 2);
+			Assert.fail();
+		} catch(IllegalArgumentException ex) {}
 
-		exception.expect(IllegalArgumentException.class);
-		board.getPin(null, -1);
+		try {
+			board.getPin(null, -1);
+			Assert.fail();
+		} catch(IllegalArgumentException ex) {}
 		
-		exception.expect(IllegalArgumentException.class);
-		board.getPin("A", -1);
+		try {
+			board.getPin("A", -1);
+			Assert.fail();
+		} catch(IllegalArgumentException ex) {}
 	}
 	
 	
@@ -93,20 +93,21 @@ public class TestAbstractBoard {
 		Assert.assertNull(nonExistentPin);
 		
 		for(Pin pin : board.getPins()) {
-			if(pin.getAlias() != null && !"".equals(pin.getAlias())) {
+			if(pin.getAlias() != null) {
 				Pin crossCheck = board.getPinByAlias(pin.getAlias());
 				Assert.assertSame(pin, crossCheck);
 			} else {
-				exception.expect(IllegalArgumentException.class);
-				board.getPinByAlias(pin.getAlias());
+				try {
+					board.getPinByAlias(pin.getAlias());
+					Assert.fail();
+				} catch(IllegalArgumentException ex) {}
 			}
 		}
 		
-		exception.expect(IllegalArgumentException.class);
-		board.getPinByAlias(null);
-
-		exception.expect(IllegalArgumentException.class);
-		board.getPinByAlias("");
+		try {
+			board.getPinByAlias(null);
+			Assert.fail();
+		} catch(IllegalArgumentException ex) {}
 		
 	}
 	
@@ -156,20 +157,22 @@ public class TestAbstractBoard {
 		Assert.assertNull(nonExistentBus);
 		
 		for(Bus bus : board.getAllBuses()) {
-			if(bus.getAlias() != null && !"".equals(bus.getAlias())) {
+			if(bus.getAlias() != null) {
 				Bus crossCheck = board.getBusByAlias(bus.getAlias());
 				Assert.assertSame(bus, crossCheck);
 			} else {
-				exception.expect(IllegalArgumentException.class);
-				board.getBusByAlias(bus.getAlias());
+				try {
+					board.getBusByAlias(bus.getAlias());
+					Assert.fail();
+				} catch(IllegalArgumentException ex) {}
+
 			}
 		}
 		
-		exception.expect(IllegalArgumentException.class);
-		board.getBusByAlias(null);
-
-		exception.expect(IllegalArgumentException.class);
-		board.getBusByAlias("");
+		try {
+			board.getBusByAlias(null);
+			Assert.fail();
+		} catch(IllegalArgumentException ex) {}
 	}
 	
 	@Test
@@ -187,19 +190,21 @@ public class TestAbstractBoard {
 		Assert.assertNull(nonExistentBus);
 		
 		for(Bus bus : board.getAllBuses()) {
-			if(bus.getName() != null && !"".equals(bus.getName())) {
+			if(bus.getName() != null) {
 				Bus crossCheck = board.getBusByName(bus.getName());
 				Assert.assertSame(bus, crossCheck);
 			} else {
-				exception.expect(IllegalArgumentException.class);
-				board.getBusByName(bus.getName());
+				try {
+					board.getBusByName(bus.getName());
+					Assert.fail();
+				} catch(IllegalArgumentException ex) {}
 			}
 		}
 		
-		exception.expect(IllegalArgumentException.class);
-		board.getBusByName(null);
+		try {
+			board.getBusByName(null);
+			Assert.fail();
+		} catch(IllegalArgumentException ex) {}
 
-		exception.expect(IllegalArgumentException.class);
-		board.getBusByName("");
 	}
 }

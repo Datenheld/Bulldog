@@ -43,7 +43,6 @@ public abstract class AbstractBoard implements Board {
 
 	public Pin getPinByName(String name) {
 		if(name == null) 	{ throw new IllegalArgumentException("Null may not be passed as a name for a pin."); }
-		if("".equals(name)) { throw new IllegalArgumentException("Searching for empty pin names is not permitted."); }
 		
 		for(Pin pin : getPins()) {
 			if(name.equals(pin.getName())) {
@@ -56,7 +55,6 @@ public abstract class AbstractBoard implements Board {
 	
 	public Pin getPinByAlias(String alias) {
 		if(alias == null) 	{ throw new IllegalArgumentException("Null may not be passed as an alias name for a pin."); }
-		if("".equals(alias)) { throw new IllegalArgumentException("Searching for empty alias names is not permitted."); }
 		
 		for(Pin pin : getPins()) {
 			if(alias.equals(pin.getAlias())) {
@@ -77,8 +75,7 @@ public abstract class AbstractBoard implements Board {
 	
 	public Bus getBusByAlias(String alias) {
 		if(alias == null) 	{ throw new IllegalArgumentException("Null may not be passed as an alias name for a bus."); }
-		if("".equals(alias)) { throw new IllegalArgumentException("Searching for empty alias names is not permitted."); }
-		
+	
 		for(Bus bus : getAllBuses()) {
 			if(alias.equals(bus.getAlias())) {
 				return bus;
@@ -90,8 +87,7 @@ public abstract class AbstractBoard implements Board {
 	
 	public Bus getBusByName(String name) {
 		if(name == null) 	{ throw new IllegalArgumentException("Null may not be passed as a name for a bus."); }
-		if("".equals(name)) { throw new IllegalArgumentException("Searching for empty names is not permitted."); }
-		
+	
 		for(Bus bus : getAllBuses()) {
 			if(name.equals(bus.getName())) {
 				return bus;

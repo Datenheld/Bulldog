@@ -16,8 +16,11 @@ import org.bulldog.core.gpio.base.AbstractPwm;
 import org.bulldog.core.gpio.event.ActivationEventArgs;
 import org.bulldog.core.gpio.event.ActivationListener;
 import org.bulldog.core.platform.AbstractBoard;
+import org.bulldog.core.platform.Board;
 
 public class BeagleBoneBlack extends AbstractBoard implements ActivationListener {
+	
+	private static BeagleBoneBlack instance;
 	
 	static {
 		String workingDirectory = System.getProperty("user.dir");
@@ -27,11 +30,13 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		}  else {
 			System.loadLibrary("bulldog");
 		}
+		
+		instance = new BeagleBoneBlack();
 	}
 	
 	private static final String NAME = "BeagleBone Black";
 		
-	public BeagleBoneBlack() {
+	private BeagleBoneBlack() {
 		createPins();
 		createBuses();
 		createShutdownHook();
@@ -232,6 +237,10 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 	public Pin getPinByPortIndex(int port, int pinIndex) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public static Board getInstance() {
+		return instance;
 	}
 
 }

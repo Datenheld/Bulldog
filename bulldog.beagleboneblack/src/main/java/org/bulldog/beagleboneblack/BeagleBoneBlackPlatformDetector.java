@@ -7,10 +7,11 @@ public class BeagleBoneBlackPlatformDetector implements PlatformDetector {
 
 	@Override
 	public boolean isCompatibleWithPlatform() {
+		//TODO!!!
 		return true;
 	}
 
 	public Board createBoard() {
-		return new BeagleBoneBlack();
+		return BeagleBoneBlack.getInstance();
 	}
 }

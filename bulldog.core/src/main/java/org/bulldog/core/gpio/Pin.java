@@ -10,9 +10,9 @@ public class Pin {
 	
 	private List<PinFeature> features = new ArrayList<PinFeature>();
 	private int address = 0;
-	private String name = "";
-	private String alias = "";
-	private String port = "";
+	private String name = null;
+	private String alias = null;
+	private String port = null;
 	private int indexOnPort = -0;
 	private PinFeature activeFeature = null;
 	private List<ActivationListener> activationListeners = new ArrayList<ActivationListener>();
