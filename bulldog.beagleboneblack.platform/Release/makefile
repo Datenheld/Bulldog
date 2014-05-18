@@ -8,6 +8,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include src/main/c/serial/subdir.mk
 -include src/main/c/jni/subdir.mk
 -include src/main/c/i2c/subdir.mk
 -include src/main/c/BBBIOlib/subdir.mk
@@ -15,6 +16,7 @@ RM := rm -rf
 -include build/objectFiles/bulldogSharedLibrary/bulldogC/ijsk6bcvbnkl0384b6bdc7bs4/subdir.mk
 -include build/objectFiles/bulldogSharedLibrary/bulldogC/6f9knjbt0vln184cn0n0cnms79/subdir.mk
 -include build/objectFiles/bulldogSharedLibrary/bulldogC/617ehd4151pq5drcfdvfmdhpc5/subdir.mk
+-include build/objectFiles/bulldogSharedLibrary/bulldogC/4edftbfj67roe6h6hqgim072bm/subdir.mk
 -include build/objectFiles/bulldogSharedLibrary/bulldogC/3pjq4gr1s2sph7rko83uerevq2/subdir.mk
 -include build/objectFiles/bulldogSharedLibrary/bulldogC/3gsl6sg2gkrfn04g62ecpkm6hr/subdir.mk
 -include build/objectFiles/bulldogSharedLibrary/bulldogC/3667vunebml35jigmsjf4b262o/subdir.mk

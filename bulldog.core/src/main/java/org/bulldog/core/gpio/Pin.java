@@ -1,7 +1,6 @@
 package org.bulldog.core.gpio;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.bulldog.core.gpio.event.ActivationEventArgs;

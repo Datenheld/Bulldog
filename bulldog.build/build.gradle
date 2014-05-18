@@ -13,6 +13,7 @@ def nativeProjects = [
 
 def bulldogVersion = '0.1'
 
+
 configure(nativeProjects) {
 	apply from: new File(project.projectDir, 'build.gradle')
 	version = bulldogVersion

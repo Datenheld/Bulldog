@@ -23,6 +23,11 @@ int i2cWrite(int fileDescriptor, unsigned char data)
 	return write(fileDescriptor, &data, 1);
 }
 
+int i2cWriteBuffer(int fileDescriptor, char* data)
+{
+	return write(fileDescriptor, data, strlen(data));
+}
+
 
 int i2cSelectSlave(int fd, int slaveAddress)
 {
