@@ -2,6 +2,7 @@ package org.bulldog.beagleboneblack.bus;
 
 import java.io.IOException;
 
+import org.bulldog.core.Parity;
 import org.bulldog.core.bus.BusConnection;
 import org.bulldog.core.bus.SerialBus;
 
@@ -92,6 +93,30 @@ public class BBBSerialBus implements SerialBus {
 		} else if (!deviceFilePath.equals(other.deviceFilePath))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int getBaudRate() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setBaudRate(int baudRate) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Parity getParity() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setParity(Parity parity) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

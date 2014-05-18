@@ -15,7 +15,7 @@ void errorMessage(char* messageFormat, ...) {
 	va_end(args);
 }
 
-int serialAttributes(int fd, int speed, int parity, int readTimeout) {
+int serialSetAttributes(int fd, int speed, int parity, int readTimeout) {
 	struct termios tty;
 	memset(&tty, 0, sizeof tty);
 	if (tcgetattr(fd, &tty) != 0) {
@@ -53,7 +53,7 @@ int serialAttributes(int fd, int speed, int parity, int readTimeout) {
 	return 0;
 }
 
-void serialBlocking(int fd, int block, int readTimeout) {
+void serialSetBlocking(int fd, int block, int readTimeout) {
 	struct termios tty;
 	memset(&tty, 0, sizeof tty);
 
@@ -62,7 +62,7 @@ void serialBlocking(int fd, int block, int readTimeout) {
 		return;
 	}
 
-	tty.c_cc[VMIN]  = block;
+	tty.c_cc[VMIN]  = block > 0 ? 1 : 0;
 	tty.c_cc[VTIME] = readTimeout;
 
 	if (tcsetattr(fd, TCSANOW, &tty) != 0) {
@@ -77,8 +77,8 @@ int serialOpen(char* portname, int baud, int parity, int blocking, int readTimeo
 		return 1;
 	}
 
-	serialAttributes(fd, baud, parity, readTimeout);
-	serialBlocking(fd, blocking, readTimeout);
+	serialSetAttributes(fd, baud, parity, readTimeout);
+	serialSetBlocking(fd, blocking, readTimeout);
 
 	return 0;
 }

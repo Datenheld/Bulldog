@@ -1,5 +1,12 @@
 package org.bulldog.core.bus;
 
-public interface SerialBus extends Bus {
+import org.bulldog.core.Parity;
 
+public interface SerialBus extends Bus {
+	
+	int getBaudRate();
+	void setBaudRate(int baudRate);
+	
+	Parity getParity();
+	void setParity(Parity parity);
 }
