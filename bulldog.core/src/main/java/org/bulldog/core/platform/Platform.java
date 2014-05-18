@@ -5,10 +5,10 @@ import java.util.ServiceLoader;
 
 public class Platform {
 
-	public static Board detectBoard() throws IncompatiblePlatformException {
-		Iterator<PlatformDetector> iter = ServiceLoader.load(PlatformDetector.class).iterator();
+	public static Board createBoard() throws IncompatiblePlatformException {
+		Iterator<BoardFactory> iter = ServiceLoader.load(BoardFactory.class).iterator();
 		while (iter.hasNext()) {
-			PlatformDetector detector = iter.next();
+			BoardFactory detector = iter.next();
 			if(detector.isCompatibleWithPlatform()) {
 				return detector.createBoard();
 			}

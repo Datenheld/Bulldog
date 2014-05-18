@@ -14,7 +14,7 @@ public class AdcExample {
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException
     {
     	//Detect the board
-    	Board board = Platform.detectBoard();
+    	Board board = Platform.createBoard();
     	
     	//Get some analogInputs
     	AnalogInput analogInput0 = board.getPin("P9", 39).as(AnalogInput.class);

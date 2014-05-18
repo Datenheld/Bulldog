@@ -17,23 +17,11 @@ import org.bulldog.core.gpio.event.ActivationEventArgs;
 import org.bulldog.core.gpio.event.ActivationListener;
 import org.bulldog.core.platform.AbstractBoard;
 import org.bulldog.core.platform.Board;
+import org.bulldog.core.platform.BoardFactory;
 
-public class BeagleBoneBlack extends AbstractBoard implements ActivationListener {
+public class BeagleBoneBlack extends AbstractBoard implements ActivationListener, BoardFactory {
 	
 	private static BeagleBoneBlack instance;
-	
-	static {
-		String workingDirectory = System.getProperty("user.dir");
-		File file = new File(workingDirectory + "/libbulldog-beagleboneblack.so");
-		if(file.exists()) {
-			System.load(file.getAbsolutePath());
-		}  else {
-			System.loadLibrary("bulldog-beagleboneblack");
-		}
-		
-		instance = new BeagleBoneBlack();
-	}
-	
 	private static final String NAME = "BeagleBone Black";
 		
 	private BeagleBoneBlack() {
@@ -239,8 +227,33 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		return null;
 	}
 	
-	public static Board getInstance() {
+	public synchronized static Board getInstance() {
+		if(instance == null) {
+			instance = createBoardImpl();
+		}
 		return instance;
+	}
+	
+	private static BeagleBoneBlack createBoardImpl() {
+		String workingDirectory = System.getProperty("user.dir");
+		File file = new File(workingDirectory + "/libbulldog-beagleboneblack.so");
+		if(file.exists()) {
+			System.load(file.getAbsolutePath());
+		}  else {
+			System.loadLibrary("bulldog-beagleboneblack");
+		}
+		
+		return new BeagleBoneBlack();
+	}
+
+	@Override
+	public boolean isCompatibleWithPlatform() {
+		return true;
+	}
+
+	@Override
+	public Board createBoard() {
+		return getInstance();
 	}
 
 }

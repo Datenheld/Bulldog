@@ -15,7 +15,7 @@ public class ButtonExample {
     public static void main(String[] args) throws IOException
     {
     	//Instantiate the board
-    	Board board = Platform.detectBoard();
+    	Board board = Platform.createBoard();
     	
     	//Set up a digital input
     	DigitalInput buttonSignal = board.getPinByName("P8_12").as(DigitalInput.class);

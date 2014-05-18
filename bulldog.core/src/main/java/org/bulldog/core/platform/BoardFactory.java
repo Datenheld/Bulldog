@@ -1,7 +1,7 @@
 package org.bulldog.core.platform;
 
 
-public interface PlatformDetector {
+public interface BoardFactory {
 
 	boolean isCompatibleWithPlatform();
 	Board createBoard();

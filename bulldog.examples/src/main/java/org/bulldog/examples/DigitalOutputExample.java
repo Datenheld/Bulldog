@@ -13,7 +13,7 @@ public class DigitalOutputExample {
     public static void main(String[] args) throws IOException
     {
     	//Detect the board we are running on
-    	Board board = Platform.detectBoard();
+    	Board board = Platform.createBoard();
     	
     	//Set up a digital input
     	DigitalOutput output = board.getPin("P8", 12).as(DigitalOutput.class);

@@ -23,7 +23,7 @@ public class App
 {
     public static void main(String[] args) throws IOException
     {
-    	final Board board = Platform.detectBoard();
+    	final Board board = Platform.createBoard();
     	
     	final DigitalInput interrupt = board.getPin("P8", 11).as(DigitalInput.class);
     	final DigitalInput interrupt2 = board.getPin("P8", 12).as(DigitalInput.class);
