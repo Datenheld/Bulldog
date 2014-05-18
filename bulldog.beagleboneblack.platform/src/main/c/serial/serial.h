@@ -20,6 +20,8 @@ extern int serialReadBuffer(int fileDescriptor, char* buffer, int bufferSize);
 extern unsigned char serialReadCharacter(int fileDescriptor);
 extern int serialDataAvailable(int fd);
 
+extern int serialSetAttributes(int fd, int speed, int parity, int readTimeout);
+extern void serialSetBlocking(int fd, int block, int readTimeout);
 
 #ifdef __cplusplus
 }
