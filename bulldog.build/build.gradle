@@ -1,29 +1,19 @@
-def javaProjects = [
-					project(":bulldog.core"), 
-					project(":bulldog.devices"), 
-					project(":bulldog.examples"), 
-					project(":bulldog.beagleboneblack")
-				   ]
+apply from: "./${profile}.gradle" 
 
-def nativeProjects = [
-						project(":bulldog.beagleboneblack.platform")
-					 ]
+def bulldogVersion = '0.1'
 
 configure(nativeProjects) {
-	project -> apply from: new File(project.projectDir, 'build.gradle')
+	apply from: new File(project.projectDir, 'build.gradle')
+	version = bulldogVersion
 }
 					 
 configure(javaProjects) { 
    	   
     apply plugin: 'java'
     apply plugin: 'eclipse'
+    apply plugin: 'java-library-distribution'
    	
-   	jdkVersion = 1.7
-    sourceCompatibility = jdkVersion
-    targetCompatibility = jdkVersion
-    
-    version = '0.1'
-    vendor = 'Datenheld'
+    version = bulldogVersion
  
     repositories {
        mavenCentral()
@@ -35,8 +25,6 @@ configure(javaProjects) {
  
     jar {
         manifest.attributes provider: 'gradle'
-        manifest.attributes 'Implementation-Vendor-Id': vendor
-        manifest.attributes 'Implementation-Vendor': vendor
         manifest.attributes 'Implementation-Version': version
         manifest.attributes provider: 'Datenheld'
     }

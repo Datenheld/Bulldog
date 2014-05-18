@@ -553,7 +553,7 @@ int BBBIO_sys_pinmux_check(unsigned int port, unsigned int pin, unsigned int Cfl
 	reg =(void *)CM_ptr + ExpHeader_MODE0[port][pin] ;
 	reg_value = *reg ;
 
-	if(Cflag & BBBIO_PINMUX_SLEWCTRL && (ret == 0)) {
+	if((Cflag & BBBIO_PINMUX_SLEWCTRL) && (ret == 0)) {
 		reg_tmp = reg_value & BBBIO_PINMUX_SLEWCTRL;
 		Cflag_tmp = (Cflag >> 8) & BBBIO_PINMUX_SLEWCTRL;
 		ret = reg_tmp ^ Cflag_tmp;
@@ -720,6 +720,8 @@ int  BBBIO_sys_Disable_Debouncing(unsigned int port ,unsigned int pin ,unsigned 
 	/* setting Debouncing time */
       	reg = (void *)gpio_addr[PortSet_ptr[port][pin]] +BBBIO_GPIO_DEBOUNCINGTIME ;
       	*reg = GDB_time ;
+
+      	return 0;
 }
 
 //-----------------------------------------------------------------------------------------------

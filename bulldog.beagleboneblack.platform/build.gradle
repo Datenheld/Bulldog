@@ -30,12 +30,10 @@ sources {
             }
             
             exportedHeaders {
-            	srcDirs "../bulldog.tools/jdk/jdk1.7.0_55_arm_softfp/include/linux", 
-            		    "../bulldog.tools/jdk/jdk1.7.0_55_arm_softfp/include/",
-            		    "../bulldog.tools/toolchains/Sourcery/arm-none-linux-gnueabi/libc/usr/include",
-            		    "../src/main/c/BBBIOLib/",
+            	srcDirs "../src/main/c/BBBIOLib/",
             		    "../src/main/c/i2c/",
             		    "../src/main/c/jni"
+            	include '**/*.h'
             }
         }
     }   
@@ -43,11 +41,37 @@ sources {
 
 libraries() {
 	bulldog() {
-		baseName "libbulldog_bbb"
-		targetPlatform = "arm"
+		binaries.withType(SharedLibraryBinary) {
+          	sharedLibraryFile = new File(sharedLibraryFile.parent, "libbulldog-beagleboneblack-${version}.so")
+          	artifacts {
+    			archives(sharedLibraryFile) {
+    				 name 'bulldog.beagleboneblack.platform'
+        			 group 'org.bulldog'
+    			}
+			}
+        }
+        
+        binaries.all {
+        	 tasks.withType(CCompile) {
+                    includes.from("../bulldog.tools/jdk/jdk1.7.0_55_arm_softfp/include/linux")
+                    includes.from("../bulldog.tools/jdk/jdk1.7.0_55_arm_softfp/include/")
+                    includes.from( "../bulldog.tools/toolchains/Sourcery/arm-none-linux-gnueabi/libc/usr/include")
+                }
+        }
 	}	
 }
-    
+
+
+
+
+uploadArchives {
+	    repositories {
+	       flatDir {
+	           dirs '../bulldog.repository'
+	       }
+	    }
+	}
+
 class ArmArchitecture implements TargetPlatformConfiguration {
 
 	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline"]

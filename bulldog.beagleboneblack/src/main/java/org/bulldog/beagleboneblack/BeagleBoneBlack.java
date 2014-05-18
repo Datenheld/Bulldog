@@ -24,11 +24,11 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 	
 	static {
 		String workingDirectory = System.getProperty("user.dir");
-		File file = new File(workingDirectory + "/libbulldog.so");
+		File file = new File(workingDirectory + "/libbulldog-beagleboneblack.so");
 		if(file.exists()) {
 			System.load(file.getAbsolutePath());
 		}  else {
-			System.loadLibrary("bulldog");
+			System.loadLibrary("bulldog-beagleboneblack");
 		}
 		
 		instance = new BeagleBoneBlack();

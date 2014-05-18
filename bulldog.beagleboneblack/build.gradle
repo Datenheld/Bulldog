@@ -1,4 +1,11 @@
 dependencies {
     compile project(':bulldog.core')
+    runtime project(':bulldog.devices')
+    runtime project(':bulldog.examples')
 }
 
+distributions {
+    main {
+        baseName = 'bulldog-beagleboneblack'
+    }
+}

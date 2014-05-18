@@ -1,0 +1,11 @@
+javaProjects = [
+					project(":bulldog.core"), 
+					project(":bulldog.devices"), 
+					project(":bulldog.examples"), 
+					project(":bulldog.beagleboneblack")
+				   ]
+
+nativeProjects = [
+						project(":bulldog.beagleboneblack.platform")
+					 ]
+
