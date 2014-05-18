@@ -37,6 +37,13 @@ public class TestPin {
 		Assert.assertEquals(type3, feature);
 		feature = pin.getActiveFeature();
 		Assert.assertEquals(type3, feature);
+		
+		pin.removeFeature(MockedPinFeatureType2.class);
+		Assert.assertEquals(2, pin.getFeatures().size());
+		feature = pin.as(MockedPinFeatureType2.class);  //type3 is still present and extends type2
+		Assert.assertEquals(type3, feature);
+		
+		pin.removeFeature(MockedPinFeatureType2.class);
 	}
 	
 	@Test
@@ -54,39 +61,29 @@ public class TestPin {
 			Assert.fail();
 		} catch(IllegalArgumentException ex) {}
 		
+		Assert.assertTrue(pin.hasFeature(MockedPinFeatureType2.class));
 		Assert.assertEquals(3, pin.getFeatures().size());
 		pin.removeFeature(MockedPinFeatureType2.class);
 		Assert.assertEquals(2, pin.getFeatures().size());
+		Assert.assertTrue(pin.hasFeature(MockedPinFeatureType2.class)); //type 3 inherits and is still present
 		pin.removeFeature(MockedPinFeatureType2.class);
 		Assert.assertEquals(2, pin.getFeatures().size());
 		pin.removeFeature(MockedPinFeatureType3.class);
 		Assert.assertEquals(1, pin.getFeatures().size());
+		Assert.assertFalse(pin.hasFeature(MockedPinFeatureType3.class)); 
+		
+		PinFeature feature = pin.as(MockedPinFeatureType1.class);
+		Assert.assertEquals(pin.getActiveFeature(), feature);
+		pin.removeFeature(MockedPinFeatureType1.class);
+		Assert.assertNull(pin.getActiveFeature());
+		try {
+			feature = pin.as(MockedPinFeatureType1.class);
+			Assert.fail();
+		} catch(IllegalArgumentException ex) {}
 	}
-	
-	
+		
 	@Test
 	public void testBlocking() {
 		
 	}
-	
-	@Test
-	public void testFeatureAvailabilityCheck() {
-		
-	}
-	
-	@Test
-	public void testGetFeature() {
-		
-	}
-	
-	@Test
-	public void testHasFeature() {
-		
-	}
-	
-	@Test
-	public void testGetName() {
-		
-	}
-		
 }

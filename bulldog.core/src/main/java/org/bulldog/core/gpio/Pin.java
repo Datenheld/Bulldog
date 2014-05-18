@@ -1,6 +1,7 @@
 package org.bulldog.core.gpio;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.bulldog.core.gpio.event.ActivationEventArgs;
@@ -51,6 +52,10 @@ public class Pin {
 		}
 		
 		if(featureInstance != null) {
+			featureInstance.teardown();
+			if(featureInstance == getActiveFeature()) {
+				setActiveFeature(null);
+			}
 			getFeatures().remove(featureInstance);
 		}
 		
@@ -82,10 +87,6 @@ public class Pin {
 		}
 		
 		return false;
-	}
-	
-	private <T extends PinFeature> void checkIfDesiredFeatureIsAvailable(Class<T> feature) {
-		if(!hasFeature(feature)) { throw new IllegalArgumentException("This pin does not possess the desired feature"); }
 	}
 
 	@SuppressWarnings("unchecked")
@@ -127,6 +128,14 @@ public class Pin {
 		return name;
 	}
 	
+	public String getAlias() {
+		return alias;
+	}
+	
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
+	
 	public boolean hasFeature(Class<? extends PinFeature> featureClass) {
 		for(PinFeature feature : getFeatures()) {
 			if(featureClass.isAssignableFrom(feature.getClass())) {
@@ -137,7 +146,6 @@ public class Pin {
 		return false;
 	}
 	
-
 	private void setActiveFeature(PinFeature feature) {
 		activeFeature = feature;
 	}
@@ -164,6 +172,10 @@ public class Pin {
 		fireFeatureDeactivating(feature);
 		feature.teardown();
 		fireFeatureDeactivated(feature);
+	}
+	
+	private <T extends PinFeature> void checkIfDesiredFeatureIsAvailable(Class<T> feature) {
+		if(!hasFeature(feature)) { throw new IllegalArgumentException("This pin does not possess the desired feature"); }
 	}
 	
 	public void addActivationListener(ActivationListener listener) {
@@ -200,13 +212,5 @@ public class Pin {
 		for(ActivationListener listener : activationListeners) {
 			listener.featureDeactivated(this, new ActivationEventArgs(feature));
 		}
-	}
-	
-	public String getAlias() {
-		return alias;
-	}
-	
-	public void setAlias(String alias) {
-		this.alias = alias;
 	}
 }
