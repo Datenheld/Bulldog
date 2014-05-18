@@ -1,4 +1,15 @@
-apply from: "./${profile}.gradle" 
+def javaProjects = [
+					project(":bulldog.core"), 
+					project(":bulldog.devices"), 
+					project(":bulldog.examples"), 
+					project(":bulldog.beagleboneblack")
+				   ]
+
+def nativeProjects = [
+						project(":bulldog.beagleboneblack.platform")
+					 ]
+
+
 
 def bulldogVersion = '0.1'
 
@@ -28,21 +39,6 @@ configure(javaProjects) {
         manifest.attributes 'Implementation-Version': version
         manifest.attributes provider: 'Datenheld'
     }
-    
-	artifacts {
-  		archives(jar) {
-        	name jar.baseName
-        	group "org.bulldog"
-    	}
-	}
-    
-	uploadArchives {
-	    repositories {
-	       flatDir {
-	           dirs '../bulldog.repository'
-	       }
-	    }
-	}
-
+    	
 }
 

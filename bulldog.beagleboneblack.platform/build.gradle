@@ -3,12 +3,12 @@ apply plugin: 'c'
 model {
     toolChains {
 		   gcc(Gcc) {
-	              path "../bulldog.tools/toolchains/Sourcery/bin"
-	              cCompiler.executable = 'arm-none-linux-gnueabi-gcc.exe'
-            	  cppCompiler.executable = 'arm-none-linux-gnueabi-g++.exe'
-            	  linker.executable = 'arm-none-linux-gnueabi-ld.exe'
-            	  assembler.executable = 'arm-none-linux-gnueabi-as.exe'
-            	  staticLibArchiver.executable = 'arm-none-linux-gnueabi-ar.exe'
+	              path System.properties['org.bulldog.gcc.arm.root']
+	              cCompiler.executable = System.properties['org.bulldog.gcc.arm.ccompiler']
+            	  cppCompiler.executable = System.properties['org.bulldog.gcc.arm.cppcompiler']
+            	  linker.executable = System.properties['org.bulldog.gcc.arm.linker']
+            	  assembler.executable = System.properties['org.bulldog.gcc.arm.assembler']
+            	  staticLibArchiver.executable = System.properties['org.bulldog.gcc.arm.archiver']
 	              addPlatformConfiguration(new ArmArchitecture())
 	        }
     }
@@ -43,34 +43,17 @@ libraries() {
 	bulldog() {
 		binaries.withType(SharedLibraryBinary) {
           	sharedLibraryFile = new File(sharedLibraryFile.parent, "libbulldog-beagleboneblack-${version}.so")
-          	artifacts {
-    			archives(sharedLibraryFile) {
-    				 name 'bulldog.beagleboneblack.platform'
-        			 group 'org.bulldog'
-    			}
-			}
         }
         
         binaries.all {
         	 tasks.withType(CCompile) {
-                    includes.from("../bulldog.tools/jdk/jdk1.7.0_55_arm_softfp/include/linux")
-                    includes.from("../bulldog.tools/jdk/jdk1.7.0_55_arm_softfp/include/")
-                    includes.from( "../bulldog.tools/toolchains/Sourcery/arm-none-linux-gnueabi/libc/usr/include")
+                    includes.from(System.properties['org.bulldog.jdk.arm.includes'])
+                    includes.from(System.properties['org.bulldog.jdk.arm.includes.linux'])
+                    includes.from(System.properties['org.bulldog.gcc.arm.includes'])
                 }
         }
 	}	
 }
-
-
-
-
-uploadArchives {
-	    repositories {
-	       flatDir {
-	           dirs '../bulldog.repository'
-	       }
-	    }
-	}
 
 class ArmArchitecture implements TargetPlatformConfiguration {
 

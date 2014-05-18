@@ -2,6 +2,7 @@ dependencies {
     compile project(':bulldog.core')
     runtime project(':bulldog.devices')
     runtime project(':bulldog.examples')
+    runtime fileTree(dir: project(':bulldog.beagleboneblack.platform').buildDir, include: '**/*.so')
 }
 
 distributions {

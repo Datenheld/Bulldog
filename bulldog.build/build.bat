@@ -1,0 +1,1 @@
+gradle clean bulldogSharedLibrary build distZip
