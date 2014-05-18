@@ -1,6 +1,7 @@
 package org.bulldog.beagleboneblack;
 
 import java.io.File;
+import java.security.CodeSource;
 
 import org.bulldog.beagleboneblack.gpio.BBBAnalogInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalInput;
@@ -221,11 +222,6 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		});
 	}
 
-	public Pin getPinByPortIndex(int port, int pinIndex) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	public synchronized static Board getInstance() {
 		if(instance == null) {
 			instance = createBoardImpl();
@@ -234,8 +230,8 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 	}
 	
 	private static BeagleBoneBlack createBoardImpl() {
-		String workingDirectory = System.getProperty("user.dir");
-		File file = new File(workingDirectory + "/libbulldog-beagleboneblack.so");
+		String codeDirectory =  getJarFileDirectory();
+		File file = new File(codeDirectory + "/libbulldog-beagleboneblack.so");
 		if(file.exists()) {
 			System.load(file.getAbsolutePath());
 		}  else {
@@ -245,4 +241,14 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		return new BeagleBoneBlack();
 	}
 
+	private static String getJarFileDirectory() {
+		try {
+			CodeSource codeSource = BeagleBoneBlack.class.getProtectionDomain().getCodeSource();
+			File jarFile = new File(codeSource.getLocation().toURI().getPath());
+			String jarDir = jarFile.getParentFile().getPath();
+			return jarDir;
+		} catch(Exception ex) {
+			return null;
+		}
+	}
 }
