@@ -6,5 +6,6 @@ public interface I2cBus extends Bus {
 	
 	public Pin getSDA();
 	public Pin getSCL();
+	public int getFrequency();
 	
 }

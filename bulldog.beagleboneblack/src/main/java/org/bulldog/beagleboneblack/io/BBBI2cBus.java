@@ -117,13 +117,16 @@ public class BBBI2cBus implements I2cBus {
 	}
 
 	public Pin getSDA() {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	public Pin getSCL() {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public int getFrequency() {
+		throw new UnsupportedOperationException();
 	}
 
 	public String getName() {
@@ -137,6 +140,17 @@ public class BBBI2cBus implements I2cBus {
 	public void setAlias(String alias) {
 		this.alias = alias;
 	}
+
+	@Override
+	public FileOutputStream getOutputStream() throws IOException {
+		return outputStream;
+	}
+
+	@Override
+	public FileInputStream getInputStream() throws IOException {
+		return inputStream;
+	}
+	
 	
 	@Override
 	public int hashCode() {
@@ -164,15 +178,5 @@ public class BBBI2cBus implements I2cBus {
 		} else if (!busDeviceFilePath.equals(other.busDeviceFilePath))
 			return false;
 		return true;
-	}
-
-	@Override
-	public FileOutputStream getOutputStream() throws IOException {
-		return outputStream;
-	}
-
-	@Override
-	public FileInputStream getInputStream() throws IOException {
-		return inputStream;
 	}
 }

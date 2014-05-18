@@ -19,4 +19,10 @@ public class MockedI2cBus extends MockedBus implements I2cBus {
 		return null;
 	}
 
+	@Override
+	public int getFrequency() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

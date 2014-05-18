@@ -7,7 +7,6 @@ import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.IOPort;
 import org.bulldog.core.io.SerialIO;
 import org.bulldog.core.io.bus.I2cBus;
-import org.bulldog.core.io.bus.SpiBus;
 
 public abstract class AbstractBoard implements Board {
 

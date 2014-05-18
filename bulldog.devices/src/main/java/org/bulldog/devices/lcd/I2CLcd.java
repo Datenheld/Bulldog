@@ -41,7 +41,6 @@ public class I2CLcd extends AbstractLcd {
 		writeCommand(0x0f);
 	}
 
-
 	public void write(String string) throws IOException {
 		for(int i = 0; i < string.length(); i++) {
 			writeData(string.charAt(i));
