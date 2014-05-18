@@ -1,1 +1,1 @@
-gradle clean bulldogSharedLibrary build distZip
+gradle clean bulldogSharedLibrary build uploadArchives distZip

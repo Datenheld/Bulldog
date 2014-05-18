@@ -1,11 +1,14 @@
-package org.bulldog.beagleboneblack.bus;
+package org.bulldog.beagleboneblack.io;
 
+import java.io.FileDescriptor;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.bulldog.beagleboneblack.jni.NativeI2c;
-import org.bulldog.core.bus.BusConnection;
-import org.bulldog.core.bus.I2cBus;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.io.bus.BusConnection;
+import org.bulldog.core.io.bus.I2cBus;
 
 public class BBBI2cBus implements I2cBus {
 	
@@ -20,6 +23,9 @@ public class BBBI2cBus implements I2cBus {
 	private int fileDescriptor;
 	private int selectedAddress;
 	private String alias;
+	private FileInputStream inputStream;
+	private FileOutputStream outputStream;
+	private FileDescriptor streamDescriptor;
 	
 	public BBBI2cBus(String busDeviceFilePath) {
 		this.busDeviceFilePath = busDeviceFilePath;
@@ -33,6 +39,9 @@ public class BBBI2cBus implements I2cBus {
 			throw new IOException(String.format(ERROR_OPENING_BUS, getBusDeviceFilePath()));
 		} 
 		
+		streamDescriptor = NativeI2c.i2cGetJavaDescriptor(fileDescriptor);
+		inputStream = new FileInputStream(streamDescriptor);
+		outputStream = new FileOutputStream(streamDescriptor);
 		isOpen = true;
 	}
 	
@@ -41,12 +50,19 @@ public class BBBI2cBus implements I2cBus {
 	}
 
 	public void close() throws IOException {
-		if(!isOpen()) { return; }
-		fileDescriptor = 0;
-		isOpen = false;
-		int returnValue = NativeI2c.i2cClose(fileDescriptor);
-		if(returnValue < 0) {
-			throw new IOException(ERROR_CLOSING_BUS);
+		try {
+			if(!isOpen()) { return; }
+			fileDescriptor = 0;
+			isOpen = false;
+			int returnValue = NativeI2c.i2cClose(fileDescriptor);
+			if(returnValue < 0) {
+				throw new IOException(ERROR_CLOSING_BUS);
+			}
+		} finally {
+			inputStream.close();
+			inputStream = null;
+			outputStream.close();
+			outputStream = null;
 		}
 	}
 	
@@ -148,5 +164,15 @@ public class BBBI2cBus implements I2cBus {
 		} else if (!busDeviceFilePath.equals(other.busDeviceFilePath))
 			return false;
 		return true;
+	}
+
+	@Override
+	public FileOutputStream getOutputStream() throws IOException {
+		return outputStream;
+	}
+
+	@Override
+	public FileInputStream getInputStream() throws IOException {
+		return inputStream;
 	}
 }

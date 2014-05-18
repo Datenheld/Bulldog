@@ -40,6 +40,14 @@ configure(javaProjects) {
         manifest.attributes 'Implementation-Version': version
         manifest.attributes provider: 'Datenheld'
     }
+    
+    uploadArchives {
+    	repositories {
+	    	 flatDir {
+	        	dirs 'bulldog.repository'
+	    	}
+    	}
+    }
     	
 }
 

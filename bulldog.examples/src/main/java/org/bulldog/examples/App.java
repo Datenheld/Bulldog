@@ -8,6 +8,7 @@ import org.bulldog.core.gpio.Pwm;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;
+import org.bulldog.devices.lcd.I2CLcd;
 import org.bulldog.devices.servo.Servo;
 import org.bulldog.devices.servo.TowerProMicroSG90;
 import org.bulldog.devices.switches.Button;
@@ -24,6 +25,9 @@ public class App
     public static void main(String[] args) throws IOException
     {
     	final Board board = Platform.createBoard();
+    	
+    	I2CLcd lcd = new I2CLcd(board.getI2cBuses().get(1), 0x20);
+    	lcd.write("Hello World");
     	
     	final DigitalInput interrupt = board.getPin("P8", 11).as(DigitalInput.class);
     	final DigitalInput interrupt2 = board.getPin("P8", 12).as(DigitalInput.class);
@@ -44,7 +48,7 @@ public class App
     		
     	});
     	
-    	final Pwm pwm = board.getPinByName("P9_14").as(Pwm.class);
+    	final Pwm pwm = board.getPin("P9", 14).as(Pwm.class);
     	final Servo servo = new TowerProMicroSG90(pwm);
     	
     	encoder.addListener(new RotaryEncoderListener() {

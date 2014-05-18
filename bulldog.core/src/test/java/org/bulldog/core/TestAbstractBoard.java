@@ -2,9 +2,10 @@ package org.bulldog.core;
 
 import junit.framework.Assert;
 
-import org.bulldog.core.bus.Bus;
-import org.bulldog.core.bus.I2cBus;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.io.IOPort;
+import org.bulldog.core.io.bus.Bus;
+import org.bulldog.core.io.bus.I2cBus;
 import org.bulldog.core.mocks.MockedBoard;
 import org.junit.Test;
 
@@ -140,29 +141,29 @@ public class TestAbstractBoard {
 			if(i%2 == 0)  {
 				board.getI2cBuses().get(i).setAlias(aliases[i]);
 			} else {
-				board.getSerialBuses().get(i).setAlias(aliases[i]);
+				board.getSerialPorts().get(i).setAlias(aliases[i]);
 			}
 		}
 		
-		Bus availableBus = board.getBusByAlias(aliases[4]);
-		Assert.assertNotNull(availableBus);
-		Assert.assertEquals(aliases[4], availableBus.getAlias());
-		Assert.assertTrue( I2cBus.class.isAssignableFrom(availableBus.getClass()));
+		IOPort availablePort = board.getIOPortByAlias(aliases[4]);
+		Assert.assertNotNull(availablePort);
+		Assert.assertEquals(aliases[4], availablePort.getAlias());
+		Assert.assertTrue( I2cBus.class.isAssignableFrom(availablePort.getClass()));
 		
 		
-		Bus nonExistentBus = board.getBusByAlias("LALALALALA");
-		Assert.assertNull(nonExistentBus);
+		IOPort nonExistentPort = board.getIOPortByAlias("LALALALALA");
+		Assert.assertNull(nonExistentPort);
 		
-		nonExistentBus = board.getBusByAlias("Greedo");
-		Assert.assertNull(nonExistentBus);
+		nonExistentPort = board.getIOPortByAlias("Greedo");
+		Assert.assertNull(nonExistentPort);
 		
-		for(Bus bus : board.getAllBuses()) {
-			if(bus.getAlias() != null) {
-				Bus crossCheck = board.getBusByAlias(bus.getAlias());
-				Assert.assertSame(bus, crossCheck);
+		for(IOPort port : board.getAllIOPorts()) {
+			if(port.getAlias() != null) {
+				IOPort crossCheck = board.getIOPortByAlias(port.getAlias());
+				Assert.assertSame(port, crossCheck);
 			} else {
 				try {
-					board.getBusByAlias(bus.getAlias());
+					board.getIOPortByAlias(port.getAlias());
 					Assert.fail();
 				} catch(IllegalArgumentException ex) {}
 
@@ -170,7 +171,7 @@ public class TestAbstractBoard {
 		}
 		
 		try {
-			board.getBusByAlias(null);
+			board.getIOPortByAlias(null);
 			Assert.fail();
 		} catch(IllegalArgumentException ex) {}
 	}
@@ -179,30 +180,30 @@ public class TestAbstractBoard {
 	public void testGetBusByName() {
 		MockedBoard board = new MockedBoard();
 		
-		Bus availableBus = board.getBusByName("I2C1");
-		Assert.assertNotNull(availableBus);
-		Assert.assertTrue(availableBus instanceof I2cBus);
+		IOPort availablePort = board.getIOPortByName("I2C1");
+		Assert.assertNotNull(availablePort);
+		Assert.assertTrue(availablePort instanceof I2cBus);
 		
-		Bus nonExistentBus = board.getBusByName("LALALALALA");
-		Assert.assertNull(nonExistentBus);
+		IOPort nonExistentPort = board.getIOPortByName("LALALALALA");
+		Assert.assertNull(nonExistentPort);
 		
-		nonExistentBus = board.getBusByName("Greedo");
-		Assert.assertNull(nonExistentBus);
+		nonExistentPort = board.getIOPortByName("Greedo");
+		Assert.assertNull(nonExistentPort);
 		
-		for(Bus bus : board.getAllBuses()) {
+		for(IOPort bus : board.getAllIOPorts()) {
 			if(bus.getName() != null) {
-				Bus crossCheck = board.getBusByName(bus.getName());
+				IOPort crossCheck = board.getIOPortByName(bus.getName());
 				Assert.assertSame(bus, crossCheck);
 			} else {
 				try {
-					board.getBusByName(bus.getName());
+					board.getIOPortByName(bus.getName());
 					Assert.fail();
 				} catch(IllegalArgumentException ex) {}
 			}
 		}
 		
 		try {
-			board.getBusByName(null);
+			board.getIOPortByName(null);
 			Assert.fail();
 		} catch(IllegalArgumentException ex) {}
 

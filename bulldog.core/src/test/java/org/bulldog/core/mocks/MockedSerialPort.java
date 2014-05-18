@@ -1,11 +1,11 @@
 package org.bulldog.core.mocks;
 
 import org.bulldog.core.Parity;
-import org.bulldog.core.bus.SerialBus;
+import org.bulldog.core.io.SerialIO;
 
-public class MockedSerialBus extends MockedBus implements SerialBus {
+public class MockedSerialPort extends MockedBus implements SerialIO {
 	
-	public MockedSerialBus(String name) {
+	public MockedSerialPort(String name) {
 		super(name);
 	}
 

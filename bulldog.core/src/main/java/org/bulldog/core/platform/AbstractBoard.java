@@ -3,16 +3,17 @@ package org.bulldog.core.platform;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bulldog.core.bus.Bus;
-import org.bulldog.core.bus.I2cBus;
-import org.bulldog.core.bus.SerialBus;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.io.IOPort;
+import org.bulldog.core.io.SerialIO;
+import org.bulldog.core.io.bus.I2cBus;
+import org.bulldog.core.io.bus.SpiBus;
 
 public abstract class AbstractBoard implements Board {
 
 	private List<Pin> pins = new ArrayList<Pin>();
 	private List<I2cBus> i2cBuses = new ArrayList<I2cBus>();
-	private List<SerialBus> serialBuses = new ArrayList<SerialBus>();
+	private List<SerialIO> serialBuses = new ArrayList<SerialIO>();
 
 	public List<Pin> getPins() {
 		return  pins;
@@ -69,39 +70,39 @@ public abstract class AbstractBoard implements Board {
 		return i2cBuses;
 	}
 	
-	public List<SerialBus> getSerialBuses() {
+	public List<SerialIO> getSerialPorts() {
 		return serialBuses;
 	}
 	
-	public Bus getBusByAlias(String alias) {
-		if(alias == null) 	{ throw new IllegalArgumentException("Null may not be passed as an alias name for a bus."); }
+	public IOPort getIOPortByAlias(String alias) {
+		if(alias == null) 	{ throw new IllegalArgumentException("Null may not be passed as an alias name for an IOPort."); }
 	
-		for(Bus bus : getAllBuses()) {
-			if(alias.equals(bus.getAlias())) {
-				return bus;
+		for(IOPort port : getAllIOPorts()) {
+			if(alias.equals(port.getAlias())) {
+				return port;
 			}
 		}
 		
 		return null;
 	}
 	
-	public Bus getBusByName(String name) {
-		if(name == null) 	{ throw new IllegalArgumentException("Null may not be passed as a name for a bus."); }
+	public IOPort getIOPortByName(String name) {
+		if(name == null) 	{ throw new IllegalArgumentException("Null may not be passed as a name for an IOPort."); }
 	
-		for(Bus bus : getAllBuses()) {
-			if(name.equals(bus.getName())) {
-				return bus;
+		for(IOPort port : getAllIOPorts()) {
+			if(name.equals(port.getName())) {
+				return port;
 			}
 		}
 		
 		return null;
 	}
 
-	public List<Bus> getAllBuses() {
-		List<Bus> buses = new ArrayList<Bus>();
-		buses.addAll(getI2cBuses());
-		buses.addAll(getSerialBuses());
-		return buses;
+	public List<IOPort> getAllIOPorts() {
+		List<IOPort> ioPorts = new ArrayList<IOPort>();
+		ioPorts.addAll(getI2cBuses());
+		ioPorts.addAll(getSerialPorts());
+		return ioPorts;
 	}
 	
 	public abstract String getName();

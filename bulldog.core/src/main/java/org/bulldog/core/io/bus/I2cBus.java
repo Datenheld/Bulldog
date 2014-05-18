@@ -1,4 +1,4 @@
-package org.bulldog.core.bus;
+package org.bulldog.core.io.bus;
 
 import org.bulldog.core.gpio.Pin;
 

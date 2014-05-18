@@ -41,6 +41,14 @@ JNIEXPORT jint JNICALL Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cOpen
 
 /*
  * Class:     org_bulldog_beagleboneblack_jni_I2CNative
+ * Method:    i2cOpenDescriptor
+ * Signature: (I)(I)[Ljava/io/FileDescriptor
+ */
+JNIEXPORT jobject JNICALL Java_org_bulldog_beagleboneblack_jni_NativeI2c_i2cGetJavaDescriptor
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     org_bulldog_beagleboneblack_jni_I2CNative
  * Method:    i2cClose
  * Signature: (I)I
  */

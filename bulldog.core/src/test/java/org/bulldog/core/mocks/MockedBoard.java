@@ -9,7 +9,7 @@ public class MockedBoard extends AbstractBoard {
 		for(int i = 0; i < 10; i++) {
 			getPins().add(new Pin("P" + i, i, "A", i));
 			getI2cBuses().add(new MockedI2cBus("I2C" + i));
-			getSerialBuses().add(new MockedSerialBus("Serial" + i));
+			getSerialPorts().add(new MockedSerialPort("Serial" + i));
 		}
 	}
 	

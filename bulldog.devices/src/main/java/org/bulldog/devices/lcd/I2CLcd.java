@@ -2,8 +2,8 @@ package org.bulldog.devices.lcd;
 
 import java.io.IOException;
 
-import org.bulldog.core.bus.Bus;
-import org.bulldog.core.bus.BusConnection;
+import org.bulldog.core.io.bus.Bus;
+import org.bulldog.core.io.bus.BusConnection;
 
 
 /**

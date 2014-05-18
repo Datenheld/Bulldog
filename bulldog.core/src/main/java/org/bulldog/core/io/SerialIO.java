@@ -1,8 +1,8 @@
-package org.bulldog.core.bus;
+package org.bulldog.core.io;
 
 import org.bulldog.core.Parity;
 
-public interface SerialBus extends Bus {
+public interface SerialIO extends IOPort {
 	
 	int getBaudRate();
 	void setBaudRate(int baudRate);

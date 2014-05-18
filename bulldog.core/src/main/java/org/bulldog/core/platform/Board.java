@@ -2,10 +2,10 @@ package org.bulldog.core.platform;
 
 import java.util.List;
 
-import org.bulldog.core.bus.Bus;
-import org.bulldog.core.bus.I2cBus;
-import org.bulldog.core.bus.SerialBus;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.io.IOPort;
+import org.bulldog.core.io.SerialIO;
+import org.bulldog.core.io.bus.I2cBus;
 
 public interface Board {
 
@@ -17,7 +17,7 @@ public interface Board {
 	public Pin getPin(String port, int indexOnPort);
 	
 	public List<I2cBus> getI2cBuses();
-	public List<SerialBus> getSerialBuses();
-	public Bus getBusByAlias(String alias);
-	public Bus getBusByName(String name);
+	public List<SerialIO> getSerialPorts();
+	public IOPort getIOPortByAlias(String alias);
+	public IOPort getIOPortByName(String name);
 }

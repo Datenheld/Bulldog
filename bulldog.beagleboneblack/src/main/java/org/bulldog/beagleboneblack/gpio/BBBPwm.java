@@ -11,8 +11,8 @@ import org.bulldog.core.gpio.base.AbstractPwm;
 
 public class BBBPwm extends AbstractPwm {
 
-	private static final String PWM_FILENAME_FORMAT = "bone_pwm_P%d_%d";
-	private static final String PWM_OCP_PATTERN = "pwm_test_P%d_%d";
+	private static final String PWM_FILENAME_FORMAT = "bone_pwm_%s_%d";
+	private static final String PWM_OCP_PATTERN = "pwm_test_%s_%d";
 	private static final long NANOSECONDS_PER_SECOND = 1000000000;
 	
 	private SysFs sysfsWrapper = new SysFs();

@@ -2,24 +2,23 @@ package org.bulldog.beagleboneblack;
 
 import java.io.File;
 
-import org.bulldog.beagleboneblack.bus.BBBI2cBus;
-import org.bulldog.beagleboneblack.bus.BBBSerialBus;
 import org.bulldog.beagleboneblack.gpio.BBBAnalogInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalOutput;
 import org.bulldog.beagleboneblack.gpio.BBBPwm;
-import org.bulldog.core.bus.I2cBus;
-import org.bulldog.core.bus.SerialBus;
+import org.bulldog.beagleboneblack.io.BBBI2cBus;
+import org.bulldog.beagleboneblack.io.BBBSerialPort;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.PinFeature;
 import org.bulldog.core.gpio.base.AbstractPwm;
 import org.bulldog.core.gpio.event.ActivationEventArgs;
 import org.bulldog.core.gpio.event.ActivationListener;
+import org.bulldog.core.io.SerialIO;
+import org.bulldog.core.io.bus.I2cBus;
 import org.bulldog.core.platform.AbstractBoard;
 import org.bulldog.core.platform.Board;
-import org.bulldog.core.platform.BoardFactory;
 
-public class BeagleBoneBlack extends AbstractBoard implements ActivationListener, BoardFactory {
+public class BeagleBoneBlack extends AbstractBoard implements ActivationListener {
 	
 	private static BeagleBoneBlack instance;
 	private static final String NAME = "BeagleBone Black";
@@ -163,9 +162,9 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		for(int i = 0; i < 6; i++) {
 			File serialDevice = new File("/dev/ttyO" + i);
 			if(serialDevice.exists()) {
-				SerialBus bus = new BBBSerialBus(serialDevice.getAbsolutePath());
-				if(!getSerialBuses().contains(bus)) {
-					getSerialBuses().add(bus);
+				SerialIO port = new BBBSerialPort(serialDevice.getAbsolutePath());
+				if(!getSerialPorts().contains(port)) {
+					getSerialPorts().add(port);
 				}
 			}
 		}
@@ -244,16 +243,6 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		}
 		
 		return new BeagleBoneBlack();
-	}
-
-	@Override
-	public boolean isCompatibleWithPlatform() {
-		return true;
-	}
-
-	@Override
-	public Board createBoard() {
-		return getInstance();
 	}
 
 }

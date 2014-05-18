@@ -1,6 +1,8 @@
-package org.bulldog.core.bus;
+package org.bulldog.core.io.bus;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class BusConnection {
 
@@ -25,7 +27,6 @@ public class BusConnection {
 		bus.writeByte(b);
 	}
 	
-	
 	public byte readByte() throws IOException {
 		acquireBus();
 		return bus.readByte();
@@ -39,5 +40,15 @@ public class BusConnection {
 		if(getBus().getSelectedAddress() != address) {
 			getBus().selectAddress(address);
 		}
+	}
+	
+	public OutputStream getOutputStream() throws IOException {
+		acquireBus();
+		return bus.getOutputStream();
+	}
+	
+	public InputStream getInputStream() throws IOException {
+		acquireBus();
+		return bus.getInputStream();
 	}
 }

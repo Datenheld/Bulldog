@@ -1,8 +1,10 @@
-package org.bulldog.core.bus;
+package org.bulldog.core.io;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
-public interface Bus {
+public interface IOPort {
 
 	public String getName();
 	public String getAlias();
@@ -14,10 +16,6 @@ public interface Bus {
 	
 	public void writeByte(byte b) throws IOException;
 	public byte readByte() throws IOException;
-	
-	public void selectAddress(int address) throws IOException;
-	public int getSelectedAddress();	
-	
-	public BusConnection createConnection(int address);
-
+	public OutputStream getOutputStream() throws IOException;
+	public InputStream getInputStream() throws IOException;
 }

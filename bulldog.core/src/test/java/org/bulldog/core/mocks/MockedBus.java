@@ -1,9 +1,11 @@
 package org.bulldog.core.mocks;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.bulldog.core.bus.Bus;
-import org.bulldog.core.bus.BusConnection;
+import org.bulldog.core.io.bus.Bus;
+import org.bulldog.core.io.bus.BusConnection;
 
 public class MockedBus implements Bus {
 
@@ -62,6 +64,18 @@ public class MockedBus implements Bus {
 	}
 
 	public BusConnection createConnection(int address) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FileOutputStream getOutputStream() throws IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FileInputStream getInputStream() throws IOException {
 		// TODO Auto-generated method stub
 		return null;
 	}

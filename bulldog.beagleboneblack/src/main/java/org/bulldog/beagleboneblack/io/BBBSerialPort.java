@@ -1,16 +1,18 @@
-package org.bulldog.beagleboneblack.bus;
+package org.bulldog.beagleboneblack.io;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.bulldog.core.Parity;
-import org.bulldog.core.bus.BusConnection;
-import org.bulldog.core.bus.SerialBus;
+import org.bulldog.core.io.SerialIO;
+import org.bulldog.core.io.bus.BusConnection;
 
-public class BBBSerialBus implements SerialBus {
+public class BBBSerialPort implements SerialIO {
 
 	private String deviceFilePath;
 	
-	public BBBSerialBus(String filename) {
+	public BBBSerialPort(String filename) {
 		this.deviceFilePath = filename;
 	}
 	
@@ -86,7 +88,7 @@ public class BBBSerialBus implements SerialBus {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BBBSerialBus other = (BBBSerialBus) obj;
+		BBBSerialPort other = (BBBSerialPort) obj;
 		if (deviceFilePath == null) {
 			if (other.deviceFilePath != null)
 				return false;
@@ -117,6 +119,18 @@ public class BBBSerialBus implements SerialBus {
 	public void setParity(Parity parity) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public FileOutputStream getOutputStream() throws IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FileInputStream getInputStream() throws IOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
