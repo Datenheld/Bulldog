@@ -26,7 +26,6 @@ public class BBBSerialPort implements SerialPort {
 	private int fileDescriptor = 0;
 	private String alias = "";
 	private Parity parity = Parity.None;
-	private ByteBuffer buffer;
 	private FileDescriptor streamDescriptor;
 	private OutputStream outputStream;
 	private InputStream inputStream;

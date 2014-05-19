@@ -1,6 +1,5 @@
 package org.bulldog.beagleboneblack.jni;
 
-import java.io.FileDescriptor;
 
 public class NativeI2c {
 
