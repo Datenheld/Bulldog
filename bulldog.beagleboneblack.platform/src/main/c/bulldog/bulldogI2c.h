@@ -1,5 +1,5 @@
-#ifndef I2C_H
-#define I2C_H
+#ifndef BULLDOG_I2C_H
+#define BULLDOG_I2C_H
 
 
 #ifdef __cplusplus

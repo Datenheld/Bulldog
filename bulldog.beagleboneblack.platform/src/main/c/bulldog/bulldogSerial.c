@@ -5,15 +5,10 @@
 #include <string.h>
 #include <sys/ioctl.h>
 #include <stdio.h>
-#include <stdarg.h>
-#include "serial.h"
+#include "bulldog.h"
+#include "bulldogSerial.h"
 
-void errorMessage(char* messageFormat, ...) {
-	va_list args;
-	va_start(args, messageFormat);
-	fprintf (stderr, messageFormat, args);
-	va_end(args);
-}
+
 
 int serialSetAttributes(int fd, int speed, int parity, int readTimeout) {
 	struct termios tty;
@@ -106,7 +101,7 @@ int serialReadBuffer(int fileDescriptor, char* buffer, int bufferSize) {
 unsigned char serialReadCharacter(int fileDescriptor) {
 	char output;
 	if(read(fileDescriptor, &output, 1) < 0) {
-
+		errorMessage("read failed: %s", strerror(errno));
 	}
 
 	return output;

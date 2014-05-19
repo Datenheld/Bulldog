@@ -8,7 +8,6 @@ public class NativeI2c {
 	public static native int i2cWrite(int fileDescriptor, byte data);
 	public static native int i2cSelectSlave(int busFileDescriptor, int slaveAddress);
 	public static native int i2cOpen(String devicePath);
-	public static native FileDescriptor i2cGetJavaDescriptor(int fileDescriptor);
 	public static native int i2cClose(int fileDescriptor);
 	
 }

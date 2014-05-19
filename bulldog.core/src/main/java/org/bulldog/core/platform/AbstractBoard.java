@@ -5,14 +5,14 @@ import java.util.List;
 
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.IOPort;
-import org.bulldog.core.io.SerialIO;
+import org.bulldog.core.io.SerialPort;
 import org.bulldog.core.io.bus.I2cBus;
 
 public abstract class AbstractBoard implements Board {
 
 	private List<Pin> pins = new ArrayList<Pin>();
 	private List<I2cBus> i2cBuses = new ArrayList<I2cBus>();
-	private List<SerialIO> serialBuses = new ArrayList<SerialIO>();
+	private List<SerialPort> serialBuses = new ArrayList<SerialPort>();
 
 	public List<Pin> getPins() {
 		return  pins;
@@ -69,7 +69,7 @@ public abstract class AbstractBoard implements Board {
 		return i2cBuses;
 	}
 	
-	public List<SerialIO> getSerialPorts() {
+	public List<SerialPort> getSerialPorts() {
 		return serialBuses;
 	}
 	

@@ -8,15 +8,14 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include src/main/c/serial/subdir.mk
 -include src/main/c/jni/subdir.mk
--include src/main/c/i2c/subdir.mk
+-include src/main/c/bulldog/subdir.mk
 -include src/main/c/BBBIOlib/subdir.mk
 -include build/objectFiles/bulldogSharedLibrary/bulldogC/sml6r3f25hmoj1hjc0ek5d0pj/subdir.mk
--include build/objectFiles/bulldogSharedLibrary/bulldogC/ijsk6bcvbnkl0384b6bdc7bs4/subdir.mk
--include build/objectFiles/bulldogSharedLibrary/bulldogC/7nhq1ke0v43spb2eq5eic7d7rg/subdir.mk
 -include build/objectFiles/bulldogSharedLibrary/bulldogC/6f9knjbt0vln184cn0n0cnms79/subdir.mk
 -include build/objectFiles/bulldogSharedLibrary/bulldogC/617ehd4151pq5drcfdvfmdhpc5/subdir.mk
+-include build/objectFiles/bulldogSharedLibrary/bulldogC/4b374hja9347gt4ifo6ogn2oui/subdir.mk
+-include build/objectFiles/bulldogSharedLibrary/bulldogC/422lg8k8nr958tnik7f09v6a9q/subdir.mk
 -include build/objectFiles/bulldogSharedLibrary/bulldogC/3pjq4gr1s2sph7rko83uerevq2/subdir.mk
 -include build/objectFiles/bulldogSharedLibrary/bulldogC/3gsl6sg2gkrfn04g62ecpkm6hr/subdir.mk
 -include build/objectFiles/bulldogSharedLibrary/bulldogC/3667vunebml35jigmsjf4b262o/subdir.mk

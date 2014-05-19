@@ -1,5 +1,5 @@
-#ifndef SERIAL_H
-#define SERIAL_H
+#ifndef BULLDOG_SERIAL_H
+#define BULLDOG_SERIAL_H
 
 #ifdef __cplusplus
 extern "C" {

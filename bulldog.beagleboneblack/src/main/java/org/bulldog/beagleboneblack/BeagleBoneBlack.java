@@ -14,7 +14,7 @@ import org.bulldog.core.gpio.PinFeature;
 import org.bulldog.core.gpio.base.AbstractPwm;
 import org.bulldog.core.gpio.event.ActivationEventArgs;
 import org.bulldog.core.gpio.event.ActivationListener;
-import org.bulldog.core.io.SerialIO;
+import org.bulldog.core.io.SerialPort;
 import org.bulldog.core.io.bus.I2cBus;
 import org.bulldog.core.platform.AbstractBoard;
 import org.bulldog.core.platform.Board;
@@ -144,7 +144,7 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 
 	private void createBuses() {
 		detectI2cBuses();
-		detectSerialBuses();
+		detectSerialPorts();
 	}
 
 	private void detectI2cBuses() {
@@ -159,11 +159,11 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		}
 	}
 
-	private void detectSerialBuses() {
+	private void detectSerialPorts() {
 		for(int i = 0; i < 6; i++) {
 			File serialDevice = new File("/dev/ttyO" + i);
 			if(serialDevice.exists()) {
-				SerialIO port = new BBBSerialPort(serialDevice.getAbsolutePath());
+				SerialPort port = new BBBSerialPort(serialDevice.getAbsolutePath());
 				if(!getSerialPorts().contains(port)) {
 					getSerialPorts().add(port);
 				}

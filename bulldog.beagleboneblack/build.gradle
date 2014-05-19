@@ -1,17 +1,4 @@
 dependencies {
     compile project(':bulldog.core')
-    compile project(':bulldog.devices')
-    compile project(':bulldog.examples')
     runtime fileTree(dir: project(':bulldog.beagleboneblack.platform').buildDir, include: '**/*.so')
-}
-
-distributions {
-    main {
-        baseName = 'bulldog-beagleboneblack'
-    }
-}
-
-jar {
-   from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-  manifest { attributes 'Main-Class': 'org.bulldog.examples.App' }
 }

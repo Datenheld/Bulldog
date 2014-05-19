@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.bulldog.beagleboneblack.jni.NativeI2c;
+import org.bulldog.beagleboneblack.jni.NativeTools;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.bus.BusConnection;
 import org.bulldog.core.io.bus.I2cBus;
@@ -39,7 +40,7 @@ public class BBBI2cBus implements I2cBus {
 			throw new IOException(String.format(ERROR_OPENING_BUS, getBusDeviceFilePath()));
 		} 
 		
-		streamDescriptor = NativeI2c.i2cGetJavaDescriptor(fileDescriptor);
+		streamDescriptor = NativeTools.getJavaDescriptor(fileDescriptor);
 		inputStream = new FileInputStream(streamDescriptor);
 		outputStream = new FileOutputStream(streamDescriptor);
 		isOpen = true;
@@ -52,6 +53,7 @@ public class BBBI2cBus implements I2cBus {
 	public void close() throws IOException {
 		try {
 			if(!isOpen()) { return; }
+			
 			fileDescriptor = 0;
 			isOpen = false;
 			int returnValue = NativeI2c.i2cClose(fileDescriptor);
@@ -59,10 +61,23 @@ public class BBBI2cBus implements I2cBus {
 				throw new IOException(ERROR_CLOSING_BUS);
 			}
 		} finally {
-			inputStream.close();
-			inputStream = null;
-			outputStream.close();
-			outputStream = null;
+			finalizeStreams();
+		}
+	}
+
+	private void finalizeStreams() throws IOException {
+		if(inputStream != null) {
+			try {
+				inputStream.close();
+			} catch(Exception ex) {}  
+			finally { inputStream = null; }
+		}
+		
+		if(outputStream != null) {
+			try {
+				outputStream.close();
+			} catch(Exception ex) {}
+			finally { outputStream = null; }
 		}
 	}
 	
@@ -178,5 +193,15 @@ public class BBBI2cBus implements I2cBus {
 		} else if (!busDeviceFilePath.equals(other.busDeviceFilePath))
 			return false;
 		return true;
+	}
+
+	@Override
+	public void writeBytes(byte[] bytes) throws IOException {
+		getOutputStream().write(bytes);
+	}
+
+	@Override
+	public int readBytes(byte[] buffer) throws IOException {
+		return getInputStream().read(buffer);
 	}
 }

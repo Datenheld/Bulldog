@@ -80,6 +80,18 @@ public class MockedBus implements Bus {
 		return null;
 	}
 
+	@Override
+	public void writeBytes(byte[] bytes) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int readBytes(byte[] buffer) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 	
 }

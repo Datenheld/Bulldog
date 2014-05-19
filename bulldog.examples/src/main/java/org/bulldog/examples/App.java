@@ -5,10 +5,10 @@ import java.io.IOException;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalInput;
 import org.bulldog.core.gpio.Pwm;
+import org.bulldog.core.io.SerialPort;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;
-import org.bulldog.devices.lcd.I2CLcd;
 import org.bulldog.devices.servo.Servo;
 import org.bulldog.devices.servo.TowerProMicroSG90;
 import org.bulldog.devices.switches.Button;
@@ -26,12 +26,16 @@ public class App
     {
     	final Board board = Platform.createBoard();
     	
-    	I2CLcd lcd = new I2CLcd(board.getI2cBuses().get(1), 0x20);
-    	lcd.write("Hello World");
+    	//I2CLcd lcd = new I2CLcd(board.getI2cBuses().get(1), 0x20);
+    	//lcd.write("Hello World");
+    	SerialPort serial = board.getSerialPorts().get(0);
+    	serial.open();
     	
     	final DigitalInput interrupt = board.getPin("P8", 11).as(DigitalInput.class);
     	final DigitalInput interrupt2 = board.getPin("P8", 12).as(DigitalInput.class);
     	final IncrementalRotaryEncoder encoder = new IncrementalRotaryEncoder(interrupt, interrupt2);
+    	
+    	
     	
     	final DigitalInput buttonInput = board.getPin("P8", 14).as(DigitalInput.class);
     	Button button = new Button(buttonInput, Signal.High);

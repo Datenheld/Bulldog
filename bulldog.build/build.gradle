@@ -23,7 +23,6 @@ configure(javaProjects) {
    	   
     apply plugin: 'java'
     apply plugin: 'eclipse'
-    apply plugin: 'java-library-distribution'
    	
     version = bulldogVersion
  
@@ -36,7 +35,6 @@ configure(javaProjects) {
     }
  
     jar {
-        manifest.attributes provider: 'gradle'
         manifest.attributes 'Implementation-Version': version
         manifest.attributes provider: 'Datenheld'
     }
@@ -47,7 +45,18 @@ configure(javaProjects) {
 	        	dirs 'bulldog.repository'
 	    	}
     	}
-    }
-    	
+    }	
 }
 
+task bbbSingleJar(type: Jar, dependsOn: subprojects.assemble) { 
+    baseName = 'bulldog-beagleboneblack' 
+     manifest { 
+     	attributes 'Main-Class': 'org.bulldog.examples.App' 
+     }
+    
+    javaProjects.each { project -> 
+    	evaluationDependsOn(project.path) 
+    	from project.configurations.default.allArtifacts.files.collect { zipTree(it) } 
+	}	
+	 
+}

@@ -15,7 +15,9 @@ public interface IOPort {
 	public void close() throws IOException;
 	
 	public void writeByte(byte b) throws IOException;
+	public void writeBytes(byte[] bytes) throws IOException;
 	public byte readByte() throws IOException;
+	public int readBytes(byte[] buffer) throws IOException;
 	public OutputStream getOutputStream() throws IOException;
 	public InputStream getInputStream() throws IOException;
 }

@@ -8,21 +8,24 @@ C_SRCS += \
 ../src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.c \
 ../src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.c \
 ../src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.c \
-../src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.c 
+../src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.c \
+../src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeTools.c 
 
 OBJS += \
 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.o \
 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.o \
 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.o \
 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.o \
-./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o 
+./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.o \
+./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeTools.o 
 
 C_DEPS += \
 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeAdc.d \
 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeEpoll.d \
 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeGpio.d \
 ./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeI2c.d \
-./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.d 
+./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativePwm.d \
+./src/main/c/jni/org_bulldog_beagleboneblack_jni_NativeTools.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

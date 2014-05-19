@@ -1,1 +1,1 @@
-gradle clean bulldogSharedLibrary build uploadArchives distZip
+gradle --daemon clean bulldogSharedLibrary build uploadArchives bbbSingleJar

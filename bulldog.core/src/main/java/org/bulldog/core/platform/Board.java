@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.IOPort;
-import org.bulldog.core.io.SerialIO;
+import org.bulldog.core.io.SerialPort;
 import org.bulldog.core.io.bus.I2cBus;
 
 public interface Board {
@@ -17,7 +17,8 @@ public interface Board {
 	public Pin getPin(String port, int indexOnPort);
 	
 	public List<I2cBus> getI2cBuses();
-	public List<SerialIO> getSerialPorts();
+	public List<SerialPort> getSerialPorts();
+	List<IOPort> getAllIOPorts();
 	public IOPort getIOPortByAlias(String alias);
 	public IOPort getIOPortByName(String name);
 }

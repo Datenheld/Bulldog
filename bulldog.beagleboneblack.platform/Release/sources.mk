@@ -14,15 +14,14 @@ S_UPPER_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-src/main/c/serial \
 src/main/c/jni \
-src/main/c/i2c \
+src/main/c/bulldog \
 src/main/c/BBBIOlib \
 build/objectFiles/bulldogSharedLibrary/bulldogC/sml6r3f25hmoj1hjc0ek5d0pj \
-build/objectFiles/bulldogSharedLibrary/bulldogC/ijsk6bcvbnkl0384b6bdc7bs4 \
-build/objectFiles/bulldogSharedLibrary/bulldogC/7nhq1ke0v43spb2eq5eic7d7rg \
 build/objectFiles/bulldogSharedLibrary/bulldogC/6f9knjbt0vln184cn0n0cnms79 \
 build/objectFiles/bulldogSharedLibrary/bulldogC/617ehd4151pq5drcfdvfmdhpc5 \
+build/objectFiles/bulldogSharedLibrary/bulldogC/4b374hja9347gt4ifo6ogn2oui \
+build/objectFiles/bulldogSharedLibrary/bulldogC/422lg8k8nr958tnik7f09v6a9q \
 build/objectFiles/bulldogSharedLibrary/bulldogC/3pjq4gr1s2sph7rko83uerevq2 \
 build/objectFiles/bulldogSharedLibrary/bulldogC/3gsl6sg2gkrfn04g62ecpkm6hr \
 build/objectFiles/bulldogSharedLibrary/bulldogC/3667vunebml35jigmsjf4b262o \
