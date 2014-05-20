@@ -13,7 +13,7 @@ extern int serialOpen(char* portname, int baud, int parity, int blocking, int re
 extern int serialOpenSimple(char* portname, int baud);
 extern int serialClose(int fd);
 
-extern int serialWrite(int fileDescriptor, unsigned char data);
+extern int serialWriteCharacter(int fileDescriptor, unsigned char data);
 extern int serialWriteBuffer(int fileDescriptor, char* data);
 
 extern int serialReadBuffer(int fileDescriptor, char* buffer, int bufferSize);

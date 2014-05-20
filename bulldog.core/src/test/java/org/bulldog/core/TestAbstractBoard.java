@@ -4,7 +4,6 @@ import junit.framework.Assert;
 
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.IOPort;
-import org.bulldog.core.io.bus.Bus;
 import org.bulldog.core.io.bus.I2cBus;
 import org.bulldog.core.mocks.MockedBoard;
 import org.junit.Test;

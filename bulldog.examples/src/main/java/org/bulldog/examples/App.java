@@ -1,6 +1,8 @@
 package org.bulldog.examples;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalInput;
@@ -28,8 +30,14 @@ public class App
     	
     	//I2CLcd lcd = new I2CLcd(board.getI2cBuses().get(1), 0x20);
     	//lcd.write("Hello World");
-    	SerialPort serial = board.getSerialPorts().get(0);
+    	SerialPort serial = board.getSerialPorts().get(2);
+    	serial.setBaudRate(9600);
+    	serial.setBlocking(true);
     	serial.open();
+    	for(int i = 0; i < 10; i++) {
+    		BufferedReader reader = new BufferedReader(new InputStreamReader(serial.getInputStream()));
+    		System.out.println(reader.readLine());
+    	}
     	
     	final DigitalInput interrupt = board.getPin("P8", 11).as(DigitalInput.class);
     	final DigitalInput interrupt2 = board.getPin("P8", 12).as(DigitalInput.class);

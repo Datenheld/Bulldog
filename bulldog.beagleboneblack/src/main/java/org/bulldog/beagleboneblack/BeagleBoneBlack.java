@@ -9,6 +9,7 @@ import org.bulldog.beagleboneblack.gpio.BBBDigitalOutput;
 import org.bulldog.beagleboneblack.gpio.BBBPwm;
 import org.bulldog.beagleboneblack.io.BBBI2cBus;
 import org.bulldog.beagleboneblack.io.BBBSerialPort;
+import org.bulldog.beagleboneblack.sysfs.SysFs;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.PinFeature;
 import org.bulldog.core.gpio.base.AbstractPwm;
@@ -23,6 +24,7 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 	
 	private static BeagleBoneBlack instance;
 	private static final String NAME = "BeagleBone Black";
+	private SysFs sysFs = new SysFs();
 		
 	private BeagleBoneBlack() {
 		createPins();
@@ -250,5 +252,13 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		} catch(Exception ex) {
 			return null;
 		}
+	}
+	
+	public void loadSlot(String deviceId) {
+		sysFs.createSlotIfNotExists(deviceId);
+	}
+	
+	public void removeSlot(String deviceId) {
+		sysFs.removeSlotOfDevice(deviceId);
 	}
 }

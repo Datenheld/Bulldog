@@ -32,5 +32,17 @@ public class MockedSerialPort extends MockedBus implements SerialPort {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void setBlocking(boolean blocking) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean getBlocking() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

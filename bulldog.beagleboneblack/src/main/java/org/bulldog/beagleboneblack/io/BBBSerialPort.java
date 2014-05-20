@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.ByteBuffer;
 
 import org.bulldog.beagleboneblack.jni.NativeSerial;
 import org.bulldog.beagleboneblack.jni.NativeTools;
@@ -16,6 +15,8 @@ import org.bulldog.core.io.SerialPort;
 public class BBBSerialPort implements SerialPort {
 
 	private static final String ERROR_CLOSING_PORT = "Port could not be closed. Invalid file descriptor?";
+	private static final String ERROR_PORT_NOT_OPEN = "Serial port is not open!";
+	private static final String ERROR_PORT_ALREADY_OPEN = "Serial port has already been opened! Please close it first and reopen it!";
 	
 	private static final int DEFAULT_BAUD_RATE = 9600;
 	private static final int DEFAULT_READ_TIMEOUT = 5;
@@ -29,6 +30,7 @@ public class BBBSerialPort implements SerialPort {
 	private FileDescriptor streamDescriptor;
 	private OutputStream outputStream;
 	private InputStream inputStream;
+	private boolean blocking = true;
 	
 	public BBBSerialPort(String filename) {
 		this.deviceFilePath = filename;
@@ -49,7 +51,7 @@ public class BBBSerialPort implements SerialPort {
 	}
 	
 	public void open() throws IOException {
-		fileDescriptor = NativeSerial.serialOpen(deviceFilePath, baudRate, getParityCode(), false, DEFAULT_READ_TIMEOUT);
+		fileDescriptor = NativeSerial.serialOpen(deviceFilePath, baudRate, getParityCode(), getBlocking(), DEFAULT_READ_TIMEOUT);
 		streamDescriptor = NativeTools.getJavaDescriptor(fileDescriptor);
 		outputStream = new FileOutputStream(streamDescriptor);
 		inputStream = new FileInputStream(streamDescriptor);
@@ -93,20 +95,36 @@ public class BBBSerialPort implements SerialPort {
 	}
 
 	public void writeByte(byte data) throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
+		}
+		
 		NativeSerial.serialWrite(fileDescriptor, data);
 	}
 
 	public byte readByte() throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
+		}
+		
 		return NativeSerial.serialRead(fileDescriptor);
 	}
 	
 	@Override
 	public void writeBytes(byte[] bytes) throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
+		}
+		
 		outputStream.write(bytes);
 	}
 
 	@Override
 	public int readBytes(byte[] buffer) throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
+		}
+		
 		return inputStream.read(buffer);
 	}
 
@@ -129,6 +147,10 @@ public class BBBSerialPort implements SerialPort {
 
 	@Override
 	public void setBaudRate(int baudRate) {
+		if(isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_ALREADY_OPEN);
+		}
+		
 		this.baudRate = baudRate;
 	}
 
@@ -139,16 +161,42 @@ public class BBBSerialPort implements SerialPort {
 
 	@Override
 	public void setParity(Parity parity) {
+		if(isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_ALREADY_OPEN);
+		}
+		
 		this.parity = parity;
+	}
+	
+	@Override
+	public void setBlocking(boolean blocking) {
+		if(isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_ALREADY_OPEN);
+		}
+		
+		this.blocking = blocking;
+	}
+
+	@Override
+	public boolean getBlocking() {
+		return blocking;
 	}
 
 	@Override
 	public OutputStream getOutputStream() throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
+		}
+		
 		return outputStream;
 	}
 
 	@Override
 	public InputStream getInputStream() throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
+		}
+		
 		return inputStream;
 	}
 	
@@ -177,5 +225,7 @@ public class BBBSerialPort implements SerialPort {
 			return false;
 		return true;
 	}
+
+
 
 }

@@ -75,7 +75,7 @@ int serialOpen(char* portname, int baud, int parity, int blocking, int readTimeo
 	serialSetAttributes(fd, baud, parity, readTimeout);
 	serialSetBlocking(fd, blocking, readTimeout);
 
-	return 0;
+	return fd;
 }
 
 int serialOpenSimple(char* portname, int baud) {
@@ -86,7 +86,7 @@ int serialClose(int fd) {
 	return close(fd);
 }
 
-int serialWrite(int fileDescriptor, unsigned char data) {
+int serialWriteCharacter(int fileDescriptor, unsigned char data) {
 	return write(fileDescriptor, &data, 1);
 }
 
