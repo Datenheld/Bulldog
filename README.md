@@ -15,7 +15,7 @@ Bulldog provides GPIO and low-level IO capabilities for embedded linux systems. 
   DigitalInput input = board.getPin("P8_11").as(DigitalInput.class);
 ```
 
-See the bulldog.examples project to get an idea.
+See the __bulldog.examples__ project to get an idea.
 
 That way, the responsibilities are encapsulated and we don't have a Pin-Class that takes too many responsibilities. It is also easily extensible.
 
@@ -42,6 +42,8 @@ It will produce a single jar called bulldog-beagleboneblack.jar and a native lib
 **Usage :**
 
 You can just reference the jar in your classpath. Make sure the native library (libbulldog-linux.so) is in the same directory as the jar.
+
+For API usage see the __bulldog.examples__ project.
 
 
 **External reference :**
