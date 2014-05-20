@@ -5,7 +5,7 @@ Bulldog is a GPIO API for the Beaglebone Black written in Java.
 
 It is currently under development, but many features are already usable. If you're interested in the sources, visit the Devline1 branch. Yet, it is far from being a fully fledged API.
 
-** Itention **
+** Itention :**
 Bulldog provides GPIO and low-level IO capabilities for embedded linux systems. It currently only supports the BeagleBone Black but is written with portability in mind.
 
 It's major concept for GPIO is the PinFeature API.
@@ -17,7 +17,7 @@ See the bulldog.examples project to get an idea.
 
 That way, the responsibilities are encapsulated and we don't have a Pin-Class that takes too many responsibilities. It is also easily extensible.
 
-** Supports **
+** Supports :**
 Bulldog currently supports the following features on the BeagleBoneBlack:
  1. Digital Input/Output on Pins
  2. Native Interrupts via epoll (easily usable on DigitalInputs)
@@ -27,7 +27,7 @@ Bulldog currently supports the following features on the BeagleBoneBlack:
  6. All UARTs (including dynamic setup via capemgr)
  7. A few devices: Simple button API, Incremental Rotary Encoder, Servos
 
-**Build**
+**Build :**
     You'll need gradle installed and a cross compiler for arm. You'll have to adjust the toolchain path in bulldog.build/gradle.properties
     Afterwards, just run this command to build the Beaglebone Black distribution
     #gradle bulldogSharedLibrary build bbbSingleJar
