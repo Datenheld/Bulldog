@@ -1,0 +1,92 @@
+apply plugin: 'c'
+
+model {
+    toolChains {
+		   gcc(Gcc) {
+	              path System.properties['org.bulldog.gcc.arm.root']
+	              cCompiler.executable = System.properties['org.bulldog.gcc.arm.ccompiler']
+            	  cppCompiler.executable = System.properties['org.bulldog.gcc.arm.cppcompiler']
+            	  linker.executable = System.properties['org.bulldog.gcc.arm.linker']
+            	  assembler.executable = System.properties['org.bulldog.gcc.arm.assembler']
+            	  staticLibArchiver.executable = System.properties['org.bulldog.gcc.arm.archiver']
+	              addPlatformConfiguration(new ArmArchitecture())
+	        }
+    }
+    
+    platforms {
+        arm {
+            architecture "arm"
+            operatingSystem "linux"
+        }
+    }
+}
+
+sources {
+    bulldog {
+        c {
+            source {
+                srcDir "./src/main/c"
+                include "**/*.c"
+            }
+            
+            exportedHeaders {
+            	srcDirs "../src/main/c/"
+            	include '**/*.h'
+            }
+        }
+    }   
+}
+
+libraries() {
+	bulldog() {
+		binaries.withType(SharedLibraryBinary) {
+          	sharedLibraryFile = new File(sharedLibraryFile.parent, "libbulldog-linux.so")
+        }
+        
+        binaries.all {
+        	 tasks.withType(CCompile) {
+                    includes.from(System.properties['org.bulldog.jdk.arm.includes'])
+                    includes.from(System.properties['org.bulldog.jdk.arm.includes.linux'])
+                    includes.from(System.properties['org.bulldog.gcc.arm.includes'])
+                }
+        }
+	}	
+}
+
+class ArmArchitecture implements TargetPlatformConfiguration {
+
+	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline"]
+	def linkerArgs =  ["--gc-sections", "-shared"]
+
+    boolean supportsPlatform(Platform element) {
+    	return true
+    }
+
+    List<String> getCppCompilerArgs() {
+       compilerArgs
+    }
+
+    List<String> getCCompilerArgs() {
+       compilerArgs
+    }
+
+    List<String> getObjectiveCCompilerArgs() {
+        []
+    }
+
+    List<String> getObjectiveCppCompilerArgs() {
+        []
+    }
+
+    List<String> getAssemblerArgs() {
+        []
+    }
+
+    List<String> getLinkerArgs() {
+       linkerArgs
+    }
+
+    List<String> getStaticLibraryArchiverArgs() {
+        []
+    }
+}

@@ -2,11 +2,13 @@ def javaProjects = [
 					project(":bulldog.core"), 
 					project(":bulldog.devices"), 
 					project(":bulldog.examples"), 
+					project(":bulldog.linux"),
 					project(":bulldog.beagleboneblack")
+					
 				   ]
 
 def nativeProjects = [
-						project(":bulldog.beagleboneblack.platform")
+						project(":bulldog.linux.native")
 					 ]
 
 
@@ -49,7 +51,7 @@ configure(javaProjects) {
 }
 
 task bbbSingleJar(type: Jar, dependsOn: subprojects.assemble) { 
-    baseName = 'bulldog-beagleboneblack' 
+     baseName = 'bulldog-beagleboneblack' 
      manifest { 
      	attributes 'Main-Class': 'org.bulldog.examples.App' 
      }

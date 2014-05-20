@@ -1,11 +1,11 @@
 package org.bulldog.beagleboneblack.gpio;
 
-import org.bulldog.beagleboneblack.jni.NativeEpoll;
-import org.bulldog.beagleboneblack.jni.NativePollResult;
 import org.bulldog.core.Edge;
 import org.bulldog.core.gpio.DigitalInput;
 import org.bulldog.core.gpio.event.InterruptEventArgs;
 import org.bulldog.core.util.BulldogUtil;
+import org.bulldog.linux.jni.NativeEpoll;
+import org.bulldog.linux.jni.NativePollResult;
 
 public class BBBPinInterruptControl implements Runnable {
 

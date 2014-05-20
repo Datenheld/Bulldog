@@ -1,4 +1,5 @@
 dependencies {
     compile project(':bulldog.core')
-    runtime fileTree(dir: project(':bulldog.beagleboneblack.platform').buildDir, include: '**/*.so')
+    compile project(':bulldog.linux')
+    runtime fileTree(dir: project(':bulldog.linux.native').buildDir, include: '**/*.so')
 }

@@ -8,8 +8,9 @@ import org.bulldog.core.io.uart.UartPort;
 import org.bulldog.core.io.uart.UartRx;
 import org.bulldog.core.io.uart.UartSignalType;
 import org.bulldog.core.io.uart.UartTx;
+import org.bulldog.linux.io.LinuxSerialPort;
 
-public class BBBUartPort extends BBBSerialPort implements UartPort {
+public class BBBUartPort extends LinuxSerialPort implements UartPort {
 	
 	private Pin rxPin;
 	private Pin txPin;
@@ -44,6 +45,7 @@ public class BBBUartPort extends BBBSerialPort implements UartPort {
 	public void setup() {
 		if(setupInProgress) { return; }
 		setupInProgress = true;
+		System.out.println("CREATING SLOT");
 		sysFs.createSlotIfNotExists(getSlotName());
 		if(getRx() != null) {
 			getRx().activateFeature(UartTx.class);

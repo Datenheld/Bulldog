@@ -1,1 +1,1 @@
-includeFlat "bulldog.core", "bulldog.devices", "bulldog.examples", "bulldog.beagleboneblack", "bulldog.beagleboneblack.platform"
+includeFlat "bulldog.core", "bulldog.devices", "bulldog.examples","bulldog.linux.native", "bulldog.linux", "bulldog.beagleboneblack" 

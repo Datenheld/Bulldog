@@ -1,13 +1,11 @@
 package org.bulldog.beagleboneblack;
 
 import java.io.File;
-import java.security.CodeSource;
 
 import org.bulldog.beagleboneblack.gpio.BBBAnalogInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalOutput;
 import org.bulldog.beagleboneblack.gpio.BBBPwm;
-import org.bulldog.beagleboneblack.io.BBBI2cBus;
 import org.bulldog.beagleboneblack.io.BBBUartPort;
 import org.bulldog.beagleboneblack.sysfs.SysFs;
 import org.bulldog.core.gpio.Pin;
@@ -18,6 +16,8 @@ import org.bulldog.core.gpio.event.ActivationListener;
 import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.platform.AbstractBoard;
 import org.bulldog.core.platform.Board;
+import org.bulldog.linux.io.LinuxI2cBus;
+import org.bulldog.linux.util.LinuxLibraryLoader;
 
 public class BeagleBoneBlack extends AbstractBoard implements ActivationListener {
 	
@@ -158,7 +158,7 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		for(int i = 0; i < 3; i++) {
 			File i2cDevice = new File("/dev/i2c-" + i);
 			if(i2cDevice.exists()) {
-				I2cBus bus = new BBBI2cBus(i2cDevice.getAbsolutePath());
+				I2cBus bus = new LinuxI2cBus(i2cDevice.getAbsolutePath());
 				if(!getI2cBuses().contains(bus)) {
 					getI2cBuses().add(bus);
 				}
@@ -234,26 +234,8 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 	}
 	
 	private static BeagleBoneBlack createBoardImpl() {
-		String codeDirectory =  getJarFileDirectory();
-		File file = new File(codeDirectory + "/libbulldog-beagleboneblack.so");
-		if(file.exists()) {
-			System.load(file.getAbsolutePath());
-		}  else {
-			System.loadLibrary("bulldog-beagleboneblack");
-		}
-		
+		LinuxLibraryLoader.loadNativeLibrary();
 		return new BeagleBoneBlack();
-	}
-
-	private static String getJarFileDirectory() {
-		try {
-			CodeSource codeSource = BeagleBoneBlack.class.getProtectionDomain().getCodeSource();
-			File jarFile = new File(codeSource.getLocation().toURI().getPath());
-			String jarDir = jarFile.getParentFile().getPath();
-			return jarDir;
-		} catch(Exception ex) {
-			return null;
-		}
 	}
 	
 	public void loadSlot(String deviceId) {

@@ -18,6 +18,7 @@ import org.bulldog.devices.switches.Button;
 import org.bulldog.devices.switches.ButtonListener;
 import org.bulldog.devices.switches.IncrementalRotaryEncoder;
 import org.bulldog.devices.switches.RotaryEncoderListener;
+import org.bulldog.linux.io.LinuxSerialPort;
 
 /**
  * Hello world!
@@ -39,6 +40,7 @@ public class App
     		BufferedReader reader = new BufferedReader(new InputStreamReader(serial.getInputStream()));
     		System.out.println(reader.readLine());
     	}
+    	
     	
     	final DigitalInput interrupt = board.getPin("P8", 11).as(DigitalInput.class);
     	final DigitalInput interrupt2 = board.getPin("P8", 12).as(DigitalInput.class);
