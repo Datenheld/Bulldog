@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.bulldog.beagleboneblack.BBBNames;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalInput;
 import org.bulldog.core.gpio.Pwm;
@@ -30,7 +31,7 @@ public class App
     	
     	//I2CLcd lcd = new I2CLcd(board.getI2cBuses().get(1), 0x20);
     	//lcd.write("Hello World");
-    	SerialPort serial = board.getSerialPorts().get(2);
+    	SerialPort serial = board.getSerialPort(BBBNames.UART2);
     	serial.setBaudRate(9600);
     	serial.setBlocking(true);
     	serial.open();

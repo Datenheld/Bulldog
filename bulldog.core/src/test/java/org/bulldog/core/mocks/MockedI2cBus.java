@@ -1,7 +1,7 @@
 package org.bulldog.core.mocks;
 
 import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.io.bus.I2cBus;
+import org.bulldog.core.io.bus.i2c.I2cBus;
 
 public class MockedI2cBus extends MockedBus implements I2cBus {
 

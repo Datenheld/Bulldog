@@ -18,7 +18,7 @@ public class ButtonExample {
     	Board board = Platform.createBoard();
     	
     	//Set up a digital input
-    	DigitalInput buttonSignal = board.getPinByName("P8_12").as(DigitalInput.class);
+    	DigitalInput buttonSignal = board.getPin("P8_12").as(DigitalInput.class);
     		
     	//Create the button with this DigitalInput
     	Button button = new Button(buttonSignal, Signal.Low);

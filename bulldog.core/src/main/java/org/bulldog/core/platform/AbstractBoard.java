@@ -6,7 +6,7 @@ import java.util.List;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.IOPort;
 import org.bulldog.core.io.SerialPort;
-import org.bulldog.core.io.bus.I2cBus;
+import org.bulldog.core.io.bus.i2c.I2cBus;
 
 public abstract class AbstractBoard implements Board {
 
@@ -18,7 +18,7 @@ public abstract class AbstractBoard implements Board {
 		return  pins;
 	}
 
-	public Pin getPinByAddress(int address) {
+	public Pin getPin(int address) {
 		for(Pin pin : getPins()) {
 			if(pin.getAddress() == address) {
 				return pin;
@@ -41,7 +41,7 @@ public abstract class AbstractBoard implements Board {
 		return null;
 	}
 
-	public Pin getPinByName(String name) {
+	public Pin getPin(String name) {
 		if(name == null) 	{ throw new IllegalArgumentException("Null may not be passed as a name for a pin."); }
 		
 		for(Pin pin : getPins()) {
@@ -64,15 +64,7 @@ public abstract class AbstractBoard implements Board {
 		
 		return null;
 	}
-	
-	public List<I2cBus> getI2cBuses() {
-		return i2cBuses;
-	}
-	
-	public List<SerialPort> getSerialPorts() {
-		return serialBuses;
-	}
-	
+		
 	public IOPort getIOPortByAlias(String alias) {
 		if(alias == null) 	{ throw new IllegalArgumentException("Null may not be passed as an alias name for an IOPort."); }
 	
@@ -102,6 +94,22 @@ public abstract class AbstractBoard implements Board {
 		ioPorts.addAll(getI2cBuses());
 		ioPorts.addAll(getSerialPorts());
 		return ioPorts;
+	}
+	
+	public List<I2cBus> getI2cBuses() {
+		return i2cBuses;
+	}
+	
+	public List<SerialPort> getSerialPorts() {
+		return serialBuses;
+	}
+	
+	public SerialPort getSerialPort(String name) {
+		return (SerialPort)this.getIOPortByName(name);
+	}
+	
+	public I2cBus getI2cBus(String name) {
+		return (I2cBus)this.getIOPortByName(name);
 	}
 	
 	public abstract String getName();

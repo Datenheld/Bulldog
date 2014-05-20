@@ -4,7 +4,7 @@ import junit.framework.Assert;
 
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.IOPort;
-import org.bulldog.core.io.bus.I2cBus;
+import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.mocks.MockedBoard;
 import org.junit.Test;
 
@@ -16,23 +16,23 @@ public class TestAbstractBoard {
 	public void testGetPinByName() {
 		MockedBoard board = new MockedBoard();
 		
-		Pin availablePin = board.getPinByName("P4");
+		Pin availablePin = board.getPin("P4");
 		Assert.assertNotNull(availablePin);
 		Assert.assertEquals("P4", availablePin.getName());
 		
-		Pin nonExistentPin = board.getPinByName("P11");
+		Pin nonExistentPin = board.getPin("P11");
 		Assert.assertNull(nonExistentPin);
 		
-		nonExistentPin = board.getPinByName("Chewbacca");
+		nonExistentPin = board.getPin("Chewbacca");
 		Assert.assertNull(nonExistentPin);
 		
 		for(Pin pin : board.getPins()) {
-			Pin crossCheck = board.getPinByName(pin.getName());
+			Pin crossCheck = board.getPin(pin.getName());
 			Assert.assertSame(pin, crossCheck);
 		}
 		
 		try {
-			board.getPinByName(null);
+			board.getPin(null);
 			Assert.fail();
 		} catch(IllegalArgumentException ex) {}
 	}
@@ -115,18 +115,18 @@ public class TestAbstractBoard {
 	public void testGetPinByAdress() {
 		MockedBoard board = new MockedBoard();
 		
-		Pin availablePin = board.getPinByAddress(0);
+		Pin availablePin = board.getPin(0);
 		Assert.assertNotNull(availablePin);
 		Assert.assertEquals(0, availablePin.getAddress());
 		
-		Pin nonExistentPin = board.getPinByAddress(-1);
+		Pin nonExistentPin = board.getPin(-1);
 		Assert.assertNull(nonExistentPin);
 		
-		nonExistentPin = board.getPinByAddress(11);
+		nonExistentPin = board.getPin(11);
 		Assert.assertNull(nonExistentPin);
 		
 		for(Pin pin : board.getPins()) {
-			Pin crossCheck = board.getPinByAddress(pin.getAddress());
+			Pin crossCheck = board.getPin(pin.getAddress());
 			Assert.assertSame(pin, crossCheck);
 		}
 	}

@@ -8,15 +8,14 @@ import org.bulldog.beagleboneblack.gpio.BBBDigitalInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalOutput;
 import org.bulldog.beagleboneblack.gpio.BBBPwm;
 import org.bulldog.beagleboneblack.io.BBBI2cBus;
-import org.bulldog.beagleboneblack.io.BBBSerialPort;
+import org.bulldog.beagleboneblack.io.BBBUartPort;
 import org.bulldog.beagleboneblack.sysfs.SysFs;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.PinFeature;
 import org.bulldog.core.gpio.base.AbstractPwm;
 import org.bulldog.core.gpio.event.ActivationEventArgs;
 import org.bulldog.core.gpio.event.ActivationListener;
-import org.bulldog.core.io.SerialPort;
-import org.bulldog.core.io.bus.I2cBus;
+import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.platform.AbstractBoard;
 import org.bulldog.core.platform.Board;
 
@@ -25,7 +24,7 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 	private static BeagleBoneBlack instance;
 	private static final String NAME = "BeagleBone Black";
 	private SysFs sysFs = new SysFs();
-		
+	
 	private BeagleBoneBlack() {
 		createPins();
 		createBuses();
@@ -112,17 +111,23 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		getPins().add(createDigitalIOPin("P9_41",	"GPIO0_20",	0,	20,	"P9",	31));
 		getPins().add(createDigitalIOPin("P9_42",	"GPIO0_7",	0,	 7,	"P9",	31));
 		
+		getPins().add(new BeagleBonePin("J1_1", "UART01", 0, 0, "J1", 1));
+		getPins().add(new BeagleBonePin("J1_2", "UART01", 0, 0, "J1", 2));
+		getPins().add(new BeagleBonePin("J1_3", "UART01", 0, 0, "J1", 3));
+		getPins().add(new BeagleBonePin("J1_4", "UART01", 0, 0, "J1", 4));
+		getPins().add(new BeagleBonePin("J1_5", "UART01", 0, 0, "J1", 5));
+		getPins().add(new BeagleBonePin("J1_6", "UART01", 0, 0, "J1", 6));
 		
-		addPwmToPin(getPinByName("P8_13"));
-		addPwmToPin(getPinByName("P8_19"));
-		addPwmToPin(getPinByName("P8_45"));
-		addPwmToPin(getPinByName("P8_46"));
-		addPwmToPin(getPinByName("P9_14"));
-		addPwmToPin(getPinByName("P9_16"));
-		addPwmToPin(getPinByName("P9_21"));
-		addPwmToPin(getPinByName("P9_22"));
-		addPwmToPin(getPinByName("P9_29"));
-		addPwmToPin(getPinByName("P9_31"));
+		addPwmToPin(getPin("P8_13"));
+		addPwmToPin(getPin("P8_19"));
+		addPwmToPin(getPin("P8_45"));
+		addPwmToPin(getPin("P8_46"));
+		addPwmToPin(getPin("P9_14"));
+		addPwmToPin(getPin("P9_16"));
+		addPwmToPin(getPin("P9_21"));
+		addPwmToPin(getPin("P9_22"));
+		addPwmToPin(getPin("P9_29"));
+		addPwmToPin(getPin("P9_31"));
 	}
 
 	private Pin createDigitalIOPin(String name, String internalName, int bank, int pinIndex, String port, int portIndex) {
@@ -162,15 +167,12 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 	}
 
 	private void detectSerialPorts() {
-		for(int i = 0; i < 6; i++) {
-			File serialDevice = new File("/dev/ttyO" + i);
-			if(serialDevice.exists()) {
-				SerialPort port = new BBBSerialPort(serialDevice.getAbsolutePath());
-				if(!getSerialPorts().contains(port)) {
-					getSerialPorts().add(port);
-				}
-			}
-		}
+		getSerialPorts().add(new BBBUartPort(BBBNames.UART0, "/dev/ttyO0", "BB-UART0", null, null));
+		getSerialPorts().add(new BBBUartPort(BBBNames.UART1, "/dev/ttyO1", "BB-UART1", getPin("P9", 26), getPin("P9", 24)));
+		getSerialPorts().add(new BBBUartPort(BBBNames.UART2, "/dev/ttyO2", "BB-UART2", getPin("P9", 21), getPin("P9", 22)));
+		getSerialPorts().add(new BBBUartPort(BBBNames.UART3, "/dev/ttyO3", "BB-UART3", null, getPin("P9", 42)));
+		getSerialPorts().add(new BBBUartPort(BBBNames.UART4, "/dev/ttyO4", "BB-UART4", getPin("P9", 11), getPin("P9", 13)));
+		getSerialPorts().add(new BBBUartPort(BBBNames.UART5, "/dev/ttyO5", "BB-UART5", getPin("P8", 38), getPin("P8", 37)));
 	}
 
 	@Override
@@ -185,13 +187,13 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		
 		if(feature instanceof AbstractPwm) {
 			if(pin.getAddress() == 23) {
-				if(getPinByAddress(22).getActiveFeature() instanceof AbstractPwm) {
+				if(getPin(22).getActiveFeature() instanceof AbstractPwm) {
 					throw new UnsupportedOperationException("You can have either EHRPWM2A or EHRPWM2B activated, not both :-(");
 				}
 			}
 			
 			if(pin.getAddress() == 22) {
-				if(getPinByAddress(23).getActiveFeature() instanceof AbstractPwm) {
+				if(getPin(23).getActiveFeature() instanceof AbstractPwm) {
 					throw new UnsupportedOperationException("You can have either EHRPWM2A or EHRPWM2B activated, not both :-(");
 				}
 			}	

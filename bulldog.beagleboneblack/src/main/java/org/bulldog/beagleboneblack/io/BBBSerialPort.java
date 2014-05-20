@@ -32,6 +32,7 @@ public class BBBSerialPort implements SerialPort {
 	private InputStream inputStream;
 	private boolean blocking = true;
 	
+	
 	public BBBSerialPort(String filename) {
 		this.deviceFilePath = filename;
 	}
@@ -115,7 +116,7 @@ public class BBBSerialPort implements SerialPort {
 		if(!isOpen()) {
 			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
 		}
-		
+
 		outputStream.write(bytes);
 	}
 
@@ -127,8 +128,9 @@ public class BBBSerialPort implements SerialPort {
 		
 		return inputStream.read(buffer);
 	}
+	
 
-	public String getName() {
+	public String getDeviceFilePath() {
 		return deviceFilePath;
 	}
 
@@ -217,7 +219,7 @@ public class BBBSerialPort implements SerialPort {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BBBSerialPort other = (BBBSerialPort) obj;
+		BBBSerialPort other = (BBBUartPort) obj;
 		if (deviceFilePath == null) {
 			if (other.deviceFilePath != null)
 				return false;
@@ -226,6 +228,8 @@ public class BBBSerialPort implements SerialPort {
 		return true;
 	}
 
-
-
+	@Override
+	public String getName() {
+		return deviceFilePath;
+	}
 }

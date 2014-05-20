@@ -9,7 +9,7 @@ import org.bulldog.beagleboneblack.jni.NativeI2c;
 import org.bulldog.beagleboneblack.jni.NativeTools;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.bus.BusConnection;
-import org.bulldog.core.io.bus.I2cBus;
+import org.bulldog.core.io.bus.i2c.I2cBus;
 
 public class BBBI2cBus implements I2cBus {
 	
