@@ -10,8 +10,8 @@ Bulldog provides GPIO and low-level IO capabilities for embedded linux systems. 
 
 It's major concept for GPIO is the PinFeature API.
 
-# DigitalOutput output = board.getPin("P8_12").as(DigitalOutput.class);
-# DigitalInput input = board.getPin("P8_11").as(DigitalInput.class);
+ # DigitalOutput output = board.getPin("P8_12").as(DigitalOutput.class);
+ # DigitalInput input = board.getPin("P8_11").as(DigitalInput.class);
 
 See the bulldog.examples project to get an idea.
 
