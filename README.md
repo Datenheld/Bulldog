@@ -27,7 +27,7 @@ Bulldog currently supports the following features on the BeagleBoneBlack:
  3. Native PWM
  4. Native ADC
  5. I2c
- 6. All UARTs (including dynamic setup via capemgr)
+ 6. All UARTs (including dynamic setup via capemgr on request)
  7. A few devices: Simple button API, Incremental Rotary Encoder, Servos
 
 **Build :**
@@ -41,7 +41,7 @@ It will produce a single jar called bulldog-beagleboneblack.jar and a native lib
     
 **Usage :**
 
-You can just reference the jar in your classpath. Make sure the native library (libbulldog-linux.so) is in the same directory as the jar.
+You can just reference the jar in your classpath. Make sure the native library (libbulldog-linux.so) is in the same directory as the jar. You can find the most recent binaries in the ```dist``` directory.
 
 For API usage see the __bulldog.examples__ project.
 
