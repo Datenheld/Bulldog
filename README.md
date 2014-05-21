@@ -35,7 +35,7 @@ Bulldog currently supports the following features on the BeagleBoneBlack:
 You'll need gradle installed and a cross compiler for arm. You'll have to adjust the toolchain path in bulldog.build/gradle.properties
 Afterwards, just run this command to build the Beaglebone Black distribution 
 ```java
-   gradle bulldogSharedLibrary build bbbSingleJar
+   gradle bulldogSharedLibrary build bbbDistro
 ```
 It will produce a single jar called ```bulldog-beagleboneblack.jar``` and a native library called ```libbulldog-linux.so```. The latter can be found in the bulldog.linux.native build directory. Alternatively, you can find them prebuilt in the ```dist``` directory.
     
