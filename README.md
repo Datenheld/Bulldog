@@ -37,11 +37,11 @@ Afterwards, just run this command to build the Beaglebone Black distribution
 ```java
    gradle bulldogSharedLibrary build bbbSingleJar
 ```
-It will produce a single jar called bulldog-beagleboneblack.jar and a native library called ```libbulldog-linux.so```. The latter can be found in the bulldog.linux.native build directory.
+It will produce a single jar called ```bulldog-beagleboneblack.jar``` and a native library called ```libbulldog-linux.so```. The latter can be found in the bulldog.linux.native build directory. You can find them prebuilt in the ```dist``` directory.
     
 **Usage :**
 
-You can just reference the jar in your classpath. Make sure the native library (libbulldog-linux.so) is in the same directory as the jar. You can find the most recent binaries in the ```dist``` directory.
+You can just reference the jar in your classpath. Make sure the native library (```libbulldog-linux.so```) is in the same directory as ```bulldog-beagleboneblack.jar```. You can find the most recent binaries in the ```dist``` directory.
 
 For API usage see the __bulldog.examples__ project.
 
