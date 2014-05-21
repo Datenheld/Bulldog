@@ -15,6 +15,7 @@ def nativeProjects = [
 
 def bulldogVersion = '0.1'
 
+beagleBoneBlackDistro = new File('../dist/beagleboneblack')
 
 configure(nativeProjects) {
 	apply from: new File(project.projectDir, 'build.gradle')
@@ -50,7 +51,7 @@ configure(javaProjects) {
     }	
 }
 
-task bbbSingleJar(type: Jar, dependsOn: subprojects.assemble) { 
+task beagleboneblackSingleJar(type: Jar, dependsOn: subprojects.assemble) { 
      baseName = 'bulldog-beagleboneblack' 
      manifest { 
      	attributes 'Main-Class': 'org.bulldog.examples.App' 
@@ -61,4 +62,11 @@ task bbbSingleJar(type: Jar, dependsOn: subprojects.assemble) {
     	from project.configurations.default.allArtifacts.files.collect { zipTree(it) } 
 	}	
 	 
+}
+
+task bbbDistro(type: Copy, dependsOn: beagleboneblackSingleJar) {
+    beagleBoneBlackDistro.mkdirs()
+    FileCollection collection = files('bulldog-beagleboneblack.jar', '../bulldog.linux.native/build/binaries/bulldogSharedLibrary/libbulldog-linux.so')
+    from collection
+    into beagleBoneBlackDistro
 }
