@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.IOPort;
-import org.bulldog.core.io.SerialPort;
 import org.bulldog.core.io.bus.i2c.I2cBus;
+import org.bulldog.core.io.serial.SerialPort;
 
 public interface Board {
 

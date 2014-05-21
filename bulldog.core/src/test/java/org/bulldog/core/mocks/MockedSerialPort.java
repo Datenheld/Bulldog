@@ -1,7 +1,8 @@
 package org.bulldog.core.mocks;
 
 import org.bulldog.core.Parity;
-import org.bulldog.core.io.SerialPort;
+import org.bulldog.core.io.serial.SerialDataListener;
+import org.bulldog.core.io.serial.SerialPort;
 
 public class MockedSerialPort extends MockedBus implements SerialPort {
 	
@@ -43,6 +44,18 @@ public class MockedSerialPort extends MockedBus implements SerialPort {
 	public boolean getBlocking() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void addListener(SerialDataListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeListener(SerialDataListener listener) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

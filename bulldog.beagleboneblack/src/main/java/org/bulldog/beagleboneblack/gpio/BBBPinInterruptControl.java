@@ -63,7 +63,7 @@ public class BBBPinInterruptControl implements Runnable {
 			if(results == null) { continue; }
 			
 			for(NativePollResult result : results) {
-				Edge edge = result.getEdge();
+				Edge edge = getEdge(result);
 				if(lastEdge != null && lastEdge.equals(edge)) { continue; }
 				
 				long delta = System.currentTimeMillis() - lastInterruptTime;
@@ -72,11 +72,20 @@ public class BBBPinInterruptControl implements Runnable {
 				}
 				
 				lastInterruptTime = System.currentTimeMillis();
-				lastEdge = result.getEdge();
+				lastEdge = edge;
 				interrupt.fireInterruptEvent(new InterruptEventArgs(edge));
 			}
 			
 		}
+	}
+	
+	private Edge getEdge(NativePollResult result) {
+		if(result.getData() == null) { return null; }
+		if(result.getDataAsString().charAt(0) == '1') {
+			return Edge.Rising;
+		} 
+		
+		return Edge.Falling;
 	}
 	
 	public void shutdown() {

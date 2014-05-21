@@ -1,5 +1,7 @@
 package org.bulldog.core.util;
 
+
+
 public class BulldogUtil {
 
 	public static void sleepMs(int ms) {
@@ -10,4 +12,19 @@ public class BulldogUtil {
 		}
 	}
 	
+	public static String bytesToString(byte[] bytes, String encoding)  {
+		if(bytes.length == 0) { return null; }
+		
+		try {
+			return new String(bytes, encoding);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+		return null;
+	}
+	
+	public static String bytesToString(byte[] bytes)  {
+		return bytesToString(bytes, "ASCII");
+	}
 }

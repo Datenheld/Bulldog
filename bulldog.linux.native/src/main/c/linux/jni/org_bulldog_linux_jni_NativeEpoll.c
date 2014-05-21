@@ -23,15 +23,14 @@ static int openWait(const char* filepath) {
 	return -1;
 }
 
-static const char* readData(int fd) {
-	char * buffer = malloc(sizeof(char) * 10);
+static int readData(int fd, char* buffer, int bufferSize) {
 	lseek(fd, 0, 0);
-	int size = read(fd, buffer, 1);
+	int size = read(fd, buffer, bufferSize);
 	if (size > 0) {
-		return buffer;
+		return size;
 	}
 
-	return NULL;
+	return 0;
 }
 
 /*
@@ -84,14 +83,17 @@ JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeEpoll_addFile(
  * Signature: (I)[Lorg/bulldog/beagleboneblack/jni/NativePollResult;
  */
 JNIEXPORT jobjectArray JNICALL Java_org_bulldog_linux_jni_NativeEpoll_waitForInterrupt(
-JNIEnv * env, jclass clazz, jint epollfd) {
+		JNIEnv * env, jclass clazz, jint epollfd) {
+
 	struct epoll_event* epoll_events;
 	int epollReturn = 0;
-	jclass nativePollResult = (*env)->FindClass(env,"org/bulldog/linux/jni/NativePollResult");
-	jmethodID constructor = (*env)->GetMethodID(env, nativePollResult, "<init>","(Ljava/lang/String;ILjava/lang/String;)V");
-	jobjectArray pollResults;
 	int pollSize = 0;
 	int arrayIndex = 0;
+
+	jclass nativePollResult = (*env)->FindClass(env,"org/bulldog/linux/jni/NativePollResult");
+	jmethodID constructor = (*env)->GetMethodID(env, nativePollResult, "<init>","(II[B)V");
+	jobjectArray pollResults;
+	jbyteArray fileData;
 
 	pollSize = 1;
 	epoll_events = malloc(sizeof(struct epoll_event));
@@ -104,10 +106,22 @@ JNIEnv * env, jclass clazz, jint epollfd) {
 
 	pollResults = (*env)->NewObjectArray(env, epollReturn, nativePollResult, NULL);
 	for (int i = 0; i < epollReturn; i++) {
-		jstring path =  (*env)->NewStringUTF(env,"Dummy");
 		int events = epoll_events->events;
-		jstring value = (*env)->NewStringUTF(env, readData(epoll_events[i].data.fd));
-		jobject aPollResult = (*env)->NewObject(env, nativePollResult, constructor, path, events, value);
+		char* buffer = malloc(1024 * sizeof(char));
+		int bytesRead = readData(epoll_events[i].data.fd, buffer, 1024);
+		if(bytesRead < 0) {
+			fileData = (*env)->NewByteArray(env, 0);
+		} else {
+			fileData = (*env)->NewByteArray(env, bytesRead);
+			 jbyte* bytes = (*env)->GetByteArrayElements(env, fileData, NULL);
+			 for(int k = 0; k < bytesRead; k++) {
+				 bytes[k] = buffer[k];
+			 }
+			 (*env)->SetByteArrayRegion(env, fileData, 0, bytesRead, bytes);
+		}
+
+
+		jobject aPollResult = (*env)->NewObject(env, nativePollResult, constructor, epoll_events[i].data.fd, events, fileData);
 		(*env)->SetObjectArrayElement(env, pollResults, arrayIndex, aPollResult);
 		arrayIndex++;
 	}

@@ -45,7 +45,6 @@ public class BBBUartPort extends LinuxSerialPort implements UartPort {
 	public void setup() {
 		if(setupInProgress) { return; }
 		setupInProgress = true;
-		System.out.println("CREATING SLOT");
 		sysFs.createSlotIfNotExists(getSlotName());
 		if(getRx() != null) {
 			getRx().activateFeature(UartTx.class);

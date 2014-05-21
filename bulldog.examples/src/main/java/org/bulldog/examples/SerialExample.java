@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import org.bulldog.beagleboneblack.BBBNames;
-import org.bulldog.core.io.SerialPort;
+import org.bulldog.core.io.serial.SerialPort;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
 

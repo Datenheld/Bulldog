@@ -6,9 +6,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import org.bulldog.core.Parity;
-import org.bulldog.core.io.SerialPort;
+import org.bulldog.core.io.serial.SerialDataListener;
+import org.bulldog.core.io.serial.SerialPort;
 import org.bulldog.linux.jni.NativeSerial;
 import org.bulldog.linux.jni.NativeTools;
 
@@ -31,10 +35,13 @@ public class LinuxSerialPort implements SerialPort {
 	private OutputStream outputStream;
 	private InputStream inputStream;
 	private boolean blocking = true;
+	private LinuxSerialPortListener listenerThread;
 	
+	private List<SerialDataListener> listeners = Collections.synchronizedList(new ArrayList<SerialDataListener>());
 	
 	public LinuxSerialPort(String filename) {
 		this.deviceFilePath = filename;
+		listenerThread = new LinuxSerialPortListener(this);
 	}
 	
 	private int getParityCode() {
@@ -57,6 +64,8 @@ public class LinuxSerialPort implements SerialPort {
 		outputStream = new FileOutputStream(streamDescriptor);
 		inputStream = new FileInputStream(streamDescriptor);
 		isOpen = true;
+		listenerThread.setup();
+		listenerThread.start();
 	}
 
 	public boolean isOpen() {
@@ -68,6 +77,8 @@ public class LinuxSerialPort implements SerialPort {
 			return;
 		}
 		
+		listenerThread.stop();
+		
 		try {
 			int returnValue = NativeSerial.serialClose(fileDescriptor);
 			if(returnValue < 0) {
@@ -76,6 +87,8 @@ public class LinuxSerialPort implements SerialPort {
 		} finally {
 			finalizeStreams();
 		}
+		
+		isOpen = false;
 	}
 	
 	private void finalizeStreams() throws IOException {
@@ -231,5 +244,23 @@ public class LinuxSerialPort implements SerialPort {
 	@Override
 	public String getName() {
 		return deviceFilePath;
+	}
+
+	@Override
+	public void addListener(SerialDataListener listener) {
+		this.listeners.add(listener);
+	}
+
+	@Override
+	public void removeListener(SerialDataListener listener) {
+		this.listeners.remove(listener);
+	}
+	
+	public void fireSerialDataEvent(byte[] data) {
+		synchronized(listeners) {
+			for(SerialDataListener listener : listeners) {
+				listener.onSerialDataAvailable(this, data);
+			}
+		}
 	}
 }

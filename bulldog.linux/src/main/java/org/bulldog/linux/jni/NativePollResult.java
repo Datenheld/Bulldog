@@ -1,15 +1,16 @@
 package org.bulldog.linux.jni;
 
-import org.bulldog.core.Edge;
+import org.bulldog.core.util.BulldogUtil;
+
 
 public class NativePollResult {
 
 	private int events;
-	private String filename;
-	private String data;
+	private int fd;
+	private byte[] data;
 	
-	public NativePollResult(String filename, int events, String data) {
-		this.filename = filename;
+	public NativePollResult(int fd, int events, byte[] data) {
+		this.fd = fd;
 		this.events = events;
 		this.data = data;
 	}
@@ -17,22 +18,17 @@ public class NativePollResult {
 	public int getEvents() {
 		return events;
 	}
-	
-	public String getFilename() {
-		return filename;
+
+	public int getFileDescriptor() {
+		return fd;
 	}
 	
-	public String getData() {
+	public byte[] getData() {
 		return data;
 	}
-	
-	public Edge getEdge() {
-		if(getData() == null) { return null; }
-		if(getData().charAt(0) == '1') {
-			return Edge.Rising;
-		} 
-		
-		return Edge.Falling;
+
+	public String getDataAsString() {
+		return BulldogUtil.bytesToString(getData());
 	}
 }
 

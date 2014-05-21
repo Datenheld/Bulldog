@@ -1,6 +1,7 @@
-package org.bulldog.core.io;
+package org.bulldog.core.io.serial;
 
 import org.bulldog.core.Parity;
+import org.bulldog.core.io.IOPort;
 
 public interface SerialPort extends IOPort {
 	
@@ -12,4 +13,7 @@ public interface SerialPort extends IOPort {
 	
 	void setBlocking(boolean blocking);
 	boolean getBlocking();
+	
+	void addListener(SerialDataListener listener);
+	void removeListener(SerialDataListener listener);
 }
