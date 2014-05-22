@@ -73,7 +73,7 @@ public class BBBPinInterruptControl implements Runnable {
 				
 				lastInterruptTime = System.currentTimeMillis();
 				lastEdge = edge;
-				interrupt.fireInterruptEvent(new InterruptEventArgs(edge));
+				interrupt.fireInterruptEvent(new InterruptEventArgs(interrupt.getPin(), edge));
 			}
 			
 		}

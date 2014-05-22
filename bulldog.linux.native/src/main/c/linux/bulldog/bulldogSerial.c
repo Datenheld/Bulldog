@@ -29,7 +29,7 @@ int serialSetAttributes(int fd, int speed, int parity, int readTimeout) {
 											  // no canonical processing
 	tty.c_oflag = 0;                		  // no remapping, no delays
 	tty.c_cc[VMIN] = 0;             		  // read doesn't block
-	tty.c_cc[VTIME] = readTimeout;            // 0.5 seconds read timeout
+	tty.c_cc[VTIME] = readTimeout;            // read timeout
 
 	tty.c_iflag &= ~(IXON | IXOFF | IXANY);   // shut off xon/xoff ctrl
 

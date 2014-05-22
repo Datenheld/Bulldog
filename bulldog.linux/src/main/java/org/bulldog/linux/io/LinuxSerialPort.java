@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.bulldog.core.Parity;
+import org.bulldog.core.io.serial.SerialDataEventArgs;
 import org.bulldog.core.io.serial.SerialDataListener;
 import org.bulldog.core.io.serial.SerialPort;
 import org.bulldog.linux.jni.NativeSerial;
@@ -259,7 +260,7 @@ public class LinuxSerialPort implements SerialPort {
 	public void fireSerialDataEvent(byte[] data) {
 		synchronized(listeners) {
 			for(SerialDataListener listener : listeners) {
-				listener.onSerialDataAvailable(this, data);
+				listener.onSerialDataAvailable(new SerialDataEventArgs(this, data));
 			}
 		}
 	}

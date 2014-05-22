@@ -6,6 +6,7 @@ import org.bulldog.beagleboneblack.BBBNames;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalInput;
 import org.bulldog.core.gpio.Pwm;
+import org.bulldog.core.io.serial.SerialDataEventArgs;
 import org.bulldog.core.io.serial.SerialDataListener;
 import org.bulldog.core.io.serial.SerialPort;
 import org.bulldog.core.platform.Board;
@@ -37,8 +38,8 @@ public class App
     	serial.addListener(new SerialDataListener() {
 
 			@Override
-			public void onSerialDataAvailable(SerialPort port, byte[] data) {
-				System.out.print(BulldogUtil.bytesToString(data));
+			public void onSerialDataAvailable(SerialDataEventArgs args) {
+				System.out.print(BulldogUtil.bytesToString(args.getData()));
 			}
     		
     	});

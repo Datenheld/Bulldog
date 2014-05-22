@@ -10,7 +10,7 @@ import org.bulldog.core.io.bus.BusConnection;
  * This class represents a HD44780 compatible lcd which is driven
  * in 4 BIT mode behind an I2C Port Expander.
  * 
- * @author Dave
+ * @author Datenheld
  *
  */
 public class I2CLcd extends AbstractLcd {
