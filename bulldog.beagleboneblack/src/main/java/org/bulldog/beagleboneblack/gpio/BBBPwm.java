@@ -30,6 +30,7 @@ public class BBBPwm extends AbstractPwm {
 		String deviceName = String.format(PWM_OCP_PATTERN, bbbPin.getPort(), bbbPin.getIndexOnPort());
 	 	File file = sysfsWrapper.findOcpDevice(deviceName);
 		sysFsPwm = new SysFsPwm(file.getAbsolutePath(), sysfsWrapper.getSlotNumber(deviceName));
+		sysFsPwm.setPolarity(Polarity.Negative);   //period to negative - that means the pulse will be high
 	}
 
 	public void teardown() {
@@ -42,11 +43,10 @@ public class BBBPwm extends AbstractPwm {
 	protected void setPwmImpl(float frequency, float duty) {
 		long period = (long) ((1.0 / frequency) * (float)NANOSECONDS_PER_SECOND);
 		long dutyCycle = (long) (period * duty);
-		sysFsPwm.setPolarity(Polarity.Negative);   //period to negative - that means the pulse will be high
 		sysFsPwm.setDuty(dutyCycle);
 		sysFsPwm.setPeriod(period);
 	}
-
+	
 	@Override
 	protected void enableImpl() {
 		sysFsPwm.enable();

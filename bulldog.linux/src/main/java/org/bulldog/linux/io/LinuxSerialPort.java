@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,6 +15,7 @@ import org.bulldog.core.Parity;
 import org.bulldog.core.io.serial.SerialDataEventArgs;
 import org.bulldog.core.io.serial.SerialDataListener;
 import org.bulldog.core.io.serial.SerialPort;
+import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.linux.jni.NativeSerial;
 import org.bulldog.linux.jni.NativeTools;
 
@@ -45,34 +47,14 @@ public class LinuxSerialPort implements SerialPort {
 		listenerThread = new LinuxSerialPortListener(this);
 	}
 	
-	private int getParityCode() {
-		if(parity == Parity.Even) {
-			return NativeSerial.PARENB;
-		} else if(parity == Parity.Odd) {
-			return NativeSerial.PARENB | NativeSerial.PARODD;
-		} else if(parity == Parity.Mark) {
-			return NativeSerial.PARENB | NativeSerial.PARODD | NativeSerial.CMSPAR;
-		} else if(parity == Parity.Space) {
-			return NativeSerial.PARENB | NativeSerial.CMSPAR;
+	@Override
+	public void addListener(SerialDataListener listener) {
+		this.listeners.add(listener);
+		if(!listenerThread.isRunning()) {
+			listenerThread.start();
 		}
-		
-		return 0;
 	}
 	
-	public void open() throws IOException {
-		fileDescriptor = NativeSerial.serialOpen(deviceFilePath, baudRate, getParityCode(), getBlocking(), DEFAULT_READ_TIMEOUT);
-		streamDescriptor = NativeTools.getJavaDescriptor(fileDescriptor);
-		outputStream = new FileOutputStream(streamDescriptor);
-		inputStream = new FileInputStream(streamDescriptor);
-		isOpen = true;
-		listenerThread.setup();
-		listenerThread.start();
-	}
-
-	public boolean isOpen() {
-		return isOpen;
-	}
-
 	public void close() throws IOException {
 		if(!isOpen()) {
 			return;
@@ -90,139 +72,6 @@ public class LinuxSerialPort implements SerialPort {
 		}
 		
 		isOpen = false;
-	}
-	
-	private void finalizeStreams() throws IOException {
-		if(inputStream != null) {
-			try {
-				inputStream.close();
-			} catch(Exception ex) {} 
-			finally { inputStream = null; }
-		}
-		
-		if(outputStream != null) {
-			try {
-				outputStream.close();
-				outputStream = null;
-			} catch(Exception ex) {}
-			finally { outputStream = null; }
-		}
-	}
-
-	public void writeByte(byte data) throws IOException {
-		if(!isOpen()) {
-			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
-		}
-		
-		NativeSerial.serialWrite(fileDescriptor, data);
-	}
-
-	public byte readByte() throws IOException {
-		if(!isOpen()) {
-			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
-		}
-		
-		return NativeSerial.serialRead(fileDescriptor);
-	}
-	
-	@Override
-	public void writeBytes(byte[] bytes) throws IOException {
-		if(!isOpen()) {
-			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
-		}
-
-		outputStream.write(bytes);
-	}
-
-	@Override
-	public int readBytes(byte[] buffer) throws IOException {
-		if(!isOpen()) {
-			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
-		}
-		
-		return inputStream.read(buffer);
-	}
-	
-
-	public String getDeviceFilePath() {
-		return deviceFilePath;
-	}
-
-	public String getAlias() {
-		return alias;
-	}
-
-	public void setAlias(String alias) {
-		this.alias = alias;
-	}
-	
-	@Override
-	public int getBaudRate() {
-		return this.baudRate;
-	}
-
-	@Override
-	public void setBaudRate(int baudRate) {
-		if(isOpen()) {
-			throw new IllegalStateException(ERROR_PORT_ALREADY_OPEN);
-		}
-		
-		this.baudRate = baudRate;
-	}
-
-	@Override
-	public Parity getParity() {
-		return this.parity;
-	}
-
-	@Override
-	public void setParity(Parity parity) {
-		if(isOpen()) {
-			throw new IllegalStateException(ERROR_PORT_ALREADY_OPEN);
-		}
-		
-		this.parity = parity;
-	}
-	
-	@Override
-	public void setBlocking(boolean blocking) {
-		if(isOpen()) {
-			throw new IllegalStateException(ERROR_PORT_ALREADY_OPEN);
-		}
-		
-		this.blocking = blocking;
-	}
-
-	@Override
-	public boolean getBlocking() {
-		return blocking;
-	}
-
-	@Override
-	public OutputStream getOutputStream() throws IOException {
-		if(!isOpen()) {
-			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
-		}
-		
-		return outputStream;
-	}
-
-	@Override
-	public InputStream getInputStream() throws IOException {
-		if(!isOpen()) {
-			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
-		}
-		
-		return inputStream;
-	}
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((deviceFilePath == null) ? 0 : deviceFilePath.hashCode());
-		return result;
 	}
 
 	@Override
@@ -242,26 +91,203 @@ public class LinuxSerialPort implements SerialPort {
 		return true;
 	}
 
-	@Override
-	public String getName() {
-		return deviceFilePath;
-	}
-
-	@Override
-	public void addListener(SerialDataListener listener) {
-		this.listeners.add(listener);
-	}
-
-	@Override
-	public void removeListener(SerialDataListener listener) {
-		this.listeners.remove(listener);
-	}
-	
 	public void fireSerialDataEvent(byte[] data) {
 		synchronized(listeners) {
 			for(SerialDataListener listener : listeners) {
 				listener.onSerialDataAvailable(new SerialDataEventArgs(this, data));
 			}
 		}
+	}
+	
+	public String getAlias() {
+		return alias;
+	}
+
+	@Override
+	public int getBaudRate() {
+		return this.baudRate;
+	}
+
+	@Override
+	public boolean getBlocking() {
+		return blocking;
+	}
+	
+	public String getDeviceFilePath() {
+		return deviceFilePath;
+	}
+
+	@Override
+	public InputStream getInputStream() throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
+		}
+		
+		return inputStream;
+	}
+	
+	@Override
+	public String getName() {
+		return deviceFilePath;
+	}
+
+	@Override
+	public OutputStream getOutputStream() throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
+		}
+		
+		return outputStream;
+	}
+
+	@Override
+	public Parity getParity() {
+		return this.parity;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((deviceFilePath == null) ? 0 : deviceFilePath.hashCode());
+		return result;
+	}
+
+	public boolean isOpen() {
+		return isOpen;
+	}
+
+	public void open() throws IOException {
+		fileDescriptor = NativeSerial.serialOpen(deviceFilePath, baudRate, getParityCode(), getBlocking(), DEFAULT_READ_TIMEOUT);
+		streamDescriptor = NativeTools.getJavaDescriptor(fileDescriptor);
+		outputStream = new FileOutputStream(streamDescriptor);
+		inputStream = new FileInputStream(streamDescriptor);
+		isOpen = true;
+		listenerThread.setup();
+		if(listeners.size() > 0) {
+			listenerThread.start();
+		}
+	}
+
+	public byte readByte() throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
+		}
+		
+		return NativeSerial.serialRead(fileDescriptor);
+	}
+	
+	@Override
+	public int readBytes(byte[] buffer) throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
+		}
+		
+		ByteBuffer byteBuffer = ByteBuffer.allocateDirect(buffer.length);
+		int bytesRead = NativeSerial.serialReadBuffer(fileDescriptor, byteBuffer, buffer.length);
+		byteBuffer.get(buffer);
+		return bytesRead;
+	}
+
+	@Override
+	public String readString() throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
+		}
+		
+		return BulldogUtil.convertStreamToString(getInputStream());
+	}
+
+	@Override
+	public void removeListener(SerialDataListener listener) {
+		this.listeners.remove(listener);
+		if(listenerThread.isRunning()) {
+			listenerThread.stop();
+		}
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
+	
+	@Override
+	public void setBaudRate(int baudRate) {
+		if(isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_ALREADY_OPEN);
+		}
+		
+		this.baudRate = baudRate;
+	}
+
+	@Override
+	public void setBlocking(boolean blocking) {
+		if(isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_ALREADY_OPEN);
+		}
+		
+		this.blocking = blocking;
+	}
+
+	@Override
+	public void setParity(Parity parity) {
+		if(isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_ALREADY_OPEN);
+		}
+		
+		this.parity = parity;
+	}
+
+	public void writeByte(byte data) throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
+		}
+		
+		NativeSerial.serialWrite(fileDescriptor, data);
+	}
+
+	@Override
+	public void writeBytes(byte[] bytes) throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
+		}
+
+		outputStream.write(bytes);
+	}
+	
+	@Override
+	public void writeString(String string) throws IOException {
+		writeBytes(string.getBytes());
+	}
+
+	private void finalizeStreams() throws IOException {
+		if(inputStream != null) {
+			try {
+				inputStream.close();
+			} catch(Exception ex) {} 
+			finally { inputStream = null; }
+		}
+		
+		if(outputStream != null) {
+			try {
+				outputStream.close();
+				outputStream = null;
+			} catch(Exception ex) {}
+			finally { outputStream = null; }
+		}
+	}
+
+	private int getParityCode() {
+		if(parity == Parity.Even) {
+			return NativeSerial.PARENB;
+		} else if(parity == Parity.Odd) {
+			return NativeSerial.PARENB | NativeSerial.PARODD;
+		} else if(parity == Parity.Mark) {
+			return NativeSerial.PARENB | NativeSerial.PARODD | NativeSerial.CMSPAR;
+		} else if(parity == Parity.Space) {
+			return NativeSerial.PARENB | NativeSerial.CMSPAR;
+		}
+		
+		return 0;
 	}
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+import org.bulldog.beagleboneblack.BBBNames;
 import org.bulldog.core.gpio.AnalogInput;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
@@ -17,9 +18,9 @@ public class AdcExample {
     	Board board = Platform.createBoard();
     	
     	//Get some analogInputs
-    	AnalogInput analogInput0 = board.getPin("P9", 39).as(AnalogInput.class);
-    	AnalogInput analogInput1 = board.getPin("P9", 40).as(AnalogInput.class);
-    	AnalogInput analogInput2 = board.getPin("P9", 37).as(AnalogInput.class);
+    	AnalogInput analogInput0 = board.getPin(BBBNames.AIN0).as(AnalogInput.class);
+    	AnalogInput analogInput1 = board.getPin(BBBNames.AIN1).as(AnalogInput.class);
+    	AnalogInput analogInput2 = board.getPin(BBBNames.AIN2).as(AnalogInput.class);
     	
     	//Sample those asynchronously
     	Future<double[]> futureChannel0 = analogInput0.sampleAsync(10);
@@ -32,7 +33,14 @@ public class AdcExample {
     	System.out.println("SAMPLING STARTED: " + System.currentTimeMillis());
     	
     	double[] channel0Values = futureChannel0.get();
+    	for(int i = 0; i< channel0Values.length; i++) {
+    		System.out.println("Channel 0 measured: " + channel0Values[i]);
+    	}
+    	
     	double[] channel1Values = futureChannel1.get();
+     	for(int i = 0; i< channel1Values.length; i++) {
+    		System.out.println("Channel 1 measured: " + channel1Values[i]);
+    	}
     	
     	while(true) {
     		

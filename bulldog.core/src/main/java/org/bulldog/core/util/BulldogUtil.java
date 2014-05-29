@@ -1,5 +1,7 @@
 package org.bulldog.core.util;
 
+import java.util.Scanner;
+
 
 
 public class BulldogUtil {
@@ -26,5 +28,11 @@ public class BulldogUtil {
 	
 	public static String bytesToString(byte[] bytes)  {
 		return bytesToString(bytes, "ASCII");
+	}
+	
+	@SuppressWarnings("resource")
+	public static String convertStreamToString(java.io.InputStream is) {
+	    Scanner s = new Scanner(is).useDelimiter("\\A");
+	    return s.hasNext() ? s.next() : "";
 	}
 }

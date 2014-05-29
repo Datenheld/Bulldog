@@ -92,6 +92,18 @@ public class MockedBus implements Bus {
 		return 0;
 	}
 
+	@Override
+	public void writeString(String string) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String readString() throws IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 }

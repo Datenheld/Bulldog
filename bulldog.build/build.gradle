@@ -54,7 +54,7 @@ configure(javaProjects) {
 task beagleboneblackSingleJar(type: Jar, dependsOn: subprojects.assemble) { 
      baseName = 'bulldog-beagleboneblack' 
      manifest { 
-     	attributes 'Main-Class': 'org.bulldog.examples.App' 
+     	attributes 'Main-Class': 'org.bulldog.examples.PwmExample' 
      }
     
     javaProjects.each { project -> 

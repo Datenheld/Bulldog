@@ -9,6 +9,8 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bulldog.core.util.BulldogUtil;
+
 public class SysFs {
 
 	private String SYSFS_DEVICES_PATH = "/sys/devices";
@@ -84,9 +86,11 @@ public class SysFs {
 	
 	public void echo(String path, String value) {
 		try {
+			System.out.println("echo " + value + " > " + path);
 			waitForFileCreation(path, 10000);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 			writer.write(value);
+			BulldogUtil.sleepMs(10);
 			writer.close();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,5 +1,7 @@
 package org.bulldog.core.io.serial;
 
+import org.bulldog.core.util.BulldogUtil;
+
 public class SerialDataEventArgs {
 
 	private byte[] data;
@@ -16,5 +18,9 @@ public class SerialDataEventArgs {
 
 	public SerialPort getPort() {
 		return port;
+	}
+	
+	public String getDataAsString() {
+		return BulldogUtil.bytesToString(getData());
 	}
 }

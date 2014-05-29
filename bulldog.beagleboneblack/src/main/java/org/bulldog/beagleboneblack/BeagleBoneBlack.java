@@ -1,7 +1,5 @@
 package org.bulldog.beagleboneblack;
 
-import java.io.File;
-
 import org.bulldog.beagleboneblack.gpio.BBBAnalogInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalOutput;
@@ -13,7 +11,6 @@ import org.bulldog.core.gpio.PinFeature;
 import org.bulldog.core.gpio.base.AbstractPwm;
 import org.bulldog.core.gpio.event.ActivationEventArgs;
 import org.bulldog.core.gpio.event.ActivationListener;
-import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.platform.AbstractBoard;
 import org.bulldog.core.platform.Board;
 import org.bulldog.linux.io.LinuxI2cBus;
@@ -150,23 +147,16 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 	
 
 	private void createBuses() {
-		detectI2cBuses();
-		detectSerialPorts();
+		createI2cBuses();
+		createSerialPorts();
 	}
 
-	private void detectI2cBuses() {
-		for(int i = 0; i < 3; i++) {
-			File i2cDevice = new File("/dev/i2c-" + i);
-			if(i2cDevice.exists()) {
-				I2cBus bus = new LinuxI2cBus(i2cDevice.getAbsolutePath());
-				if(!getI2cBuses().contains(bus)) {
-					getI2cBuses().add(bus);
-				}
-			}
-		}
+	private void createI2cBuses() {
+		getI2cBuses().add(new LinuxI2cBus(BBBNames.I2C_0, "/dev/i2c-0"));
+		getI2cBuses().add(new LinuxI2cBus(BBBNames.I2C_0, "/dev/i2c-0"));
 	}
 
-	private void detectSerialPorts() {
+	private void createSerialPorts() {
 		getSerialPorts().add(new BBBUartPort(BBBNames.UART0, "/dev/ttyO0", "BB-UART0", null, null));
 		getSerialPorts().add(new BBBUartPort(BBBNames.UART1, "/dev/ttyO1", "BB-UART1", getPin("P9", 26), getPin("P9", 24)));
 		getSerialPorts().add(new BBBUartPort(BBBNames.UART2, "/dev/ttyO2", "BB-UART2", getPin("P9", 21), getPin("P9", 22)));

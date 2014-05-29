@@ -17,8 +17,9 @@ public class BBBAnalogInput extends AbstractAnalogInput {
 	private IntBuffer buffer;
 	private int channelId = -1;
 	
-	public BBBAnalogInput(Pin pin, int pwmChannel) {
+	public BBBAnalogInput(Pin pin, int channel) {
 		super(pin);
+		this.channelId = channel;
 	}
 
 	public void setup() {
