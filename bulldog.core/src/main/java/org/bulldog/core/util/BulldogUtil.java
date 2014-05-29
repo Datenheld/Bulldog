@@ -2,9 +2,7 @@ package org.bulldog.core.util;
 
 import java.util.Scanner;
 
-
-
-public class BulldogUtil {
+public final class BulldogUtil {
 
 	public static void sleepMs(int ms) {
 		try {
@@ -15,6 +13,10 @@ public class BulldogUtil {
 	}
 	
 	public static String bytesToString(byte[] bytes, String encoding)  {
+		if(bytes == null) {
+			throw new IllegalArgumentException("bytes may not be null in string conversion");
+		}
+
 		if(bytes.length == 0) { return null; }
 		
 		try {

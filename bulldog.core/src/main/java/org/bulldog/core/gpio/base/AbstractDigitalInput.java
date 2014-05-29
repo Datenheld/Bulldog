@@ -15,7 +15,7 @@ public abstract class AbstractDigitalInput extends AbstractPinFeature implements
 	private static final String NAME_FORMAT = "Interrupt on Pin %s";
 	private Edge trigger = Edge.Both;
 	private List<InterruptListener> interruptListeners = Collections.synchronizedList(new ArrayList<InterruptListener>());
-	private int interruptDebounceMs = 0;
+	private int setDebounceMs = 0;
 	
 	public AbstractDigitalInput(Pin pin) {
 		super(pin);
@@ -30,13 +30,13 @@ public abstract class AbstractDigitalInput extends AbstractPinFeature implements
 		setInterruptTriggerImpl(edge);
 	}
 	
-	public void setInterruptDebounceTime(int milliSeconds) {
-		this.interruptDebounceMs = milliSeconds;
+	public void setDebounceMs(int milliSeconds) {
+		this.setDebounceMs = milliSeconds;
 		setInterruptDebounceTimeImpl(milliSeconds);
 	}
 	
-	public int getInterruptDebounceTime() {
-		return interruptDebounceMs;
+	public int getDebounceMs() {
+		return setDebounceMs;
 	}
 	
 	public Edge getInterruptTrigger() {

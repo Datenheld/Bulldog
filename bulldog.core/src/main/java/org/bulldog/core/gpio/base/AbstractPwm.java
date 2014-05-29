@@ -20,10 +20,6 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 	}
 	
 	public void enable() {
-		if(getPin().getActiveFeature() != this) {
-			throw new IllegalStateException("PWM is currently not active on this pin. Please activate it on the pin.");
-		}
-		
 		enableImpl();
 		enabled = true;
 	}

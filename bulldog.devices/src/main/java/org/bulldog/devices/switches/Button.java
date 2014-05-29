@@ -20,7 +20,7 @@ public class Button implements InterruptListener {
 	
 	public Button(DigitalInput input, int debounceMilliseconds, Signal activeState) {
 		this.input = input;
-		this.input.setInterruptDebounceTime(debounceMilliseconds);
+		this.input.setDebounceMs(debounceMilliseconds);
 		this.input.addInterruptListener(this);
 		this.input.enableInterrupts();
 		this.activeState = activeState;
