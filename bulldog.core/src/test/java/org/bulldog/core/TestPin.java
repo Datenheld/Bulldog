@@ -1,6 +1,6 @@
 package org.bulldog.core;
 
-import junit.framework.Assert;
+import junit.framework.TestCase;
 
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.PinFeature;
@@ -24,24 +24,24 @@ public class TestPin {
 		
 		pin.activateFeature(MockedPinFeatureType2.class);
 		PinFeature feature = pin.getActiveFeature();
-		Assert.assertEquals(type2, feature);
+		TestCase.assertEquals(type2, feature);
 
 		pin.activateFeature(MockedPinFeatureType3.class);
 		feature = pin.getActiveFeature();
-		Assert.assertEquals(type3, feature);
+		TestCase.assertEquals(type3, feature);
 	
 		feature = pin.as(MockedPinFeatureType2.class);
-		Assert.assertEquals(type2, feature);
+		TestCase.assertEquals(type2, feature);
 	
 		feature = pin.as(MockedPinFeatureType3.class);
-		Assert.assertEquals(type3, feature);
+		TestCase.assertEquals(type3, feature);
 		feature = pin.getActiveFeature();
-		Assert.assertEquals(type3, feature);
+		TestCase.assertEquals(type3, feature);
 		
 		pin.removeFeature(MockedPinFeatureType2.class);
-		Assert.assertEquals(2, pin.getFeatures().size());
+		TestCase.assertEquals(2, pin.getFeatures().size());
 		feature = pin.as(MockedPinFeatureType2.class);  //type3 is still present and extends type2
-		Assert.assertEquals(type3, feature);
+		TestCase.assertEquals(type3, feature);
 		
 		pin.removeFeature(MockedPinFeatureType2.class);
 	}
@@ -58,27 +58,27 @@ public class TestPin {
 		
 		try {
 			pin.addFeature(type3);
-			Assert.fail();
+			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 		
-		Assert.assertTrue(pin.hasFeature(MockedPinFeatureType2.class));
-		Assert.assertEquals(3, pin.getFeatures().size());
+		TestCase.assertTrue(pin.hasFeature(MockedPinFeatureType2.class));
+		TestCase.assertEquals(3, pin.getFeatures().size());
 		pin.removeFeature(MockedPinFeatureType2.class);
-		Assert.assertEquals(2, pin.getFeatures().size());
-		Assert.assertTrue(pin.hasFeature(MockedPinFeatureType2.class)); //type 3 inherits and is still present
+		TestCase.assertEquals(2, pin.getFeatures().size());
+		TestCase.assertTrue(pin.hasFeature(MockedPinFeatureType2.class)); //type 3 inherits and is still present
 		pin.removeFeature(MockedPinFeatureType2.class);
-		Assert.assertEquals(2, pin.getFeatures().size());
+		TestCase.assertEquals(2, pin.getFeatures().size());
 		pin.removeFeature(MockedPinFeatureType3.class);
-		Assert.assertEquals(1, pin.getFeatures().size());
-		Assert.assertFalse(pin.hasFeature(MockedPinFeatureType3.class)); 
+		TestCase.assertEquals(1, pin.getFeatures().size());
+		TestCase.assertFalse(pin.hasFeature(MockedPinFeatureType3.class)); 
 		
 		PinFeature feature = pin.as(MockedPinFeatureType1.class);
-		Assert.assertEquals(pin.getActiveFeature(), feature);
+		TestCase.assertEquals(pin.getActiveFeature(), feature);
 		pin.removeFeature(MockedPinFeatureType1.class);
-		Assert.assertNull(pin.getActiveFeature());
+		TestCase.assertNull(pin.getActiveFeature());
 		try {
 			feature = pin.as(MockedPinFeatureType1.class);
-			Assert.fail();
+			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 	}
 		

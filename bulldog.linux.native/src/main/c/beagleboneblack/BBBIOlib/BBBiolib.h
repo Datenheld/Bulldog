@@ -340,18 +340,11 @@ int BBBIO_sys_Disable_Debouncing(unsigned int port ,unsigned int pin ,unsigned i
  *	BBBIO_get : get pin logic levels.
  */
 int BBBIO_set_dir(char bank, char pin, char dir);
-inline void BBBIO_set_high(char bank, char pin);
-inline void BBBIO_set_low(char bank, char pin);
-inline char BBBIO_get(char bank, char pin);
-
 
 
 #define GPIO_PIN(bank, pin) ((((bank) & 0xff) << 8) | ((pin) & 0xff))
 
 int BBBIO_GPIO_set_dir(unsigned int gpio, unsigned int inset , unsigned int outset);
-inline void BBBIO_GPIO_high(unsigned int gpio ,unsigned int pinset);
-inline void BBBIO_GPIO_low(unsigned int gpio ,unsigned int pinset);
-inline int BBBIO_GPIO_get(char gpio, unsigned int pinset);
 
 #endif // _IOLIB_H_
 

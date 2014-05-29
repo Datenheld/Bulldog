@@ -1,9 +1,6 @@
 /bulldog.tools/
 /.metadata/
 target/
-.project
-.cproject
-.classpath
 .settings/
 .gradle/
 Debug/

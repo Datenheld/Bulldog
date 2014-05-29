@@ -2,7 +2,6 @@ package org.bulldog.linux.jni;
 
 import org.bulldog.core.util.BulldogUtil;
 
-
 public class NativePollResult {
 
 	private int events;

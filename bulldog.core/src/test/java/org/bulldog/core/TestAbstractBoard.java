@@ -1,6 +1,6 @@
 package org.bulldog.core;
 
-import junit.framework.Assert;
+import junit.framework.TestCase;
 
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.IOPort;
@@ -17,23 +17,23 @@ public class TestAbstractBoard {
 		MockedBoard board = new MockedBoard();
 		
 		Pin availablePin = board.getPin("P4");
-		Assert.assertNotNull(availablePin);
-		Assert.assertEquals("P4", availablePin.getName());
+		TestCase.assertNotNull(availablePin);
+		TestCase.assertEquals("P4", availablePin.getName());
 		
 		Pin nonExistentPin = board.getPin("P11");
-		Assert.assertNull(nonExistentPin);
+		TestCase.assertNull(nonExistentPin);
 		
 		nonExistentPin = board.getPin("Chewbacca");
-		Assert.assertNull(nonExistentPin);
+		TestCase.assertNull(nonExistentPin);
 		
 		for(Pin pin : board.getPins()) {
 			Pin crossCheck = board.getPin(pin.getName());
-			Assert.assertSame(pin, crossCheck);
+			TestCase.assertSame(pin, crossCheck);
 		}
 		
 		try {
 			board.getPin(null);
-			Assert.fail();
+			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 	}
 	
@@ -42,34 +42,34 @@ public class TestAbstractBoard {
 		MockedBoard board = new MockedBoard();
 		
 		Pin availablePin = board.getPin("A", 1);
-		Assert.assertNotNull(availablePin);
-		Assert.assertEquals("A", availablePin.getPort());
-		Assert.assertEquals(1, availablePin.getIndexOnPort());
+		TestCase.assertNotNull(availablePin);
+		TestCase.assertEquals("A", availablePin.getPort());
+		TestCase.assertEquals(1, availablePin.getIndexOnPort());
 		
 		Pin nonExistentPin = board.getPin("A", 11);
-		Assert.assertNull(nonExistentPin);
+		TestCase.assertNull(nonExistentPin);
 		
 		nonExistentPin = board.getPin("Chewbacca", 1);
-		Assert.assertNull(nonExistentPin);
+		TestCase.assertNull(nonExistentPin);
 		
 		for(Pin pin : board.getPins()) {
 			Pin crossCheck = board.getPin(pin.getPort(), pin.getIndexOnPort());
-			Assert.assertSame(pin, crossCheck);
+			TestCase.assertSame(pin, crossCheck);
 		}
 		
 		try {
 			board.getPin(null, 2);
-			Assert.fail();
+			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 
 		try {
 			board.getPin(null, -1);
-			Assert.fail();
+			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 		
 		try {
 			board.getPin("A", -1);
-			Assert.fail();
+			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 	}
 	
@@ -83,30 +83,30 @@ public class TestAbstractBoard {
 		}
 		
 		Pin availablePin = board.getPinByAlias(aliases[4]);
-		Assert.assertNotNull(availablePin);
-		Assert.assertEquals(aliases[4], availablePin.getAlias());
+		TestCase.assertNotNull(availablePin);
+		TestCase.assertEquals(aliases[4], availablePin.getAlias());
 		
 		Pin nonExistentPin = board.getPinByAlias("LALALALALA");
-		Assert.assertNull(nonExistentPin);
+		TestCase.assertNull(nonExistentPin);
 		
 		nonExistentPin = board.getPinByAlias("Greedo");
-		Assert.assertNull(nonExistentPin);
+		TestCase.assertNull(nonExistentPin);
 		
 		for(Pin pin : board.getPins()) {
 			if(pin.getAlias() != null) {
 				Pin crossCheck = board.getPinByAlias(pin.getAlias());
-				Assert.assertSame(pin, crossCheck);
+				TestCase.assertSame(pin, crossCheck);
 			} else {
 				try {
 					board.getPinByAlias(pin.getAlias());
-					Assert.fail();
+					TestCase.fail();
 				} catch(IllegalArgumentException ex) {}
 			}
 		}
 		
 		try {
 			board.getPinByAlias(null);
-			Assert.fail();
+			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 		
 	}
@@ -116,18 +116,18 @@ public class TestAbstractBoard {
 		MockedBoard board = new MockedBoard();
 		
 		Pin availablePin = board.getPin(0);
-		Assert.assertNotNull(availablePin);
-		Assert.assertEquals(0, availablePin.getAddress());
+		TestCase.assertNotNull(availablePin);
+		TestCase.assertEquals(0, availablePin.getAddress());
 		
 		Pin nonExistentPin = board.getPin(-1);
-		Assert.assertNull(nonExistentPin);
+		TestCase.assertNull(nonExistentPin);
 		
 		nonExistentPin = board.getPin(11);
-		Assert.assertNull(nonExistentPin);
+		TestCase.assertNull(nonExistentPin);
 		
 		for(Pin pin : board.getPins()) {
 			Pin crossCheck = board.getPin(pin.getAddress());
-			Assert.assertSame(pin, crossCheck);
+			TestCase.assertSame(pin, crossCheck);
 		}
 	}
 	
@@ -145,25 +145,25 @@ public class TestAbstractBoard {
 		}
 		
 		IOPort availablePort = board.getIOPortByAlias(aliases[4]);
-		Assert.assertNotNull(availablePort);
-		Assert.assertEquals(aliases[4], availablePort.getAlias());
-		Assert.assertTrue( I2cBus.class.isAssignableFrom(availablePort.getClass()));
+		TestCase.assertNotNull(availablePort);
+		TestCase.assertEquals(aliases[4], availablePort.getAlias());
+		TestCase.assertTrue( I2cBus.class.isAssignableFrom(availablePort.getClass()));
 		
 		
 		IOPort nonExistentPort = board.getIOPortByAlias("LALALALALA");
-		Assert.assertNull(nonExistentPort);
+		TestCase.assertNull(nonExistentPort);
 		
 		nonExistentPort = board.getIOPortByAlias("Greedo");
-		Assert.assertNull(nonExistentPort);
+		TestCase.assertNull(nonExistentPort);
 		
 		for(IOPort port : board.getAllIOPorts()) {
 			if(port.getAlias() != null) {
 				IOPort crossCheck = board.getIOPortByAlias(port.getAlias());
-				Assert.assertSame(port, crossCheck);
+				TestCase.assertSame(port, crossCheck);
 			} else {
 				try {
 					board.getIOPortByAlias(port.getAlias());
-					Assert.fail();
+					TestCase.fail();
 				} catch(IllegalArgumentException ex) {}
 
 			}
@@ -171,7 +171,7 @@ public class TestAbstractBoard {
 		
 		try {
 			board.getIOPortByAlias(null);
-			Assert.fail();
+			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 	}
 	
@@ -180,30 +180,30 @@ public class TestAbstractBoard {
 		MockedBoard board = new MockedBoard();
 		
 		IOPort availablePort = board.getIOPortByName("I2C1");
-		Assert.assertNotNull(availablePort);
-		Assert.assertTrue(availablePort instanceof I2cBus);
+		TestCase.assertNotNull(availablePort);
+		TestCase.assertTrue(availablePort instanceof I2cBus);
 		
 		IOPort nonExistentPort = board.getIOPortByName("LALALALALA");
-		Assert.assertNull(nonExistentPort);
+		TestCase.assertNull(nonExistentPort);
 		
 		nonExistentPort = board.getIOPortByName("Greedo");
-		Assert.assertNull(nonExistentPort);
+		TestCase.assertNull(nonExistentPort);
 		
 		for(IOPort bus : board.getAllIOPorts()) {
 			if(bus.getName() != null) {
 				IOPort crossCheck = board.getIOPortByName(bus.getName());
-				Assert.assertSame(bus, crossCheck);
+				TestCase.assertSame(bus, crossCheck);
 			} else {
 				try {
 					board.getIOPortByName(bus.getName());
-					Assert.fail();
+					TestCase.fail();
 				} catch(IllegalArgumentException ex) {}
 			}
 		}
 		
 		try {
 			board.getIOPortByName(null);
-			Assert.fail();
+			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 
 	}
