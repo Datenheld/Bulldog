@@ -30,6 +30,14 @@ public abstract class AbstractDigitalOutput extends AbstractPinFeature implement
 	public void low() {
 		applySignal(Signal.Low);
 	}
+	
+	public boolean isHigh() {
+		return signal == Signal.High;
+	}
+	
+	public boolean isLow() {
+		return signal == Signal.Low;
+	}
 
 	public void toggle() {
 		applySignal(signal == Signal.High ? Signal.Low : Signal.High);

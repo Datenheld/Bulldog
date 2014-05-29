@@ -11,5 +11,7 @@ public interface DigitalOutput extends PinFeature {
 	void low();
 	void toggle();
 	
+	boolean isHigh();
+	boolean isLow();
 	
 }

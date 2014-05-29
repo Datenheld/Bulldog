@@ -7,16 +7,14 @@ import org.bulldog.beagleboneblack.gpio.BBBPwm;
 import org.bulldog.beagleboneblack.io.BBBUartPort;
 import org.bulldog.beagleboneblack.sysfs.SysFs;
 import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.gpio.PinFeature;
-import org.bulldog.core.gpio.base.AbstractPwm;
-import org.bulldog.core.gpio.event.ActivationEventArgs;
-import org.bulldog.core.gpio.event.ActivationListener;
+import org.bulldog.core.gpio.event.FeatureActivationEventArgs;
+import org.bulldog.core.gpio.event.FeatureActivationListener;
 import org.bulldog.core.platform.AbstractBoard;
 import org.bulldog.core.platform.Board;
 import org.bulldog.linux.io.LinuxI2cBus;
 import org.bulldog.linux.util.LinuxLibraryLoader;
 
-public class BeagleBoneBlack extends AbstractBoard implements ActivationListener {
+public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationListener {
 	
 	private static BeagleBoneBlack instance;
 	private static final String NAME = "BeagleBone Black";
@@ -115,16 +113,20 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		getPins().add(new BeagleBonePin("J1_5", "UART01", 0, 0, "J1", 5));
 		getPins().add(new BeagleBonePin("J1_6", "UART01", 0, 0, "J1", 6));
 		
-		addPwmToPin(getPin("P8_13"));
-		addPwmToPin(getPin("P8_19"));
-		addPwmToPin(getPin("P8_45"));
-		addPwmToPin(getPin("P8_46"));
-		addPwmToPin(getPin("P9_14"));
-		addPwmToPin(getPin("P9_16"));
-		addPwmToPin(getPin("P9_21"));
-		addPwmToPin(getPin("P9_22"));
-		addPwmToPin(getPin("P9_29"));
-		addPwmToPin(getPin("P9_31"));
+		addPwmToPin(getPin(BBBNames.EHRPWM0A_P9_21), BBBNames.EHRPWM0, "A");
+		addPwmToPin(getPin(BBBNames.EHRPWM0A_P9_31), BBBNames.EHRPWM0, "A");
+		addPwmToPin(getPin(BBBNames.EHRPWM0B_P9_22), BBBNames.EHRPWM0, "B");
+		addPwmToPin(getPin(BBBNames.EHRPWM0B_P9_29), BBBNames.EHRPWM0, "B");
+		addPwmToPin(getPin(BBBNames.EHRPWM1A_P8_36), BBBNames.EHRPWM1, "A");
+		addPwmToPin(getPin(BBBNames.EHRPWM1A_P9_14), BBBNames.EHRPWM1, "A");
+		addPwmToPin(getPin(BBBNames.EHRPWM1B_P8_34), BBBNames.EHRPWM1, "B");
+		addPwmToPin(getPin(BBBNames.EHRPWM1B_P9_16), BBBNames.EHRPWM1, "B");
+		addPwmToPin(getPin(BBBNames.EHRPWM2A_P8_19), BBBNames.EHRPWM2, "A");
+		addPwmToPin(getPin(BBBNames.EHRPWM2A_P8_45), BBBNames.EHRPWM2, "A");
+		addPwmToPin(getPin(BBBNames.EHRPWM2B_P8_13), BBBNames.EHRPWM2, "B");
+		addPwmToPin(getPin(BBBNames.EHRPWM2B_P8_46), BBBNames.EHRPWM2, "B");
+		addPwmToPin(getPin(BBBNames.ECAPPWM0_P9_42), BBBNames.ECAPPWM, "0");
+		addPwmToPin(getPin(BBBNames.ECAPPWM2_P9_28), BBBNames.ECAPPWM, "2");
 	}
 
 	private Pin createDigitalIOPin(String name, String internalName, int bank, int pinIndex, String port, int portIndex) {
@@ -134,9 +136,9 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		return pin;
 	}
 	
-	private void addPwmToPin(Pin pin) {
-		pin.addFeature(new BBBPwm(pin));
-		pin.addActivationListener(this);
+	private void addPwmToPin(Pin pin, String pwmGroup, String qualifier) {
+		pin.addFeature(new BBBPwm(pin, pwmGroup, qualifier));
+		pin.addFeatureActivationListener(this);
 	}
 	
 	private Pin createAnalogInputPin(String name, String internalName, int bank, int pinIndex, String port, int portIndex, int channelId) {
@@ -170,34 +172,18 @@ public class BeagleBoneBlack extends AbstractBoard implements ActivationListener
 		return NAME;
 	}
 
-	public void featureActivating(Object o, ActivationEventArgs args) {
-		PinFeature feature = args.getPinFeature();
-		Pin pin = feature.getPin();
-		
-		
-		if(feature instanceof AbstractPwm) {
-			if(pin.getAddress() == 23) {
-				if(getPin(22).getActiveFeature() instanceof AbstractPwm) {
-					throw new UnsupportedOperationException("You can have either EHRPWM2A or EHRPWM2B activated, not both :-(");
-				}
-			}
-			
-			if(pin.getAddress() == 22) {
-				if(getPin(23).getActiveFeature() instanceof AbstractPwm) {
-					throw new UnsupportedOperationException("You can have either EHRPWM2A or EHRPWM2B activated, not both :-(");
-				}
-			}	
-		}
+	public void featureActivating(Object o, FeatureActivationEventArgs args) {
+
 	}
 
-	public void featureActivated(Object o, ActivationEventArgs args) {
+	public void featureActivated(Object o, FeatureActivationEventArgs args) {
 		
 	}
 
-	public void featureDeactivating(Object o, ActivationEventArgs args) {
+	public void featureDeactivating(Object o, FeatureActivationEventArgs args) {
 	}
 
-	public void featureDeactivated(Object o, ActivationEventArgs args) {
+	public void featureDeactivated(Object o, FeatureActivationEventArgs args) {
 	}
 
 	public void cleanup() {

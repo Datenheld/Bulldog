@@ -2,11 +2,11 @@ package org.bulldog.core.gpio.event;
 
 import org.bulldog.core.gpio.PinFeature;
 
-public class ActivationEventArgs {
+public class FeatureActivationEventArgs {
 
 	private PinFeature feature;
 	
-	public ActivationEventArgs(PinFeature feature) {
+	public FeatureActivationEventArgs(PinFeature feature) {
 		this.feature = feature;
 	}
 	

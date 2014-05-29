@@ -3,11 +3,11 @@ package org.bulldog.core.mocks;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.base.AbstractPinFeature;
 
-public class MockedPinFeatureType2 extends AbstractPinFeature {
+public class MockedPinFeature1 extends AbstractPinFeature {
 
 	private boolean blocking = false;;
 	
-	public MockedPinFeatureType2(Pin pin) {
+	public MockedPinFeature1(Pin pin) {
 		super(pin);
 	
 	}
@@ -35,4 +35,3 @@ public class MockedPinFeatureType2 extends AbstractPinFeature {
 	public void teardown() {
 	}
 }
-

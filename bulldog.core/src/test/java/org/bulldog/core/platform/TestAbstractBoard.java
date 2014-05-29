@@ -1,4 +1,4 @@
-package org.bulldog.core;
+package org.bulldog.core.platform;
 
 import junit.framework.TestCase;
 
@@ -206,5 +206,19 @@ public class TestAbstractBoard {
 			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 
+	}
+	
+	@Test
+	public void testGetI2cBus() {
+		MockedBoard board = new MockedBoard();
+		TestCase.assertNotNull(board.getI2cBus("I2C1"));
+		TestCase.assertNull(board.getI2cBus("I2C999"));
+	}
+	
+	@Test
+	public void testGetSerialPort() {
+		MockedBoard board = new MockedBoard();
+		TestCase.assertNotNull(board.getSerialPort("Serial1"));
+		TestCase.assertNull(board.getI2cBus("Serial999"));
 	}
 }

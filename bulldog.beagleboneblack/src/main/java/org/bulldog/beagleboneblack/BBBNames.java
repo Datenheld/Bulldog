@@ -115,14 +115,40 @@ public final class BBBNames {
 	public static final String AIN5 = P9_36;
 	public static final String AIN6 = P9_35;
 	
-	public static final String EHRPWM0A = P9_21;
-	public static final String EHRPWM0B = P9_22;
-	public static final String EHRPWM1A = P9_14;
-	public static final String EHRPWM1B = P9_16;
-	public static final String EHRPWM2A = P8_19;
-	public static final String EHRPWM2B = P8_13;
-	public static final String ECAPPWM0 = P9_42;
-	public static final String ECAPPWM2 = P9_28;
+	public static final String EHRPWM0A_P9_21 = P9_21;
+	public static final String EHRPWM0B_P9_22 = P9_22;
+	public static final String EHRPWM0A_P9_31 = P9_31;
+	public static final String EHRPWM0B_P9_29 = P9_29;
+	public static final String EHRPWM1A_P9_14 = P9_14;
+	public static final String EHRPWM1B_P8_34 = P8_34;
+	public static final String EHRPWM1A_P8_36 = P8_36;
+	public static final String EHRPWM1B_P9_16 = P9_16;
+	public static final String EHRPWM2A_P8_19 = P8_19;
+	public static final String EHRPWM2B_P8_13 = P8_13;
+	public static final String EHRPWM2A_P8_45 = P8_45;
+	public static final String EHRPWM2B_P8_46 = P8_46;
+	public static final String ECAPPWM0_P9_42 = P9_42;
+	public static final String ECAPPWM2_P9_28 = P9_28;
+	
+	public static final String PWM_P9_21 = P9_21;
+	public static final String PWM_P9_22 = P9_22;
+	public static final String PWM_P9_31 = P9_31;
+	public static final String PWM_P9_29 = P9_29;
+	public static final String PWM_P9_14 = P9_14;
+	public static final String PWM_P8_34 = P8_34;
+	public static final String PWM_P8_36 = P8_36;
+	public static final String PWM_P9_16 = P9_16;
+	public static final String PWM_P8_19 = P8_19;
+	public static final String PWM_P8_13 = P8_13;
+	public static final String PWM_P8_45 = P8_45;
+	public static final String PWM_P8_46 = P8_46;
+	public static final String PWM_P9_42 = P9_42;
+	public static final String PWM_P9_28 = P9_28;
+	
+	static final String EHRPWM0 = "EHRPWM0";
+	static final String EHRPWM1 = "EHRPWM1";
+	static final String EHRPWM2 = "EHRPWM2";
+	static final String ECAPPWM = "ECAPPWM";
 	
 	public static final String I2C_0 = "I2C_0";
 	public static final String I2C_1 = "I2C_1";

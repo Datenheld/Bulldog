@@ -3,8 +3,8 @@ package org.bulldog.core.gpio;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bulldog.core.gpio.event.ActivationEventArgs;
-import org.bulldog.core.gpio.event.ActivationListener;
+import org.bulldog.core.gpio.event.FeatureActivationEventArgs;
+import org.bulldog.core.gpio.event.FeatureActivationListener;
 
 public class Pin {
 	
@@ -15,7 +15,7 @@ public class Pin {
 	private String port = null;
 	private int indexOnPort = -0;
 	private PinFeature activeFeature = null;
-	private List<ActivationListener> activationListeners = new ArrayList<ActivationListener>();
+	private List<FeatureActivationListener> activationListeners = new ArrayList<FeatureActivationListener>();
 
 	public Pin(String name, int address, String port, int indexOnPort) {
 		this.name = name;
@@ -177,39 +177,43 @@ public class Pin {
 		if(!hasFeature(feature)) { throw new IllegalArgumentException("This pin does not possess the desired feature"); }
 	}
 	
-	public void addActivationListener(ActivationListener listener) {
+	public void addFeatureActivationListener(FeatureActivationListener listener) {
 		activationListeners.add(listener);
 	}
 	
-	public void removeActivationListener(ActivationListener listener) {
+	public void removeFeatureActivationListener(FeatureActivationListener listener) {
 		activationListeners.remove(listener);
 	}
 	
-	public void clearActivationListeners(ActivationListener listener) {
+	public void clearFeatureActivationListeners() {
 		activationListeners.clear();
 	}
 	
+	public List<FeatureActivationListener> getFeatureActivationListeners() {
+		return activationListeners;
+	}
+	
 	protected void fireFeatureActivating(PinFeature feature) {
-		for(ActivationListener listener : activationListeners) {
-			listener.featureActivating(this, new ActivationEventArgs(feature));
+		for(FeatureActivationListener listener : activationListeners) {
+			listener.featureActivating(this, new FeatureActivationEventArgs(feature));
 		}
 	}
 	
 	protected void fireFeatureActivated(PinFeature feature) {
-		for(ActivationListener listener : activationListeners) {
-			listener.featureActivated(this, new ActivationEventArgs(feature));
+		for(FeatureActivationListener listener : activationListeners) {
+			listener.featureActivated(this, new FeatureActivationEventArgs(feature));
 		}
 	}
 	
 	protected void fireFeatureDeactivating(PinFeature feature) {
-		for(ActivationListener listener : activationListeners) {
-			listener.featureDeactivating(this, new ActivationEventArgs(feature));
+		for(FeatureActivationListener listener : activationListeners) {
+			listener.featureDeactivating(this, new FeatureActivationEventArgs(feature));
 		}
 	}
 	
 	protected void fireFeatureDeactivated(PinFeature feature) {
-		for(ActivationListener listener : activationListeners) {
-			listener.featureDeactivated(this, new ActivationEventArgs(feature));
+		for(FeatureActivationListener listener : activationListeners) {
+			listener.featureDeactivated(this, new FeatureActivationEventArgs(feature));
 		}
 	}
 }
