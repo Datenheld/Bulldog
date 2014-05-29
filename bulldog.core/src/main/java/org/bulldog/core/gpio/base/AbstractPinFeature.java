@@ -15,10 +15,6 @@ public abstract class AbstractPinFeature implements PinFeature {
 		return pin;
 	}
 	
-	public void setPin(Pin pin) {
-		this.pin = pin;
-	}
-
 	public boolean isActive() {
 		return this.getPin().getActiveFeature() == this;
 	}
