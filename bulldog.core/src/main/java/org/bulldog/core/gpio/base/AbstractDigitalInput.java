@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.bulldog.core.Edge;
+import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalInput;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.event.InterruptEventArgs;
@@ -12,10 +13,14 @@ import org.bulldog.core.gpio.event.InterruptListener;
 
 public abstract class AbstractDigitalInput extends AbstractPinFeature implements DigitalInput {
 
+	private static final int MAX_DEBOUNCE_COUNT = 10;
+
 	private static final String NAME_FORMAT = "Interrupt on Pin %s";
 	private Edge trigger = Edge.Both;
 	private List<InterruptListener> interruptListeners = Collections.synchronizedList(new ArrayList<InterruptListener>());
-	private int setDebounceMs = 0;
+	private int debounceMs = 0;
+	private boolean areInterruptsEnabled = true;
+	
 	
 	public AbstractDigitalInput(Pin pin) {
 		super(pin);
@@ -30,13 +35,13 @@ public abstract class AbstractDigitalInput extends AbstractPinFeature implements
 		setInterruptTriggerImpl(edge);
 	}
 	
-	public void setDebounceMs(int milliSeconds) {
-		this.setDebounceMs = milliSeconds;
+	public void setInterruptDebounceMs(int milliSeconds) {
+		this.debounceMs = milliSeconds;
 		setInterruptDebounceTimeImpl(milliSeconds);
 	}
 	
-	public int getDebounceMs() {
-		return setDebounceMs;
+	public int getInterruptDebounceMs() {
+		return debounceMs;
 	}
 	
 	public Edge getInterruptTrigger() {
@@ -71,6 +76,50 @@ public abstract class AbstractDigitalInput extends AbstractPinFeature implements
 		}
 	}
 	
+	public Signal readSignalDebounced(int debounceTime) {
+		long startTime = System.currentTimeMillis();
+		long delta = 0;
+		Signal currentState = readSignal();
+		int counter = 0;
+		while (delta < debounceTime) {
+			Signal reading = readSignal();
+			
+			if (reading == currentState && counter > 0) {
+				counter--;
+			}
+
+			if (reading != currentState) {
+				counter++;
+			}
+
+			if (counter >= MAX_DEBOUNCE_COUNT) {
+				counter = 0;
+				currentState = reading;
+				return currentState;
+			}
+
+			delta = System.currentTimeMillis() - startTime;;
+		}
+
+		return currentState;
+	}
+	
+	public boolean areInterruptsEnabled() {
+		return areInterruptsEnabled;
+	}
+	
+	public void enableInterrupts() {
+		enableInterruptsImpl();
+		areInterruptsEnabled = true;
+	}
+	
+	public void disableInterrupts() {
+		disableInterruptsImpl();
+		areInterruptsEnabled = false;
+	}
+	
 	protected abstract void setInterruptDebounceTimeImpl(int ms);
 	protected abstract void setInterruptTriggerImpl(Edge edge);
+	protected abstract void enableInterruptsImpl();
+	protected abstract void disableInterruptsImpl();
 }

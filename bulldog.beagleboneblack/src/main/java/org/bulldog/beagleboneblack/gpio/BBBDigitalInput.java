@@ -11,36 +11,15 @@ import org.bulldog.core.gpio.event.InterruptListener;
 
 public class BBBDigitalInput extends AbstractDigitalInput {
 
-	private static final int MAX_DEBOUNCE_COUNT = 10;
-	
 	private BBBPinInterruptControl interruptControl;
 	private SysFsPin sysFsPin;
-	private boolean areInterruptsEnabled = true;
 	
 	public BBBDigitalInput(Pin pin) {
 		super(pin);
 		sysFsPin = new SysFsPin(getPin().getAddress());
 		interruptControl = new BBBPinInterruptControl(this, sysFsPin.getValueFilePath());
 	}
-
-	public void enableInterrupts() {
-		if(getInterruptListeners().size() > 0 && !interruptControl.isRunning()) {
-			interruptControl.start();
-		}
-		areInterruptsEnabled = true;
-	}
-
-	public void disableInterrupts() {
-		if(interruptControl.isRunning()) {
-			interruptControl.stop();
-		}
-		areInterruptsEnabled = false;
-	}
 	
-	public boolean areInterruptsEnabled() {
-		return areInterruptsEnabled;
-	}
-
 	public Signal readSignal() {
 		BeagleBonePin bbbPin = (BeagleBonePin)getPin();
 		return NativeGpio.digitalRead(bbbPin.getPortNumeric(), bbbPin.getIndexOnPort()) > 0 ? Signal.High : Signal.Low;
@@ -71,35 +50,18 @@ public class BBBDigitalInput extends AbstractDigitalInput {
 		super.clearInterruptListeners();
 		interruptControl.stop();
 	}
-
-	public Signal readSignalDebounced(int debounceTime) {
-		long startTime = System.currentTimeMillis();
-		long delta = 0;
-		Signal currentState = readSignal();
-		int counter = 0;
-		while (delta < debounceTime) {
-			Signal reading = readSignal();
-
-			if (reading == currentState && counter > 0) {
-				counter--;
-			}
-
-			if (reading != currentState) {
-				counter++;
-			}
-
-			if (counter >= MAX_DEBOUNCE_COUNT) {
-				counter = 0;
-				currentState = reading;
-				return currentState;
-			}
-
-			delta = System.currentTimeMillis() - startTime;
+	
+	protected void enableInterruptsImpl() {
+		if(getInterruptListeners().size() > 0 && !interruptControl.isRunning()) {
+			interruptControl.start();
 		}
-
-		return currentState;
 	}
 
+	protected void disableInterruptsImpl() {
+		if(interruptControl.isRunning()) {
+			interruptControl.stop();
+		}
+	}
 
 	public void setup() {
 		exportPinIfNecessary();

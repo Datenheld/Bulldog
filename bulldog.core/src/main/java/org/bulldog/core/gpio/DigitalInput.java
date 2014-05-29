@@ -16,8 +16,8 @@ public interface DigitalInput extends PinFeature {
 	void enableInterrupts();
 	boolean areInterruptsEnabled();
 	
-	void setDebounceMs(int milliSeconds);
-	int getDebounceMs();
+	void setInterruptDebounceMs(int milliSeconds);
+	int getInterruptDebounceMs();
 	
 	void setInterruptTrigger(Edge edge);
 	Edge getInterruptTrigger();
