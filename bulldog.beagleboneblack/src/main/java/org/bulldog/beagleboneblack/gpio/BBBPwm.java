@@ -2,11 +2,10 @@ package org.bulldog.beagleboneblack.gpio;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 
+import org.bulldog.beagleboneblack.devicetree.DeviceTreeCompiler;
 import org.bulldog.beagleboneblack.sysfs.SysFs;
 import org.bulldog.beagleboneblack.sysfs.SysFsPwm;
 import org.bulldog.core.gpio.Pin;
@@ -15,9 +14,10 @@ import org.bulldog.core.util.BulldogUtil;
 
 public class BBBPwm extends AbstractPwm {
 
-	private static final String FIRMWARE_PATH = "/lib/firmware/";
 	private static final String FILENAME_TEMPLATE = "bd_pwm_%s-%s";
 	private static final String PWM_OCP_PATTERN = "pwm_test_%s";
+	private static final String DEVICE_NAME_PATTERN = "bd_pwm_%s";
+	
 	private static final String VERSION = "00A0";
 	
 	private static final long NANOSECONDS_PER_SECOND = 1000000000;
@@ -65,7 +65,7 @@ public class BBBPwm extends AbstractPwm {
 			String overlay = createOverlay(period, duty);
 			installOverlay(overlay);
 			
-			sysFsWrapper.createSlotIfNotExists(String.format("bd_pwm_%s", getPin().getName()));
+			sysFsWrapper.createSlotIfNotExists(getDeviceName());
 			String deviceName = String.format(PWM_OCP_PATTERN, getPin().getName());
 			File sysFsFile = sysFsWrapper.findOcpDevice(deviceName);
 			sysFsPwm = new SysFsPwm(sysFsFile.getAbsolutePath(), sysFsWrapper.getSlotNumber(deviceName));
@@ -78,18 +78,8 @@ public class BBBPwm extends AbstractPwm {
 	}
 
 	private void installOverlay(String overlay) throws FileNotFoundException, IOException, InterruptedException {
-		String objectFile = FIRMWARE_PATH + String.format(FILENAME_TEMPLATE, getPin().getName(), VERSION) + ".dtbo";
-		String overlayFile = FIRMWARE_PATH + String.format(FILENAME_TEMPLATE, getPin().getName(), VERSION) + ".dts";
-		File file = new File(overlayFile);
-		FileOutputStream outputStream = new FileOutputStream(file);
-		PrintWriter writer = new PrintWriter(outputStream);
-		writer.write(overlay);
-		writer.close();
-		Process compile = Runtime.getRuntime().exec(String.format("dtc -O dtb -o %s -b 0 -@ %s", objectFile, overlayFile));
-		int code = compile.waitFor();
-		if(code > 0) {
-			throw new RuntimeException("Device Tree Overlay compilation failed: " + overlayFile + " could not be compiled");
-		}
+		String deviceFileName = String.format(FILENAME_TEMPLATE, getPin().getName(), VERSION);
+		DeviceTreeCompiler.compileOverlay(overlay, deviceFileName);
 	}
 
 	private String createOverlay(long period, long duty) throws IOException {
@@ -137,7 +127,7 @@ public class BBBPwm extends AbstractPwm {
 
 	@Override
 	public void teardown() {
-		sysFsWrapper.removeSlotOfDevice(String.format("bd_pwm_%s", getPin().getName()));
+		sysFsWrapper.removeSlotOfDevice(getDeviceName());
 	}
 
 
@@ -159,6 +149,10 @@ public class BBBPwm extends AbstractPwm {
 	
 	public String getQualifier() {
 		return this.qualifier;
+	}
+	
+	private String getDeviceName() {
+		return String.format(DEVICE_NAME_PATTERN, getPin().getName());
 	}
 
 }
