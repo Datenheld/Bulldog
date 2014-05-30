@@ -21,5 +21,4 @@ public abstract class AbstractUartPinFeature extends AbstractPinFeature implemen
 	public UartSignalType getSignalType() {
 		return signalType;
 	}
-
 }

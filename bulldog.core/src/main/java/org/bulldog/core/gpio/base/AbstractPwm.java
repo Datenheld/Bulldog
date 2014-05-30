@@ -5,7 +5,7 @@ import org.bulldog.core.gpio.Pwm;
 
 public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 
-	private String NAME_FORMAT = "PWM - status '%s' - frequency '%d' with duty '%.2f' on Pin %s";
+	private String NAME_FORMAT = "PWM - status '%s' - frequency '%.2f' with duty '%.2f' on Pin %s";
 
 	private float duty = 0.0f;
 	private float frequency = 1.0f;
@@ -25,7 +25,7 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 	}
 	
 	public void disable() {
-		disasbleImpl();
+		disableImpl();
 		enabled = false;
 	}
 	
@@ -34,7 +34,7 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 	}
 	
 	public void setDuty(float duty) {
-		if(duty < 0.0 && duty > 1.0) {
+		if(duty < 0.0 || duty > 1.0) {
 			throw new IllegalArgumentException("Duty cannot be less than 0.0 or greater 1.0");
 		}
 		this.duty = duty;
@@ -59,6 +59,6 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 	
 	protected abstract void setPwmImpl(float frequency, float duty);
 	protected abstract void enableImpl();
-	protected abstract void disasbleImpl();
+	protected abstract void disableImpl();
 
 }

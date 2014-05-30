@@ -17,23 +17,23 @@ public class TestAbstractPinFeature {
 		pin.addFeature(feature1);
 		
 		TestCase.assertEquals(pin, output.getPin());
-		TestCase.assertFalse(output.isActive());
-		TestCase.assertFalse(feature1.isActive());
+		TestCase.assertFalse(output.isActivatedFeature());
+		TestCase.assertFalse(feature1.isActivatedFeature());
 		
 		pin.activateFeature(DigitalOutput.class);
 		TestCase.assertEquals(pin, output.getPin());
-		TestCase.assertTrue(output.isActive());
-		TestCase.assertFalse(feature1.isActive());
+		TestCase.assertTrue(output.isActivatedFeature());
+		TestCase.assertFalse(feature1.isActivatedFeature());
 		
 		pin.activateFeature(MockedPinFeature1.class);
 		TestCase.assertEquals(pin, output.getPin());
-		TestCase.assertFalse(output.isActive());
-		TestCase.assertTrue(feature1.isActive());
+		TestCase.assertFalse(output.isActivatedFeature());
+		TestCase.assertTrue(feature1.isActivatedFeature());
 		
 		output.activate();
 		TestCase.assertEquals(pin, output.getPin());
-		TestCase.assertTrue(output.isActive());
-		TestCase.assertFalse(feature1.isActive());
+		TestCase.assertTrue(output.isActivatedFeature());
+		TestCase.assertFalse(feature1.isActivatedFeature());
 		
 		output.setBlocking(true);
 		TestCase.assertTrue(output.isBlocking());

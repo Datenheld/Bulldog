@@ -10,18 +10,15 @@ public class MockedI2cBus extends MockedBus implements I2cBus {
 	}
 
 	public Pin getSDA() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public Pin getSCL() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int getFrequency() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

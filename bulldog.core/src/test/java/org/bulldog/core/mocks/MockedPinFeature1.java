@@ -28,7 +28,6 @@ public class MockedPinFeature1 extends AbstractPinFeature {
 
 	@Override
 	public void setup() {
-
 	}
 
 	@Override

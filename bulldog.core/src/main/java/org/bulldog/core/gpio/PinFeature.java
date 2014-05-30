@@ -7,7 +7,7 @@ public interface PinFeature {
 	String getName();
 	Pin getPin();
 	
-	boolean isActive();
+	boolean isActivatedFeature();
 	
 	boolean isBlocking();
 	void setBlocking(boolean blocking);

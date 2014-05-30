@@ -29,81 +29,59 @@ public class MockedBus implements Bus {
 	}
 
 	public void open() throws IOException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public boolean isOpen() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public void close() throws IOException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void writeByte(byte b) throws IOException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public byte readByte() throws IOException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public void selectAddress(int address) throws IOException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public int getSelectedAddress() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public BusConnection createConnection(int address) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public FileOutputStream getOutputStream() throws IOException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public FileInputStream getInputStream() throws IOException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void writeBytes(byte[] bytes) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public int readBytes(byte[] buffer) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void writeString(String string) throws IOException {
-		// TODO Auto-generated method stub
-		
+	public void writeString(String string) throws IOException {	
 	}
 
 	@Override
 	public String readString() throws IOException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
-	
 }

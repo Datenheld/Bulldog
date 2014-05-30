@@ -1,5 +1,7 @@
 package org.bulldog.beagleboneblack;
 
+import java.io.File;
+
 import org.bulldog.beagleboneblack.gpio.BBBAnalogInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalOutput;
@@ -10,6 +12,7 @@ import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.event.FeatureActivationEventArgs;
 import org.bulldog.core.gpio.event.FeatureActivationListener;
 import org.bulldog.core.platform.AbstractBoard;
+import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.linux.io.LinuxI2cBus;
 import org.bulldog.linux.util.LinuxLibraryLoader;
 
@@ -168,14 +171,19 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 
 	private void createProperties() {
 		if(isHdmiEnabled()) {
-			System.out.println("HDMI is enabled");
 			setProperty(BBBProperties.HDMI_ENABLED, Boolean.TRUE.toString());
 		}
 		
 		if(isEmmcEnabled()) {
-			System.out.println("EMMC is enabled");
 			setProperty(BBBProperties.EMMC_ENABLED, Boolean.TRUE.toString());
 		}
+		
+		if(new File("/etc/dogtag").exists()) {
+			setProperty(BBBProperties.DOGTAG, BulldogUtil.readFileAsString("/etc/dogtag"));
+		}
+		
+		getProperties().list(System.out);
+		System.out.flush();
 	}
 	
 	@Override
@@ -184,11 +192,9 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 	}
 
 	public void featureActivating(Object o, FeatureActivationEventArgs args) {
-
 	}
 
 	public void featureActivated(Object o, FeatureActivationEventArgs args) {
-		
 	}
 
 	public void featureDeactivating(Object o, FeatureActivationEventArgs args) {

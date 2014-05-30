@@ -147,7 +147,7 @@ public class BBBPwm extends AbstractPwm {
 	}
 
 	@Override
-	protected void disasbleImpl() {
+	protected void disableImpl() {
 		if(sysFsPwm == null) { return; }
 		sysFsPwm.disable();
 		teardown();

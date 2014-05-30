@@ -88,4 +88,28 @@ public class TestBulldogUtil {
 		writer.close();
 	}
 	
+	@Test
+	public void testReadFileAsString() throws IOException { 
+		String text = "Hello World\n\tasdasdasdas";
+		String text2 = "Han Solo is the best star wars character";
+		File file = File.createTempFile("TEST", ".txt");
+		file.deleteOnExit();
+		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+		writer.write(text);
+		writer.flush();
+		String readString = BulldogUtil.readFileAsString(file.getAbsolutePath());
+		TestCase.assertEquals(text, readString);
+		
+		readString = BulldogUtil.readFileAsString("DOES NOT EXIST");
+		TestCase.assertNull(readString);;
+		
+		writer.write(text2);
+		writer.flush();
+		
+		readString = BulldogUtil.readFileAsString(file.getAbsolutePath());
+		TestCase.assertEquals(text + text2, readString);
+				
+
+		writer.close();
+	}
 }

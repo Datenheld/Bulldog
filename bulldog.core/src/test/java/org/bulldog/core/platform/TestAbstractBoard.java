@@ -221,4 +221,27 @@ public class TestAbstractBoard {
 		TestCase.assertNotNull(board.getSerialPort("Serial1"));
 		TestCase.assertNull(board.getI2cBus("Serial999"));
 	}
+	
+	@Test
+	public void testProperties() {
+		MockedBoard board = new MockedBoard();
+		TestCase.assertNotNull(board.getProperties());
+		TestCase.assertNull(board.getProperty("ASD"));
+		
+		board.setProperty("test", "hello");
+		try {
+			board.setProperty("test2", null);
+			TestCase.fail();
+		} catch(NullPointerException ex) { }
+		TestCase.assertTrue(board.hasProperty("test"));
+		TestCase.assertFalse(board.hasProperty("test2"));
+		TestCase.assertFalse(board.hasProperty("TEST"));
+		TestCase.assertFalse(board.hasProperty("test2 "));
+		try {
+			TestCase.assertFalse(board.hasProperty(null));
+			TestCase.fail();
+		} catch(NullPointerException ex) {}
+		TestCase.assertEquals("hello", board.getProperty("test"));
+		
+	}
 }

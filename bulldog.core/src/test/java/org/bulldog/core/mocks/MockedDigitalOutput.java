@@ -12,12 +12,10 @@ public class MockedDigitalOutput extends AbstractDigitalOutput {
 
 	@Override
 	public void setup() {
-		
 	}
 
 	@Override
 	public void teardown() {
-		
 	}
 
 	@Override

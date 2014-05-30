@@ -56,8 +56,7 @@ public class BBBUartPort extends LinuxSerialPort implements UartPort {
 	}
 	
 	public void teardown() {
-		//THIS FEATURE IS CURRENTLY BROKEN ON THE BONE
-		//IT WILL CRASH WHEN YOU TRY TO REMOVE THE SLOT
+		throw new UnsupportedOperationException("THIS FEATURE IS BROKEN ON THE BEAGLEBONEBLACK AS OF 30.05.2014 - it will crash");
 	}
 	
 	private void addRxFeatureToPin(Pin pin) {

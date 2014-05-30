@@ -3,6 +3,7 @@ package org.bulldog.core;
 import org.bulldog.core.gpio.TestAbstractDigitalInput;
 import org.bulldog.core.gpio.TestAbstractDigitalOutput;
 import org.bulldog.core.gpio.TestAbstractPinFeature;
+import org.bulldog.core.gpio.TestAbstractPwm;
 import org.bulldog.core.gpio.TestPin;
 import org.bulldog.core.platform.TestAbstractBoard;
 import org.bulldog.core.util.TestBulldogUtil;
@@ -17,6 +18,7 @@ import org.junit.runners.Suite.SuiteClasses;
 				TestAbstractPinFeature.class,
 				TestAbstractDigitalOutput.class,
 				TestAbstractDigitalInput.class,
+				TestAbstractPwm.class,
 				TestBulldogUtil.class
 			  })
 public class CompleteTestSuite {

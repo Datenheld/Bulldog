@@ -6,7 +6,6 @@ public class MockedPinFeature3 extends MockedPinFeature2 {
 
 	public MockedPinFeature3(Pin pin) {
 		super(pin);
-		// TODO Auto-generated constructor stub
 	}
 
 }
