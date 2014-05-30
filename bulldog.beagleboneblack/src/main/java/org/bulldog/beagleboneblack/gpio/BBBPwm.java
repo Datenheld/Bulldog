@@ -29,10 +29,11 @@ public class BBBPwm extends AbstractPwm {
 	private String qualifier;
 	private int channel;
 	
+	private long period;
+	private long dutyPeriod;
+	
 	private SysFs sysFsWrapper = new SysFs();
 	private SysFsPwm sysFsPwm;
-	
-	private boolean locked = false;
 	
 	public BBBPwm(Pin pin, int registerAddress, int muxMode, String pwmName, String qualifier, int channel) {
 		super(pin);
@@ -54,9 +55,7 @@ public class BBBPwm extends AbstractPwm {
 		
 		BBBPwm siblingPwm = PWM_MANAGER.getActiveSibling(this);
 		if(siblingPwm != null) {
-			locked = true;
 			setFrequency(siblingPwm.getFrequency());
-			locked = false;
 		}
 	}
 	
@@ -103,37 +102,47 @@ public class BBBPwm extends AbstractPwm {
 	
 	@Override
 	protected void setPwmImpl(float frequency, float duty) {
-		if(locked) { return; }
-		locked = true;
-		long period = (long) ((1.0 / frequency) * (float)NANOSECONDS_PER_SECOND);
-		long dutyCycle = (long) (period * duty);
-		
-		teardown();
-		
-		// The Beaglebone can only have the same frequency on all
-		// pwm groups. That means we need to tear down sibling pwms
-		// in order to activate the new frequecy for the group
-		BBBPwm siblingPwm = PWM_MANAGER.getActiveSibling(this);
-		if(siblingPwm != null) {
-			siblingPwm.teardown();
-			siblingPwm.setFrequency(frequency);
-			long siblingDuty = (long) (period * siblingPwm.getDuty());
-			siblingPwm.configureOverlay(period, siblingDuty);	
+		period = (long) ((1.0 / frequency) * (float)NANOSECONDS_PER_SECOND);
+		dutyPeriod = (long) (period * duty);
+			
+		if(isEnabled()) {
+			enableImpl();
 		}
-		
-		configureOverlay(period, dutyCycle);
-		locked = false;
+	}
+	
+	protected void setPwmImpl() {
+		teardown();
+		configureOverlay(period, dutyPeriod);
+		configureSibling();
+	}
+
+	/**
+	 *  The Beaglebone can only have the same frequency on all
+	 *  pwm groups. That means we need to tear down sibling pwms
+	 *   in order to activate the new frequecy for the group
+	 **/
+	private void configureSibling() {
+		BBBPwm siblingPwm = PWM_MANAGER.getActiveSibling(this);
+		if(siblingPwm != null && siblingPwm.isEnabled()) {
+			siblingPwm.teardown();
+			if(siblingPwm.getPeriod() != getPeriod()) {
+				throw new IllegalArgumentException("All PWMs of " + getPwmGroup() + " must have the same frequency!");
+			}
+			siblingPwm.configureOverlay(period, siblingPwm.getDutyPeriod());	
+			siblingPwm.enableImpl();
+		}
 	}
 
 	@Override
 	public void teardown() {
 		sysFsWrapper.removeSlotOfDevice(getDeviceName());
+		PWM_MANAGER.removeActivePwm(this);
+		sysFsPwm = null;
 	}
-
 
 	@Override
 	protected void enableImpl() {
-		if(sysFsPwm == null) { return; }
+		setPwmImpl();
 		sysFsPwm.enable();
 	}
 
@@ -141,6 +150,7 @@ public class BBBPwm extends AbstractPwm {
 	protected void disasbleImpl() {
 		if(sysFsPwm == null) { return; }
 		sysFsPwm.disable();
+		teardown();
 	}
 	
 	public String getPwmGroup() {
@@ -154,5 +164,12 @@ public class BBBPwm extends AbstractPwm {
 	private String getDeviceName() {
 		return String.format(DEVICE_NAME_PATTERN, getPin().getName());
 	}
+	
+	public long getPeriod() {
+		return  period;
+	}
 
+	public long getDutyPeriod() {
+		return dutyPeriod;
+	}
 }

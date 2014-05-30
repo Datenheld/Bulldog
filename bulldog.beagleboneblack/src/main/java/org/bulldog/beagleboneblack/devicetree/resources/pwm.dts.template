@@ -41,7 +41,7 @@
 				pwm-names 	= "PWM_${pin_name}";
 			    pinctrl-names	= "default";
 			    pinctrl-0	= <&pwm_${pin_name}>;
-				enabled		= <1>;
+				enabled		= <0>;
 				duty		= <0>;
 				status 		= "okay";
 			};

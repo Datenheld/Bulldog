@@ -2,6 +2,7 @@ package org.bulldog.core.platform;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.IOPort;
@@ -13,6 +14,7 @@ public abstract class AbstractBoard implements Board {
 	private List<Pin> pins = new ArrayList<Pin>();
 	private List<I2cBus> i2cBuses = new ArrayList<I2cBus>();
 	private List<SerialPort> serialBuses = new ArrayList<SerialPort>();
+	private Properties properties = new Properties();
 
 	public List<Pin> getPins() {
 		return  pins;
@@ -110,6 +112,22 @@ public abstract class AbstractBoard implements Board {
 	
 	public I2cBus getI2cBus(String name) {
 		return (I2cBus)this.getIOPortByName(name);
+	}
+	
+	public boolean hasProperty(String propertyName) {
+		return properties.containsKey(propertyName);
+	}
+	
+	public String getProperty(String propertyName) {
+		return properties.getProperty(propertyName);
+	}
+	
+	public Properties getProperties() {
+		return properties;
+	}
+	
+	public void setProperty(String propertyName, String value) {
+		this.properties.put(propertyName, value);
 	}
 	
 	public abstract String getName();

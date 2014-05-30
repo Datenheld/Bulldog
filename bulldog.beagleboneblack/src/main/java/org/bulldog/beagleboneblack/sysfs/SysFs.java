@@ -52,6 +52,11 @@ public class SysFs {
 		return - 1;
 	}
 	
+	public boolean isSlotLoaded(int slotIndex) {
+		String slot = readSlots().get(slotIndex);
+		return slot.charAt(11) == 'L';
+	}
+	
 	public List<String> readSlots() {
 		List<String> buffer = new ArrayList<String>();
 		
