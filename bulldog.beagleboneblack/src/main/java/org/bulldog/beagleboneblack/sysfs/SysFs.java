@@ -13,6 +13,8 @@ import org.bulldog.core.util.BulldogUtil;
 
 public class SysFs {
 
+	private static final int WAIT_TIMEOUT_MS = 5000;
+	
 	private String SYSFS_DEVICES_PATH = "/sys/devices";
 	
 	public SysFs() {
@@ -86,14 +88,13 @@ public class SysFs {
 	
 	public void echo(String path, String value) {
 		try {
-			System.out.println("echo " + value + " > " + path);
-			waitForFileCreation(path, 10000);
+			waitForFileCreation(path, WAIT_TIMEOUT_MS);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 			writer.write(value);
 			BulldogUtil.sleepMs(10);
 			writer.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 	
@@ -104,20 +105,15 @@ public class SysFs {
 	public void createSlotIfNotExists(String deviceName) {
 		if(getSlotNumber(deviceName) < 0) {
 			echo(getCapeManagerSlots().getAbsolutePath(), deviceName);
-			waitForSlotCreation(deviceName, 10000);
-		}
+			waitForSlotCreation(deviceName, WAIT_TIMEOUT_MS);
+		} 
 	}
 
 	private void waitForSlotCreation(String deviceName, long waitMillis) {
 		long startWaitingTime = System.currentTimeMillis();
 		while(getSlotNumber(deviceName) < 0) {
 			//wait until the device appears
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
+			BulldogUtil.sleepMs(10);
 			long millisecondsInWait = System.currentTimeMillis()  - startWaitingTime;
 			if(millisecondsInWait >= waitMillis) {
 				throw new RuntimeException("Could not create device for " + deviceName + " within " + waitMillis + " milliseconds. Aborting.");
@@ -130,11 +126,7 @@ public class SysFs {
 		File file = new File(filePath);
 		while(!file.exists()) {
 			//wait until the device appears
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			BulldogUtil.sleepMs(10);
 			
 			long millisecondsInWait = System.currentTimeMillis()  - startWaitingTime;
 			if(millisecondsInWait >= waitMillis) {

@@ -11,7 +11,7 @@ public class BBBPwmManager {
 	
 	public boolean canActivatePwmOnPin(BBBPwm pwm) {
 		BBBPwm activePwm = getActivePin(pwm);
-		return activePwm != null && !(pwm == activePwm);
+		return activePwm == null && !(pwm == activePwm);
 	}
 	
 	public BBBPwm getActivePin(BBBPwm pwm) {

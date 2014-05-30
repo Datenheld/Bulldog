@@ -47,10 +47,6 @@ public abstract class AbstractDigitalInput extends AbstractPinFeature implements
 	public Edge getInterruptTrigger() {
 		return this.trigger;
 	}
-
-	public boolean isBlocking() {
-		return false;
-	}
 	
 	public void addInterruptListener(InterruptListener listener) {
 		interruptListeners.add(listener);
@@ -70,6 +66,7 @@ public abstract class AbstractDigitalInput extends AbstractPinFeature implements
 	
 	public void fireInterruptEvent(InterruptEventArgs args) {
 		synchronized(interruptListeners) {
+			if(areInterruptsEnabled() == false) { return; }
 			for(InterruptListener listener : interruptListeners) {
 				listener.interruptRequest(args);
 			}

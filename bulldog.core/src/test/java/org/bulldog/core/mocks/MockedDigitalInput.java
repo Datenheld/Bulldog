@@ -69,4 +69,5 @@ public class MockedDigitalInput extends AbstractDigitalInput {
 	protected void disableInterruptsImpl() {
 	}
 
+
 }

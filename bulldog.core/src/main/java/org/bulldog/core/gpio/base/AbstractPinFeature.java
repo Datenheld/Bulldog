@@ -6,6 +6,7 @@ import org.bulldog.core.gpio.PinFeature;
 public abstract class AbstractPinFeature implements PinFeature {
 
 	private Pin pin;
+	private boolean blocking = false;
 	
 	public AbstractPinFeature(Pin pin) {
 		this.pin = pin;
@@ -21,5 +22,13 @@ public abstract class AbstractPinFeature implements PinFeature {
 	
 	public void activate() {
 		getPin().activateFeature(getClass());
+	}
+	
+	public void setBlocking(boolean blocking) {
+		this.blocking = blocking;
+	}
+	
+	public boolean isBlocking() {
+		return blocking;
 	}
 }

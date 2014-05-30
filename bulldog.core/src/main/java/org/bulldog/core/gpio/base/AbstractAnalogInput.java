@@ -14,7 +14,6 @@ public abstract class AbstractAnalogInput extends AbstractPinFeature implements 
 	
 	private static final String NAME_FORMAT = "Analog Input on Pin %s";
 	
-	private boolean blockingPin = false;
 	private ScheduledFuture<?> future;
 	private final ScheduledExecutorService scheduler =  Executors.newScheduledThreadPool(1);
 	
@@ -51,13 +50,5 @@ public abstract class AbstractAnalogInput extends AbstractPinFeature implements 
 		future.cancel(true);
 		scheduler.shutdown();
 		setBlocking(false);
-	}
-	
-	protected void setBlocking(boolean blocking) {
-		this.blockingPin = blocking;
-	}
-	
-	public boolean isBlocking() {
-		return blockingPin;
 	}
 }

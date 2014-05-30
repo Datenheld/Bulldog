@@ -3,15 +3,18 @@ package org.bulldog.core.gpio.base;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.util.Blinker;
 
 public abstract class AbstractDigitalOutput extends AbstractPinFeature implements DigitalOutput {
 
 	private static final String NAME_FORMAT = "Digital Output - Signal '%s' on Pin %s";
 	
 	private Signal signal = Signal.Low;
+	private Blinker blinker;
 
 	public AbstractDigitalOutput(Pin pin) {
 		super(pin);
+		blinker = new Blinker(this);
 	}
 	
 	public String getName() {
@@ -47,8 +50,16 @@ public abstract class AbstractDigitalOutput extends AbstractPinFeature implement
 		return signal;
 	}
 	
-	public boolean isBlocking() {
-		return false;
+	public void startBlinking(int periodMilliseconds) {
+		blinker.startBlinking(periodMilliseconds);
+	}
+	
+	public void startBlinking(int periodMilliseconds, int durationMilliseconds) {
+		blinker.startBlinking(periodMilliseconds, durationMilliseconds);
+	}
+	
+	public void stopBlinking() {
+		blinker.stopBlinking();
 	}
 	
 	protected abstract void applySignalImpl(Signal signal);

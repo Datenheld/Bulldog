@@ -1,9 +1,9 @@
 package org.bulldog.beagleboneblack;
 
 import org.bulldog.beagleboneblack.gpio.BBBAnalogInput;
+import org.bulldog.beagleboneblack.gpio.BBBPwm;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalOutput;
-import org.bulldog.beagleboneblack.gpio.BBBPwm;
 import org.bulldog.beagleboneblack.io.BBBUartPort;
 import org.bulldog.beagleboneblack.sysfs.SysFs;
 import org.bulldog.core.gpio.Pin;
@@ -113,20 +113,20 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 		getPins().add(new BeagleBonePin("J1_5", "UART01", 0, 0, "J1", 5));
 		getPins().add(new BeagleBonePin("J1_6", "UART01", 0, 0, "J1", 6));
 		
-		addPwmToPin(getPin(BBBNames.EHRPWM0A_P9_21), BBBNames.EHRPWM0, "A");
-		addPwmToPin(getPin(BBBNames.EHRPWM0A_P9_31), BBBNames.EHRPWM0, "A");
-		addPwmToPin(getPin(BBBNames.EHRPWM0B_P9_22), BBBNames.EHRPWM0, "B");
-		addPwmToPin(getPin(BBBNames.EHRPWM0B_P9_29), BBBNames.EHRPWM0, "B");
-		addPwmToPin(getPin(BBBNames.EHRPWM1A_P8_36), BBBNames.EHRPWM1, "A");
-		addPwmToPin(getPin(BBBNames.EHRPWM1A_P9_14), BBBNames.EHRPWM1, "A");
-		addPwmToPin(getPin(BBBNames.EHRPWM1B_P8_34), BBBNames.EHRPWM1, "B");
-		addPwmToPin(getPin(BBBNames.EHRPWM1B_P9_16), BBBNames.EHRPWM1, "B");
-		addPwmToPin(getPin(BBBNames.EHRPWM2A_P8_19), BBBNames.EHRPWM2, "A");
-		addPwmToPin(getPin(BBBNames.EHRPWM2A_P8_45), BBBNames.EHRPWM2, "A");
-		addPwmToPin(getPin(BBBNames.EHRPWM2B_P8_13), BBBNames.EHRPWM2, "B");
-		addPwmToPin(getPin(BBBNames.EHRPWM2B_P8_46), BBBNames.EHRPWM2, "B");
-		addPwmToPin(getPin(BBBNames.ECAPPWM0_P9_42), BBBNames.ECAPPWM, "0");
-		addPwmToPin(getPin(BBBNames.ECAPPWM2_P9_28), BBBNames.ECAPPWM, "2");
+		addPwmToPin(getPin(BBBNames.EHRPWM0A_P9_21), 0x154, 0x3, BBBNames.EHRPWM0, "B", 1);
+		addPwmToPin(getPin(BBBNames.EHRPWM0A_P9_31), 0x190, 0x1, BBBNames.EHRPWM0, "A", 0);
+		addPwmToPin(getPin(BBBNames.EHRPWM0B_P9_22), 0x150, 0x3, BBBNames.EHRPWM0, "A", 0);
+		addPwmToPin(getPin(BBBNames.EHRPWM0B_P9_29), 0x194, 0x1, BBBNames.EHRPWM0, "B", 1);
+		addPwmToPin(getPin(BBBNames.EHRPWM1A_P8_36), 0x0C8, 0x2, BBBNames.EHRPWM1, "A", 0);
+		addPwmToPin(getPin(BBBNames.EHRPWM1A_P9_14), 0x048, 0x6, BBBNames.EHRPWM1, "A", 0);
+		addPwmToPin(getPin(BBBNames.EHRPWM1B_P8_34), 0x0CC, 0x2, BBBNames.EHRPWM1, "B", 1);
+		addPwmToPin(getPin(BBBNames.EHRPWM1B_P9_16), 0x04C, 0x6, BBBNames.EHRPWM1, "B", 1);
+		addPwmToPin(getPin(BBBNames.EHRPWM2A_P8_19), 0x020, 0x4, BBBNames.EHRPWM2, "A", 0);
+		addPwmToPin(getPin(BBBNames.EHRPWM2A_P8_45), 0x0A0, 0x3, BBBNames.EHRPWM2, "A", 0);
+		addPwmToPin(getPin(BBBNames.EHRPWM2B_P8_13), 0x024, 0x4, BBBNames.EHRPWM2, "B", 1);
+		addPwmToPin(getPin(BBBNames.EHRPWM2B_P8_46), 0x0a4, 0x3, BBBNames.EHRPWM2, "B", 1);
+		addPwmToPin(getPin(BBBNames.ECAPPWM0_P9_42), 0x164, 0x0, BBBNames.ECAPPWM0, "0", 0);
+		addPwmToPin(getPin(BBBNames.ECAPPWM2_P9_28), 0x19C, 0x4, BBBNames.ECAPPWM2, "2", 0);
 	}
 
 	private Pin createDigitalIOPin(String name, String internalName, int bank, int pinIndex, String port, int portIndex) {
@@ -136,8 +136,8 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 		return pin;
 	}
 	
-	private void addPwmToPin(Pin pin, String pwmGroup, String qualifier) {
-		pin.addFeature(new BBBPwm(pin, pwmGroup, qualifier));
+	private void addPwmToPin(Pin pin, int registerAddress, int muxMode, String pwmGroup, String qualifier, int channel) {
+		pin.addFeature(new BBBPwm(pin, registerAddress, muxMode, pwmGroup, qualifier, channel));
 		pin.addFeatureActivationListener(this);
 	}
 	

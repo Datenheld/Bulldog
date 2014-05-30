@@ -8,7 +8,7 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 	private String NAME_FORMAT = "PWM - status '%s' - frequency '%d' with duty '%.2f' on Pin %s";
 
 	private float duty = 0.0f;
-	private float frequency = 0;
+	private float frequency = 1.0f;
 	private boolean enabled = false;
 	
 	public AbstractPwm(Pin pin) {
@@ -46,16 +46,15 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 	}
 	
 	public void setFrequency(float frequency) {
+		if(frequency < 1.0f) {
+			throw new IllegalArgumentException("Frequency cannot be less than 1.0 Hz");
+		}
 		this.frequency = frequency;
 		setPwmImpl(frequency, getDuty());
 	}
 	
 	public float getFrequency() {
 		return frequency;
-	}
-
-	public boolean isBlocking() {
-		return false;
 	}
 	
 	protected abstract void setPwmImpl(float frequency, float duty);

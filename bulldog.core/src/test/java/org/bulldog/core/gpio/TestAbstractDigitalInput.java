@@ -1,8 +1,14 @@
 package org.bulldog.core.gpio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import junit.framework.TestCase;
 
+import org.bulldog.core.Edge;
 import org.bulldog.core.Signal;
+import org.bulldog.core.gpio.event.InterruptEventArgs;
+import org.bulldog.core.gpio.event.InterruptListener;
 import org.bulldog.core.mocks.MockedDigitalInput;
 import org.bulldog.core.util.BulldogUtil;
 import org.junit.Before;
@@ -57,18 +63,81 @@ public class TestAbstractDigitalInput {
 	}
 	
 	@Test
-	public void testInterrupts() {
+	public void testInterruptTrigger() {
+		MockedDigitalInput input = pin.as(MockedDigitalInput.class);
 		
+		input.setInterruptTrigger(Edge.Rising);
+		TestCase.assertEquals(Edge.Rising, input.getInterruptTrigger());
+		
+		input.setInterruptTrigger(Edge.Falling);
+		TestCase.assertEquals(Edge.Falling, input.getInterruptTrigger());
+		
+		input.setInterruptTrigger(Edge.Both);
+		TestCase.assertEquals(Edge.Both, input.getInterruptTrigger());
+		
+		input.setInterruptTrigger(Edge.Rising);
+		TestCase.assertEquals(Edge.Rising, input.getInterruptTrigger());
 	}
 	
 	@Test
-	public void testInterruptDebounce() {
+	public void testInterrupts() {
+		MockedDigitalInput input = pin.as(MockedDigitalInput.class);
 		
+		final List<Integer> counter = new ArrayList<Integer>();
+		
+		input.setInterruptDebounceMs(1000);
+		TestCase.assertEquals(1000, input.getInterruptDebounceMs());
+		
+		TestCase.assertEquals(0, input.getInterruptListeners().size());
+		input.addInterruptListener(new InterruptListener() {
+
+			@Override
+			public void interruptRequest(InterruptEventArgs args) {
+				counter.add(1);
+			}
+			
+		});
+		
+		TestCase.assertEquals(1, input.getInterruptListeners().size());
+		
+		input.addInterruptListener(new InterruptListener() {
+
+			@Override
+			public void interruptRequest(InterruptEventArgs args) {
+				TestCase.assertEquals(Edge.Rising, args.getEdge());
+				counter.add(1);
+			}
+			
+		});
+		
+
+		TestCase.assertEquals(2, input.getInterruptListeners().size());
+		TestCase.assertTrue(input.areInterruptsEnabled());
+		input.fireInterruptEvent(new InterruptEventArgs(pin, Edge.Rising));
+		TestCase.assertEquals(2, counter.size());
+		
+		input.disableInterrupts();
+		TestCase.assertFalse(input.areInterruptsEnabled());
+		input.fireInterruptEvent(new InterruptEventArgs(pin, Edge.Rising));
+		TestCase.assertEquals(2,  counter.size());
+		
+		input.enableInterrupts();
+		TestCase.assertTrue(input.areInterruptsEnabled());
+		input.fireInterruptEvent(new InterruptEventArgs(pin, Edge.Rising));
+		TestCase.assertEquals(4,  counter.size());
+		
+		input.removeInterruptListener(input.getInterruptListeners().get(0));
+		TestCase.assertEquals(1, input.getInterruptListeners().size());
+		
+		input.clearInterruptListeners();
+		TestCase.assertEquals(0, input.getInterruptListeners().size());
 	}
+	
 	
 	@Test
 	public void testName() {
-
+		MockedDigitalInput input = pin.as(MockedDigitalInput.class);
+		TestCase.assertNotNull(input.getName());
 	}
 	
 }

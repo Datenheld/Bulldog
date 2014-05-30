@@ -34,6 +34,12 @@ public class TestAbstractPinFeature {
 		TestCase.assertEquals(pin, output.getPin());
 		TestCase.assertTrue(output.isActive());
 		TestCase.assertFalse(feature1.isActive());
+		
+		output.setBlocking(true);
+		TestCase.assertTrue(output.isBlocking());
+		
+		output.setBlocking(false);
+		TestCase.assertFalse(output.isBlocking());
 	}
 	
 }

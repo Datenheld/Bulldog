@@ -148,7 +148,8 @@ public final class BBBNames {
 	static final String EHRPWM0 = "EHRPWM0";
 	static final String EHRPWM1 = "EHRPWM1";
 	static final String EHRPWM2 = "EHRPWM2";
-	static final String ECAPPWM = "ECAPPWM";
+	static final String ECAPPWM0 = "ECAP0";
+	static final String ECAPPWM2 = "ECAP2";
 	
 	public static final String I2C_0 = "I2C_0";
 	public static final String I2C_1 = "I2C_1";

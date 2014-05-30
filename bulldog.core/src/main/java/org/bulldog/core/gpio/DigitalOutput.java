@@ -14,4 +14,7 @@ public interface DigitalOutput extends PinFeature {
 	boolean isHigh();
 	boolean isLow();
 	
+	void startBlinking(int periodLengthMilliseconds);
+	void startBlinking(int periodLengthMilliseconds, int durationMilliseconds);
+	void stopBlinking();
 }
