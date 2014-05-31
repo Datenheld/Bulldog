@@ -217,7 +217,7 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 
 	private void createI2cBuses() {
 		getI2cBuses().add(new LinuxI2cBus(BBBNames.I2C_0, "/dev/i2c-0"));
-		getI2cBuses().add(new LinuxI2cBus(BBBNames.I2C_0, "/dev/i2c-0"));
+		getI2cBuses().add(new LinuxI2cBus(BBBNames.I2C_1, "/dev/i2c-1"));
 	}
 
 	private void createSerialPorts() {
