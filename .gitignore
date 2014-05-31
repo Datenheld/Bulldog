@@ -6,4 +6,5 @@ target/
 Debug/
 Release/
 build/
+bin/
 bulldog.repository/
