@@ -11,6 +11,12 @@ public interface SerialPort extends IOPort {
 	Parity getParity();
 	void setParity(Parity parity);
 	
+	int getDataBits();
+	void setDataBits(int dataBits);
+	
+	int getStopBits();
+	void setStopBits(int stopBits);
+	
 	void setBlocking(boolean blocking);
 	boolean getBlocking();
 	

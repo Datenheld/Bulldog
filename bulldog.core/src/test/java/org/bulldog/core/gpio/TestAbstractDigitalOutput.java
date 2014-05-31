@@ -89,6 +89,11 @@ public class TestAbstractDigitalOutput {
 	@Test
 	public void testBlinking() {
 		DigitalOutput output = pin.as(DigitalOutput.class);
+		
+		TestCase.assertFalse(output.isBlocking());
+		output.stopBlinking(); // should do nothing
+		TestCase.assertFalse(output.isBlocking());
+		
 		output.startBlinking(50);
 		testBlinking(output, 1000, 50);
 		

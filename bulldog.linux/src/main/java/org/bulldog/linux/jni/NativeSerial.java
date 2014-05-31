@@ -12,7 +12,7 @@ public class NativeSerial {
 	public static final int CMSPAR = 010000000000;
 
 	public static native int serialOpen(String devicePath, int baud);
-	public static native int serialOpen(String devicePath, int parity, int baud, boolean blocking, int readTimeout);
+	public static native int serialOpen(String devicePath, int parity, int baud, boolean blocking, int readTimeout, int dataBits, int stopBits);
 	public static native int serialClose(int fileDescriptor);
 	public static native byte serialRead(int fileDescriptor);
 	public static native int serialReadBuffer(int fileDescriptor, ByteBuffer buffer, int bufferSize);

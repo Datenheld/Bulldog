@@ -10,7 +10,7 @@
 
 
 
-int serialSetAttributes(int fd, int speed, int parity, int readTimeout) {
+int serialSetAttributes(int fd, int speed, int parity, int readTimeout, int dataBits, int stopBits) {
 	struct termios tty;
 	memset(&tty, 0, sizeof tty);
 	if (tcgetattr(fd, &tty) != 0) {
@@ -21,7 +21,16 @@ int serialSetAttributes(int fd, int speed, int parity, int readTimeout) {
 	cfsetospeed(&tty, speed);
 	cfsetispeed(&tty, speed);
 
-	tty.c_cflag = (tty.c_cflag & ~CSIZE) | CS8;     // 8-bit chars
+	int bitSize = CS8;
+	if(dataBits == 5) {
+		bitSize = CS5;
+	} else if(dataBits == 6) {
+		bitSize = CS6;
+	} else if(dataBits == 7) {
+		bitSize = CS7;
+	}
+
+	tty.c_cflag = (tty.c_cflag & ~CSIZE) | bitSize;     // 8-bit chars
 	// disable IGNBRK for mismatched speed tests; otherwise receive break
 	// as \000 chars
 	tty.c_iflag &= ~IGNBRK;         		  // disable break processing
@@ -37,7 +46,17 @@ int serialSetAttributes(int fd, int speed, int parity, int readTimeout) {
 											 // enable reading
 	tty.c_cflag &= ~(PARENB | PARODD);       // shut off parity
 	tty.c_cflag |= parity;
-	tty.c_cflag &= ~CSTOPB;
+
+	if(parity) {
+		tty.c_iflag |= (INPCK | ISTRIP);
+	}
+
+	if(stopBits == 1) {
+		tty.c_cflag &= ~CSTOPB;
+	} else {
+		tty.c_cflag |= CSTOPB;
+	}
+
 	tty.c_cflag &= ~CRTSCTS;
 
 	if (tcsetattr(fd, TCSANOW, &tty) != 0) {
@@ -65,21 +84,21 @@ void serialSetBlocking(int fd, int block, int readTimeout) {
 	}
 }
 
-int serialOpen(char* portname, int baud, int parity, int blocking, int readTimeout) {
+int serialOpen(char* portname, int baud, int parity, int blocking, int readTimeout, int dataBits, int stopBits) {
 	int fd = open(portname, O_RDWR | O_NOCTTY | O_SYNC);
 	if (fd < 0) {
 		errorMessage("error %d opening %s: %s", errno, portname, strerror(errno));
 		return 1;
 	}
 
-	serialSetAttributes(fd, baud, parity, readTimeout);
+	serialSetAttributes(fd, baud, parity, readTimeout, dataBits, stopBits);
 	serialSetBlocking(fd, blocking, readTimeout);
 
 	return fd;
 }
 
 int serialOpenSimple(char* portname, int baud) {
-	return serialOpen(portname, baud, 0, SERIAL_NO_BLOCK, SERIAL_DEFAULT_TIMEOUT);
+	return serialOpen(portname, baud, 0, SERIAL_NO_BLOCK, SERIAL_DEFAULT_TIMEOUT, 8, 1);
 }
 
 int serialClose(int fd) {

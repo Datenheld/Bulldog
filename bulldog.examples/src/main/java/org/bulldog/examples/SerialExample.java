@@ -26,7 +26,7 @@ public class SerialExample {
 		final Board board = Platform.createBoard();
     	
 		//Retrieve a serial port (UART2) and configure it
-    	SerialPort serial2 = board.getSerialPort(BBBNames.UART2);
+		SerialPort serial2 = board.getSerialPort(BBBNames.UART2);
     	serial2.setBaudRate(9600);
     	serial2.setBlocking(false);
     	serial2.open();

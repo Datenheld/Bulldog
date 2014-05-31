@@ -44,5 +44,26 @@ public class MockedSerialPort extends MockedBus implements SerialPort {
 	@Override
 	public void removeListener(SerialDataListener listener) {
 	}
+
+	@Override
+	public int getDataBits() {
+		return 0;
+	}
+
+	@Override
+	public void setDataBits(int dataBits) {
+	}
+
+	@Override
+	public int getStopBits() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setStopBits(int stopBits) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

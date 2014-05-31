@@ -30,10 +30,10 @@ JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeSerial_serialOpen__Ljava
 /*
  * Class:     org_bulldog_linux_jni_NativeSerial
  * Method:    serialOpen
- * Signature: (Ljava/lang/String;IIZI)I
+ * Signature: (Ljava/lang/String;IIZIII)I
  */
-JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeSerial_serialOpen__Ljava_lang_String_2IIZI
-  (JNIEnv *, jclass, jstring, jint, jint, jboolean, jint);
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeSerial_serialOpen__Ljava_lang_String_2IIZIII
+  (JNIEnv *, jclass, jstring, jint, jint, jboolean, jint, jint, jint);
 
 /*
  * Class:     org_bulldog_linux_jni_NativeSerial

@@ -27,6 +27,8 @@ public class LinuxSerialPort implements SerialPort {
 	
 	private static final int DEFAULT_BAUD_RATE = 9600;
 	private static final int DEFAULT_READ_TIMEOUT = 5;
+	private static final int DEFAULT_DATA_BITS = 8;
+	private static final int DEFAULT_STOP_BITS = 1;
 	
 	private String deviceFilePath;
 	private int baudRate = DEFAULT_BAUD_RATE;
@@ -34,6 +36,8 @@ public class LinuxSerialPort implements SerialPort {
 	private int fileDescriptor = 0;
 	private String alias = "";
 	private Parity parity = Parity.None;
+	private int dataBits = DEFAULT_DATA_BITS;
+	private int stopBits = DEFAULT_STOP_BITS;
 	private FileDescriptor streamDescriptor;
 	private OutputStream outputStream;
 	private InputStream inputStream;
@@ -91,6 +95,23 @@ public class LinuxSerialPort implements SerialPort {
 		return true;
 	}
 
+	private void finalizeStreams() throws IOException {
+		if(inputStream != null) {
+			try {
+				inputStream.close();
+			} catch(Exception ex) {} 
+			finally { inputStream = null; }
+		}
+		
+		if(outputStream != null) {
+			try {
+				outputStream.close();
+				outputStream = null;
+			} catch(Exception ex) {}
+			finally { outputStream = null; }
+		}
+	}
+	
 	public void fireSerialDataEvent(byte[] data) {
 		synchronized(listeners) {
 			for(SerialDataListener listener : listeners) {
@@ -98,19 +119,23 @@ public class LinuxSerialPort implements SerialPort {
 			}
 		}
 	}
-	
+
 	public String getAlias() {
 		return alias;
 	}
-
+	
 	@Override
 	public int getBaudRate() {
 		return this.baudRate;
 	}
-
+	
 	@Override
 	public boolean getBlocking() {
 		return blocking;
+	}
+
+	public int getDataBits() {
+		return dataBits;
 	}
 	
 	public String getDeviceFilePath() {
@@ -145,6 +170,25 @@ public class LinuxSerialPort implements SerialPort {
 		return this.parity;
 	}
 	
+	private int getParityCode() {
+		if(parity == Parity.Even) {
+			return NativeSerial.PARENB;
+		} else if(parity == Parity.Odd) {
+			return NativeSerial.PARENB | NativeSerial.PARODD;
+		} else if(parity == Parity.Mark) {
+			return NativeSerial.PARENB | NativeSerial.PARODD | NativeSerial.CMSPAR;
+		} else if(parity == Parity.Space) {
+			return NativeSerial.PARENB | NativeSerial.CMSPAR;
+		}
+		
+		return 0;
+	}
+
+	@Override
+	public int getStopBits() {
+		return stopBits;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -159,7 +203,7 @@ public class LinuxSerialPort implements SerialPort {
 	}
 
 	public void open() throws IOException {
-		fileDescriptor = NativeSerial.serialOpen(deviceFilePath, baudRate, getParityCode(), getBlocking(), DEFAULT_READ_TIMEOUT);
+		fileDescriptor = NativeSerial.serialOpen(deviceFilePath, baudRate, getParityCode(), getBlocking(), DEFAULT_READ_TIMEOUT, dataBits, stopBits);
 		streamDescriptor = NativeTools.getJavaDescriptor(fileDescriptor);
 		outputStream = new FileOutputStream(streamDescriptor);
 		inputStream = new FileInputStream(streamDescriptor);
@@ -229,6 +273,13 @@ public class LinuxSerialPort implements SerialPort {
 		this.blocking = blocking;
 	}
 
+	public void setDataBits(int dataBits) {
+		if(dataBits < 5 || dataBits > 8) {
+			throw new IllegalArgumentException("The amount of databits must be between 5 and 8");
+		}
+		this.dataBits = dataBits;
+	}
+
 	@Override
 	public void setParity(Parity parity) {
 		if(isOpen()) {
@@ -238,6 +289,14 @@ public class LinuxSerialPort implements SerialPort {
 		this.parity = parity;
 	}
 
+	@Override
+	public void setStopBits(int stopBits) {
+		if(stopBits != 1 && stopBits != 2) {
+			throw new IllegalArgumentException("You can only have 1 or 2 stop bits");
+		}
+		this.stopBits = stopBits;
+	}
+	
 	public void writeByte(byte data) throws IOException {
 		if(!isOpen()) {
 			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
@@ -254,40 +313,11 @@ public class LinuxSerialPort implements SerialPort {
 
 		outputStream.write(bytes);
 	}
-	
+
 	@Override
 	public void writeString(String string) throws IOException {
 		writeBytes(string.getBytes());
 	}
 
-	private void finalizeStreams() throws IOException {
-		if(inputStream != null) {
-			try {
-				inputStream.close();
-			} catch(Exception ex) {} 
-			finally { inputStream = null; }
-		}
-		
-		if(outputStream != null) {
-			try {
-				outputStream.close();
-				outputStream = null;
-			} catch(Exception ex) {}
-			finally { outputStream = null; }
-		}
-	}
 
-	private int getParityCode() {
-		if(parity == Parity.Even) {
-			return NativeSerial.PARENB;
-		} else if(parity == Parity.Odd) {
-			return NativeSerial.PARENB | NativeSerial.PARODD;
-		} else if(parity == Parity.Mark) {
-			return NativeSerial.PARENB | NativeSerial.PARODD | NativeSerial.CMSPAR;
-		} else if(parity == Parity.Space) {
-			return NativeSerial.PARENB | NativeSerial.CMSPAR;
-		}
-		
-		return 0;
-	}
 }
