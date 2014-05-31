@@ -70,7 +70,7 @@ public class Button implements InterruptListener {
 	}
 	
 	public boolean isButtonPressed() {
-		return input.readSignal() == activeState;
+		return input.read() == activeState;
 	}
 	
 }

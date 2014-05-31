@@ -9,8 +9,8 @@ import org.bulldog.core.gpio.event.InterruptListener;
 
 public interface DigitalInput extends PinFeature {
 
-	Signal readSignal();
-	Signal readSignalDebounced(int debounceMilliseconds);
+	Signal read();
+	Signal readDebounced(int debounceMilliseconds);
 	
 	void disableInterrupts();
 	void enableInterrupts();

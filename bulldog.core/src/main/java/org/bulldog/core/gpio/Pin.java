@@ -107,6 +107,10 @@ public class Pin {
 		return activeFeature;
 	}
 	
+	public boolean isFeatureActive(Class<? extends PinFeature> featureClass) {
+		return featureClass.isAssignableFrom(getActiveFeature().getClass());
+	}
+	
 	public int getAddress() {
 		return address;
 	}

@@ -21,7 +21,7 @@ public abstract class AbstractDigitalOutput extends AbstractPinFeature implement
 		return String.format(NAME_FORMAT, signal, getPin().getName());
 	}
 
-	public void digitalWrite(Signal signal) {
+	public void write(Signal signal) {
 		applySignal(signal);
 	}
 	

@@ -4,7 +4,7 @@ import org.bulldog.core.Signal;
 
 public interface DigitalOutput extends PinFeature {
 
-	void digitalWrite(Signal signal);
+	void write(Signal signal);
 	void applySignal(Signal signal);
 	Signal getAppliedSignal();
 	

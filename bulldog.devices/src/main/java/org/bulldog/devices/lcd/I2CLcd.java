@@ -13,7 +13,7 @@ import org.bulldog.core.io.bus.BusConnection;
  * @author Datenheld
  *
  */
-public class I2CLcd extends AbstractLcd {
+public class I2CLcd {
 
 	public static final byte ENABLE 		= 0b01000000;
 	public static final byte DISABLE	 	= 0b00111111;

@@ -73,13 +73,13 @@ public abstract class AbstractDigitalInput extends AbstractPinFeature implements
 		}
 	}
 	
-	public Signal readSignalDebounced(int debounceTime) {
+	public Signal readDebounced(int debounceTime) {
 		long startTime = System.currentTimeMillis();
 		long delta = 0;
-		Signal currentState = readSignal();
+		Signal currentState = read();
 		int counter = 0;
 		while (delta < debounceTime) {
-			Signal reading = readSignal();
+			Signal reading = read();
 			
 			if (reading == currentState && counter > 0) {
 				counter--;
@@ -114,7 +114,7 @@ public abstract class AbstractDigitalInput extends AbstractPinFeature implements
 		disableInterruptsImpl();
 		areInterruptsEnabled = false;
 	}
-	
+		
 	protected abstract void setInterruptDebounceTimeImpl(int ms);
 	protected abstract void setInterruptTriggerImpl(Edge edge);
 	protected abstract void enableInterruptsImpl();

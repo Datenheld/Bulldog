@@ -69,11 +69,11 @@ public class TestAbstractDigitalOutput {
 		TestCase.assertFalse(output.isHigh());
 		TestCase.assertTrue(output.isLow());
 	
-		output.digitalWrite(Signal.High);
+		output.write(Signal.High);
 		TestCase.assertTrue(output.isHigh());
 		TestCase.assertFalse(output.isLow());
 		
-		output.digitalWrite(Signal.Low);
+		output.write(Signal.Low);
 		TestCase.assertFalse(output.isHigh());
 		TestCase.assertTrue(output.isLow());
 	}

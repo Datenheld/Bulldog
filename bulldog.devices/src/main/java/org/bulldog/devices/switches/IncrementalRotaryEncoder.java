@@ -34,7 +34,7 @@ public class IncrementalRotaryEncoder {
 			@Override
 			public void interruptRequest(InterruptEventArgs args) {
 				signalB = args.getEdge() == Edge.Rising;
-				if (signalB && !(interruptSignalA.readSignal() == Signal.High)) {
+				if (signalB && !(interruptSignalA.read() == Signal.High)) {
 					position--;
 					fireValueChanged(position - 1, position);
 					fireCounterclockwiseTurn();
@@ -51,7 +51,7 @@ public class IncrementalRotaryEncoder {
 			@Override
 			public void interruptRequest(InterruptEventArgs args) {
 				signalA = args.getEdge() == Edge.Rising;
-				if (signalA && !(interruptSignalB.readSignal() == Signal.High)) {
+				if (signalA && !(interruptSignalB.read() == Signal.High)) {
 					position++;
 					fireValueChanged(position - 1, position);
 					fireClockwiseTurn();

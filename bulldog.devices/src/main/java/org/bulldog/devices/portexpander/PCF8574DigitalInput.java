@@ -1,0 +1,64 @@
+package org.bulldog.devices.portexpander;
+
+import org.bulldog.core.Edge;
+import org.bulldog.core.Signal;
+import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.base.AbstractDigitalInput;
+import org.bulldog.core.gpio.event.InterruptEventArgs;
+
+public class PCF8574DigitalInput extends AbstractDigitalInput {
+
+	private PCF8574 expander;
+	
+	public PCF8574DigitalInput(Pin pin, PCF8574 expander) {
+		super(pin);
+		this.expander = expander;
+	}
+
+	@Override
+	public Signal read() {
+		byte state = expander.readState();
+		return Signal.fromNumericValue((state >> getPin().getAddress()) & 1);
+	}
+
+	@Override
+	public void setup() {
+		byte state = expander.getLastKnownState();
+		state ^= 1 << getPin().getAddress();
+		expander.writeState(state);
+	}
+
+	@Override
+	public void teardown() {
+	}
+
+	public void handleInterruptEvent(Signal oldState, Signal currentState) {
+		if(!areInterruptsEnabled()) { return; }
+		
+		Edge edge = determineInterruptEdge(oldState, currentState);
+		if(!isInterruptTrigger(edge)) { return; }
+		
+		fireInterruptEvent(new InterruptEventArgs(getPin(), edge));
+	}
+		
+	private boolean isInterruptTrigger(Edge edge) {
+		return edge == getInterruptTrigger() || getInterruptTrigger() == Edge.Both;
+	}
+
+	private Edge determineInterruptEdge(Signal oldState, Signal currentState) {
+		if(currentState == Signal.Low && oldState == Signal.High) { return Edge.Falling; }
+		return Edge.Rising;
+	}
+	
+	@Override
+	protected void setInterruptDebounceTimeImpl(int ms) {}
+
+	@Override
+	protected void setInterruptTriggerImpl(Edge edge) {}
+
+	@Override
+	protected void enableInterruptsImpl() {}
+
+	@Override
+	protected void disableInterruptsImpl() {}
+}

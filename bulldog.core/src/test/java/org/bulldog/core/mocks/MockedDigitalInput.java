@@ -41,7 +41,7 @@ public class MockedDigitalInput extends AbstractDigitalInput {
 	}
 
 	@Override
-	public Signal readSignal() {
+	public Signal read() {
 		return appliedSignal;
 	}
 

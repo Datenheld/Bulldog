@@ -29,35 +29,35 @@ public class TestAbstractDigitalInput {
 	public void testRead() {
 		MockedDigitalInput input = pin.as(MockedDigitalInput.class);
 		input.setSignalToRead(Signal.High);
-		TestCase.assertEquals(Signal.High, input.readSignal());
+		TestCase.assertEquals(Signal.High, input.read());
 		
 		input.setSignalToRead(Signal.Low);
-		TestCase.assertEquals(Signal.Low, input.readSignal());
+		TestCase.assertEquals(Signal.Low, input.read());
 	}
 	
 	@Test
-	public void testReadSignalDebounced() {
+	public void testReadDebounced() {
 		MockedDigitalInput input = pin.as(MockedDigitalInput.class);
 		input.bounceSignal(Signal.High, 100);
 		BulldogUtil.sleepMs(10);
 		long start = System.currentTimeMillis();
 		long delta = 0;
 		while(delta < 100) {
-			TestCase.assertEquals(Signal.High, input.readSignalDebounced(100));
+			TestCase.assertEquals(Signal.High, input.readDebounced(100));
 			delta = System.currentTimeMillis() - start;
 		}
 		
 		input.bounceSignal(Signal.High, 20);
 		BulldogUtil.sleepMs(5);
 		while(delta < 100) {
-			TestCase.assertEquals(Signal.High, input.readSignalDebounced(30));
+			TestCase.assertEquals(Signal.High, input.readDebounced(30));
 			delta = System.currentTimeMillis() - start;
 		}
 		
 		input.bounceSignal(Signal.High, 5);
 		BulldogUtil.sleepMs(5);
 		while(delta < 100) {
-			TestCase.assertEquals(Signal.High, input.readSignalDebounced(100));
+			TestCase.assertEquals(Signal.High, input.readDebounced(100));
 			delta = System.currentTimeMillis() - start;
 		}
 	}

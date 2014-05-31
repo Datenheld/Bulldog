@@ -20,7 +20,7 @@ public class BBBDigitalInput extends AbstractDigitalInput {
 		interruptControl = new BBBPinInterruptControl(this, sysFsPin.getValueFilePath());
 	}
 	
-	public Signal readSignal() {
+	public Signal read() {
 		BeagleBonePin bbbPin = (BeagleBonePin)getPin();
 		return NativeGpio.digitalRead(bbbPin.getPortNumeric(), bbbPin.getIndexOnPort()) > 0 ? Signal.High : Signal.Low;
 	}
