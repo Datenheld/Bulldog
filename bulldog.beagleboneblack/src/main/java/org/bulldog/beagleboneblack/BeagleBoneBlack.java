@@ -5,6 +5,8 @@ import java.io.File;
 import org.bulldog.beagleboneblack.gpio.BBBAnalogInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalInput;
 import org.bulldog.beagleboneblack.gpio.BBBDigitalOutput;
+import org.bulldog.beagleboneblack.gpio.BBBEmmc;
+import org.bulldog.beagleboneblack.gpio.BBBHdmi;
 import org.bulldog.beagleboneblack.gpio.BBBPwm;
 import org.bulldog.beagleboneblack.io.BBBUartPort;
 import org.bulldog.beagleboneblack.sysfs.SysFs;
@@ -129,6 +131,14 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 		addPwmToPin(getPin(BBBNames.EHRPWM2B_P8_46), 0x0a4, 0x3, BBBNames.EHRPWM2, "B", 1);
 		addPwmToPin(getPin(BBBNames.ECAPPWM0_P9_42), 0x164, 0x0, BBBNames.ECAPPWM0, "0", 0);
 		addPwmToPin(getPin(BBBNames.ECAPPWM2_P9_28), 0x19C, 0x4, BBBNames.ECAPPWM2, "2", 0);
+		
+		if(isHdmiEnabled()) {
+			blockHdmiPins();
+		}
+		
+		if(isEmmcEnabled()) {
+			blockEmmcPins();
+		}
 	}
 
 	private Pin createDigitalIOPin(String name, String internalName, int bank, int pinIndex, String port, int portIndex) {
@@ -149,7 +159,57 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 		return pin;
 	}
 	
-
+	private void blockWithHdmiFeature(Pin pin) {
+		pin.addFeature(new BBBHdmi(pin));
+		pin.activateFeature(BBBHdmi.class);
+	}
+	
+	private void blockHdmiPins() {
+		blockWithHdmiFeature(getPin(BBBNames.P8_27));
+		blockWithHdmiFeature(getPin(BBBNames.P8_28));
+		blockWithHdmiFeature(getPin(BBBNames.P8_29));
+		blockWithHdmiFeature(getPin(BBBNames.P8_30));
+		blockWithHdmiFeature(getPin(BBBNames.P8_31));
+		blockWithHdmiFeature(getPin(BBBNames.P8_32));
+		blockWithHdmiFeature(getPin(BBBNames.P8_33));
+		blockWithHdmiFeature(getPin(BBBNames.P8_34));
+		blockWithHdmiFeature(getPin(BBBNames.P8_35));
+		blockWithHdmiFeature(getPin(BBBNames.P8_36));
+		blockWithHdmiFeature(getPin(BBBNames.P8_37));
+		blockWithHdmiFeature(getPin(BBBNames.P8_38));
+		blockWithHdmiFeature(getPin(BBBNames.P8_39));
+		blockWithHdmiFeature(getPin(BBBNames.P8_40));
+		blockWithHdmiFeature(getPin(BBBNames.P8_41));
+		blockWithHdmiFeature(getPin(BBBNames.P8_42));
+		blockWithHdmiFeature(getPin(BBBNames.P8_43));
+		blockWithHdmiFeature(getPin(BBBNames.P8_44));
+		blockWithHdmiFeature(getPin(BBBNames.P8_45));
+		blockWithHdmiFeature(getPin(BBBNames.P8_46));
+		
+		blockWithHdmiFeature(getPin(BBBNames.P9_25));
+		blockWithHdmiFeature(getPin(BBBNames.P9_28));
+		blockWithHdmiFeature(getPin(BBBNames.P9_29));
+		blockWithHdmiFeature(getPin(BBBNames.P9_31));
+	}
+	
+	private void blockWithEmmcFeature(Pin pin) {
+		pin.addFeature(new BBBEmmc(pin));
+		pin.activateFeature(BBBEmmc.class);
+	}
+	
+	private void blockEmmcPins() {
+		blockWithEmmcFeature(getPin(BBBNames.P8_3));
+		blockWithEmmcFeature(getPin(BBBNames.P8_4));
+		blockWithEmmcFeature(getPin(BBBNames.P8_5));
+		blockWithEmmcFeature(getPin(BBBNames.P8_6));
+		blockWithEmmcFeature(getPin(BBBNames.P8_20));
+		blockWithEmmcFeature(getPin(BBBNames.P8_21));
+		blockWithEmmcFeature(getPin(BBBNames.P8_22));
+		blockWithEmmcFeature(getPin(BBBNames.P8_23));
+		blockWithEmmcFeature(getPin(BBBNames.P8_24));
+		blockWithEmmcFeature(getPin(BBBNames.P8_25));
+	}
+	
 	private void createBuses() {
 		createI2cBuses();
 		createSerialPorts();

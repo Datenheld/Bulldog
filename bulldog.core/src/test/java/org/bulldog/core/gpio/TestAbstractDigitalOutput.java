@@ -68,6 +68,14 @@ public class TestAbstractDigitalOutput {
 		output.toggle();
 		TestCase.assertFalse(output.isHigh());
 		TestCase.assertTrue(output.isLow());
+	
+		output.digitalWrite(Signal.High);
+		TestCase.assertTrue(output.isHigh());
+		TestCase.assertFalse(output.isLow());
+		
+		output.digitalWrite(Signal.Low);
+		TestCase.assertFalse(output.isHigh());
+		TestCase.assertTrue(output.isLow());
 	}
 	
 	@Test
