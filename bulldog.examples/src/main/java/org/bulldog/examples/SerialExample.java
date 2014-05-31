@@ -25,7 +25,7 @@ public class SerialExample {
 		//Get your platform
 		final Board board = Platform.createBoard();
     	
-		//Retrive a serial port (UART2) and configure it
+		//Retrieve a serial port (UART2) and configure it
     	SerialPort serial2 = board.getSerialPort(BBBNames.UART2);
     	serial2.setBaudRate(9600);
     	serial2.setBlocking(false);
@@ -51,7 +51,7 @@ public class SerialExample {
     	for(int i = 0; i < 10; i++) {
     		serial2.writeString("Hello Serial4 - Greetings from Serial2\n");
     		
-    		// sleep, give UART2 time to transmit the data
+    		//Sleep, give UART2 time to transmit the data
     		BulldogUtil.sleepMs(50);
     		
     		System.out.print(serial4.readString());

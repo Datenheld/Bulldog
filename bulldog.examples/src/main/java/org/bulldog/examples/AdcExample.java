@@ -48,7 +48,7 @@ public class AdcExample {
     		//We multiply by 1.8 because that is our voltage reference. You should
     		//multiply it by your original input voltage before you brought it
     		//down to the Beaglebone Pin levels
-    		System.out.println("VALUE ON AIN0: " + analogInput0.readValue() * 1.8);
+    		System.out.println("VALUE ON AIN0: " + analogInput0.read() * 1.8);
     		BulldogUtil.sleepMs(50);
     	}
   

@@ -6,7 +6,7 @@ import org.bulldog.core.gpio.event.ThresholdListener;
 
 public interface AnalogInput extends PinFeature {
 
-	double readValue();
+	double read();
 	double[] sample(int amountSamples);
 	double[] sample(int amountSamples, float frequency);
 	Future<double[]> sampleAsync(int amountSamples);

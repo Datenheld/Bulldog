@@ -46,7 +46,7 @@ public class PwmExample {
 		pwm6.setDuty(0.75f);			// 75& duty cycle
 		pwm6.enable();
 		
-		// on some pins there are conflicts with hdmi
+		//On some pins there are conflicts with hdmi
 		if(!board.hasProperty(BBBProperties.HDMI_ENABLED)) {
 			Pwm pwm7 = board.getPin(BBBNames.ECAPPWM0_P9_42).as(Pwm.class);
 			pwm7.setFrequency(100.0f);

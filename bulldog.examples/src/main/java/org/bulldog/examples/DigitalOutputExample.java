@@ -2,6 +2,7 @@ package org.bulldog.examples;
 
 import java.io.IOException;
 
+import org.bulldog.beagleboneblack.BBBNames;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.platform.Board;
@@ -16,16 +17,25 @@ public class DigitalOutputExample {
     	Board board = Platform.createBoard();
     	
     	//Set up a digital input
-    	DigitalOutput output = board.getPin("P8", 12).as(DigitalOutput.class);
+    	DigitalOutput output = board.getPin(BBBNames.P8_12).as(DigitalOutput.class);
     	
-    	//set a high signal on the output
+    	//Set a high signal on the output
+    	output.write(Signal.High);
+    	
+    	//Toggle it
+    	output.toggle();
+    	BulldogUtil.sleepMs(500);
+    	
+    	//Set it high
+    	output.high();
+    	BulldogUtil.sleepMs(500);
+    	
+    	//Set it low
+    	output.low();
+    	BulldogUtil.sleepMs(500);
+    	
+    	//Yet another way of applying a signal
     	output.applySignal(Signal.High);
-    	
-    	output.toggle();
-    	BulldogUtil.sleepMs(1000);
-    	
-    	output.toggle();
-    	BulldogUtil.sleepMs(1000);
     	
     	while(true) {
     		BulldogUtil.sleepMs(50);

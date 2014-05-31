@@ -14,7 +14,7 @@ public class RotaryEncoderExample {
 	
     public static void main(String[] args) throws IOException
     {
-    	//Instantiate the board
+    	//Create the board
     	Board board = Platform.createBoard();
     	
     	//Set up two interrupts for the clockwise resp. counter clockwise signals on

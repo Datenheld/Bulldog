@@ -36,7 +36,7 @@ public class BBBAnalogInput extends AbstractAnalogInput {
 		NativeAdc.disableChannel(channelId);
 	}
 
-	public double readValue() {
+	public double read() {
 		return sample(1)[0];
 	}
 
