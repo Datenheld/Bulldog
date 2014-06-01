@@ -56,6 +56,12 @@ public class TestBulldogUtil {
 			string = BulldogUtil.bytesToString(null);
 			TestCase.fail();
 		} catch(IllegalArgumentException ex) {  }
+		
+		try {
+			string = BulldogUtil.bytesToString("Hello World".getBytes("ASCII"), "NON_EXISTENT_ENCODING");
+		} catch(IllegalArgumentException ex) {
+			TestCase.assertEquals("Unknown encoding", ex.getMessage());
+		}
 	}
 	
 	@Test

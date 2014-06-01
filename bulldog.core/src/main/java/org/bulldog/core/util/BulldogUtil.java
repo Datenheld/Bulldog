@@ -25,10 +25,8 @@ public final class BulldogUtil {
 		try {
 			return new String(bytes, encoding);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new IllegalArgumentException("Unknown encoding");
 		}
-	
-		return null;
 	}
 	
 	public static String bytesToString(byte[] bytes)  {

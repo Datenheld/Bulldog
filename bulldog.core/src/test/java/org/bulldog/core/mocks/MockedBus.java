@@ -11,6 +11,8 @@ public class MockedBus implements Bus {
 
 	private String name;
 	private String alias;
+	private boolean isOpen = false;
+	private int selectedAddress = 0;
 	
 	public MockedBus(String name) {
 		this.name = name;
@@ -29,13 +31,15 @@ public class MockedBus implements Bus {
 	}
 
 	public void open() throws IOException {
+		isOpen = true;
 	}
 
 	public boolean isOpen() {
-		return false;
+		return isOpen;
 	}
 
 	public void close() throws IOException {
+		isOpen = false;
 	}
 
 	public void writeByte(byte b) throws IOException {
@@ -46,14 +50,15 @@ public class MockedBus implements Bus {
 	}
 
 	public void selectAddress(int address) throws IOException {
+		selectedAddress = address;
 	}
 
 	public int getSelectedAddress() {
-		return 0;
+		return selectedAddress;
 	}
 
 	public BusConnection createConnection(int address) {
-		return null;
+		return new BusConnection(this, address);
 	}
 
 	@Override

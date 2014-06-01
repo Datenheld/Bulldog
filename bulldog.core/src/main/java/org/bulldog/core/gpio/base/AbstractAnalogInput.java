@@ -47,8 +47,8 @@ public abstract class AbstractAnalogInput extends AbstractPinFeature implements 
 	}
 	
 	public void stopMonitor() {
+		if(future == null) { return; }
 		future.cancel(true);
-		scheduler.shutdown();
 		setBlocking(false);
 	}
 }
