@@ -3,7 +3,6 @@ package org.bulldog.examples;
 import java.io.IOException;
 
 import org.bulldog.beagleboneblack.BBBNames;
-import org.bulldog.core.Parity;
 import org.bulldog.core.io.serial.SerialDataEventArgs;
 import org.bulldog.core.io.serial.SerialDataListener;
 import org.bulldog.core.io.serial.SerialPort;
@@ -57,7 +56,7 @@ public class SerialExample {
     		
     		System.out.print(serial1.readString());
     		serial1.writeString("Hello Serial2 - Greetings from Serial1\n");
-    		BulldogUtil.sleepMs(1000);
+    		BulldogUtil.sleepMs(500);
     	}
     	
     	serial2.close();

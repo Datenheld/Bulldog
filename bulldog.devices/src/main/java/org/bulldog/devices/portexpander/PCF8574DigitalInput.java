@@ -50,12 +50,6 @@ public class PCF8574DigitalInput extends AbstractDigitalInput {
 		if(currentState == Signal.Low && oldState == Signal.High) { return Edge.Falling; }
 		return Edge.Rising;
 	}
-	
-	@Override
-	protected void setInterruptDebounceTimeImpl(int ms) {}
-
-	@Override
-	protected void setInterruptTriggerImpl(Edge edge) {}
 
 	@Override
 	protected void enableInterruptsImpl() {}

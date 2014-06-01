@@ -7,17 +7,24 @@ import org.bulldog.core.Edge;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.base.AbstractDigitalInput;
+import org.bulldog.core.gpio.event.InterruptEventArgs;
 import org.bulldog.core.gpio.event.InterruptListener;
+import org.bulldog.linux.io.LinuxEpollListener;
+import org.bulldog.linux.io.LinuxEpollThread;
+import org.bulldog.linux.jni.NativePollResult;
 
-public class BBBDigitalInput extends AbstractDigitalInput {
+public class BBBDigitalInput extends AbstractDigitalInput implements LinuxEpollListener {
 
-	private BBBPinInterruptControl interruptControl;
+	private LinuxEpollThread interruptControl;
 	private SysFsPin sysFsPin;
+	private Edge lastEdge;
+	private volatile long lastInterruptTime;
 	
 	public BBBDigitalInput(Pin pin) {
 		super(pin);
 		sysFsPin = new SysFsPin(getPin().getAddress());
-		interruptControl = new BBBPinInterruptControl(this, sysFsPin.getValueFilePath());
+		interruptControl = new LinuxEpollThread(sysFsPin.getValueFilePath());
+		interruptControl.addListener(this);
 	}
 	
 	public Signal read() {
@@ -87,13 +94,35 @@ public class BBBDigitalInput extends AbstractDigitalInput {
 	}
 
 	@Override
-	protected void setInterruptDebounceTimeImpl(int ms) {
-		interruptControl.setDebounceMilliseconds(ms);
+	public void setInterruptTrigger(Edge edge) {
+		super.setInterruptTrigger(edge);
+		sysFsPin.setEdge(getInterruptTrigger().toString().toLowerCase());
 	}
 
 	@Override
-	protected void setInterruptTriggerImpl(Edge edge) {
-		sysFsPin.setEdge(getInterruptTrigger().toString().toLowerCase());
+	public void processEpollResults(NativePollResult[] results) {
+		for(NativePollResult result : results) {
+			Edge edge = getEdge(result);
+			if(lastEdge != null && lastEdge.equals(edge)) { continue; }
+			
+			long delta = System.currentTimeMillis() - lastInterruptTime;
+			if(delta <= this.getInterruptDebounceMs()) {
+				continue;
+			}
+			
+			lastInterruptTime = System.currentTimeMillis();
+			lastEdge = edge;
+			fireInterruptEvent(new InterruptEventArgs(getPin(), edge));
+		}
+	}
+	
+	private Edge getEdge(NativePollResult result) {
+		if(result.getData() == null) { return null; }
+		if(result.getDataAsString().charAt(0) == '1') {
+			return Edge.Rising;
+		} 
+		
+		return Edge.Falling;
 	}
 
 }

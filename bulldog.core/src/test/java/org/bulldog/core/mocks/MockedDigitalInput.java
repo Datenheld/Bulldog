@@ -1,6 +1,5 @@
 package org.bulldog.core.mocks;
 
-import org.bulldog.core.Edge;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.base.AbstractDigitalInput;
@@ -53,13 +52,6 @@ public class MockedDigitalInput extends AbstractDigitalInput {
 	public void teardown() {
 	}
 
-	@Override
-	protected void setInterruptDebounceTimeImpl(int ms) {
-	}
-
-	@Override
-	protected void setInterruptTriggerImpl(Edge edge) {
-	}
 
 	@Override
 	protected void enableInterruptsImpl() {

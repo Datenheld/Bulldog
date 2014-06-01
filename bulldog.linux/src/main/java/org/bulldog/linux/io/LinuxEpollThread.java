@@ -1,26 +1,30 @@
 package org.bulldog.linux.io;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.linux.jni.NativeEpoll;
 import org.bulldog.linux.jni.NativePollResult;
 
-public class LinuxSerialPortListener implements Runnable {
+public class LinuxEpollThread implements Runnable {
 
 	private Thread listenerThread = new Thread(this);
 	private boolean running = false;
 	private int epollFd = 0;
 	private boolean isSetup = false;
-	private LinuxSerialPort serialPort;
+	private String filename;
+	private List<LinuxEpollListener> listeners = new ArrayList<LinuxEpollListener>();
 	
-	public LinuxSerialPortListener(LinuxSerialPort serialPort) {
-		this.serialPort = serialPort;
+	public LinuxEpollThread(String filename) {
 		listenerThread.setDaemon(true);
+		this.filename = filename;
 		epollFd = NativeEpoll.epollCreate();
 	}
 	
 	public void setup() {
 		if(!isSetup) {
-			NativeEpoll.addFile(epollFd, NativeEpoll.EPOLL_CTL_ADD, serialPort.getDeviceFilePath(), NativeEpoll.EPOLLPRI | NativeEpoll.EPOLLIN | NativeEpoll.EPOLLET);
+			NativeEpoll.addFile(epollFd, NativeEpoll.EPOLL_CTL_ADD, filename, NativeEpoll.EPOLLPRI | NativeEpoll.EPOLLIN | NativeEpoll.EPOLLET);
 			isSetup = true;
 		}
 	}
@@ -45,14 +49,9 @@ public class LinuxSerialPortListener implements Runnable {
 
 	public void run() {
 		while(running) {
-			
 			NativePollResult[] results = NativeEpoll.waitForInterrupt(epollFd);
 			if(results == null) { continue; }
-			
-			for(NativePollResult result : results) {
-				serialPort.fireSerialDataEvent(result.getData());
-			}
-			
+			fireEpollEvent(results);
 		}
 	}
 	
@@ -65,4 +64,21 @@ public class LinuxSerialPortListener implements Runnable {
 		return listenerThread.isAlive();
 	}
 
+	public void addListener(LinuxEpollListener listener) {
+		this.listeners.add(listener);
+	}
+	
+	public void removeListener(LinuxEpollListener listener) {
+		this.listeners.remove(listener);
+	}
+	
+	public void clearListeners() {
+		this.listeners.clear();
+	}
+	
+	protected void fireEpollEvent(NativePollResult[] results) {
+		for(LinuxEpollListener listener : this.listeners) {
+			listener.processEpollResults(results);
+		}
+	}
 }

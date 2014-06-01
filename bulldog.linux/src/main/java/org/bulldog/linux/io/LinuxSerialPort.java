@@ -16,10 +16,11 @@ import org.bulldog.core.io.serial.SerialDataEventArgs;
 import org.bulldog.core.io.serial.SerialDataListener;
 import org.bulldog.core.io.serial.SerialPort;
 import org.bulldog.core.util.BulldogUtil;
+import org.bulldog.linux.jni.NativePollResult;
 import org.bulldog.linux.jni.NativeSerial;
 import org.bulldog.linux.jni.NativeTools;
 
-public class LinuxSerialPort implements SerialPort {
+public class LinuxSerialPort implements SerialPort, LinuxEpollListener {
 
 	private static final String ERROR_CLOSING_PORT = "Port could not be closed. Invalid file descriptor?";
 	private static final String ERROR_PORT_NOT_OPEN = "Serial port is not open!";
@@ -42,13 +43,14 @@ public class LinuxSerialPort implements SerialPort {
 	private OutputStream outputStream;
 	private InputStream inputStream;
 	private boolean blocking = true;
-	private LinuxSerialPortListener listenerThread;
+	private LinuxEpollThread listenerThread;
 	
 	private List<SerialDataListener> listeners = Collections.synchronizedList(new ArrayList<SerialDataListener>());
 	
 	public LinuxSerialPort(String filename) {
 		this.deviceFilePath = filename;
-		listenerThread = new LinuxSerialPortListener(this);
+		listenerThread = new LinuxEpollThread(filename);
+		listenerThread.addListener(this);
 	}
 	
 	@Override
@@ -317,6 +319,15 @@ public class LinuxSerialPort implements SerialPort {
 	@Override
 	public void writeString(String string) throws IOException {
 		writeBytes(string.getBytes());
+	}
+
+	@Override
+	public void processEpollResults(NativePollResult[] results) {
+		for(NativePollResult result : results) {
+			for(SerialDataListener listener : listeners) {
+				listener.onSerialDataAvailable(new SerialDataEventArgs(this, result.getData()));
+			}
+		}
 	}
 
 

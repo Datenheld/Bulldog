@@ -32,12 +32,10 @@ public abstract class AbstractDigitalInput extends AbstractPinFeature implements
 	
 	public void setInterruptTrigger(Edge edge) {
 		this.trigger = edge;
-		setInterruptTriggerImpl(edge);
 	}
 	
 	public void setInterruptDebounceMs(int milliSeconds) {
 		this.debounceMs = milliSeconds;
-		setInterruptDebounceTimeImpl(milliSeconds);
 	}
 	
 	public int getInterruptDebounceMs() {
@@ -115,8 +113,6 @@ public abstract class AbstractDigitalInput extends AbstractPinFeature implements
 		areInterruptsEnabled = false;
 	}
 		
-	protected abstract void setInterruptDebounceTimeImpl(int ms);
-	protected abstract void setInterruptTriggerImpl(Edge edge);
 	protected abstract void enableInterruptsImpl();
 	protected abstract void disableInterruptsImpl();
 }
