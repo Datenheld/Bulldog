@@ -24,14 +24,14 @@ public class PCF8574DigitalOutput extends AbstractDigitalOutput {
 
 	@Override
 	protected void applySignalImpl(Signal signal) {
-		byte state = expander.getLastKnownState();
+		byte state = expander.getState();
 		byte newState = (byte)BitMagic.setBit(state, getPin().getAddress(), signal.getNumericValue());
 		expander.writeState(newState);
 	}
 	
 	@Override
 	public Signal getAppliedSignal() {
-		return Signal.fromNumericValue(BitMagic.getBit(expander.getLastKnownState(), getPin().getAddress()));
+		return Signal.fromNumericValue(BitMagic.getBit(expander.getState(), getPin().getAddress()));
 	}
 
 }

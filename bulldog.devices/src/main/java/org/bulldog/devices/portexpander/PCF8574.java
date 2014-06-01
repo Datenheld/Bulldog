@@ -85,7 +85,7 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 		}
 	}
 	
-	public byte getLastKnownState() {
+	public byte getState() {
 		return (byte)state;
 	}
 		
@@ -98,11 +98,22 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 		}
 	}
 	
+	/**
+	 * This method preservers the outputs' state and adjust
+	 * the state of the inputs.
+	 * 
+	 * Before it reads, it sets all the input pins that
+	 * are to be read to high, according to the PCF8574
+	 * datasheet.
+	 * 
+	 * @return the state read from the PCF857
+	 */
 	public byte readState() {
 		try {
-			byte buffer = getLastKnownState();
+			byte buffer = getState();
 			switchInputsHigh();
 			byte readByte = connection.readByte();
+			buffer = applyReadInputs(readByte, buffer);
 			writeState(buffer);
 			return readByte;
 		} catch (IOException e) {
@@ -113,7 +124,7 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 	}
 	
 	private void switchInputsHigh() {
-		byte highInputState = getLastKnownState();
+		byte highInputState = getState();
 		for(Pin pin : getPins()) {
 			if(pin.isFeatureActive(DigitalInput.class)){
 				highInputState = BitMagic.setBit(highInputState, pin.getAddress(), 1);
@@ -121,6 +132,16 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 		}
 		
 		writeState(highInputState);
+	}
+	
+	private byte applyReadInputs(byte b, byte buffer)  {
+		for(Pin pin : getPins()) {
+			if(pin.isFeatureActive(DigitalInput.class)){
+				buffer = BitMagic.setBit(buffer, pin.getAddress(), BitMagic.getBit(b, pin.getAddress()));
+			}
+		}
+		
+		return buffer;
 	}
 	
 	public void setInterrupt(DigitalInput input) {
