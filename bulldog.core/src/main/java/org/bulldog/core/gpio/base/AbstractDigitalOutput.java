@@ -66,5 +66,9 @@ public abstract class AbstractDigitalOutput extends AbstractPinFeature implement
 		blinker.stopBlinking();
 	}
 	
+	public void blinkTimes(int periodMilliseconds, int times) {
+		blinker.blinkTimes(periodMilliseconds, times);
+	}
+	
 	protected abstract void applySignalImpl(Signal signal);
 }

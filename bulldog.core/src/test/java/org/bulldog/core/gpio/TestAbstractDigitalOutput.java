@@ -107,6 +107,21 @@ public class TestAbstractDigitalOutput {
 		TestCase.assertTrue(output.isBlocking());
 		BulldogUtil.sleepMs(1050);
 		TestCase.assertFalse(output.isBlocking());
+		
+		Signal signal = output.getAppliedSignal();
+		output.blinkTimes(10, 3);
+		for(int i = 0; i < 3; i++) {
+			BulldogUtil.sleepMs(10);
+			TestCase.assertEquals(signal.inverse(), output.getAppliedSignal());
+			BulldogUtil.sleepMs(10);
+			TestCase.assertEquals(signal,  output.getAppliedSignal());
+		}
+		BulldogUtil.sleepMs(10);
+		TestCase.assertEquals(signal,  output.getAppliedSignal());
+		BulldogUtil.sleepMs(5);
+		TestCase.assertEquals(signal,  output.getAppliedSignal());
+		BulldogUtil.sleepMs(5);
+		TestCase.assertEquals(signal,  output.getAppliedSignal());
 	}
 
 	private void testBlinking(DigitalOutput output, long duration, long blinkPeriod) {

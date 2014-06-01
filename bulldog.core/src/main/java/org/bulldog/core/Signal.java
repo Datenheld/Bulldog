@@ -29,4 +29,8 @@ public enum Signal {
 		if(value) { return Signal.High; }
 		return Signal.Low;
 	}
+	
+	public Signal inverse() {
+		return this == Signal.High ? Signal.Low : Signal.High;
+	}
 }

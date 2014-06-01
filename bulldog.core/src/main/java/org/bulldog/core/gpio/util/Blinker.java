@@ -14,6 +14,8 @@ public class Blinker implements Runnable {
 	private DigitalOutput output;
 	private int durationMilliseconds = 0;
 	private long startTime = 0;
+	private int times = 0;
+	boolean doTimes = false;
 
 	public Blinker(DigitalOutput output) {
 		executorService = Executors.newScheduledThreadPool(1);
@@ -22,6 +24,15 @@ public class Blinker implements Runnable {
 
 	public void startBlinking(int periodLengthMilliseconds) {
 		startBlinking(periodLengthMilliseconds, 0);
+	}
+	
+	public void blinkTimes(int periodLengthMilliseconds, int times) {
+		if(times <= 0) {
+			throw new IllegalArgumentException("You must specify to blink at least one time");
+		}
+		this.times = times * 2;
+		doTimes = true;
+		startBlinking(periodLengthMilliseconds);
 	}
 	
 	public void startBlinking(int periodLengthMilliseconds, int durationMilliseconds) {
@@ -40,16 +51,22 @@ public class Blinker implements Runnable {
 		if(future == null) { return; }
 		future.cancel(true);
 		future = null;
+		doTimes = false;
 		output.setBlocking(false);
 	}
 
 	@Override
 	public void run() {
-		if(durationMilliseconds > 0) {
-			long delta = System.currentTimeMillis() - startTime;
-			if(delta >= durationMilliseconds) { stopBlinking(); }
+		if(!doTimes) {
+			if(durationMilliseconds > 0) {
+				long delta = System.currentTimeMillis() - startTime;
+				if(delta >= durationMilliseconds) { stopBlinking(); }
+			}
+		} else {
+			times = times - 1;
+			if(times == 0) { stopBlinking(); }
 		}
-		
+				
 		output.toggle();
 	}
 }

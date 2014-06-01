@@ -37,6 +37,17 @@ public class DigitalOutputExample {
     	//Yet another way of applying a signal
     	output.applySignal(Signal.High);
     	
+    	//Let it blink 3 times
+    	output.blinkTimes(500, 3);
+    	BulldogUtil.sleepMs(2000);
+    	
+    	//Let it blink 3 seconds, 20 times a second
+    	output.startBlinking(50, 3000);
+    	BulldogUtil.sleepMs(3500);
+    	
+    	//Let it blink 10 times a second indefinitely
+    	output.startBlinking(100);
+    	
     	while(true) {
     		BulldogUtil.sleepMs(50);
     	}

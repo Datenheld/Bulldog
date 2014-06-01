@@ -74,14 +74,14 @@ public class PCF8574Example {
 		
 		//Finally, we get two DigitalOutputs from the expander,
 		//which will be toggled indefinitely.
-		DigitalOutput outputP2 = portExpander.getPin(PCF8574.P2).as(DigitalOutput.class);
-		DigitalOutput outputP3 = portExpander.getPin(PCF8574.P3).as(DigitalOutput.class);
+		DigitalOutput p2 = portExpander.getPin(PCF8574.P2).as(DigitalOutput.class);
+		DigitalOutput p3 = portExpander.getPin(PCF8574.P3).as(DigitalOutput.class);
 		
 		//Blink every second
-		outputP3.startBlinking(1000);
+		p3.startBlinking(1000);
 		
 		while(true) {
-			outputP2.toggle();
+			p2.toggle();
 			BulldogUtil.sleepMs(100);
 		}
 		
