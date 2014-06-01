@@ -24,4 +24,9 @@ public class BitMagic {
 		return dword;
 	}
 	
+	public static String toBitString(byte b) {
+		String s = String.format("%8s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0');
+		return s;
+	}
+	
 }

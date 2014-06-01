@@ -88,7 +88,7 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 	public byte getLastKnownState() {
 		return (byte)state;
 	}
-	
+		
 	public void writeState(byte state) {
 		this.state = state;
 		try {

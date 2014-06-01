@@ -31,4 +31,11 @@ public class TestBitMagic {
 			}
 		}
 	}
+	
+	@Test
+	public void testBitToString() {
+		TestCase.assertEquals("00000000", BitMagic.toBitString((byte)0b00000000));
+		TestCase.assertEquals("00100010", BitMagic.toBitString((byte)0b00100010));
+		TestCase.assertEquals("11111111", BitMagic.toBitString((byte)0b11111111));
+	}
 }

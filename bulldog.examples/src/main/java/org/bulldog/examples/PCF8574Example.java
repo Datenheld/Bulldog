@@ -11,6 +11,7 @@ import org.bulldog.core.gpio.event.InterruptListener;
 import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
+import org.bulldog.core.util.BitMagic;
 import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.devices.portexpander.PCF8574;
 import org.bulldog.devices.switches.Button;
@@ -65,6 +66,11 @@ public class PCF8574Example {
 		//if you don't like to mess with pins
 		portExpander.writeState((byte)0xff);
 		BulldogUtil.sleepMs(1000);
+		
+		//You can also read it directly if desired.
+		//Notice that our two inputs will be low.
+		byte state = portExpander.readState();
+		System.out.println("The current state of the expander is: " + BitMagic.toBitString(state));
 		
 		//Finally, we get two DigitalOutputs from the expander,
 		//which will be toggled indefinitely.
