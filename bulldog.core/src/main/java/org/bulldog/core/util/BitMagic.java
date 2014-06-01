@@ -15,6 +15,15 @@ public class BitMagic {
 		return dword;
 	}
 	
+	public static byte setBit(byte b, int bitPosition, int value) {
+		if(value == 1) {
+			b |= (value << bitPosition);
+		} else {
+			b &= ~(1 << bitPosition);
+		}
+		return b;
+	}
+	
 	public static boolean isBitSet(int dword, int bitPosition){
 	    return ((dword & (1 << bitPosition)) != 0);
 	}
