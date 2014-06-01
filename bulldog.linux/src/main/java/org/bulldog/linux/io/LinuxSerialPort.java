@@ -324,11 +324,15 @@ public class LinuxSerialPort implements SerialPort, LinuxEpollListener {
 	@Override
 	public void processEpollResults(NativePollResult[] results) {
 		for(NativePollResult result : results) {
+			fireSerialDataEvent(result);
+		}
+	}
+
+	protected void fireSerialDataEvent(NativePollResult result) {
+		synchronized(listeners) {
 			for(SerialDataListener listener : listeners) {
 				listener.onSerialDataAvailable(new SerialDataEventArgs(this, result.getData()));
 			}
 		}
 	}
-
-
 }
