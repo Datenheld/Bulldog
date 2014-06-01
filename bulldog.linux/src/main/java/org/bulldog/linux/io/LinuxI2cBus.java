@@ -126,7 +126,7 @@ public class LinuxI2cBus implements I2cBus {
 	public void open() throws IOException {
 		if(isOpen()) { return; }
 		fileDescriptor = NativeI2c.i2cOpen(getDeviceFilePath());
-		if(fileDescriptor == 0) {
+		if(fileDescriptor <= 0) {
 			isOpen = false;
 			throw new IOException(String.format(ERROR_OPENING_BUS, getDeviceFilePath()));
 		} 

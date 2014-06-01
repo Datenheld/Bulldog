@@ -26,7 +26,6 @@ int i2cWriteBuffer(int fileDescriptor, char* data) {
 	return write(fileDescriptor, data, strlen(data));
 }
 
-
 int i2cSelectSlave(int fd, int slaveAddress) {
   if (ioctl (fd, I2C_SLAVE, slaveAddress) < 0) {
 	  return -1 ;
@@ -38,7 +37,7 @@ int i2cSelectSlave(int fd, int slaveAddress) {
 int i2cOpen(char* busDevice) {
   int fd;
   if ((fd = open (busDevice, O_RDWR)) < 0) {
-	  errorMessage("read failed: %s", strerror(errno));
+	  errorMessage("open failed: %s", strerror(errno));
 	  return -1 ;
   }
 

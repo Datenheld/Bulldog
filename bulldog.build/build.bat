@@ -1,1 +1,1 @@
-gradle --daemon clean bulldogSharedLibrary build bbbDistro
+gradle -x test --daemon clean bulldogSharedLibrary build bbbDistro

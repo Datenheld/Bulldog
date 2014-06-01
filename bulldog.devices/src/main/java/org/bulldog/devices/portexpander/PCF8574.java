@@ -61,9 +61,10 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 	
 	private void createPins() {
 		for(int i = 0; i <= 7; i++) {
-			Pin pin = new Pin("P0", i, "P", i);
+			Pin pin = new Pin("P" + i, i, "P", i);
 			pin.addFeature(new PCF8574DigitalInput(pin, this));
 			pin.addFeature(new PCF8574DigitalOutput(pin, this));
+			getPins().add(pin);
 		}
 	}
 
@@ -99,7 +100,8 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 	
 	public byte readState() {
 		try {
-			return connection.readByte();
+			byte readByte = connection.readByte();
+			return readByte;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
