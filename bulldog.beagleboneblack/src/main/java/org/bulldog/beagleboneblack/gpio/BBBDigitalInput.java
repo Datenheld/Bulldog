@@ -29,7 +29,7 @@ public class BBBDigitalInput extends AbstractDigitalInput implements LinuxEpollL
 	
 	public Signal read() {
 		BeagleBonePin bbbPin = (BeagleBonePin)getPin();
-		return NativeGpio.digitalRead(bbbPin.getPortNumeric(), bbbPin.getIndexOnPort()) > 0 ? Signal.High : Signal.Low;
+		return Signal.fromNumericValue(NativeGpio.digitalRead(bbbPin.getPortNumeric(), bbbPin.getIndexOnPort()));
 	}
 
 	public void shutdown() {

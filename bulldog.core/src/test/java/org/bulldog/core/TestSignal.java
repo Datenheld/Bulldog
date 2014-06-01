@@ -29,4 +29,10 @@ public class TestSignal {
 		TestCase.assertEquals(Signal.High, Signal.fromBooleanValue(true));
 	}
 	
+	@Test 
+	public void testInverse() {
+		TestCase.assertEquals(Signal.Low, Signal.High.inverse());
+		TestCase.assertEquals(Signal.High, Signal.Low.inverse());
+	}
+	
 }

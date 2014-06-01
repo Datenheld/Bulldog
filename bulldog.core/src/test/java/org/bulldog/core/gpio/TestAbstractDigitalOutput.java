@@ -129,7 +129,7 @@ public class TestAbstractDigitalOutput {
 		long delta = 0;
 		Signal expectedSignal = output.getAppliedSignal();
 		while(delta < duration) {
-			expectedSignal = expectedSignal == Signal.High ? Signal.Low : Signal.High;
+			expectedSignal = expectedSignal.inverse();
 			BulldogUtil.sleepMs((int)blinkPeriod);
 			delta = System.currentTimeMillis() - startTime;	
 			Signal signal = output.getAppliedSignal();

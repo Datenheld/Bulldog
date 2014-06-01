@@ -47,7 +47,7 @@ public abstract class AbstractDigitalOutput extends AbstractPinFeature implement
 	}
 
 	public void toggle() {
-		applySignal(signal == Signal.High ? Signal.Low : Signal.High);
+		applySignal(signal.inverse());
 	}
 
 	public Signal getAppliedSignal() {
