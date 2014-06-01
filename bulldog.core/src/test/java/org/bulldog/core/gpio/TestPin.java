@@ -37,14 +37,23 @@ public class TestPin {
 	
 	@Test
 	public void testFeatureActivation() {
+		TestCase.assertFalse(pin.isFeatureActive(MockedPinFeature1.class));
+		TestCase.assertFalse(pin.isFeatureActive(MockedPinFeature2.class));
+		TestCase.assertFalse(pin.isFeatureActive(MockedPinFeature3.class));
+		
 		pin.activateFeature(MockedPinFeature2.class);
 		PinFeature feature = pin.getActiveFeature();
 		TestCase.assertEquals(type2, feature);
-
+		TestCase.assertFalse(pin.isFeatureActive(MockedPinFeature3.class));
+		
 		pin.activateFeature(MockedPinFeature3.class);
 		feature = pin.getActiveFeature();
 		TestCase.assertEquals(type3, feature);
-	
+		TestCase.assertTrue(pin.isFeatureActive(MockedPinFeature3.class));
+		TestCase.assertTrue(pin.isFeatureActive(MockedPinFeature2.class));	//Type 3 is subclass of Type 2
+		TestCase.assertTrue(pin.isFeatureActive(pin.getFeature(MockedPinFeature3.class)));
+		TestCase.assertFalse(pin.isFeatureActive(pin.getFeature(MockedPinFeature2.class)));
+		
 		feature = pin.as(MockedPinFeature2.class);
 		TestCase.assertEquals(type2, feature);
 	
