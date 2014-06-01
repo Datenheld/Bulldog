@@ -108,6 +108,16 @@ public class TestAbstractDigitalOutput {
 		BulldogUtil.sleepMs(1050);
 		TestCase.assertFalse(output.isBlocking());
 		
+		try {
+			output.blinkTimes(10, 0);
+			TestCase.fail();
+		} catch(IllegalArgumentException ex) {}
+		
+		try {
+			output.blinkTimes(10, -1);
+			TestCase.fail();
+		} catch(IllegalArgumentException ex) {}
+		
 		Signal signal = output.getAppliedSignal();
 		output.blinkTimes(10, 3);
 		for(int i = 0; i < 3; i++) {
