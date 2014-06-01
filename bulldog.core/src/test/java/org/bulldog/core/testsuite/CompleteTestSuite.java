@@ -8,6 +8,7 @@ import org.bulldog.core.gpio.TestAbstractPwm;
 import org.bulldog.core.gpio.TestPin;
 import org.bulldog.core.platform.TestAbstractBoard;
 import org.bulldog.core.platform.TestAbstractPinProvider;
+import org.bulldog.core.util.TestBitMagic;
 import org.bulldog.core.util.TestBulldogUtil;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -23,7 +24,8 @@ import org.junit.runners.Suite.SuiteClasses;
 				TestAbstractDigitalInput.class,
 				TestAbstractPwm.class,
 				TestSignal.class,
-				TestBulldogUtil.class
+				TestBulldogUtil.class,
+				TestBitMagic.class
 			  })
 public class CompleteTestSuite {
 

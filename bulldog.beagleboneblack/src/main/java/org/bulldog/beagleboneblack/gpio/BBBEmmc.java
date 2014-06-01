@@ -9,7 +9,6 @@ public class BBBEmmc extends AbstractPinFeature {
 	
 	public BBBEmmc(Pin pin) {
 		super(pin);
-		setBlocking(true);
 	}
 
 	@Override
@@ -19,11 +18,11 @@ public class BBBEmmc extends AbstractPinFeature {
 
 	@Override
 	public void setup() {
+		setBlocking(true);
 	}
 
 	@Override
 	public void teardown() {
-		throw new UnsupportedOperationException();
 	}
 
 }

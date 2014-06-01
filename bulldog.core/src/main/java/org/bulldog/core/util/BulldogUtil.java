@@ -49,5 +49,5 @@ public final class BulldogUtil {
 			return null;
 		}
 	}
-	
+		
 }

@@ -9,7 +9,6 @@ public class BBBHdmi extends AbstractPinFeature {
 		
 	public BBBHdmi(Pin pin) {
 		super(pin);
-		setBlocking(true);
 	}
 
 	@Override
@@ -19,11 +18,11 @@ public class BBBHdmi extends AbstractPinFeature {
 
 	@Override
 	public void setup() {
+		setBlocking(true);
 	}
 
 	@Override
 	public void teardown() {
-		throw new UnsupportedOperationException();
 	}
 
 }

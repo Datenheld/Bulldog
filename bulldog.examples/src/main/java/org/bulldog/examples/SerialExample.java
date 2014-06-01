@@ -3,6 +3,7 @@ package org.bulldog.examples;
 import java.io.IOException;
 
 import org.bulldog.beagleboneblack.BBBNames;
+import org.bulldog.core.Parity;
 import org.bulldog.core.io.serial.SerialDataEventArgs;
 import org.bulldog.core.io.serial.SerialDataListener;
 import org.bulldog.core.io.serial.SerialPort;
@@ -11,9 +12,9 @@ import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;
 
 /**
- * For this example, UART2 on the BeagleboneBlack ist connected to UART4.
- * UART2 reads the data from UART4 event driven and writes to UART4.
- * UART4 reads the data from UART2 synchronously and writes to UART2.
+ * For this example, UART2 on the BeagleboneBlack ist connected to UART1.
+ * UART2 reads the data from UART1 event driven and writes to UART1.
+ * UART1 reads the data from UART2 synchronously and writes to UART2.
  * 
  * @author Datenheld
  *
@@ -42,25 +43,25 @@ public class SerialExample {
     		
     	});;
     	
-    	//Retrieve another serial port, UART4 in this case
-    	SerialPort serial4 = board.getSerialPort(BBBNames.UART4);
-    	serial4.setBaudRate(9600);
-    	serial4.setBlocking(false);
-    	serial4.open();
+    	//Retrieve another serial port, UART1 in this case
+    	SerialPort serial1 = board.getSerialPort(BBBNames.UART1);
+    	serial1.setBaudRate(9600);
+    	serial1.setBlocking(false);
+    	serial1.open();
     	
     	for(int i = 0; i < 10; i++) {
-    		serial2.writeString("Hello Serial4 - Greetings from Serial2\n");
+    		serial2.writeString("Hello Serial1 - Greetings from Serial2\n");
     		
     		//Sleep, give UART2 time to transmit the data
     		BulldogUtil.sleepMs(50);
     		
-    		System.out.print(serial4.readString());
-    		serial4.writeString("Hello Serial2 - Greetings from Serial4\n");
+    		System.out.print(serial1.readString());
+    		serial1.writeString("Hello Serial2 - Greetings from Serial1\n");
     		BulldogUtil.sleepMs(1000);
     	}
     	
     	serial2.close();
-    	serial4.close();
+    	serial1.close();
 	}
 	
 }

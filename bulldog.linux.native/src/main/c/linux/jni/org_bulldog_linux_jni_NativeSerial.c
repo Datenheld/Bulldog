@@ -23,13 +23,13 @@ JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeSerial_serialOpen__Ljava
  * Method:    serialOpen
  * Signature: (Ljava/lang/String;IIZIII)I
  */
-JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeSerial_serialOpen__Ljava_lang_String_2IIZII
-  (JNIEnv * env, jclass clazz, jstring path, jint baud, jint parity, jboolean blocking, jint readTimeout, jint dataBits, jint stopBits) {
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeSerial_serialOpen__Ljava_lang_String_2IIZIII
+  (JNIEnv * env, jclass clazz, jstring path, jint baud, jint parity, jboolean blocking, jint readTimeout, jint numDataBits, jint numStopBits) {
 	char fileName[256];
 	int len = (*env)->GetStringLength(env, path);
 	(*env)->GetStringUTFRegion(env, path, 0, len, fileName);
 
-	return serialOpen(fileName, baud, parity, blocking, readTimeout, dataBits, stopBits);
+	return serialOpen(fileName, baud, parity, blocking, readTimeout, numDataBits, numStopBits);
 }
 
 /*

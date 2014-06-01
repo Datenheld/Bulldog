@@ -11,6 +11,7 @@ import org.bulldog.core.io.bus.Bus;
 import org.bulldog.core.io.bus.BusConnection;
 import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.platform.AbstractPinProvider;
+import org.bulldog.core.util.BitMagic;
 
 /**
  * This class represents the popular PCF8574(A) I2C Port Expander family.
@@ -26,6 +27,15 @@ import org.bulldog.core.platform.AbstractPinProvider;
  */
 public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 
+	public static final String P0 = "P0";
+	public static final String P1 = "P1";
+	public static final String P2 = "P2";
+	public static final String P3 = "P3";
+	public static final String P4 = "P4";
+	public static final String P5 = "P5";
+	public static final String P6 = "P5";
+	public static final String P7 = "P5";
+	
 	private BusConnection connection;
 	private DigitalInput interrupt;
 	
@@ -67,8 +77,8 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 			if(!currentPin.isFeatureActive(PCF8574DigitalInput.class)) { continue; }
 			
 			PCF8574DigitalInput input = currentPin.as(PCF8574DigitalInput.class);
-			int lastKnownPinState = (lastKnownState >> currentPin.getAddress()) & 1;
-			int currentState = (state >> currentPin.getAddress()) & 1;
+			int lastKnownPinState = BitMagic.getBit(lastKnownState, currentPin.getAddress());
+			int currentState =  BitMagic.getBit(state, currentPin.getAddress());
 			if(lastKnownPinState == currentState) { continue; }
 			input.handleInterruptEvent(Signal.fromNumericValue(lastKnownState), Signal.fromNumericValue(currentState));
 		}

@@ -5,6 +5,7 @@ import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.base.AbstractDigitalInput;
 import org.bulldog.core.gpio.event.InterruptEventArgs;
+import org.bulldog.core.util.BitMagic;
 
 public class PCF8574DigitalInput extends AbstractDigitalInput {
 
@@ -24,8 +25,8 @@ public class PCF8574DigitalInput extends AbstractDigitalInput {
 	@Override
 	public void setup() {
 		byte state = expander.getLastKnownState();
-		state ^= 1 << getPin().getAddress();
-		expander.writeState(state);
+		byte newState = (byte)BitMagic.setBit(state, getPin().getAddress(), 1);
+		expander.writeState(newState);
 	}
 
 	@Override

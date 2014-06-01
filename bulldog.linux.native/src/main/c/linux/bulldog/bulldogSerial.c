@@ -10,7 +10,7 @@
 
 
 
-int serialSetAttributes(int fd, int speed, int parity, int readTimeout, int dataBits, int stopBits) {
+int serialSetAttributes(int fd, int speed, int parity, int readTimeout, int numDataBits, int numStopBits) {
 	struct termios tty;
 	memset(&tty, 0, sizeof tty);
 	if (tcgetattr(fd, &tty) != 0) {
@@ -22,11 +22,11 @@ int serialSetAttributes(int fd, int speed, int parity, int readTimeout, int data
 	cfsetispeed(&tty, speed);
 
 	int bitSize = CS8;
-	if(dataBits == 5) {
+	if(numDataBits == 5) {
 		bitSize = CS5;
-	} else if(dataBits == 6) {
+	} else if(numDataBits == 6) {
 		bitSize = CS6;
-	} else if(dataBits == 7) {
+	} else if(numDataBits == 7) {
 		bitSize = CS7;
 	}
 
@@ -51,7 +51,7 @@ int serialSetAttributes(int fd, int speed, int parity, int readTimeout, int data
 		tty.c_iflag |= (INPCK | ISTRIP);
 	}
 
-	if(stopBits == 1) {
+	if(numStopBits == 1) {
 		tty.c_cflag &= ~CSTOPB;
 	} else {
 		tty.c_cflag |= CSTOPB;
@@ -84,21 +84,21 @@ void serialSetBlocking(int fd, int block, int readTimeout) {
 	}
 }
 
-int serialOpen(char* portname, int baud, int parity, int blocking, int readTimeout, int dataBits, int stopBits) {
+int serialOpen(char* portname, int baud, int parity, int blocking, int readTimeout, int numDataBits, int numStopBits) {
 	int fd = open(portname, O_RDWR | O_NOCTTY | O_SYNC);
 	if (fd < 0) {
 		errorMessage("error %d opening %s: %s", errno, portname, strerror(errno));
 		return 1;
 	}
 
-	serialSetAttributes(fd, baud, parity, readTimeout, dataBits, stopBits);
+	serialSetAttributes(fd, baud, parity, readTimeout, numDataBits, numStopBits);
 	serialSetBlocking(fd, blocking, readTimeout);
 
 	return fd;
 }
 
 int serialOpenSimple(char* portname, int baud) {
-	return serialOpen(portname, baud, 0, SERIAL_NO_BLOCK, SERIAL_DEFAULT_TIMEOUT, 8, 1);
+	return serialOpen(portname, baud, 0, SERIAL_NO_BLOCK, SERIAL_DEFAULT_TIMEOUT, SERIAL_DEFAULT_DATA_BITS, SERIAL_DEFAULT_STOP_BITS);
 }
 
 int serialClose(int fd) {
