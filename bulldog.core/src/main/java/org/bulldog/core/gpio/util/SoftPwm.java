@@ -1,57 +1,91 @@
 package org.bulldog.core.gpio.util;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+
+import org.bulldog.core.Signal;
+import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.gpio.Pwm;
-import org.bulldog.core.gpio.base.AbstractPinFeature;
+import org.bulldog.core.gpio.base.AbstractPwm;
+import org.bulldog.core.util.BulldogUtil;
 
-public class SoftPwm extends AbstractPinFeature implements Pwm {
+public class SoftPwm extends AbstractPwm implements Runnable {
 
+	private static final long NANOSECONDS_PER_SECOND = 1000000000;
+	
+	private ScheduledExecutorService executorService;
+	private DigitalOutput output;
+	
+	private int dutyInNanoseconds;
+	private int periodInNanoseconds;
+	private ScheduledFuture<?> future;
+	
 	public SoftPwm(Pin pin) {
 		super(pin);
+		this.output = pin.getFeature(DigitalOutput.class);
+	}
+
+	public SoftPwm(DigitalOutput output) {
+		super(output.getPin());
+		this.output = output;
+	}
+
+	private void createScheduler() {
+		if(executorService != null) { return; }
+		executorService = Executors.newScheduledThreadPool(1);
+		future = executorService.scheduleAtFixedRate(this, 0, periodInNanoseconds, TimeUnit.NANOSECONDS);
+	}
+
+	private void terminateScheduler() {
+		if(executorService == null) { return; }
+		if(future != null) {
+			future.cancel(true);
+			future = null;
+		}
+		executorService.shutdownNow();
+		executorService = null;
 	}
 
 	@Override
-	public String getName() {
-		return null;
+	public void run() {
+		output.applySignal(Signal.High);
+		BulldogUtil.sleepNs(dutyInNanoseconds);
+		output.applySignal(Signal.Low);
 	}
-
+	
 	@Override
 	public void setup() {
+		output.setup();
 	}
+
 
 	@Override
 	public void teardown() {
+		terminateScheduler();
+		output.teardown();
 	}
 
 	@Override
-	public void enable() {
+	protected void setPwmImpl(float frequency, float duty) {
+		periodInNanoseconds = (int) ((1.0 / frequency) * (float)NANOSECONDS_PER_SECOND);
+		dutyInNanoseconds = (int) (periodInNanoseconds * duty);
 	}
 
-	@Override
-	public void disable() {
-	}
 
 	@Override
-	public boolean isEnabled() {
-		return false;
+	protected void enableImpl() {
+		if(!this.isActivatedFeature()) {
+			setup();
+		}
+		createScheduler();
 	}
 
-	@Override
-	public void setDuty(float duty) {
-	}
 
 	@Override
-	public float getDuty() {
-		return 0;
-	}
-
-	@Override
-	public void setFrequency(float frequency) {
-	}
-
-	@Override
-	public float getFrequency() {
-		return 0;
+	protected void disableImpl() {
+		terminateScheduler();
 	}
 
 }

@@ -3,6 +3,7 @@ package org.bulldog.examples;
 import org.bulldog.beagleboneblack.BBBNames;
 import org.bulldog.beagleboneblack.BBBProperties;
 import org.bulldog.core.gpio.Pwm;
+import org.bulldog.core.gpio.util.SoftPwm;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;
@@ -12,6 +13,11 @@ public class PwmExample {
 	public static void main(String... args) {
 		
 		final Board board = Platform.createBoard();
+		
+		Pwm softPwm = new SoftPwm(board.getPin(BBBNames.P8_12));
+		softPwm.setFrequency(50.0f);
+		softPwm.setDuty(0.2f);
+		softPwm.enable();
 		
 		//These will always share the same frequency - same pwm group!
 		Pwm pwm1 = board.getPin(BBBNames.EHRPWM0A_P9_21).as(Pwm.class);

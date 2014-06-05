@@ -15,6 +15,20 @@ public final class BulldogUtil {
 		}
 	}
 	
+	public static void sleepNs(int ns) {
+	    final long INTERVAL = ns;
+	    long start = System.nanoTime();
+	    long end=0;
+	    do {
+	    	end = System.nanoTime();
+	    	sleepMs(5);
+	    } while(start + INTERVAL >= (end - 10000));
+	    
+	    do {
+	        end = System.nanoTime();
+	    } while(start + INTERVAL >= end);
+	}
+	
 	public static String bytesToString(byte[] bytes, String encoding)  {
 		if(bytes == null) {
 			throw new IllegalArgumentException("bytes may not be null in string conversion");
