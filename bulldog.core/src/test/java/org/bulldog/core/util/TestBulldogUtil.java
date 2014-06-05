@@ -41,6 +41,12 @@ public class TestBulldogUtil {
 		TestCase.assertEquals(25, delta, 5);
 	}
 	
+	@Test
+	public void testSleepNs() {
+		// This is hardly testable and won't be precise anyway.
+		// The method call alone will change results drastically
+	}
+	
 	@Test 
 	public void testBytesToString() throws UnsupportedEncodingException {
 		String string = BulldogUtil.bytesToString("Hello World".getBytes("ASCII"));

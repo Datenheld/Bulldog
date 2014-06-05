@@ -1,4 +1,4 @@
-package org.bulldog.core.gpio;
+package org.bulldog.core.gpio.base;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,9 +103,18 @@ public class TestPin {
 	public void testBlocking() {
 		
 		PinFeature feature = pin.as(MockedPinFeature1.class);
-		type1.setBlocking(true);
+		type1.blockPin();
 		TestCase.assertEquals(feature, pin.getBlocker());
 		TestCase.assertTrue(pin.isBlocked());
+		
+		type1.blockPin(); //Should have no effect;
+		
+		try {
+			type2.blockPin();
+			TestCase.fail();
+		} catch(PinBlockedException ex) {
+			TestCase.assertEquals(feature, ex.getBlocker());
+		}
 		
 		try {
 			feature = pin.as(MockedPinFeature2.class);
@@ -114,7 +123,19 @@ public class TestPin {
 			TestCase.assertEquals(pin.getBlocker(), ex.getBlocker());
 		}
 		
-		type1.setBlocking(false);
+		try {
+			type2.unblockPin();
+			TestCase.fail();
+		} catch(PinBlockedException ex) {
+			TestCase.assertEquals(feature, ex.getBlocker());
+		}
+		
+		
+		type1.unblockPin();
+		
+		type1.unblockPin();  //Should have no effect
+		type2.unblockPin();  //Should have no effect
+		
 		TestCase.assertNull(pin.getBlocker());
 		TestCase.assertFalse(pin.isBlocked());
 		

@@ -16,17 +16,12 @@ public final class BulldogUtil {
 	}
 	
 	public static void sleepNs(int ns) {
-	    final long INTERVAL = ns;
 	    long start = System.nanoTime();
-	    long end=0;
-	    do {
-	    	end = System.nanoTime();
-	    	sleepMs(5);
-	    } while(start + INTERVAL >= (end - 10000));
-	    
+	    long end = 0;
+	 
 	    do {
 	        end = System.nanoTime();
-	    } while(start + INTERVAL >= end);
+	    } while(start + ns >= end);
 	}
 	
 	public static String bytesToString(byte[] bytes, String encoding)  {

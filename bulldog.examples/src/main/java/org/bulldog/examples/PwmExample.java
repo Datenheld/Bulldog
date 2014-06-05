@@ -13,12 +13,7 @@ public class PwmExample {
 	public static void main(String... args) {
 		
 		final Board board = Platform.createBoard();
-		
-		Pwm softPwm = new SoftPwm(board.getPin(BBBNames.P8_12));
-		softPwm.setFrequency(50.0f);
-		softPwm.setDuty(0.2f);
-		softPwm.enable();
-		
+				
 		//These will always share the same frequency - same pwm group!
 		Pwm pwm1 = board.getPin(BBBNames.EHRPWM0A_P9_21).as(Pwm.class);
 		Pwm pwm2 = board.getPin(BBBNames.EHRPWM0B_P9_22).as(Pwm.class);
@@ -64,6 +59,14 @@ public class PwmExample {
 			pwm8.setDuty(0.9f);
 			pwm8.enable();
 		}
+		
+		// This is a software pwm. It has kind of high cpu costs 
+		// and is far from precise, but it can be used to drive 
+		// motors for example and can be set up on any digital output
+		Pwm softPwm = new SoftPwm(board.getPin(BBBNames.P8_12));
+		softPwm.setFrequency(50.0f);
+		softPwm.setDuty(0.2f);
+		softPwm.enable();
 		
 		while(true) {
 			BulldogUtil.sleepMs(1000);

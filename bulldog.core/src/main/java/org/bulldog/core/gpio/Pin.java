@@ -15,6 +15,7 @@ public class Pin {
 	private String port = null;
 	private int indexOnPort = -0;
 	private PinFeature activeFeature = null;
+	private PinFeature blocker = null;
 	private List<FeatureActivationListener> activationListeners = new ArrayList<FeatureActivationListener>();
 
 	public Pin(String name, int address, String port, int indexOnPort) {
@@ -68,24 +69,22 @@ public class Pin {
 		return selectedFeature;
 	}
 	
+	public void block(PinFeature blocker) {
+		if(getBlocker() != null && getBlocker() != blocker) { throw new PinBlockedException(getBlocker()); }
+		this.blocker = blocker;
+	}
+	
+	public void unblock(PinFeature blocker) {
+		if(getBlocker() != null && getBlocker() != blocker) { throw new PinBlockedException(getBlocker()); }
+		this.blocker = null;
+	}
+	
 	public PinFeature getBlocker() {
-		for(PinFeature feature : getFeatures()) {
-			if(feature.isBlocking()) {
-				return feature;
-			}
-		} 
-		
-		return null;
+		return blocker;
 	}
 	
 	public boolean isBlocked() {
-		for(PinFeature feature : getFeatures()) {
-			if(feature.isBlocking()) {
-				return true;
-			}
-		}
-		
-		return false;
+		return blocker != null;
 	}
 
 	@SuppressWarnings("unchecked")

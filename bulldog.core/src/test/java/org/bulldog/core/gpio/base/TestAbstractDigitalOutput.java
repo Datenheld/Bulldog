@@ -1,8 +1,10 @@
-package org.bulldog.core.gpio;
+package org.bulldog.core.gpio.base;
 
 import junit.framework.TestCase;
 
 import org.bulldog.core.Signal;
+import org.bulldog.core.gpio.DigitalOutput;
+import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.mocks.MockedDigitalOutput;
 import org.bulldog.core.util.BulldogUtil;
 import org.junit.Before;

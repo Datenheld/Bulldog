@@ -15,7 +15,7 @@ public class Blinker implements Runnable {
 	private int durationMilliseconds = 0;
 	private long startTime = 0;
 	private int times = 0;
-	boolean doTimes = false;
+	private boolean doTimes = false;
 
 	public Blinker(DigitalOutput output) {
 		executorService = Executors.newScheduledThreadPool(1);
@@ -42,7 +42,7 @@ public class Blinker implements Runnable {
 		
 		this.durationMilliseconds = durationMilliseconds;
 		startTime = System.currentTimeMillis();
-		output.setBlocking(true);
+		output.blockPin();
 		future = executorService.scheduleAtFixedRate(this, 0,
 				 periodLengthMilliseconds, TimeUnit.MILLISECONDS);
 	}
@@ -52,7 +52,7 @@ public class Blinker implements Runnable {
 		future.cancel(true);
 		future = null;
 		doTimes = false;
-		output.setBlocking(false);
+		output.unblockPin();
 	}
 
 	@Override

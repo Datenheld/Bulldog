@@ -24,12 +24,16 @@ public class SoftPwm extends AbstractPwm implements Runnable {
 	
 	public SoftPwm(Pin pin) {
 		super(pin);
+		if(!pin.hasFeature(DigitalOutput.class)) {
+			throw new IllegalArgumentException("The pin must be able to act as a DigitalOutput");
+		}
+		
 		this.output = pin.getFeature(DigitalOutput.class);
+		pin.getFeatures().add(this);
 	}
 
 	public SoftPwm(DigitalOutput output) {
-		super(output.getPin());
-		this.output = output;
+		this(output.getPin());
 	}
 
 	private void createScheduler() {
@@ -45,6 +49,11 @@ public class SoftPwm extends AbstractPwm implements Runnable {
 			future = null;
 		}
 		executorService.shutdownNow();
+		try {
+			executorService.awaitTermination(1000, TimeUnit.MICROSECONDS);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		executorService = null;
 	}
 
@@ -76,9 +85,11 @@ public class SoftPwm extends AbstractPwm implements Runnable {
 
 	@Override
 	protected void enableImpl() {
-		if(!this.isActivatedFeature()) {
-			setup();
+		if(!isActivatedFeature()) {
+			activate();
 		}
+
+		blockPin();
 		createScheduler();
 	}
 
@@ -86,6 +97,8 @@ public class SoftPwm extends AbstractPwm implements Runnable {
 	@Override
 	protected void disableImpl() {
 		terminateScheduler();
+		unblockPin();
 	}
+
 
 }

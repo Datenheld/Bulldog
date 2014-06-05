@@ -18,7 +18,7 @@ public class BBBEmmc extends AbstractPinFeature {
 
 	@Override
 	public void setup() {
-		setBlocking(true);
+		blockPin();
 	}
 
 	@Override

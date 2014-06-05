@@ -18,7 +18,7 @@ public class BBBHdmi extends AbstractPinFeature {
 
 	@Override
 	public void setup() {
-		setBlocking(true);
+		blockPin();
 	}
 
 	@Override

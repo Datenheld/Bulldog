@@ -1,4 +1,4 @@
-package org.bulldog.core.gpio;
+package org.bulldog.core.gpio.base;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 
 import org.bulldog.core.Edge;
 import org.bulldog.core.Signal;
+import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.event.InterruptEventArgs;
 import org.bulldog.core.gpio.event.InterruptListener;
 import org.bulldog.core.mocks.MockedDigitalInput;

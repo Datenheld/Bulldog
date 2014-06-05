@@ -30,7 +30,7 @@ public abstract class AbstractAnalogInput extends AbstractPinFeature implements 
 			throw new IllegalArgumentException("listener cannot be null");
 		}
 		
-		setBlocking(true);
+		blockPin();
 		future = scheduler.scheduleAtFixedRate(new Runnable() {
 			public void run() {
 				double[] samples = sample(10);
@@ -49,6 +49,6 @@ public abstract class AbstractAnalogInput extends AbstractPinFeature implements 
 	public void stopMonitor() {
 		if(future == null) { return; }
 		future.cancel(true);
-		setBlocking(false);
+		unblockPin();
 	}
 }

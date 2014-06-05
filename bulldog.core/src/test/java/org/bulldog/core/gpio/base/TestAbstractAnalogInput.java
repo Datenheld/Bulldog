@@ -1,7 +1,8 @@
-package org.bulldog.core.gpio;
+package org.bulldog.core.gpio.base;
 
 import junit.framework.TestCase;
 
+import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.event.ThresholdListener;
 import org.bulldog.core.mocks.MockedAnalogInput;
 import org.bulldog.core.util.BulldogUtil;

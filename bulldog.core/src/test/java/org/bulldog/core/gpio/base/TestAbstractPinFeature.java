@@ -1,7 +1,9 @@
-package org.bulldog.core.gpio;
+package org.bulldog.core.gpio.base;
 
 import junit.framework.TestCase;
 
+import org.bulldog.core.gpio.DigitalOutput;
+import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.mocks.MockedDigitalOutput;
 import org.bulldog.core.mocks.MockedPinFeature1;
 import org.junit.Test;
@@ -35,10 +37,10 @@ public class TestAbstractPinFeature {
 		TestCase.assertTrue(output.isActivatedFeature());
 		TestCase.assertFalse(feature1.isActivatedFeature());
 		
-		output.setBlocking(true);
+		output.blockPin();
 		TestCase.assertTrue(output.isBlocking());
 		
-		output.setBlocking(false);
+		output.unblockPin();
 		TestCase.assertFalse(output.isBlocking());
 	}
 	

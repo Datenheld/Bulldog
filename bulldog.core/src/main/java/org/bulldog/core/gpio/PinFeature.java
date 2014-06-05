@@ -10,7 +10,8 @@ public interface PinFeature {
 	boolean isActivatedFeature();
 	
 	boolean isBlocking();
-	void setBlocking(boolean blocking);
+	void blockPin();
+	void unblockPin();
 	
 	void setup();
 	void teardown();
