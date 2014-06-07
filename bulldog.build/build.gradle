@@ -57,7 +57,7 @@ configure(javaProjects) {
 task beagleboneblackSingleJar(type: Jar, dependsOn: subprojects.assemble) { 
      baseName = 'bulldog-beagleboneblack' 
      manifest { 
-     	attributes 'Main-Class': 'org.bulldog.examples.PwmExample' 
+     	attributes 'Main-Class': 'org.bulldog.examples.AdafruitServoDriverExample' 
      }
     
     javaProjects.each { project -> 

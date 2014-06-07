@@ -17,13 +17,20 @@ unsigned char i2cRead(int fileDescriptor) {
 	return buffer;
 }
 
-
 int i2cWrite(int fileDescriptor, unsigned char data) {
-	return write(fileDescriptor, &data, 1);
+	int bytesWritten = write(fileDescriptor, &data, 1);
+	if(bytesWritten < 0) {
+		errorMessage("error %d writing byte via i2c: %s", errno, strerror(errno));
+	}
+	return bytesWritten;
 }
 
 int i2cWriteBuffer(int fileDescriptor, char* data) {
-	return write(fileDescriptor, data, strlen(data));
+	int bytesWritten = write(fileDescriptor, data, strlen(data));
+	if(bytesWritten < 0) {
+		errorMessage("error %d writing byte via i2c: %s", errno, strerror(errno));
+	}
+	return bytesWritten;
 }
 
 int i2cSelectSlave(int fd, int slaveAddress) {

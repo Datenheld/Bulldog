@@ -174,12 +174,12 @@ public class LinuxI2cBus implements I2cBus {
 	@Override
 	public void writeBytes(byte[] bytes) throws IOException {
 		getOutputStream().write(bytes);
+		getOutputStream().flush();
 	}
 
 	@Override
 	public void writeString(String string) throws IOException {
 		writeBytes(string.getBytes());
-		
 	}
 
 	private void finalizeStreams() throws IOException {

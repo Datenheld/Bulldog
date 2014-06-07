@@ -45,6 +45,11 @@ public class Servo {
 		
 		pwm.setDuty(getDutyForAngle(angle));
 	}
+
+	
+	public void moveSmoothTo(float desiredAngle) {
+		
+	}
 	
 	public float getAngle() {
 		return angle;
