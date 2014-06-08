@@ -53,7 +53,7 @@ public class PCA9685 extends I2cDevice {
 			
 			setupIfNecessary(); 
 			
-			int prescaler = (int)Math.round(25000000 / (4096 * frequency) - 1);
+			int prescaler = (int)Math.round(25000000.0f / (4096.0f * frequency) - 1.0f);
 			int oldmode = readByteFromRegister(PCA9685_MODE1);
 			int newmode = ((oldmode & 0x7F) | 0x10); 		// sleep
 			writeByteToRegister(PCA9685_MODE1, newmode); 		// go to sleep
