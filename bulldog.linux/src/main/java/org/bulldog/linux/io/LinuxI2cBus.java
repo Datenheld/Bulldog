@@ -8,6 +8,7 @@ import java.io.IOException;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.bus.BusConnection;
 import org.bulldog.core.io.bus.i2c.I2cBus;
+import org.bulldog.core.io.bus.i2c.I2cConnection;
 import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.linux.jni.NativeI2c;
 import org.bulldog.linux.jni.NativeTools;
@@ -51,9 +52,14 @@ public class LinuxI2cBus implements I2cBus {
 	}
 	
 	public BusConnection createConnection(int address) {
-		return new BusConnection(this, address);
+		return createI2cConnection(address);
 	}
 
+	@Override
+	public I2cConnection createI2cConnection(int address) {
+		return new I2cConnection(this, address);
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -154,6 +160,16 @@ public class LinuxI2cBus implements I2cBus {
 	public String readString() throws IOException {
 		return BulldogUtil.convertStreamToString(getInputStream());
 	}
+	
+	public byte readByteFromRegister(int register) throws IOException {
+		writeByte(register);
+		return readByte();
+	}
+	
+	public int readBytesFromRegister(int register, byte[] buffer) throws IOException {
+		writeByte(register);
+		return readBytes(buffer);
+	}
 
 	public void selectAddress(int address) throws IOException {
 		selectSlave(address);
@@ -163,13 +179,12 @@ public class LinuxI2cBus implements I2cBus {
 		this.alias = alias;
 	}
 
-	public void writeByte(byte b) throws IOException {
-		int returnValue = NativeI2c.i2cWrite(getFileDescriptor(), b);
+	public void writeByte(int b) throws IOException {
+		int returnValue = NativeI2c.i2cWrite(getFileDescriptor(), (byte)b);
 		if(returnValue < 0) {
 			throw new IOException(ERROR_WRITING_BYTE);
 		}
 	}
-	
 	
 	@Override
 	public void writeBytes(byte[] bytes) throws IOException {
@@ -182,6 +197,19 @@ public class LinuxI2cBus implements I2cBus {
 		writeBytes(string.getBytes());
 	}
 
+	@Override
+	public void writeByteToRegister(int register, int data) throws IOException {
+		writeBytes(new byte[] { (byte)register, (byte)data });
+	}
+	
+	@Override
+	public void writeBytesToRegister(int register, byte[] data) throws IOException {
+		byte[] bytesToWrite = new byte[data.length + 1];
+		bytesToWrite[0] = (byte)register;
+		System.arraycopy(data, 0, bytesToWrite, 1, data.length);
+		writeBytes(bytesToWrite);
+	}
+	
 	private void finalizeStreams() throws IOException {
 		if(inputStream != null) {
 			try {

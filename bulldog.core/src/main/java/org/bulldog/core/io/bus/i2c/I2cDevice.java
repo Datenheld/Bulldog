@@ -5,38 +5,22 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.bulldog.core.io.IOPort;
-import org.bulldog.core.io.bus.Bus;
-import org.bulldog.core.io.bus.BusConnection;
 
 public class I2cDevice implements IOPort {
 
-	private BusConnection connection;
+	private I2cConnection connection;
 	private String name;
 	private String alias;
 	
-	public I2cDevice(BusConnection connection) {
+	public I2cDevice(I2cConnection connection) {
 		this.connection = connection;
 	}
 	
-	public I2cDevice(Bus bus, int address) {
-		this(bus.createConnection(address));
+	public I2cDevice(I2cBus bus, int address) {
+		this(bus.createI2cConnection(address));
 	}
 	
-	public void writeToRegister(byte register, byte data) throws IOException {
-		connection.writeBytes(new byte[] { register, data });
-	}
-
-	public void writeToRegister(int register, byte data) throws IOException {
-		writeToRegister((byte)register, data);
-	}
-	
-	public void writeToRegister(int register, byte[] data) throws IOException {
-		byte[] bytesToWrite = new byte[data.length + 1];
-		bytesToWrite[0] = (byte)register;
-		System.arraycopy(data, 0, bytesToWrite, 1, data.length);
-	}
-	
-	public void writeByte(byte b) throws IOException {
+	public void writeByte(int b) throws IOException {
 		getBusConnection().writeByte(b);
 	}
 	
@@ -60,12 +44,23 @@ public class I2cDevice implements IOPort {
 		return getBusConnection().readString();
 	}
 	
-	public byte readFromRegister(int register) throws IOException {
-		connection.writeByte((byte)register);
-		return connection.readByte();
+	public byte readByteFromRegister(int register) throws IOException {
+		return getBusConnection().readByteFromRegister(register);
 	}
 	
-	public BusConnection getBusConnection() {
+	public int readBytesFromRegister(int register, byte[] buffer) throws IOException {
+		return getBusConnection().readBytesFromRegister(register, buffer);
+	}
+	
+	public void writeByteToRegister(int register, int data) throws IOException {
+		getBusConnection().writeByteToRegister(register, data);
+	}
+	
+	public void writeBytesToRegister(int register, byte[] data) throws IOException {
+		getBusConnection().writeBytesToRegister(register, data);
+	}
+	
+	public I2cConnection getBusConnection() {
 		return connection;
 	}
 	

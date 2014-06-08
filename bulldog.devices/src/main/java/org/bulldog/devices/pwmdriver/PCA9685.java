@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.Pwm;
-import org.bulldog.core.io.bus.BusConnection;
 import org.bulldog.core.io.bus.i2c.I2cBus;
+import org.bulldog.core.io.bus.i2c.I2cConnection;
 import org.bulldog.core.io.bus.i2c.I2cDevice;
 import org.bulldog.core.util.BulldogUtil;
 
@@ -27,14 +27,14 @@ public class PCA9685 extends I2cDevice {
 	
 	private boolean isSetup = false;
 	
-	public PCA9685(BusConnection connection) {
+	public PCA9685(I2cConnection connection) {
 		super(connection);
 		setName(NAME);
 		setupPwmChannels();
 	}
 
 	public PCA9685(I2cBus bus, int address) {
-		this(bus.createConnection(address));
+		this(bus.createI2cConnection(address));
 	}
 
 	private void setupPwmChannels() {
@@ -53,14 +53,14 @@ public class PCA9685 extends I2cDevice {
 			
 			setupIfNecessary(); 
 			
-			byte prescaler = (byte)Math.round(25000000 / (4096 * frequency) - 1);
-			byte oldmode = readFromRegister(PCA9685_MODE1);
-			byte newmode = (byte) ((oldmode & 0x7F) | 0x10); 	// sleep
-			writeToRegister(PCA9685_MODE1, newmode); 			// go to sleep
-			writeToRegister(PCA9685_PRESCALE, prescaler); 		// set the prescaler
-			writeToRegister(PCA9685_MODE1, oldmode);
+			int prescaler = (int)Math.round(25000000 / (4096 * frequency) - 1);
+			int oldmode = readByteFromRegister(PCA9685_MODE1);
+			int newmode = ((oldmode & 0x7F) | 0x10); 		// sleep
+			writeByteToRegister(PCA9685_MODE1, newmode); 		// go to sleep
+			writeByteToRegister(PCA9685_PRESCALE, prescaler); 	// set the prescaler
+			writeByteToRegister(PCA9685_MODE1, oldmode);
 			BulldogUtil.sleepMs(5);
-			writeToRegister(PCA9685_MODE1, (byte) (oldmode | 0xa1)); 
+			writeByteToRegister(PCA9685_MODE1, (oldmode | 0xa1)); 
 		} catch(Exception ex) {
 			throw new RuntimeException(ex);
 		}
@@ -70,7 +70,7 @@ public class PCA9685 extends I2cDevice {
 
 	private void setupIfNecessary() throws IOException {
 		if(isSetup == false) {
-			writeToRegister(PCA9685_MODE1, (byte)0x0F);
+			writeByteToRegister(PCA9685_MODE1, 0x0F);
 			isSetup = true;
 		}
 	}
@@ -79,10 +79,10 @@ public class PCA9685 extends I2cDevice {
 		try {
 		  int offValue = (int)(4096 * duty);
 		  int register = PWM_BASE_ADDRESS+4*channel;
-		  writeToRegister(register, (byte)0);
-		  writeToRegister(register + 1, (byte)0);
-		  writeToRegister(register + 2, (byte)offValue);
-		  writeToRegister(register + 3, (byte)(offValue >> 8));
+		  writeByteToRegister(register, 0);
+		  writeByteToRegister(register + 1, 0);
+		  writeByteToRegister(register + 2, offValue);
+		  writeByteToRegister(register + 3, (offValue >> 8));
 		} catch(Exception ex) {
 			throw new RuntimeException(ex);
 		}

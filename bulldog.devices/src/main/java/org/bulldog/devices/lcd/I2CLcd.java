@@ -2,8 +2,8 @@ package org.bulldog.devices.lcd;
 
 import java.io.IOException;
 
-import org.bulldog.core.io.bus.Bus;
-import org.bulldog.core.io.bus.BusConnection;
+import org.bulldog.core.io.bus.i2c.I2cBus;
+import org.bulldog.core.io.bus.i2c.I2cConnection;
 
 
 /**
@@ -21,13 +21,13 @@ public class I2CLcd {
 	public static final byte DATA			= 0b00100000;
 	public static final byte INIT_4BIT_MODE	= 0b00000010;
 	
-	private BusConnection connection;
+	private I2cConnection connection;
 	
-	public I2CLcd(Bus bus, int address) throws IOException {
-		this(bus.createConnection(address));
+	public I2CLcd(I2cBus bus, int address) throws IOException {
+		this(bus.createI2cConnection(address));
 	}
 	
-	public I2CLcd(BusConnection connection) throws IOException {
+	public I2CLcd(I2cConnection connection) throws IOException {
 		this.connection = connection;
 		initialize();
 	}
@@ -51,8 +51,8 @@ public class I2CLcd {
 	}
 	
 	public void writeByte(byte data) throws IOException {
-		connection.writeByte((byte)(data | ENABLE));
-		connection.writeByte((byte)(data & DISABLE));
+		connection.writeByte(data | ENABLE);
+		connection.writeByte(data & DISABLE);
 	}
 
 	private void writeByteAsNibbles(int data, int mask) throws IOException {

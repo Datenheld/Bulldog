@@ -7,9 +7,8 @@ import org.bulldog.core.gpio.DigitalInput;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.event.InterruptEventArgs;
 import org.bulldog.core.gpio.event.InterruptListener;
-import org.bulldog.core.io.bus.Bus;
-import org.bulldog.core.io.bus.BusConnection;
 import org.bulldog.core.io.bus.i2c.I2cBus;
+import org.bulldog.core.io.bus.i2c.I2cConnection;
 import org.bulldog.core.platform.AbstractPinProvider;
 import org.bulldog.core.util.BitMagic;
 
@@ -36,24 +35,24 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 	public static final String P6 = "P5";
 	public static final String P7 = "P5";
 	
-	private BusConnection connection;
+	private I2cConnection connection;
 	private DigitalInput interrupt;
 	
 	private int state = 0xFF;
 	
-	public PCF8574(BusConnection connection) throws IOException {
+	public PCF8574(I2cConnection connection) throws IOException {
 		this(connection, null);
 	}
 
 	public PCF8574(I2cBus bus, int address) throws IOException {
-		this(bus.createConnection(address), null);
+		this(bus.createI2cConnection(address), null);
 	}
 	
-	public PCF8574(Bus bus, int address, DigitalInput interrupt) throws IOException {
-		this(bus.createConnection(address), interrupt);
+	public PCF8574(I2cBus bus, int address, DigitalInput interrupt) throws IOException {
+		this(bus.createI2cConnection(address), interrupt);
 	}
 	
-	public PCF8574(BusConnection connection, DigitalInput interrupt) throws IOException {
+	public PCF8574(I2cConnection connection, DigitalInput interrupt) throws IOException {
 		createPins();
 		this.connection = connection;
 		setInterrupt(interrupt);
@@ -89,7 +88,7 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 		return (byte)state;
 	}
 		
-	public void writeState(byte state) {
+	public void writeState(int state) {
 		this.state = state;
 		try {
 			connection.writeByte(state);

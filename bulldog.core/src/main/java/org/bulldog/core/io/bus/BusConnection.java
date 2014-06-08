@@ -22,7 +22,7 @@ public class BusConnection {
 		return address;
 	}
 	
-	public void writeByte(byte b) throws IOException {
+	public void writeByte(int b) throws IOException {
 		acquireBus();
 		bus.writeByte(b);
 	}

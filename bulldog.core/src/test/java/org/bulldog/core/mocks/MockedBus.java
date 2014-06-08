@@ -89,4 +89,10 @@ public class MockedBus implements Bus {
 		return null;
 	}
 
+	@Override
+	public void writeByte(int b) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
