@@ -110,14 +110,14 @@ public class Servo {
 	}
 
 	public void moveLinearSmooth(float desiredAngle, int milliseconds) {
-		double delta = Math.abs(angle - desiredAngle);
+		double delta = Math.abs(getAngle() - desiredAngle);
 		int amountSteps = (int)(milliseconds / degreeMilliseconds);
 		
 		double stepSize = delta / amountSteps;
-		double minAngle = Math.min(angle, desiredAngle);
+		double minAngle = Math.min(getAngle(), desiredAngle);
 		float[] discreteSteps = new float[amountSteps];
 		
-		boolean isInverse = angle > desiredAngle;
+		boolean isInverse = getAngle() > desiredAngle;
 		for(int i = 0; i < amountSteps; i++) {
 			discreteSteps[i] = calculateStep(i * stepSize, delta, minAngle, isInverse);	
 			setAngle(discreteSteps[i]);
@@ -125,16 +125,16 @@ public class Servo {
 		}
 	}
 	
-	private static float calculateStep(double value, double angleDifference, double angleOffset, boolean invert) {
+	private static float calculateStep(double value, double delta, double offset, boolean invert) {
 		
-		float smoothValue = (float)Math.round(angleDifference / Math.PI * ((Math.PI * value) / angleDifference 
-									- Math.cos((Math.PI * value) / angleDifference) 
-									* Math.sin((Math.PI * value) / angleDifference))) ;
+		float smoothValue = (float)Math.round(delta / Math.PI * ((Math.PI * value) / delta 
+									- Math.cos((Math.PI * value) / delta) 
+									* Math.sin((Math.PI * value) / delta))) ;
 		if(invert) {
-			return (float)(angleDifference + angleOffset - smoothValue);
+			return (float)(delta + offset - smoothValue);
 		} 
 		
-		return (float)(smoothValue + angleOffset);
+		return (float)(smoothValue + offset);
 	}
 	
 	
