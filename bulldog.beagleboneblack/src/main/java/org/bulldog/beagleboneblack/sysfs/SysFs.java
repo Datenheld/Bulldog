@@ -95,6 +95,7 @@ public class SysFs {
 		try {
 			waitForFileCreation(path, WAIT_TIMEOUT_MS);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+			//System.out.println("echo " + value + " > " + path);
 			writer.write(value);
 			BulldogUtil.sleepMs(10);
 			writer.close();

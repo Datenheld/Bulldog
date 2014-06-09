@@ -27,6 +27,8 @@ public class PCA9685 extends I2cDevice {
 	
 	private boolean isSetup = false;
 	
+	private FrequencyLookupTable lookupFrequency = new FrequencyLookupTable();
+	
 	public PCA9685(I2cConnection connection) {
 		super(connection);
 		setName(NAME);
@@ -53,11 +55,17 @@ public class PCA9685 extends I2cDevice {
 			
 			setupIfNecessary(); 
 			
-			int prescaler = (int)Math.round(25000000.0f / (4096.0f * frequency) - 1.0f);
+			int prescale = 0;
+			if(lookupFrequency.containsKey(frequency)) {
+				prescale = lookupFrequency.get(frequency);
+			} else {
+				prescale = (int)Math.round(25000000.0f / (4096.0f * frequency) - 1.0);
+			}
+			
 			int oldmode = readByteFromRegister(PCA9685_MODE1);
 			int newmode = ((oldmode & 0x7F) | 0x10); 		// sleep
 			writeByteToRegister(PCA9685_MODE1, newmode); 		// go to sleep
-			writeByteToRegister(PCA9685_PRESCALE, prescaler); 	// set the prescaler
+			writeByteToRegister(PCA9685_PRESCALE, prescale); 	// set the prescaler
 			writeByteToRegister(PCA9685_MODE1, oldmode);
 			BulldogUtil.sleepMs(5);
 			writeByteToRegister(PCA9685_MODE1, (oldmode | 0xa1)); 

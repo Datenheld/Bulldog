@@ -1,11 +1,17 @@
 package org.bulldog.devices.servo;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.bulldog.core.gpio.Pwm;
-import org.bulldog.core.util.BulldogUtil;
+import org.bulldog.devices.servo.movement.DirectMove;
+import org.bulldog.devices.servo.movement.LinearMove;
+import org.bulldog.devices.servo.movement.Move;
+import org.bulldog.devices.servo.movement.SmoothMove;
 
 public class Servo {
 
@@ -23,6 +29,8 @@ public class Servo {
 	
 	private ExecutorService executor = Executors.newSingleThreadExecutor();
 	private Future<?> currentMove = null;
+	
+	private List<ServoListener> listeners = Collections.synchronizedList(new ArrayList<ServoListener>());
 	
 	public Servo (Pwm pwm) {
 		this(pwm, INITIAL_POSITION_DEFAULT);
@@ -56,50 +64,58 @@ public class Servo {
 		
 		pwm.setDuty(getDutyForAngle(angle));
 	}
-
-	public void moveTo(float desiredAngle) {
-		moveTo(desiredAngle, 0);
+	
+	public void moveTo(float angle) {
+		move(new DirectMove(angle));
 	}
 	
-	public void moveTo(float desiredAngle, int milliseconds) {
-		moveTo(desiredAngle, milliseconds, Smoothing.None);
+	public void moveTo(float angle, int milliseconds) {
+		move(new LinearMove(angle, milliseconds));
 	}
 	
-	public void moveTo(float desiredAngle, int milliseconds, Smoothing smoothing) {
-		if(smoothing == Smoothing.None) {
-			setAngle(desiredAngle);
-			if(milliseconds <= 0) {
-				BulldogUtil.sleepMs((int)Math.abs(desiredAngle - angle) * degreeMilliseconds);
-			} else {
-				BulldogUtil.sleepMs(milliseconds);
-			}
-		} else if(smoothing == Smoothing.Sine) {
-			moveLinearSmooth(desiredAngle, milliseconds);
-		} else if(smoothing == Smoothing.Linear) {
-			
-		}
+	public void moveSmoothTo(float angle) {
+		move(new SmoothMove(angle));
 	}
 	
-	public void moveAsyncTo(float desiredAngle) {
-		moveAsyncTo(desiredAngle, 0);
+	public void moveSmoothTo(float angle, int milliseconds) {
+		move(new SmoothMove(angle, milliseconds));
 	}
 	
-	public void moveAsyncTo(float desiredAngle, int milliseconds) {
-		moveAsyncTo(desiredAngle, milliseconds, Smoothing.None);
+	public void move(Move move) {
+		float startAngle = getAngle();
+		move.execute(this);
+		fireMoveCompleted(startAngle, getAngle());
 	}
 	
-	public void moveAsyncTo(final float desiredAngle, final int milliseconds, final Smoothing smoothing) {
+	public void moveAsync(final Move move) {
+		if(currentMove != null && !currentMove.isDone()) { throw new IllegalStateException("This servo is currently moving!"); }
 		currentMove = executor.submit(new Runnable() {
 
 			@Override
 			public void run() {
-				moveTo(desiredAngle, milliseconds, smoothing);
+				move(move);
 			}
 			
 		});
 	}
+
+	public void moveAsyncTo(float angle) {
+		moveAsync(new DirectMove(angle));
+	}
 	
-	public void awaitDestination() {
+	public void moveAsyncTo(float angle, int milliseconds) {
+		moveAsync(new LinearMove(angle, milliseconds));
+	}
+	
+	public void moveSmoothAsyncTo(float angle) {
+		moveAsync(new SmoothMove(angle));
+	}
+	
+	public void moveSmoothAsyncTo(float angle, int milliseconds) {
+		moveAsync(new SmoothMove(angle, milliseconds));
+	}
+	
+	public void awaitMoveCompleted() {
 		if(currentMove != null) {
 			try {
 				currentMove.get();
@@ -109,35 +125,6 @@ public class Servo {
 		}
 	}
 
-	public void moveLinearSmooth(float desiredAngle, int milliseconds) {
-		double delta = Math.abs(getAngle() - desiredAngle);
-		int amountSteps = (int)(milliseconds / degreeMilliseconds);
-		
-		double stepSize = delta / amountSteps;
-		double minAngle = Math.min(getAngle(), desiredAngle);
-		float[] discreteSteps = new float[amountSteps];
-		
-		boolean isInverse = getAngle() > desiredAngle;
-		for(int i = 0; i < amountSteps; i++) {
-			discreteSteps[i] = calculateStep(i * stepSize, delta, minAngle, isInverse);	
-			setAngle(discreteSteps[i]);
-			BulldogUtil.sleepMs((int)degreeMilliseconds);
-		}
-	}
-	
-	private static float calculateStep(double value, double delta, double offset, boolean invert) {
-		
-		float smoothValue = (float)Math.round(delta / Math.PI * ((Math.PI * value) / delta 
-									- Math.cos((Math.PI * value) / delta) 
-									* Math.sin((Math.PI * value) / delta))) ;
-		if(invert) {
-			return (float)(delta + offset - smoothValue);
-		} 
-		
-		return (float)(smoothValue + offset);
-	}
-	
-	
 	public float getAngle() {
 		return angle;
 	}
@@ -153,4 +140,35 @@ public class Servo {
 		return this.pwm;
 	}
 	
+	public void addServoListener(ServoListener listener) {
+		listeners.add(listener);
+	}
+	
+	public void removeServoListener(ServoListener listener) {
+		listeners.remove(listener);
+	}
+	
+	public void clearServoListeners() {
+		listeners.clear();
+	}
+	
+	protected void fireAngleChanged(float oldAngle, float newAngle) {
+		synchronized(listeners) {
+			for(ServoListener listener : listeners) {
+				listener.angleChanged(this, oldAngle, newAngle);
+			}
+		}
+	}
+	
+	protected void fireMoveCompleted(float oldAngle, float newAngle) {
+		synchronized(listeners) {
+			for(ServoListener listener : listeners) {
+				listener.moveCompleted(this, oldAngle, newAngle);
+			}
+		}
+	}
+	
+	public int getMillisecondsPerDegree() {
+		return degreeMilliseconds;
+	}
 }

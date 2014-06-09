@@ -68,6 +68,7 @@ public class BBBPwm extends AbstractPwm {
 			String deviceName = String.format(PWM_OCP_PATTERN, getPin().getName());
 			File sysFsFile = sysFsWrapper.findOcpDevice(deviceName);
 			sysFsPwm = new SysFsPwm(sysFsFile.getAbsolutePath(), sysFsWrapper.getSlotNumber(deviceName));
+			sysFsPwm.setPeriod(period);	
 			sysFsPwm.setDuty(duty);
 			
 			PWM_MANAGER.addActivePwm(this);
@@ -104,7 +105,7 @@ public class BBBPwm extends AbstractPwm {
 	protected void setPwmImpl(float frequency, float duty) {
 		period = (long) ((1.0 / frequency) * (float)NANOSECONDS_PER_SECOND);
 		dutyPeriod = (long) (period * duty);
-			
+		
 		if(isEnabled()) {
 			enableImpl();
 		}
