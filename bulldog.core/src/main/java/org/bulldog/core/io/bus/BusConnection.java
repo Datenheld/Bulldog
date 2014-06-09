@@ -22,14 +22,34 @@ public class BusConnection {
 		return address;
 	}
 	
-	public void writeByte(byte b) throws IOException {
+	public void writeByte(int b) throws IOException {
 		acquireBus();
 		bus.writeByte(b);
+	}
+	
+	public void writeBytes(byte[] bytes) throws IOException {
+		acquireBus();
+		bus.writeBytes(bytes);
+	}
+	
+	public void writeString(String string) throws IOException  {
+		acquireBus();
+		bus.writeString(string);
 	}
 	
 	public byte readByte() throws IOException {
 		acquireBus();
 		return bus.readByte();
+	}
+	
+	public int readBytes(byte[] buffer) throws IOException {
+		acquireBus();
+		return bus.readBytes(buffer);
+	}
+	
+	public String readString() throws IOException {
+		acquireBus();
+		return bus.readString();
 	}
 	
 	private void acquireBus() throws IOException {

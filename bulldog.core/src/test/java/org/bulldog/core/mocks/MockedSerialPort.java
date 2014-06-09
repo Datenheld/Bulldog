@@ -4,7 +4,7 @@ import org.bulldog.core.Parity;
 import org.bulldog.core.io.serial.SerialDataListener;
 import org.bulldog.core.io.serial.SerialPort;
 
-public class MockedSerialPort extends MockedBus implements SerialPort {
+public class MockedSerialPort extends MockedIOPort implements SerialPort {
 	
 	public MockedSerialPort(String name) {
 		super(name);

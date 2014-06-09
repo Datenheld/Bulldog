@@ -29,7 +29,7 @@ public class TestBusConnection {
 		TestCase.assertEquals(0x10, bus.getSelectedAddress());
 		bus.open();
 		TestCase.assertTrue(bus.isOpen());
-		busConnection.writeByte((byte)0xff);
+		busConnection.writeByte(0xff);
 		TestCase.assertEquals(0x10, bus.getSelectedAddress());
 		TestCase.assertTrue(bus.isOpen());
 		

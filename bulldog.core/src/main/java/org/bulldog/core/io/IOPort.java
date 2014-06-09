@@ -14,7 +14,7 @@ public interface IOPort {
 	public boolean isOpen();
 	public void close() throws IOException;
 	
-	public void writeByte(byte b) throws IOException;
+	public void writeByte(int b) throws IOException;
 	public void writeBytes(byte[] bytes) throws IOException;
 	public void writeString(String string) throws IOException;
 	

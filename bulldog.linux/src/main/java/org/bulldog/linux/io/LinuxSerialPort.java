@@ -299,12 +299,12 @@ public class LinuxSerialPort implements SerialPort, LinuxEpollListener {
 		this.stopBits = stopBits;
 	}
 	
-	public void writeByte(byte data) throws IOException {
+	public void writeByte(int data) throws IOException {
 		if(!isOpen()) {
 			throw new IllegalStateException(ERROR_PORT_NOT_OPEN);
 		}
 		
-		NativeSerial.serialWrite(fileDescriptor, data);
+		NativeSerial.serialWrite(fileDescriptor, (byte)data);
 	}
 
 	@Override
