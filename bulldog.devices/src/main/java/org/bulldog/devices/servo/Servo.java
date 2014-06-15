@@ -9,9 +9,10 @@ import java.util.concurrent.Future;
 
 import org.bulldog.core.gpio.Pwm;
 import org.bulldog.devices.servo.movement.DirectMove;
+import org.bulldog.devices.servo.movement.EasedMove;
 import org.bulldog.devices.servo.movement.LinearMove;
 import org.bulldog.devices.servo.movement.Move;
-import org.bulldog.devices.servo.movement.SmoothMove;
+import org.bulldog.devices.servo.movement.easing.SineEasing;
 
 public class Servo {
 
@@ -74,11 +75,11 @@ public class Servo {
 	}
 	
 	public void moveSmoothTo(float angle) {
-		move(new SmoothMove(angle));
+		move(new EasedMove(new SineEasing(), angle));
 	}
 	
 	public void moveSmoothTo(float angle, int milliseconds) {
-		move(new SmoothMove(angle, milliseconds));
+		move(new EasedMove(new SineEasing(), angle, milliseconds));
 	}
 	
 	public void move(Move move) {
@@ -88,7 +89,6 @@ public class Servo {
 	}
 	
 	public void moveAsync(final Move move) {
-		if(currentMove != null && !currentMove.isDone()) { throw new IllegalStateException("This servo is currently moving!"); }
 		currentMove = executor.submit(new Runnable() {
 
 			@Override
@@ -108,11 +108,11 @@ public class Servo {
 	}
 	
 	public void moveSmoothAsyncTo(float angle) {
-		moveAsync(new SmoothMove(angle));
+		moveAsync(new EasedMove(new SineEasing(), angle));
 	}
 	
 	public void moveSmoothAsyncTo(float angle, int milliseconds) {
-		moveAsync(new SmoothMove(angle, milliseconds));
+		moveAsync(new EasedMove(new SineEasing(), angle, milliseconds));
 	}
 	
 	public void awaitMoveCompleted() {
