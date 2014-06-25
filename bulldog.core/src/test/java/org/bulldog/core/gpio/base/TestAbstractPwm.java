@@ -30,30 +30,30 @@ public class TestAbstractPwm {
 		MockedPwm pwm = pin.as(MockedPwm.class);
 		
 		try {
-			pwm.setFrequency(0.0f);
+			pwm.setFrequency(0.0);
 			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 		
 		try {
-			pwm.setFrequency(-1.0f);
+			pwm.setFrequency(-1.0);
 			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 		
 		try {
-			pwm.setFrequency(0.99f);
+			pwm.setFrequency(0.99);
 			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 		
 		TestCase.assertFalse(pwm.pwmImplCalled());
 		
-		pwm.setFrequency(1.00f);
-		TestCase.assertEquals(1.00f, pwm.getFrequency());
+		pwm.setFrequency(1.00);
+		TestCase.assertEquals(1.00, pwm.getFrequency());
 		TestCase.assertTrue(pwm.pwmImplCalled());
 		pwm.reset();
 		TestCase.assertFalse(pwm.pwmImplCalled());
 		
-		pwm.setFrequency(1000.0f);
-		TestCase.assertEquals(1000.0f, pwm.getFrequency());
+		pwm.setFrequency(1000.0);
+		TestCase.assertEquals(1000.0, pwm.getFrequency());
 		TestCase.assertTrue(pwm.pwmImplCalled());
 	}
 	
@@ -62,36 +62,36 @@ public class TestAbstractPwm {
 		MockedPwm pwm = pin.as(MockedPwm.class);
 		
 		try {
-			pwm.setDuty(-1.0f);
+			pwm.setDuty(-1.0);
 			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 		
 		try {
-			pwm.setDuty(2.0f);
+			pwm.setDuty(2.0);
 			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 		
 		try {
-			pwm.setDuty(1.00001f);
+			pwm.setDuty(1.00001);
 			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 		
 		TestCase.assertFalse(pwm.pwmImplCalled());
 		
-		pwm.setDuty(1.00f);
-		TestCase.assertEquals(1.00f, pwm.getDuty());
+		pwm.setDuty(1.00);
+		TestCase.assertEquals(1.00, pwm.getDuty());
 		TestCase.assertTrue(pwm.pwmImplCalled());
 		pwm.reset();
 		TestCase.assertFalse(pwm.pwmImplCalled());
 		
-		pwm.setDuty(0.00001f);
-		TestCase.assertEquals(0.00001f, pwm.getDuty());
+		pwm.setDuty(0.00001);
+		TestCase.assertEquals(0.00001, pwm.getDuty());
 		TestCase.assertTrue(pwm.pwmImplCalled());
 		pwm.reset();
 		TestCase.assertFalse(pwm.pwmImplCalled());
 		
-		pwm.setDuty(0.999999999999999f);
-		TestCase.assertEquals(0.999999999999999f, pwm.getDuty());
+		pwm.setDuty(0.999999999999999);
+		TestCase.assertEquals(0.999999999999999, pwm.getDuty());
 		TestCase.assertTrue(pwm.pwmImplCalled());
 	}
 	

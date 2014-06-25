@@ -8,13 +8,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.bulldog.core.gpio.Pwm;
-import org.bulldog.devices.servo.movement.DirectMove;
-import org.bulldog.devices.servo.movement.EasedMove;
-import org.bulldog.devices.servo.movement.LinearMove;
-import org.bulldog.devices.servo.movement.Move;
-import org.bulldog.devices.servo.movement.easing.SineEasing;
+import org.bulldog.devices.actuators.Actuator;
+import org.bulldog.devices.actuators.movement.DirectMove;
+import org.bulldog.devices.actuators.movement.EasedMove;
+import org.bulldog.devices.actuators.movement.LinearMove;
+import org.bulldog.devices.actuators.movement.Move;
+import org.bulldog.devices.actuators.movement.easing.SineEasing;
 
-public class Servo {
+public class Servo implements Actuator {
 
 	private static final float MIN_ANGLE_DEFAULT = 0.05f;
 	private static final float MAX_ANGLE_DEFAULT = 0.10f;
@@ -23,9 +24,9 @@ public class Servo {
 	private static final int TIME_PER_DEGREE_DEFAULT = (int)(0.1f / 60.0f * 1000);
 	
 	private Pwm pwm;
-	private float angle;
-	private float minAngleDuty;
-	private float maxAngleDuty;
+	private double angle;
+	private double minAngleDuty;
+	private double maxAngleDuty;
 	private int degreeMilliseconds; 
 	
 	private ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -41,7 +42,7 @@ public class Servo {
 		this(pwm, initialAngle, MIN_ANGLE_DEFAULT, MAX_ANGLE_DEFAULT, TIME_PER_DEGREE_DEFAULT);
 	}
 	
-	public Servo(Pwm pwm, float initialAngle, float minAngleDuty, float maxAngleDuty, int degreeMilliseconds) {
+	public Servo(Pwm pwm, double initialAngle, double minAngleDuty, double maxAngleDuty, int degreeMilliseconds) {
 		this.pwm = pwm;
 		this.minAngleDuty = minAngleDuty;
 		this.maxAngleDuty = maxAngleDuty;
@@ -53,7 +54,7 @@ public class Servo {
 		}
 	}
 	
-	public void setAngle(float degrees) {
+	public void setAngle(double degrees) {
 		angle = degrees;
 		if(angle < 0.0f) {
 			angle = 0.0f;
@@ -66,24 +67,24 @@ public class Servo {
 		pwm.setDuty(getDutyForAngle(angle));
 	}
 	
-	public void moveTo(float angle) {
+	public void moveTo(double angle) {
 		move(new DirectMove(angle));
 	}
 	
-	public void moveTo(float angle, int milliseconds) {
+	public void moveTo(double angle, int milliseconds) {
 		move(new LinearMove(angle, milliseconds));
 	}
 	
-	public void moveSmoothTo(float angle) {
+	public void moveSmoothTo(double angle) {
 		move(new EasedMove(new SineEasing(), angle));
 	}
 	
-	public void moveSmoothTo(float angle, int milliseconds) {
+	public void moveSmoothTo(double angle, int milliseconds) {
 		move(new EasedMove(new SineEasing(), angle, milliseconds));
 	}
 	
 	public void move(Move move) {
-		float startAngle = getAngle();
+		double startAngle = getAngle();
 		move.execute(this);
 		fireMoveCompleted(startAngle, getAngle());
 	}
@@ -99,19 +100,19 @@ public class Servo {
 		});
 	}
 
-	public void moveAsyncTo(float angle) {
+	public void moveAsyncTo(double angle) {
 		moveAsync(new DirectMove(angle));
 	}
 	
-	public void moveAsyncTo(float angle, int milliseconds) {
+	public void moveAsyncTo(double angle, int milliseconds) {
 		moveAsync(new LinearMove(angle, milliseconds));
 	}
 	
-	public void moveSmoothAsyncTo(float angle) {
+	public void moveSmoothAsyncTo(double angle) {
 		moveAsync(new EasedMove(new SineEasing(), angle));
 	}
 	
-	public void moveSmoothAsyncTo(float angle, int milliseconds) {
+	public void moveSmoothAsyncTo(double angle, int milliseconds) {
 		moveAsync(new EasedMove(new SineEasing(), angle, milliseconds));
 	}
 	
@@ -125,14 +126,14 @@ public class Servo {
 		}
 	}
 
-	public float getAngle() {
+	public double getAngle() {
 		return angle;
 	}
 	
-	protected float getDutyForAngle(float angle) {
-		float maxAngle = 180.0f;
-		float anglePercent = angle/maxAngle;
-		float dutyLength = (maxAngleDuty - minAngleDuty) * anglePercent;
+	protected double getDutyForAngle(double angle) {
+		double maxAngle = 180.0;
+		double anglePercent = angle/maxAngle;
+		double dutyLength = (maxAngleDuty - minAngleDuty) * anglePercent;
 		return minAngleDuty + dutyLength;
 	}
 	
@@ -152,7 +153,7 @@ public class Servo {
 		listeners.clear();
 	}
 	
-	protected void fireAngleChanged(float oldAngle, float newAngle) {
+	protected void fireAngleChanged(double oldAngle, double newAngle) {
 		synchronized(listeners) {
 			for(ServoListener listener : listeners) {
 				listener.angleChanged(this, oldAngle, newAngle);
@@ -160,7 +161,7 @@ public class Servo {
 		}
 	}
 	
-	protected void fireMoveCompleted(float oldAngle, float newAngle) {
+	protected void fireMoveCompleted(double oldAngle, double newAngle) {
 		synchronized(listeners) {
 			for(ServoListener listener : listeners) {
 				listener.moveCompleted(this, oldAngle, newAngle);
@@ -170,5 +171,24 @@ public class Servo {
 	
 	public int getMillisecondsPerDegree() {
 		return degreeMilliseconds;
+	}
+
+	@Override
+	public double getPosition() {
+		return getAngle();
+	}
+	
+	public void setPosition(double position) {
+		this.setAngle(position);
+	}
+
+	@Override
+	public int getMillisecondsPerUnit() {
+		return this.getMillisecondsPerDegree();
+	}
+
+	@Override
+	public int getRefreshIntervalMilliseconds() {
+		return (int) (1000 / this.getPwm().getFrequency());
 	}
 }

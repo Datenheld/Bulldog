@@ -7,8 +7,8 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 
 	private String NAME_FORMAT = "PWM - status '%s' - frequency '%.2f' with duty '%.2f' on Pin %s";
 
-	private float duty = 0.0f;
-	private float frequency = 1.0f;
+	private double duty = 0.0f;
+	private double frequency = 1.0f;
 	private boolean enabled = false;
 	
 	public AbstractPwm(Pin pin) {
@@ -33,7 +33,7 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 		return enabled;
 	}
 	
-	public void setDuty(float duty) {
+	public void setDuty(double duty) {
 		if(duty < 0.0 || duty > 1.0) {
 			throw new IllegalArgumentException("Duty cannot be less than 0.0 or greater 1.0");
 		}
@@ -41,11 +41,11 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 		setPwmImpl(getFrequency(), duty);
 	}
 	
-	public float getDuty() {
+	public double getDuty() {
 		return duty;
 	}
 	
-	public void setFrequency(float frequency) {
+	public void setFrequency(double frequency) {
 		if(frequency < 1.0f) {
 			throw new IllegalArgumentException("Frequency cannot be less than 1.0 Hz");
 		}
@@ -53,11 +53,11 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 		setPwmImpl(frequency, getDuty());
 	}
 	
-	public float getFrequency() {
+	public double getFrequency() {
 		return frequency;
 	}
 	
-	protected abstract void setPwmImpl(float frequency, float duty);
+	protected abstract void setPwmImpl(double frequency, double duty);
 	protected abstract void enableImpl();
 	protected abstract void disableImpl();
 

@@ -102,8 +102,8 @@ public class BBBPwm extends AbstractPwm {
 	}
 	
 	@Override
-	protected void setPwmImpl(float frequency, float duty) {
-		period = (long) ((1.0 / frequency) * (float)NANOSECONDS_PER_SECOND);
+	protected void setPwmImpl(double frequency, double duty) {
+		period = (long) ((1.0 / frequency) * NANOSECONDS_PER_SECOND);
 		dutyPeriod = (long) (period * duty);
 		
 		if(isEnabled()) {

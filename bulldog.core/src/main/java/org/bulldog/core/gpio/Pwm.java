@@ -6,9 +6,9 @@ public interface Pwm extends PinFeature {
 	void disable();
 	boolean isEnabled();
 	
-	void setDuty(float duty);
-	float getDuty();
+	void setDuty(double duty);
+	double getDuty();
 	
-	void setFrequency(float frequency);
-	float getFrequency();
+	void setFrequency(double frequency);
+	double getFrequency();
 }

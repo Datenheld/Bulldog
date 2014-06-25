@@ -7,7 +7,7 @@ import org.bulldog.core.io.bus.i2c.I2cSignalType;
 
 public class BBBI2cPinFeature extends AbstractI2cPinFeature {
 
-	public BBBI2cPinFeature(Pin pin, I2cSignalType signalType) {
+	public BBBI2cPinFeature(I2cBus bus, Pin pin, I2cSignalType signalType) {
 		super(pin, signalType);
 		// TODO Auto-generated constructor stub
 	}

@@ -22,7 +22,7 @@ public class MockedPwm extends AbstractPwm {
 	}
 
 	@Override
-	protected void setPwmImpl(float frequency, float duty) {
+	protected void setPwmImpl(double frequency, double duty) {
 		pwmImplCalled = true;
 	}
 	

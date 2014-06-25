@@ -1,4 +1,4 @@
-package org.bulldog.devices.servo.movement.easing;
+package org.bulldog.devices.actuators.movement.easing;
 
 public class BounceEasing implements Easing {
 

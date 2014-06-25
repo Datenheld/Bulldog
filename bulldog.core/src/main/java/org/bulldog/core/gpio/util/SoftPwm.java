@@ -77,8 +77,8 @@ public class SoftPwm extends AbstractPwm implements Runnable {
 	}
 
 	@Override
-	protected void setPwmImpl(float frequency, float duty) {
-		periodInNanoseconds = (int) ((1.0 / frequency) * (float)NANOSECONDS_PER_SECOND);
+	protected void setPwmImpl(double frequency, double duty) {
+		periodInNanoseconds = (int) ((1.0 / frequency) * NANOSECONDS_PER_SECOND);
 		dutyInNanoseconds = (int) (periodInNanoseconds * duty);
 	}
 

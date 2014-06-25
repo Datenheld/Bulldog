@@ -7,16 +7,16 @@ import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;
+import org.bulldog.devices.actuators.movement.EasedMove;
+import org.bulldog.devices.actuators.movement.easing.BounceEasing;
+import org.bulldog.devices.actuators.movement.easing.EasingOptions;
+import org.bulldog.devices.actuators.movement.easing.ElasticEasing;
+import org.bulldog.devices.actuators.movement.easing.QuintEasing;
+import org.bulldog.devices.actuators.movement.easing.SineEasing;
 import org.bulldog.devices.servo.AdafruitServoDriver;
 import org.bulldog.devices.servo.Servo;
 import org.bulldog.devices.servo.ServoListener;
 import org.bulldog.devices.servo.TowerProMicroSG90;
-import org.bulldog.devices.servo.movement.EasedMove;
-import org.bulldog.devices.servo.movement.easing.BounceEasing;
-import org.bulldog.devices.servo.movement.easing.EasingOptions;
-import org.bulldog.devices.servo.movement.easing.ElasticEasing;
-import org.bulldog.devices.servo.movement.easing.QuintEasing;
-import org.bulldog.devices.servo.movement.easing.SineEasing;
 
 public class AdafruitServoDriverExample {
 	
@@ -35,13 +35,13 @@ public class AdafruitServoDriverExample {
     	ServoListener listener = new ServoListener() {
 
 			@Override
-			public void angleChanged(Servo servo, float oldAngle, float newAngle) {
+			public void angleChanged(Servo servo, double oldAngle, double newAngle) {
 				
 			}
 
 			@Override
-			public void moveCompleted(Servo servo, float oldAngle, float newAngle) {
-				float newDestination = newAngle == 90.0f ? 0.0f : 90.0f;
+			public void moveCompleted(Servo servo, double oldAngle, double newAngle) {
+				double newDestination = newAngle == 90.0f ? 0.0f : 90.0f;
 				
 				if(servo == servo0) {
 					servo.moveAsync(new EasedMove(new SineEasing(), newDestination, 1000));
@@ -57,13 +57,13 @@ public class AdafruitServoDriverExample {
     	};
     	
     	servo0.addServoListener(listener);
-    	servo0.moveSmoothAsyncTo(90.0f, 1000);
+    	servo0.moveSmoothAsyncTo(90.0, 1000);
     	servo1.addServoListener(listener);
-    	servo1.moveSmoothAsyncTo(90.0f, 1000);
+    	servo1.moveSmoothAsyncTo(90.0, 1000);
     	servo2.addServoListener(listener);
-    	servo2.moveSmoothAsyncTo(90.0f, 1000);
+    	servo2.moveSmoothAsyncTo(90.0, 1000);
     	servo3.addServoListener(listener);
-    	servo3.moveSmoothAsyncTo(90.0f, 1000);
+    	servo3.moveSmoothAsyncTo(90.0, 1000);
     	
     	while(true) {
     		BulldogUtil.sleepMs(1000);

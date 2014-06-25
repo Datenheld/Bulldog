@@ -23,7 +23,7 @@ public class PCA9685 extends I2cDevice {
 	private static final int PWM_BASE_ADDRESS = 0x06;
 
 	private List<Pwm> channels = new ArrayList<Pwm>();
-	private float currentFrequency = 0.0f;
+	private double currentFrequency = 0.0;
 	
 	private boolean isSetup = false;
 	
@@ -49,7 +49,7 @@ public class PCA9685 extends I2cDevice {
 		}
 	}
 
-	public void setFrequency(float frequency) {		
+	public void setFrequency(double frequency) {		
 		if(frequency == currentFrequency) { return; }
 		try {
 			
@@ -83,7 +83,7 @@ public class PCA9685 extends I2cDevice {
 		}
 	}
 
-	public void setDuty(int channel, float duty) {
+	public void setDuty(int channel, double duty) {
 		try {
 		  int offValue = (int)(4096 * duty);
 		  int register = PWM_BASE_ADDRESS+4*channel;

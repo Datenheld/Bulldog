@@ -25,8 +25,8 @@ public class TestSoftPwm {
 	public void testSoftPwm() {
 		DigitalOutput output  = pin.as(DigitalOutput.class);
 		SoftPwm pwm = new SoftPwm(output);
-		pwm.setDuty(0.2f);
-		pwm.setFrequency(10.0f);
+		pwm.setDuty(0.2);
+		pwm.setFrequency(10.0);
 		pwm.enable();
 	
 		BulldogUtil.sleepMs(100);

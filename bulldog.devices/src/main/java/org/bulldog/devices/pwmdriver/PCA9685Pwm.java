@@ -21,7 +21,7 @@ public class PCA9685Pwm extends AbstractPwm {
 }
 
 	@Override
-	protected void setPwmImpl(float frequency, float duty) {
+	protected void setPwmImpl(double frequency, double duty) {
 		driver.setFrequency(frequency);
 		driver.setDuty(getPin().getAddress(), duty);
 	}
