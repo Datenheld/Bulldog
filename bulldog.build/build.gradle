@@ -3,7 +3,7 @@ def javaProjects = [
 					project(":bulldog.devices"), 
 					project(":bulldog.examples"), 
 					project(":bulldog.linux"),
-					project(":bulldog.beagleboneblack")
+					project(":bulldog.board.beagleboneblack")
 					
 				   ]
 

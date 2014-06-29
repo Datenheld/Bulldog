@@ -4,10 +4,7 @@
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bulldog.core"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/bulldog.devices"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bulldog.linux"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/bulldog.board.beagleboneblack"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/bulldog.board.raspberrypi"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

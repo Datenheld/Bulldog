@@ -2,5 +2,5 @@ dependencies {
     compile project(":bulldog.core")
     compile project(":bulldog.devices")
     compile project(":bulldog.linux");
-    compile project(":bulldog.beagleboneblack")
+    compile project(":bulldog.board.beagleboneblack")
 }
