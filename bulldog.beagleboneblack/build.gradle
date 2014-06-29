@@ -1,5 +1,0 @@
-dependencies {
-    compile project(':bulldog.core')
-    compile project(':bulldog.linux')
-    runtime fileTree(dir: project(':bulldog.linux.native').buildDir, include: '**/*.so')
-}
