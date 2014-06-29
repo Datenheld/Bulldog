@@ -16,5 +16,4 @@ public class Platform {
 		
 		throw new IncompatiblePlatformException();
 	}
-	
 }

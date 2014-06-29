@@ -1,4 +1,6 @@
 #include <jni.h>
+#include <sys/types.h>
+#include <fcntl.h>
 #include "org_bulldog_linux_jni_NativeTools.h"
 
 
@@ -34,4 +36,19 @@ JNIEXPORT jobject JNICALL Java_org_bulldog_linux_jni_NativeTools_getJavaDescript
 	  // and return it
 	  return ret;
 
+}
+
+
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_open
+(JNIEnv * env, jclass clazz, jstring path, jint flags) {
+	char fileName[256];
+	int len = (*env)->GetStringLength(env, path);
+	(*env)->GetStringUTFRegion(env, path, 0, len, fileName);
+	return open(fileName, flags);
+
+}
+
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_close
+(JNIEnv * env, jclass clazz, jint fd) {
+	return close(fd);
 }

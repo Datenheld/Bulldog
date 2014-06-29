@@ -16,6 +16,12 @@ extern "C" {
 JNIEXPORT jobject JNICALL Java_org_bulldog_linux_jni_NativeTools_getJavaDescriptor
 (JNIEnv * , jclass, int);
 
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_open
+(JNIEnv *, jclass, jstring, jint);
+
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_close
+(JNIEnv *, jclass, jint);
+
 #ifdef __cplusplus
 }
 #endif
