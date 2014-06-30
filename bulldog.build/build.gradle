@@ -3,26 +3,28 @@ def javaProjects = [
 					project(":bulldog.devices"), 
 					project(":bulldog.examples"), 
 					project(":bulldog.linux"),
-					project(":bulldog.board.beagleboneblack")
-					
 				   ]
+				   
+def boardProjects = [
+					 project(":bulldog.board.beagleboneblack"),
+					 project(":bulldog.board.raspberrypi")
+					]
 
 def nativeProjects = [
-						project(":bulldog.linux.native")
+					  project(":bulldog.linux.native")
 					 ]
-
-
+					 
+def allJavaProjects = new LinkedList(javaProjects);
+allJavaProjects.addAll(boardProjects)
 
 def bulldogVersion = '0.1'
-
-beagleBoneBlackDistro = new File('../dist/beagleboneblack')
 
 configure(nativeProjects) {
 	apply from: new File(project.projectDir, 'build.gradle')
 	version = bulldogVersion
 }
 					 
-configure(javaProjects) { 
+configure(allJavaProjects) { 
    	   
     apply plugin: 'java'
     apply plugin: 'eclipse'
@@ -54,22 +56,53 @@ configure(javaProjects) {
     }	
 }
 
-task beagleboneblackSingleJar(type: Jar, dependsOn: subprojects.assemble) { 
-     baseName = 'bulldog-beagleboneblack' 
-     manifest { 
-     	attributes 'Main-Class': 'org.bulldog.examples.AdcExample' 
-     }
+boardProjects.each { def project -> 
+	evaluationDependsOn(project.path) 
+    tasks.create(name: "singleJar$project.name", type: Jar) { 
+        baseName = project.distributionBaseName
+        destinationDir = project.distributionDirectory
+        
+        manifest { 
+     		attributes 'Main-Class': 'org.bulldog.examples.AdcExample' 
+     	}
     
-    javaProjects.each { project -> 
-    	evaluationDependsOn(project.path) 
-    	from project.configurations.default.allArtifacts.files.collect { zipTree(it) } 
-	}	
-	 
-}
+    	javaProjects.each { javaProject -> 
+    		evaluationDependsOn(javaProject.path) 
+    		from zipTree(javaProject.jar.archivePath) 
+		}	
+		
+		from zipTree(project.jar.archivePath)
+    } 
+} 
 
-task bbbDistro(type: Copy, dependsOn: beagleboneblackSingleJar) {
-    beagleBoneBlackDistro.mkdirs()
-    FileCollection collection = files('bulldog-beagleboneblack.jar', '../bulldog.linux.native/build/binaries/bulldogSharedLibrary/libbulldog-linux.so')
-    from collection
-    into beagleBoneBlackDistro
-}
+boardProjects.each { def project -> 
+	evaluationDependsOn(project.path)
+    tasks.create(name: "distribute$project.name", type: Copy) { 
+       delete project.distributionDirectory
+       project.distributionDirectory.mkdirs()
+       FileCollection collection = project.distributionFiles
+       from collection
+       into project.distributionDirectory
+    } 
+} 
+
+boardProjects.each { def project -> 
+	evaluationDependsOn(project.path)
+    tasks.create(name: "createZipArchive$project.name", type: Zip) { 
+       baseName = project.distributionBaseName + '-' + project.version	
+       destinationDir = project.distributionDirectory
+       excludes = [ '*.zip' ]
+       from project.distributionDirectory
+    } 
+} 
+
+task packageBoardArtifacts(dependsOn: [ tasks.matching { Task task -> task.name.startsWith("singleJar")}, subprojects.assemble]) 
+task distribution(dependsOn: [ tasks.matching { Task task -> task.name.startsWith("distribute")}, packageBoardArtifacts])
+task archiveDistributions(dependsOn: [ tasks.matching { Task task -> task.name.startsWith("createZipArchive")}, distribution])
+
+
+
+
+
+
+

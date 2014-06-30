@@ -25,5 +25,6 @@ JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeMmap_deleteMap
 
 JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeMmap_setValueAt
   (JNIEnv * env, jobject clazz, jlong address, jbyte value) {
-	*address = value;
+	int * ptr = (int *)address;
+	*ptr = value;
 }
