@@ -22,7 +22,11 @@ public class MemoryMap {
 		NativeTools.close(fileDescriptor);
 	}
 	
-	public void setValue(int offset, byte value) {
-		NativeMmap.setValueAt(mmapPointer + offset, value);
+	public void setValue(long offset, int value) {
+		NativeMmap.setValueAt(mmapPointer + offset*4, value);
+	}
+	
+	public int getValueAt(long offset) {
+		return NativeMmap.getValueAt(mmapPointer + offset*4);
 	}
 }

@@ -14,13 +14,23 @@ extern "C" {
  * Signature: (I)[Ljava/io/FileDescriptor
  */
 JNIEXPORT jobject JNICALL Java_org_bulldog_linux_jni_NativeTools_getJavaDescriptor
-(JNIEnv * , jclass, int);
-
-JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_open
-(JNIEnv *, jclass, jstring, jint);
-
-JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_close
 (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeTools
+ * Method:    open
+ * Signature: (Ljava/lang/String;I)I
+ */
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_open
+  (JNIEnv *, jclass, jstring, jint);
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeTools
+ * Method:    close
+ * Signature: (I)I
+ */
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_close
+  (JNIEnv *, jclass, jint);
 
 #ifdef __cplusplus
 }

@@ -22,9 +22,24 @@ JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeMmap_deleteMap
 	return (jint)(intptr_t)munmap(address, length);
 }
 
-
+/*
+ * Class:     org_bulldog_linux_jni_NativeMmap
+ * Method:    setValueAt
+ * Signature: (LI)V
+ */
 JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeMmap_setValueAt
-  (JNIEnv * env, jobject clazz, jlong address, jbyte value) {
+  (JNIEnv * env, jobject clazz, jlong address, jint value) {
 	int * ptr = (int *)address;
 	*ptr = value;
+}
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeMmap
+ * Method:    getValueAt
+ * Signature: (L)I
+ */
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeMmap_getValueAt
+  (JNIEnv * env, jobject clazz, jlong address) {
+	int * ptr = (int *)address;
+	return (jint)(*ptr);
 }

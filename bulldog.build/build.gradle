@@ -16,6 +16,10 @@ def nativeProjects = [
 					 
 def allJavaProjects = new LinkedList(javaProjects);
 allJavaProjects.addAll(boardProjects)
+		
+if(hasProperty('board')) {
+	boardProjects = boardProjects.findAll { it.path.contains(board) };
+} 
 
 def bulldogVersion = '0.1'
 
@@ -56,14 +60,14 @@ configure(allJavaProjects) {
     }	
 }
 
-boardProjects.each { def project -> 
-	evaluationDependsOn(project.path) 
-    tasks.create(name: "singleJar$project.name", type: Jar) { 
-        baseName = project.distributionBaseName
-        destinationDir = project.distributionDirectory
+boardProjects.each { def boardProject -> 
+	evaluationDependsOn(boardProject.path) 
+    tasks.create(name: "singleJar$boardProject.name", type: Jar) { 
+        baseName = boardProject.distributionBaseName
+        destinationDir = boardProject.distributionDirectory
         
         manifest { 
-     		attributes 'Main-Class': 'org.bulldog.examples.AdcExample' 
+     		attributes 'Main-Class': 'org.bulldog.examples.App' 
      	}
     
     	javaProjects.each { javaProject -> 
@@ -71,30 +75,32 @@ boardProjects.each { def project ->
     		from zipTree(javaProject.jar.archivePath) 
 		}	
 		
-		from zipTree(project.jar.archivePath)
+		from zipTree(boardProject.jar.archivePath)
     } 
 } 
 
-boardProjects.each { def project -> 
-	evaluationDependsOn(project.path)
-    tasks.create(name: "distribute$project.name", type: Copy) { 
-       delete project.distributionDirectory
-       project.distributionDirectory.mkdirs()
-       FileCollection collection = project.distributionFiles
+boardProjects.each { def boardProject -> 
+	evaluationDependsOn(boardProject.path)
+	evaluationDependsOn(project(':bulldog.linux.native').path)
+    tasks.create(name: "distribute$boardProject.name", type: Copy, dependsOn: [ project(':bulldog.linux.native').tasks.matching  { Task task -> task.name.contains('BulldogSharedLibrary') } ]) { 
+       //delete project.distributionDirectory
+       boardProject.distributionDirectory.mkdirs()
+       FileCollection collection = boardProject.distributionFiles
        from collection
-       into project.distributionDirectory
+       into boardProject.distributionDirectory
     } 
 } 
 
-boardProjects.each { def project -> 
-	evaluationDependsOn(project.path)
-    tasks.create(name: "createZipArchive$project.name", type: Zip) { 
-       baseName = project.distributionBaseName + '-' + project.version	
-       destinationDir = project.distributionDirectory
+boardProjects.each { def boardProject -> 
+	evaluationDependsOn(boardProject.path)
+    tasks.create(name: "createZipArchive$boardProject.name", type: Zip) { 
+       baseName = boardProject.distributionBaseName + '-' + boardProject.version	
+       destinationDir = boardProject.distributionDirectory
        excludes = [ '*.zip' ]
-       from project.distributionDirectory
+       from boardProject.distributionDirectory
     } 
 } 
+
 
 task packageBoardArtifacts(dependsOn: [ tasks.matching { Task task -> task.name.startsWith("singleJar")}, subprojects.assemble]) 
 task distribution(dependsOn: [ tasks.matching { Task task -> task.name.startsWith("distribute")}, packageBoardArtifacts])

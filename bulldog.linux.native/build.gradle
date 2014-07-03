@@ -9,15 +9,22 @@ model {
             	  linker.executable = System.properties['org.bulldog.gcc.arm.linker']
             	  assembler.executable = System.properties['org.bulldog.gcc.arm.assembler']
             	  staticLibArchiver.executable = System.properties['org.bulldog.gcc.arm.archiver']
-	              addPlatformConfiguration(new ArmArchitecture())
+	              addPlatformConfiguration(new BeagleboneArmArchitecture())
+	              addPlatformConfiguration(new RaspberryPiArmArchitecture())
 	        }
     }
     
     platforms {
-        arm {
+        beagleboneblack {
             architecture "arm"
             operatingSystem "linux"
         }
+        
+        raspberrypi {
+        	architecture "arm"
+        	operatingSystem "linux"
+        }
+
     }
 }
 
@@ -53,13 +60,53 @@ libraries() {
 	}	
 }
 
-class ArmArchitecture implements TargetPlatformConfiguration {
+class BeagleboneArmArchitecture implements TargetPlatformConfiguration {
 
-	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline"]
+	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline", , "-mfloat-abi=softfp"]
 	def linkerArgs =  ["--gc-sections", "-shared"]
 
     boolean supportsPlatform(Platform element) {
-    	return true
+    	return element.toString().contains('beagleboneblack')
+    }
+
+    List<String> getCppCompilerArgs() {
+       compilerArgs
+    }
+
+    List<String> getCCompilerArgs() {
+       compilerArgs
+    }
+
+    List<String> getObjectiveCCompilerArgs() {
+        []
+    }
+
+    List<String> getObjectiveCppCompilerArgs() {
+        []
+    }
+
+    List<String> getAssemblerArgs() {
+        []
+    }
+
+    List<String> getLinkerArgs() {
+       linkerArgs
+    }
+
+    List<String> getStaticLibraryArchiverArgs() {
+        []
+    }
+}
+
+
+class RaspberryPiArmArchitecture implements TargetPlatformConfiguration {
+
+	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline", "-mfloat-abi=hard", 
+						 "-mlittle-endian", "-DARM", "-DARCH=\"ARM\"" , "-marm", "-mtune=arm1176jzf-s"]
+	def linkerArgs =  ["--gc-sections", "-shared"]
+
+    boolean supportsPlatform(Platform element) {
+    	return element.toString().contains('raspberrypi')
     }
 
     List<String> getCppCompilerArgs() {

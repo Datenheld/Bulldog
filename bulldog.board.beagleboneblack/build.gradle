@@ -1,7 +1,7 @@
 ext {
 	distributionDirectory = new File('../dist/beagleboneblack')
 	distributionBaseName = 'bulldog.beagleboneblack'
-	distributionFiles = files('../bulldog.linux.native/build/binaries/bulldogSharedLibrary/libbulldog-linux.so')
+	distributionFiles = files('../bulldog.linux.native/build/binaries/bulldogSharedLibrary/beagleboneblack/libbulldog-linux.so')
 }
 
 dependencies {

@@ -12,5 +12,6 @@ public class NativeMmap {
 	
 	public static native long createMap(long address, long length, int protection, int flags, int fileDescriptor, long offset);
 	public static native int deleteMap(long address, long length);
-	public static native void setValueAt(long address, byte value);
+	public static native void setValueAt(long address, int value);
+	public static native int getValueAt(long address);
 }

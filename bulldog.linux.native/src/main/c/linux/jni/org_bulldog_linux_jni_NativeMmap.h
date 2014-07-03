@@ -23,8 +23,21 @@ JNIEXPORT jlong JNICALL Java_org_bulldog_linux_jni_NativeMmap_createMap
 JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeMmap_deleteMap
   (JNIEnv *, jobject, jlong, jlong);
 
+/*
+ * Class:     org_bulldog_linux_jni_NativeMmap
+ * Method:    setValueAt
+ * Signature: (LI)V
+ */
 JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeMmap_setValueAt
-  (JNIEnv *, jobject, jlong, jbyte);
+  (JNIEnv *, jobject, jlong, jint);
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeMmap
+ * Method:    getValueAt
+ * Signature: (L)I
+ */
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeMmap_getValueAt
+  (JNIEnv *, jobject, jlong);
 
 #ifdef __cplusplus
 }

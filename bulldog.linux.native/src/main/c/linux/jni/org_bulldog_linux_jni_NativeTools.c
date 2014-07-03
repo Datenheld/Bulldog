@@ -38,7 +38,11 @@ JNIEXPORT jobject JNICALL Java_org_bulldog_linux_jni_NativeTools_getJavaDescript
 
 }
 
-
+/*
+ * Class:     org_bulldog_linux_jni_NativeTools
+ * Method:    open
+ * Signature: (Ljava/lang/String;I)I
+ */
 JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_open
 (JNIEnv * env, jclass clazz, jstring path, jint flags) {
 	char fileName[256];
@@ -48,6 +52,11 @@ JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_open
 
 }
 
+/*
+ * Class:     org_bulldog_linux_jni_NativeTools
+ * Method:    close
+ * Signature: (I)I
+ */
 JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_close
 (JNIEnv * env, jclass clazz, jint fd) {
 	return close(fd);

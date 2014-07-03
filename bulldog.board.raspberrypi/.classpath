@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="src" path="/bulldog.core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/bulldog.linux"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
