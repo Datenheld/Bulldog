@@ -6,6 +6,7 @@ import org.bulldog.linux.sysinfo.CpuInfo;
 import org.bulldog.linux.util.LinuxLibraryLoader;
 import org.bulldog.raspberrypi.gpio.RaspiDigitalInput;
 import org.bulldog.raspberrypi.gpio.RaspiDigitalOutput;
+import org.bulldog.raspberrypi.gpio.RaspiPwm;
 
 public class RaspberryPi extends AbstractBoard {
 
@@ -53,6 +54,9 @@ public class RaspberryPi extends AbstractBoard {
 		getPins().add(createDigitalIOPin(RaspiNames.P1_23, "P1", 23, 11));
 		getPins().add(createDigitalIOPin(RaspiNames.P1_24, "P1", 24, 8));
 		getPins().add(createDigitalIOPin(RaspiNames.P1_26, "P1", 26, 7));
+		
+		Pin pwmPin = getPin(RaspiNames.P1_12);
+		pwmPin.addFeature(new RaspiPwm(pwmPin));
 	}
 	
 	private void createPinsRev2() {
@@ -78,6 +82,9 @@ public class RaspberryPi extends AbstractBoard {
 		getPins().add(createDigitalIOPin(RaspiNames.P5_4, "P5", 4, 29));
 		getPins().add(createDigitalIOPin(RaspiNames.P5_5, "P5", 5, 30));
 		getPins().add(createDigitalIOPin(RaspiNames.P5_6, "P5", 6, 31));
+		
+		Pin pwmPin = getPin(RaspiNames.P1_12);
+		pwmPin.addFeature(new RaspiPwm(pwmPin));
 	}
 	
 	private Pin createDigitalIOPin(String name, String port, int portIndex, int gpioAddress) {

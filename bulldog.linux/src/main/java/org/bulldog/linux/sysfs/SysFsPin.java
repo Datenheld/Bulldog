@@ -73,14 +73,14 @@ public class SysFsPin {
 	public Signal getValue() {
 		try {
 			String value = BulldogUtil.convertStreamToString(getValueInputStream());
-			return Signal.fromString(value);
+			return Signal.fromString(value.trim());
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}
 	}
 	
 	public void setValue(Signal signal)  {
-		sysfsUtil.echo(getPinDirectory() + "value", signal == Signal.High ? "high" : "low");
+		sysfsUtil.echo(getPinDirectory() + "value", signal == Signal.High ? "1" : "0");
 	}
 
 }

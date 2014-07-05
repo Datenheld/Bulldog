@@ -34,7 +34,7 @@ public enum Signal {
 	
 	public static Signal fromString(String value) {
 		if(value == null) { return Signal.Low; }
-		
+
 		if(BulldogUtil.isStringNumeric(value)) {
 			if(Integer.parseInt(value) == 0) { return Signal.Low; }
 			return Signal.High;

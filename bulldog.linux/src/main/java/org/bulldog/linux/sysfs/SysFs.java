@@ -26,13 +26,10 @@ public class SysFs {
 		return files;
 	}
 	
-
-	
 	public void echo(String path, Object value) {
 		echo(path, String.valueOf(value));
 	}
 	 
-	
 	public void echo(String path, String value) {
 		try {
 			waitForFileCreation(path, WAIT_TIMEOUT_MS);
@@ -45,7 +42,6 @@ public class SysFs {
 		}
 	}
 	
-
 	public void waitForFileCreation(String filePath, long waitMillis) {
 		long startWaitingTime = System.currentTimeMillis();
 		File file = new File(filePath);

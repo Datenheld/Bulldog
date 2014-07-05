@@ -37,7 +37,7 @@ public class BCM2835 {
 	}
 	
 	public static MemoryMap getClockMemory() {
-		if(clockMemory != null) {
+		if(clockMemory == null) {
 			clockMemory = new MemoryMap("/dev/mem", BCM2835.CLOCK_BASE, 4096, 0);
 		}
 		
