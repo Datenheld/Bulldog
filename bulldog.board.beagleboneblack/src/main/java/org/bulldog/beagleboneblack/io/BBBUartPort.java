@@ -2,7 +2,7 @@ package org.bulldog.beagleboneblack.io;
 
 import java.io.IOException;
 
-import org.bulldog.beagleboneblack.sysfs.SysFs;
+import org.bulldog.beagleboneblack.sysfs.BBBSysFs;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.uart.UartPort;
 import org.bulldog.core.io.uart.UartRx;
@@ -16,7 +16,7 @@ public class BBBUartPort extends LinuxSerialPort implements UartPort {
 	private Pin txPin;
 	private String slotName;
 	private String name;
-	private SysFs sysFs = new SysFs();
+	private BBBSysFs sysFs = new BBBSysFs();
 	private boolean setupInProgress = false;
 	
 	public BBBUartPort(String name, String filename, String slotName, Pin rx, Pin tx) {

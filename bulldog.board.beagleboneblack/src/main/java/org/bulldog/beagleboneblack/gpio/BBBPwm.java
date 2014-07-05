@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.bulldog.beagleboneblack.devicetree.DeviceTreeCompiler;
-import org.bulldog.beagleboneblack.sysfs.SysFs;
+import org.bulldog.beagleboneblack.sysfs.BBBSysFs;
 import org.bulldog.beagleboneblack.sysfs.SysFsPwm;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.base.AbstractPwm;
@@ -32,7 +32,7 @@ public class BBBPwm extends AbstractPwm {
 	private long period;
 	private long dutyPeriod;
 	
-	private SysFs sysFsWrapper = new SysFs();
+	private BBBSysFs sysFsWrapper = new BBBSysFs();
 	private SysFsPwm sysFsPwm;
 	
 	public BBBPwm(Pin pin, int registerAddress, int muxMode, String pwmName, String qualifier, int channel) {

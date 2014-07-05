@@ -5,7 +5,7 @@ import org.bulldog.core.Polarity;
 
 public class SysFsPwm {
 
-	private SysFs sysfsUtil = new SysFs();
+	private BBBSysFs sysfsUtil = new BBBSysFs();
 	private String directory = null;
 	private int slot = -1;
 	

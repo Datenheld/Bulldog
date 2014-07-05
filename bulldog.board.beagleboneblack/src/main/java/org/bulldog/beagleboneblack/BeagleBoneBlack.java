@@ -9,7 +9,7 @@ import org.bulldog.beagleboneblack.gpio.BBBEmmc;
 import org.bulldog.beagleboneblack.gpio.BBBHdmi;
 import org.bulldog.beagleboneblack.gpio.BBBPwm;
 import org.bulldog.beagleboneblack.io.BBBUartPort;
-import org.bulldog.beagleboneblack.sysfs.SysFs;
+import org.bulldog.beagleboneblack.sysfs.BBBSysFs;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.event.FeatureActivationEventArgs;
 import org.bulldog.core.gpio.event.FeatureActivationListener;
@@ -22,7 +22,7 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 	
 	private static BeagleBoneBlack instance;
 	private static final String NAME = "BeagleBone Black";
-	private SysFs sysFs = new SysFs();
+	private BBBSysFs sysFs = new BBBSysFs();
 	
 	private BeagleBoneBlack() {
 		createPins();
@@ -261,22 +261,6 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 	}
 
 	public void featureDeactivated(Object o, FeatureActivationEventArgs args) {
-	}
-
-	public void cleanup() {
-		for(Pin pin : this.getPins()) {
-			if(pin.getActiveFeature() == null) { continue; }
-			pin.getActiveFeature().teardown();
-		}
-	}
-	
-	public void createShutdownHook() {
-		Runtime.getRuntime().addShutdownHook(new Thread() {
-			@Override
-			public void run() {
-				cleanup();
-			}
-		});
 	}
 
 	public synchronized static BeagleBoneBlack getInstance() {

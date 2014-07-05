@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.IOPort;
 import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.io.serial.SerialPort;
@@ -15,6 +16,9 @@ public abstract class AbstractBoard extends AbstractPinProvider implements Board
 	private List<SerialPort> serialBuses = new ArrayList<SerialPort>();
 	private Properties properties = new Properties();
 
+	public AbstractBoard() {
+		createShutdownHook();
+	}
 
 	public IOPort getIOPortByAlias(String alias) {
 		if(alias == null) 	{ throw new IllegalArgumentException("Null may not be passed as an alias name for an IOPort."); }
@@ -80,4 +84,20 @@ public abstract class AbstractBoard extends AbstractPinProvider implements Board
 	}
 	
 	public abstract String getName();
+	
+	public void cleanup() {
+		for(Pin pin : this.getPins()) {
+			if(pin.getActiveFeature() == null) { continue; }
+			pin.getActiveFeature().teardown();
+		}
+	}
+	
+	public void createShutdownHook() {
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			@Override
+			public void run() {
+				cleanup();
+			}
+		});
+	}
 }
