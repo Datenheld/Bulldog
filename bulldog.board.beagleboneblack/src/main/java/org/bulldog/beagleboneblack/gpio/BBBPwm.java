@@ -31,6 +31,7 @@ public class BBBPwm extends AbstractPwm {
 	
 	private long period;
 	private long dutyPeriod;
+	private long previousPeriod = 0;
 	
 	private BBBSysFs sysFsWrapper = new BBBSysFs();
 	private SysFsPwm sysFsPwm;
@@ -106,31 +107,39 @@ public class BBBPwm extends AbstractPwm {
 		period = (long) ((1.0 / frequency) * NANOSECONDS_PER_SECOND);
 		dutyPeriod = (long) (period * duty);
 		
-		if(isEnabled()) {
-			enableImpl();
-		}
+		setFrequencyImpl(period);
+		setDutyImpl(dutyPeriod);
 	}
 	
-	protected void setPwmImpl() {
+	private void setDutyImpl(long duty) {
+		if(sysFsPwm == null) { return; }
+		sysFsPwm.setDuty(duty);
+		
+	}
+
+	private void setFrequencyImpl(long period) {
+		if(previousPeriod == period) { return; }
+		
 		teardown();
 		configureOverlay(period, dutyPeriod);
 		configureSibling();
+		
+		if(isEnabled()) {
+			sysFsPwm.enable();
+		}
+		
+		previousPeriod = period;
 	}
 
 	/**
 	 *  The Beaglebone can only have the same frequency on all
 	 *  pwm groups. That means we need to tear down sibling pwms
-	 *   in order to activate the new frequecy for the group
+	 *   in order to activate the new frequency for the group
 	 **/
 	private void configureSibling() {
 		BBBPwm siblingPwm = PWM_MANAGER.getActiveSibling(this);
 		if(siblingPwm != null && siblingPwm.isEnabled()) {
-			siblingPwm.teardown();
-			if(siblingPwm.getPeriod() != getPeriod()) {
-				throw new IllegalArgumentException("All PWMs of " + getPwmGroup() + " must have the same frequency!");
-			}
-			siblingPwm.configureOverlay(period, siblingPwm.getDutyPeriod());	
-			siblingPwm.enableImpl();
+			siblingPwm.setPwmImpl(getFrequency(), siblingPwm.getDuty());
 		}
 	}
 
@@ -143,7 +152,6 @@ public class BBBPwm extends AbstractPwm {
 
 	@Override
 	protected void enableImpl() {
-		setPwmImpl();
 		sysFsPwm.enable();
 	}
 

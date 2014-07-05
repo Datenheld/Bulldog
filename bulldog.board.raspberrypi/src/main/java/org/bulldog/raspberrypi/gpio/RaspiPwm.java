@@ -36,20 +36,23 @@ public class RaspiPwm extends AbstractPwm {
 	@Override
 	protected void setPwmImpl(double frequency, double duty) {
 		if(previousFrequency != frequency) {
-			if(isEnabled()) { disableImpl(); }
-			
-			int divisorRegister = PwmFrequencyCalculator.calculateDivisorRegister(frequency);
-			BCM2835.getClockMemory().setValue(BCM2835.PWMCLK_DIV, divisorRegister);
-			BCM2835.getPwmMemory().setValue(BCM2835.PWM_RNG1, 0x400);
-			setDutyImpl(duty);
-			BulldogUtil.sleepMs(1);
-			BCM2835.getClockMemory().setValue(BCM2835.PWMCLK_CNTL, 0x5A000011);
+			setFrequencyImpl(frequency);
 			previousFrequency = frequency;
-			
-			if(isEnabled()) { enableImpl(); }
-		} else {
-			setDutyImpl(duty);
-		}
+		} 
+		
+		setDutyImpl(duty);
+	}
+
+	private void setFrequencyImpl(double frequency) {
+		if(isEnabled()) { disableImpl(); }
+		
+		int divisorRegister = PwmFrequencyCalculator.calculateDivisorRegister(frequency);
+		BCM2835.getClockMemory().setValue(BCM2835.PWMCLK_DIV, divisorRegister);
+		BCM2835.getPwmMemory().setValue(BCM2835.PWM_RNG1, 0x400);
+		BulldogUtil.sleepMs(1);
+		BCM2835.getClockMemory().setValue(BCM2835.PWMCLK_CNTL, 0x5A000011);
+		
+		if(isEnabled()) { enableImpl(); }
 	}
 	
 	protected void setDutyImpl(double duty) {

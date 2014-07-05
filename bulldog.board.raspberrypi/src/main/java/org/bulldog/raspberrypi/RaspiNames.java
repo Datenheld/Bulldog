@@ -25,4 +25,6 @@ public class RaspiNames {
 	public static final String P5_5 = "P5_5";
 	public static final String P5_6 = "P5_6";
 	
+	public static final String PWM_PIN = P1_12;
+	
 }

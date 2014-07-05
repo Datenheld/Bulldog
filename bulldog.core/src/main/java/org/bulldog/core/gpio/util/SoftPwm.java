@@ -50,7 +50,9 @@ public class SoftPwm extends AbstractPwm implements Runnable {
 		}
 		executorService.shutdownNow();
 		try {
-			executorService.awaitTermination(1000, TimeUnit.MICROSECONDS);
+			if(executorService != null) {
+				executorService.awaitTermination(1000, TimeUnit.MICROSECONDS);
+			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

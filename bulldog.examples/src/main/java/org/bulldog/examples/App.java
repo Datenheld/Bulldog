@@ -24,7 +24,7 @@ public class App
     	Board board = Platform.createBoard();
     	DigitalOutput out = board.getPin(RaspiNames.P1_7).as(DigitalOutput.class);
     	DigitalInput in = board.getPin(RaspiNames.P1_5).as(DigitalInput.class);
-    	Pwm pwm = board.getPin(RaspiNames.P1_12).as(Pwm.class);
+    	Pwm pwm = board.getPin(RaspiNames.PWM_PIN).as(Pwm.class);
     	pwm.setFrequency(100000);
     	pwm.setDuty(0.5);
     	pwm.enable();
