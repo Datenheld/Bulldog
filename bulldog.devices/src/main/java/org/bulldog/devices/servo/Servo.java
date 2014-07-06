@@ -8,12 +8,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.bulldog.core.gpio.Pwm;
+import org.bulldog.core.util.easing.SineEasing;
 import org.bulldog.devices.actuators.Actuator;
 import org.bulldog.devices.actuators.movement.DirectMove;
 import org.bulldog.devices.actuators.movement.EasedMove;
 import org.bulldog.devices.actuators.movement.LinearMove;
 import org.bulldog.devices.actuators.movement.Move;
-import org.bulldog.devices.actuators.movement.easing.SineEasing;
 
 public class Servo implements Actuator {
 

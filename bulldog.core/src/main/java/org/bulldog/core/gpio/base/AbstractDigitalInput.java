@@ -15,7 +15,7 @@ public abstract class AbstractDigitalInput extends AbstractPinFeature implements
 
 	private static final int MAX_DEBOUNCE_COUNT = 10;
 
-	private static final String NAME_FORMAT = "Interrupt on Pin %s";
+	private static final String NAME_FORMAT = "Digital Input on Pin %s";
 	private Edge trigger = Edge.Both;
 	private List<InterruptListener> interruptListeners = Collections.synchronizedList(new ArrayList<InterruptListener>());
 	private int debounceMs = 0;

@@ -15,11 +15,11 @@ public class PCF8574DigitalOutput extends AbstractDigitalOutput {
 	}
 
 	@Override
-	public void setup() {
+	protected void setupImpl() {
 	}
 
 	@Override
-	public void teardown() {
+	protected void teardownImpl() {
 	}
 
 	@Override

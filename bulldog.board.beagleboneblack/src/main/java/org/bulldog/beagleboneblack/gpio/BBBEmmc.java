@@ -17,12 +17,12 @@ public class BBBEmmc extends AbstractPinFeature {
 	}
 
 	@Override
-	public void setup() {
+	protected void setupImpl() {
 		blockPin();
 	}
 
 	@Override
-	public void teardown() {
+	protected void teardownImpl() {
 	}
 
 }

@@ -44,7 +44,7 @@ public class Blinker implements Runnable {
 		startTime = System.currentTimeMillis();
 		output.blockPin();
 		future = executorService.scheduleAtFixedRate(this, 0,
-				 periodLengthMilliseconds, TimeUnit.MILLISECONDS);
+				 periodLengthMilliseconds / 2, TimeUnit.MILLISECONDS);
 	}
 
 	public void stopBlinking() {

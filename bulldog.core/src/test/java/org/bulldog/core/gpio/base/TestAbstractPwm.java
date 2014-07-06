@@ -21,7 +21,7 @@ public class TestAbstractPwm {
 	@Test
 	public void testPwm() {
 		MockedPwm pwm = pin.as(MockedPwm.class);
-		
+		TestCase.assertTrue(pwm.isSetup());
 		TestCase.assertFalse(pwm.isBlocking());
 	}
 	

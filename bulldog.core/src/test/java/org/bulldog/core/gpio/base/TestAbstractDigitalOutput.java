@@ -24,6 +24,7 @@ public class TestAbstractDigitalOutput {
 	@Test
 	public void testOutput() {
 		DigitalOutput output = pin.as(DigitalOutput.class);
+		TestCase.assertTrue(output.isSetup());
 		
 		TestCase.assertEquals(Signal.Low, output.getAppliedSignal());
 		
@@ -123,9 +124,9 @@ public class TestAbstractDigitalOutput {
 		Signal signal = output.getAppliedSignal();
 		output.blinkTimes(10, 3);
 		for(int i = 0; i < 3; i++) {
-			BulldogUtil.sleepMs(10);
+			BulldogUtil.sleepMs(5);
 			TestCase.assertEquals(signal.inverse(), output.getAppliedSignal());
-			BulldogUtil.sleepMs(10);
+			BulldogUtil.sleepMs(5);
 			TestCase.assertEquals(signal,  output.getAppliedSignal());
 		}
 		BulldogUtil.sleepMs(10);

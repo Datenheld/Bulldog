@@ -67,13 +67,13 @@ public class SoftPwm extends AbstractPwm implements Runnable {
 	}
 	
 	@Override
-	public void setup() {
+	public void setupImpl() {
 		output.setup();
 	}
 
 
 	@Override
-	public void teardown() {
+	public void teardownImpl() {
 		terminateScheduler();
 		output.teardown();
 	}

@@ -60,4 +60,8 @@ public final class BulldogUtil {
 	public static boolean isStringNumeric(String str) {
 	  return str.matches("-?\\d+(\\.\\d+)?");
 	}
+	
+	public static final int getUnsignedByte(byte b) {
+		return b & 0xFF;
+	}
 }

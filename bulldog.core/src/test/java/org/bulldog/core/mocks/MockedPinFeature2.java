@@ -16,11 +16,11 @@ public class MockedPinFeature2 extends AbstractPinFeature {
 	}
 
 	@Override
-	public void setup() {
+	protected void setupImpl() {
 	}
 
 	@Override
-	public void teardown() {
+	protected void teardownImpl() {
 	}
 }
 

@@ -50,11 +50,11 @@ public class MockedAnalogInput extends AbstractAnalogInput {
 	}
 
 	@Override
-	public void setup() {
+	protected void setupImpl() {
 	}
 
 	@Override
-	public void teardown() {
+	protected void teardownImpl() {
 	}
 
 }

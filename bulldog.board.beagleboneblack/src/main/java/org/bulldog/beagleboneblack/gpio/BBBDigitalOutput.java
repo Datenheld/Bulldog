@@ -12,13 +12,13 @@ public class BBBDigitalOutput extends AbstractDigitalOutput {
 		super(pin);
 	}
 
-	public void setup() {
+	protected void setupImpl() {
 		BeagleBonePin bbbPin = (BeagleBonePin)getPin();
 		NativeGpio.pinMode(bbbPin.getPortNumeric(), bbbPin.getIndexOnPort(), NativeGpio.DIRECTION_OUT);
 		applySignal(getAppliedSignal());
 	}
 
-	public void teardown() {
+	protected void teardownImpl() {
 	}
 
 	@Override

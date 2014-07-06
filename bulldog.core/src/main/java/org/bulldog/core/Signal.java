@@ -33,14 +33,18 @@ public enum Signal {
 	}
 	
 	public static Signal fromString(String value) {
-		if(value == null) { return Signal.Low; }
+		if(value == null) { throw new IllegalArgumentException("value cannot be null!"); };
 
-		if(BulldogUtil.isStringNumeric(value)) {
-			if(Integer.parseInt(value) == 0) { return Signal.Low; }
+		String interpretedValue = value.trim().toLowerCase();
+		
+		if(BulldogUtil.isStringNumeric(interpretedValue)) {
+			if(Double.parseDouble(interpretedValue) == 0) { return Signal.Low; }
 			return Signal.High;
 		}  else {
-			if(value.toLowerCase().equals("low")) { return Signal.Low; }
-			return Signal.High;
+			if(interpretedValue.equals("low")) { return Signal.Low; }
+			else if(interpretedValue.equals("high")) { return Signal.High; };
+			
+			throw new IllegalArgumentException(interpretedValue + " is not a valid value for a signal");
 		}
 	}
 	

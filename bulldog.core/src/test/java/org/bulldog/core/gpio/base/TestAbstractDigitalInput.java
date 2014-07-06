@@ -29,6 +29,7 @@ public class TestAbstractDigitalInput {
 	@Test
 	public void testRead() {
 		MockedDigitalInput input = pin.as(MockedDigitalInput.class);
+		TestCase.assertTrue(input.isSetup());
 		input.setSignalToRead(Signal.High);
 		TestCase.assertEquals(Signal.High, input.read());
 		
@@ -39,6 +40,7 @@ public class TestAbstractDigitalInput {
 	@Test
 	public void testReadDebounced() {
 		MockedDigitalInput input = pin.as(MockedDigitalInput.class);
+		TestCase.assertTrue(input.isSetup());
 		input.bounceSignal(Signal.High, 100);
 		BulldogUtil.sleepMs(10);
 		long start = System.currentTimeMillis();

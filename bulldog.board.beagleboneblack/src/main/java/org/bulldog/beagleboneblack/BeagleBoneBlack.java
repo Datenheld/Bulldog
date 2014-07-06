@@ -11,6 +11,7 @@ import org.bulldog.beagleboneblack.gpio.BBBPwm;
 import org.bulldog.beagleboneblack.io.BBBUartPort;
 import org.bulldog.beagleboneblack.sysfs.BBBSysFs;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.base.DigitalIOFeature;
 import org.bulldog.core.gpio.event.FeatureActivationEventArgs;
 import org.bulldog.core.gpio.event.FeatureActivationListener;
 import org.bulldog.core.platform.AbstractBoard;
@@ -143,8 +144,7 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 
 	private Pin createDigitalIOPin(String name, String internalName, int bank, int pinIndex, String port, int portIndex) {
 		BeagleBonePin pin = new BeagleBonePin(name, internalName, bank, pinIndex, port, portIndex);
-		pin.addFeature(new BBBDigitalOutput(pin))
-		   .addFeature(new BBBDigitalInput(pin));
+		pin.addFeature(new DigitalIOFeature(pin, new BBBDigitalInput(pin), new BBBDigitalOutput(pin)));
 		return pin;
 	}
 	

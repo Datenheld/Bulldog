@@ -43,6 +43,7 @@ public class TestPin {
 		
 		pin.activateFeature(MockedPinFeature2.class);
 		PinFeature feature = pin.getActiveFeature();
+		TestCase.assertTrue(feature.isSetup());
 		TestCase.assertEquals(type2, feature);
 		TestCase.assertFalse(pin.isFeatureActive(MockedPinFeature3.class));
 		
@@ -93,6 +94,7 @@ public class TestPin {
 		TestCase.assertEquals(pin.getActiveFeature(), feature);
 		pin.removeFeature(MockedPinFeature1.class);
 		TestCase.assertNull(pin.getActiveFeature());
+		
 		try {
 			feature = pin.as(MockedPinFeature1.class);
 			TestCase.fail();

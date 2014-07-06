@@ -6,6 +6,7 @@ import org.bulldog.core.gpio.PinFeature;
 public abstract class AbstractPinFeature implements PinFeature {
 
 	private Pin pin;
+	private boolean isSetup = false;
 	
 	public AbstractPinFeature(Pin pin) {
 		this.pin = pin;
@@ -33,5 +34,22 @@ public abstract class AbstractPinFeature implements PinFeature {
 	
 	public void unblockPin() {
 		getPin().unblock(this);
+	}
+	
+	protected abstract void setupImpl();
+	protected abstract void teardownImpl();
+	
+	public void setup() {
+		setupImpl();
+		isSetup = true;
+	}
+	
+	public void teardown() {
+		teardownImpl();
+		isSetup = false;
+	}
+	
+	public boolean isSetup() {
+		return isSetup;
 	}
 }

@@ -1,6 +1,7 @@
 package org.bulldog.raspberrypi;
 
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.base.DigitalIOFeature;
 import org.bulldog.core.platform.AbstractBoard;
 import org.bulldog.linux.sysinfo.CpuInfo;
 import org.bulldog.linux.util.LinuxLibraryLoader;
@@ -89,8 +90,7 @@ public class RaspberryPi extends AbstractBoard {
 	
 	private Pin createDigitalIOPin(String name, String port, int portIndex, int gpioAddress) {
 		RaspberryPiPin pin = new RaspberryPiPin(name, gpioAddress, port, portIndex, gpioAddress);
-		pin.addFeature(new RaspiDigitalOutput(pin))
-		   .addFeature(new RaspiDigitalInput(pin));
+		pin.addFeature(new DigitalIOFeature(pin, new RaspiDigitalInput(pin), new RaspiDigitalOutput(pin)));
 		return pin;
 	}
 	

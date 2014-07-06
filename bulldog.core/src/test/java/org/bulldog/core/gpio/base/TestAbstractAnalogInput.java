@@ -31,6 +31,7 @@ public class TestAbstractAnalogInput {
 	public void testMonitoring() {
 		MockedAnalogInput input = pin.as(MockedAnalogInput.class);
 		TestCase.assertFalse(input.isBlocking());
+		TestCase.assertTrue(input.isSetup());
 		
 		double[] samples = new double[20];
 		for(int i = 0; i < 20; i++) {

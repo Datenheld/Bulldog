@@ -23,14 +23,14 @@ public class PCF8574DigitalInput extends AbstractDigitalInput {
 	}
 
 	@Override
-	public void setup() {
+	protected void setupImpl() {
 		byte state = expander.getState();
 		byte newState = BitMagic.setBit(state, getPin().getAddress(), 1);
 		expander.writeState(newState);
 	}
 
 	@Override
-	public void teardown() {
+	protected void teardownImpl() {
 	}
 
 	public void handleInterruptEvent(Signal oldState, Signal currentState) {

@@ -22,7 +22,7 @@ public class BBBAnalogInput extends AbstractAnalogInput {
 		this.channelId = channel;
 	}
 
-	public void setup() {
+	protected void setupImpl() {
 		if(buffer == null) {
 			buffer = ByteBuffer.allocateDirect(4 * 100).order(ByteOrder.LITTLE_ENDIAN).asIntBuffer();
 		}
@@ -32,7 +32,7 @@ public class BBBAnalogInput extends AbstractAnalogInput {
 		NativeAdc.enableChannel(channelId);
 	}
 
-	public void teardown() {
+	protected void teardownImpl() {
 		NativeAdc.disableChannel(channelId);
 	}
 

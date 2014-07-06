@@ -13,11 +13,11 @@ public class PCA9685Pwm extends AbstractPwm {
 	}
 
 	@Override
-	public void setup() {
+	protected void setupImpl() {
 	}
 
 	@Override
-	public void teardown() {
+	protected void teardownImpl() {
 }
 
 	@Override

@@ -14,25 +14,19 @@ public class BBBI2cPinFeature extends AbstractI2cPinFeature {
 
 	@Override
 	public boolean isBlocking() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public void setup() {
-		// TODO Auto-generated method stub
-		
+	protected void setupImpl() {
 	}
 
 	@Override
-	public void teardown() {
-		// TODO Auto-generated method stub
-		
+	protected void teardownImpl() {
 	}
 
 	@Override
 	public I2cBus getI2cBus() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

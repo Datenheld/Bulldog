@@ -13,6 +13,8 @@ public interface PinFeature {
 	void blockPin();
 	void unblockPin();
 	
+	boolean isSetup();
+	
 	void setup();
 	void teardown();
 }

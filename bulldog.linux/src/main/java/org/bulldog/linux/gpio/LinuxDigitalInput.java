@@ -67,12 +67,14 @@ public class LinuxDigitalInput extends AbstractDigitalInput implements LinuxEpol
 		}
 	}
 
-	public void setup() {
+	@Override
+	protected void setupImpl() {
 		exportPinIfNecessary();
 		interruptControl.setup();
 	}
 
-	public void teardown() {
+	@Override
+	protected void teardownImpl() {
 		disableInterrupts();
 		unexportPin();
 	}

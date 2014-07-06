@@ -20,12 +20,12 @@ public class BBBUartPinFeature extends AbstractUartPinFeature {
 	}
 
 	@Override
-	public void setup() {
+	protected void setupImpl() {
 		port.setup();
 	}
 
 	@Override
-	public void teardown() {
+	protected void teardownImpl() {
 		port.teardown();
 	}
 

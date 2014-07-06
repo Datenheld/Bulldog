@@ -1,9 +1,9 @@
 package org.bulldog.devices.actuators.movement;
 
 import org.bulldog.core.util.BulldogUtil;
+import org.bulldog.core.util.easing.Easing;
+import org.bulldog.core.util.easing.EasingOptions;
 import org.bulldog.devices.actuators.Actuator;
-import org.bulldog.devices.actuators.movement.easing.Easing;
-import org.bulldog.devices.actuators.movement.easing.EasingOptions;
 
 public class EasedMove implements Move {
 

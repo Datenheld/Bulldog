@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalInput;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.base.DigitalIOFeature;
 import org.bulldog.core.gpio.event.InterruptEventArgs;
 import org.bulldog.core.gpio.event.InterruptListener;
 import org.bulldog.core.io.bus.i2c.I2cBus;
@@ -61,8 +62,7 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 	private void createPins() {
 		for(int i = 0; i <= 7; i++) {
 			Pin pin = new Pin("P" + i, i, "P", i);
-			pin.addFeature(new PCF8574DigitalInput(pin, this));
-			pin.addFeature(new PCF8574DigitalOutput(pin, this));
+			pin.addFeature(new DigitalIOFeature(pin, new PCF8574DigitalInput(pin, this), new PCF8574DigitalOutput(pin, this)));
 			getPins().add(pin);
 		}
 	}

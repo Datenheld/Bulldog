@@ -16,7 +16,7 @@ public class RaspiPwm extends AbstractPwm {
 	}
 
 	@Override
-	public void setup() {
+	protected void setupImpl() {
 		RaspberryPiPin pin = (RaspberryPiPin)getPin();
 		BCM2835.configureAlternateFunction(pin.getGpioNumber(), 5);
 		stopClock();
@@ -28,7 +28,7 @@ public class RaspiPwm extends AbstractPwm {
 	}
 
 	@Override
-	public void teardown() {
+	protected void teardownImpl() {
 		disableImpl();
 		stopClock();
 	}

@@ -46,7 +46,7 @@ public class BBBPwm extends AbstractPwm {
 	}
 
 	@Override
-	public void setup() {
+	protected void setupImpl() {
 		if(!PWM_MANAGER.canActivatePwmOnPin(this)) {
 			BBBPwm activePwm  = PWM_MANAGER.getActivePin(this);
 			throw new RuntimeException("You cannot activate "+activePwm.getName()+" on this pin. It is already active on: " + activePwm.getPin().getName());
@@ -144,7 +144,7 @@ public class BBBPwm extends AbstractPwm {
 	}
 
 	@Override
-	public void teardown() {
+	protected void teardownImpl() {
 		sysFsWrapper.removeSlotOfDevice(getDeviceName());
 		PWM_MANAGER.removeActivePwm(this);
 		sysFsPwm = null;
