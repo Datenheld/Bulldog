@@ -15,8 +15,8 @@ public class RaspiDigitalOutput extends AbstractDigitalOutput {
 	@Override
 	public void setup() {
 		RaspberryPiPin pin = (RaspberryPiPin)getPin();
-		BCM2835.configureAsInput(pin.getGpioAddress());
-		BCM2835.configureAsOutput(pin.getGpioAddress());
+		BCM2835.configureAsInput(pin.getGpioNumber());
+		BCM2835.configureAsOutput(pin.getGpioNumber());
 	}
 	
 
@@ -27,11 +27,11 @@ public class RaspiDigitalOutput extends AbstractDigitalOutput {
 
 	@Override
 	protected void applySignalImpl(Signal signal) {
-		int value = 1 << getRaspberryPiPin().getGpioAddress();
+		int value = 1 << getRaspberryPiPin().getGpioNumber();
 		if(signal == Signal.High) {
-			BCM2835.getGpioMemory().setValue(7, value);
+			BCM2835.getGpioMemory().setIntValue(BCM2835.GPIO_SET, value);
 		} else {
-			BCM2835.getGpioMemory().setValue(10, value);
+			BCM2835.getGpioMemory().setIntValue(BCM2835.GPIO_CLEAR, value);
 		}
 	}
 

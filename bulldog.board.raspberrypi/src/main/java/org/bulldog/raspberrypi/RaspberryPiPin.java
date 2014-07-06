@@ -6,12 +6,12 @@ public class RaspberryPiPin extends Pin {
 
 	private int gpioAddress;
 	
-	public RaspberryPiPin(String name, int address, String port, int indexOnPort, int gpioAddress) {
+	public RaspberryPiPin(String name, int address, String port, int indexOnPort, int gpioNumber) {
 		super(name, address, port, indexOnPort);
-		this.gpioAddress = gpioAddress;
+		this.gpioAddress = gpioNumber;
 	}
 
-	public int getGpioAddress() {
+	public int getGpioNumber() {
 		return gpioAddress;
 	}
 }

@@ -67,7 +67,7 @@ boardProjects.each { def boardProject ->
         destinationDir = boardProject.distributionDirectory
         
         manifest { 
-     		attributes 'Main-Class': 'org.bulldog.examples.App' 
+     		attributes 'Main-Class': 'org.bulldog.examples.LcdExample' 
      	}
     
     	javaProjects.each { javaProject -> 

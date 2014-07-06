@@ -9,13 +9,16 @@ public class BCM2835 {
 	public static final int PWM_BASE		  = (BCM2708_PERI_BASE + 0x20C000);
 	public static final int CLOCK_BASE		  = (BCM2708_PERI_BASE + 0x101000);
 	
-	public static final int PWMCLK_CNTL 	  =	40;
-	public static final int PWMCLK_DIV  	  =	41;
+	public static final int PWMCLK_CNTL 	  =	40 * 4;
+	public static final int PWMCLK_DIV  	  =	41 * 4;
 	
 	public static final int PWM_CTL = 0;
-	public static final int PWM_RNG1 = 4;
-	public static final int	PWM_DAT1 = 5;
+	public static final int PWM_RNG1 = 4 * 4;
+	public static final int	PWM_DAT1 = 5 * 4;
 
+	public static final int GPIO_SET = 7 * 4;
+	public static final int GPIO_CLEAR = 10 * 4;
+	
 	private static MemoryMap gpioMemory;
 	private static MemoryMap pwmMemory;
 	private static MemoryMap clockMemory;
@@ -51,27 +54,27 @@ public class BCM2835 {
 	}
 	
 	public static void configureAsInput(int gpio) {
-		long address = gpio / 10;
-		int value = BCM2835.getGpioMemory().getValueAt(address);
-		value &= ~(7 << getGpioRegister(gpio));
-		BCM2835.getGpioMemory().setValue(address, value);
+		long address = (gpio / 10) * 4;
+		int value = BCM2835.getGpioMemory().getIntValueAt(address);
+		value &= ~(7 << getGpioRegisterOffset(gpio));
+		BCM2835.getGpioMemory().setIntValue(address, value);
 	}
 	
 	public static void configureAsOutput(int gpio) {
-		long address = gpio / 10;
-		int value = BCM2835.getGpioMemory().getValueAt(address);
-		value |=  (1 << getGpioRegister(gpio));
-		BCM2835.getGpioMemory().setValue(address, value);
+		long address = (gpio / 10) * 4;
+		int value = BCM2835.getGpioMemory().getIntValueAt(address);
+		value |=  (1 << getGpioRegisterOffset(gpio));
+		BCM2835.getGpioMemory().setIntValue(address, value);
 	}
 	
 	public static void configureAlternateFunction(int gpio, int alt) {
-		long address = gpio / 10;
-		int value = BCM2835.getGpioMemory().getValueAt(address);
+		long address = (gpio / 10) * 4;
+		int value = BCM2835.getGpioMemory().getIntValueAt(address);
 		value |= (( (alt) <=3 ? (alt) + 4 : (alt) == 4 ? 3 : 2 ) << (gpio % 10) * 3);
-		BCM2835.getGpioMemory().setValue(address, value);
+		BCM2835.getGpioMemory().setIntValue(address, value);
 	}
 	
-	public static int getGpioRegister(int gpio) {
+	public static int getGpioRegisterOffset(int gpio) {
 		return (gpio % 10) * 3;
 	}
 }

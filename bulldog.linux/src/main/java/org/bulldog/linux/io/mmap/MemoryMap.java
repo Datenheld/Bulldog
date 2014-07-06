@@ -22,11 +22,35 @@ public class MemoryMap {
 		NativeTools.close(fileDescriptor);
 	}
 	
-	public void setValue(long offset, int value) {
-		NativeMmap.setValueAt(mmapPointer + offset*4, value);
+	public void setLongValue(long offset, long value) {
+		NativeMmap.setLongValueAt(mmapPointer + offset, value);
 	}
 	
-	public int getValueAt(long offset) {
-		return NativeMmap.getValueAt(mmapPointer + offset*4);
+	public long getLongValueAt(long offset) {
+		return NativeMmap.getLongValueAt(mmapPointer + offset);
+	}
+	
+	public void setIntValue(long offset, int value) {
+		NativeMmap.setIntValueAt(mmapPointer + offset, value);
+	}
+	
+	public int getIntValueAt(long offset) {
+		return NativeMmap.getIntValueAt(mmapPointer + offset);
+	}
+	
+	public void setShortValue(long offset, int value) {
+		NativeMmap.setIntValueAt(mmapPointer + offset, value);
+	}
+	
+	public short getShortValueAt(long offset) {
+		return NativeMmap.getShortValueAt(mmapPointer + offset);
+	}
+	
+	public void setByteValue(long offset, byte value) {
+		NativeMmap.setIntValueAt(mmapPointer + offset, value);
+	}
+	
+	public byte getByteValueAt(long offset) {
+		return NativeMmap.getByteValueAt(mmapPointer + offset*2);
 	}
 }

@@ -69,7 +69,11 @@ public class PwmExample {
 		softPwm.enable();
 		
 		while(true) {
-			BulldogUtil.sleepMs(1000);
+			for(double d = 0.0; d < 1.0; d += 0.01) {
+				pwm5.setDuty(d);
+				pwm6.setDuty(d);
+			}
+			BulldogUtil.sleepMs(10);
 		}
 		
 	}

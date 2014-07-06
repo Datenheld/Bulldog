@@ -1,6 +1,7 @@
 #include <jni.h>
 #include <sys/types.h>
 #include <fcntl.h>
+#include <unistd.h>
 #include "org_bulldog_linux_jni_NativeTools.h"
 
 

@@ -25,18 +25,66 @@ JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeMmap_deleteMap
 
 /*
  * Class:     org_bulldog_linux_jni_NativeMmap
- * Method:    setValueAt
+ * Method:    setLongValueAt
  * Signature: (LI)V
  */
-JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeMmap_setValueAt
+JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeMmap_setLongValueAt
+  (JNIEnv *, jobject, jlong, jlong);
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeMmap
+ * Method:    setIntValueAt
+ * Signature: (LI)V
+ */
+JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeMmap_setIntValueAt
   (JNIEnv *, jobject, jlong, jint);
 
 /*
  * Class:     org_bulldog_linux_jni_NativeMmap
- * Method:    getValueAt
+ * Method:    setByteValueAt
+ * Signature: (LI)V
+ */
+JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeMmap_setByteValueAt
+  (JNIEnv *, jobject, jlong, jbyte);
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeMmap
+ * Method:    setShortValueAt
+ * Signature: (LI)V
+ */
+JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeMmap_setShortValueAt
+  (JNIEnv *, jobject, jlong, jshort);
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeMmap
+ * Method:    getLongValueAt
  * Signature: (L)I
  */
-JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeMmap_getValueAt
+JNIEXPORT jlong JNICALL Java_org_bulldog_linux_jni_NativeMmap_getLongValueAt
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeMmap
+ * Method:    getIntValueAt
+ * Signature: (L)I
+ */
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeMmap_getIntValueAt
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeMmap
+ * Method:    getShortValueAt
+ * Signature: (L)I
+ */
+JNIEXPORT jshort JNICALL Java_org_bulldog_linux_jni_NativeMmap_getShortValueAt
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeMmap
+ * Method:    getByteValueAt
+ * Signature: (L)I
+ */
+JNIEXPORT jbyte JNICALL Java_org_bulldog_linux_jni_NativeMmap_getByteValueAt
   (JNIEnv *, jobject, jlong);
 
 #ifdef __cplusplus
