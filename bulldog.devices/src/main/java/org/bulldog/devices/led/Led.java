@@ -1,13 +1,13 @@
 package org.bulldog.devices.led;
 
-import org.bulldog.core.gpio.DigitalOutput;
+import org.bulldog.core.gpio.Pwm;
 
 public class Led {
 
-	private DigitalOutput output;
+	private Pwm pwm;
 	
-	public Led(DigitalOutput output) {
-		this.output = output;
+	public Led(Pwm pwm) {
+		this.pwm = pwm;
 	}
 	
 	public void fadeOut() {

@@ -5,23 +5,29 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.bulldog.core.Signal;
-import org.bulldog.core.gpio.DigitalOutput;
-import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.DigitalIO;
 import org.bulldog.core.util.BulldogUtil;
 
 public class PinIOGroup implements IOPort {
 	
-	private Pin[] dataPins;
-	private Pin enablePin;
+	private DigitalIO[] dataPins;
+	private DigitalIO enablePin;
 	private PinIOInputStream inputStream;
 	private PinIOOutputStream outputStream;
 	
 	private String name;
 	private String alias;
 	
-	public PinIOGroup(Pin enablePin, Pin... dataPins) {
+	private int delayMs = 1;
+	
+	public PinIOGroup(DigitalIO enablePin, DigitalIO... dataPins) {
+		this(enablePin, 1, dataPins);
+	}
+	
+	public PinIOGroup(DigitalIO enablePin, int delayMs, DigitalIO... dataPins) {
 		this.enablePin = enablePin;
 		this.dataPins = dataPins;
+		this.delayMs = delayMs;
 		inputStream = new PinIOInputStream(this);
 		outputStream = new PinIOOutputStream(this);
 	}
@@ -95,14 +101,14 @@ public class PinIOGroup implements IOPort {
 		return inputStream;
 	}
 	
-	public Pin[] getDataPins() {
+	public DigitalIO[] getDataPins() {
 		return dataPins;
 	}
 	
 	public void enable() {
-		DigitalOutput out = enablePin.as(DigitalOutput.class);
-		out.applySignal(Signal.High);
-		out.applySignal(Signal.Low);
+		enablePin.applySignal(Signal.High);
+		BulldogUtil.sleepMs(delayMs);
+		enablePin.applySignal(Signal.Low);
 	}
 	
 }

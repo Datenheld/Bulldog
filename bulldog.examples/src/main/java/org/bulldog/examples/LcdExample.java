@@ -16,7 +16,7 @@ public class LcdExample {
     	//Grab the platform the application is running on
     	Board board = Platform.createBoard();
 
-    	PinIOGroup ioGroup = new PinIOGroup(board.getPin(RaspiNames.P1_3),
+    	/*PinIOGroup ioGroup = new PinIOGroup(board.getPin(RaspiNames.P1_3),
     										board.getPin(RaspiNames.P1_5),
     										board.getPin(RaspiNames.P1_7),
     										board.getPin(RaspiNames.P1_11),
@@ -33,7 +33,7 @@ public class LcdExample {
     								  ioGroup);
     	
     	display.init();
-    	display.writeString("Hello World");
+    	display.writeString("Hello World");*/
   
     }
 	

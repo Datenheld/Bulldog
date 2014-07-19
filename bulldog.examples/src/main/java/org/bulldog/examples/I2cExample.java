@@ -3,7 +3,6 @@ package org.bulldog.examples;
 import java.io.IOException;
 
 import org.bulldog.beagleboneblack.BBBNames;
-import org.bulldog.core.gpio.Pwm;
 import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
@@ -18,10 +17,6 @@ public class I2cExample {
 		final Board board = Platform.createBoard();
     	
 		I2cBus bus = board.getI2cBus(BBBNames.I2C_1);
-		Pwm pwm = board.getPin(BBBNames.EHRPWM2B_P8_13).as(Pwm.class);
-		pwm.setFrequency(1000);
-		pwm.setDuty(0.0);
-		pwm.enable();
 		
 		//Let's assume we have got a device on address xx
 		BH1750LightIntensitySensor sensor = new BH1750LightIntensitySensor(bus, 0x23);
@@ -30,10 +25,7 @@ public class I2cExample {
 		while(true) {
 			double luminosity = sensor.readLuminanceNormalized();
 			System.out.println(luminosity + "[lx normalized]");
-			pwm.setDuty(luminosity);
 			BulldogUtil.sleepMs(100);
 		}
-		
-
 	}
 }

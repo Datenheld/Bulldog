@@ -1,3 +1,12 @@
+ext {
+	bulldogVersion = '0.1.0'
+	distributionDirectory = new File('../dist', 'Version-' + bulldogVersion);
+}
+
+def boardDistributionDirectory(String boardName) {
+	return new File(distributionDirectory, boardName)
+}
+
 def javaProjects = [
 					project(":bulldog.core"), 
 					project(":bulldog.devices"), 
@@ -20,8 +29,6 @@ allJavaProjects.addAll(boardProjects)
 if(hasProperty('board')) {
 	boardProjects = boardProjects.findAll { it.path.contains(board) };
 } 
-
-def bulldogVersion = '0.1'
 
 configure(nativeProjects) {
 	apply from: new File(project.projectDir, 'build.gradle')
@@ -51,6 +58,21 @@ configure(allJavaProjects) {
     	}
     }
     
+    task sourcesJar(type: Jar, dependsOn:classes) { 
+       classifier = 'sources' 
+       from sourceSets.main.allSource 
+	} 
+
+	task javadocJar(type: Jar, dependsOn:javadoc) { 
+	     classifier = 'javadoc' 
+	     from javadoc.destinationDir 
+	} 
+	
+	artifacts { 
+	     archives sourcesJar 
+	     archives javadocJar 
+	} 
+    
     uploadArchives {
     	repositories {
 	    	 flatDir {
@@ -60,14 +82,15 @@ configure(allJavaProjects) {
     }	
 }
 
+
 boardProjects.each { def boardProject -> 
 	evaluationDependsOn(boardProject.path) 
     tasks.create(name: "singleJar$boardProject.name", type: Jar) { 
         baseName = boardProject.distributionBaseName
-        destinationDir = boardProject.distributionDirectory
+        destinationDir = boardDistributionDirectory(boardProject.distributionBaseName)
         
         manifest { 
-     		attributes 'Main-Class': 'org.bulldog.examples.I2cExample' 
+     		attributes 'Main-Class': 'org.bulldog.examples.PinIOGroupExample' 
      	}
     
     	javaProjects.each { javaProject -> 
@@ -84,23 +107,29 @@ boardProjects.each { def boardProject ->
 	evaluationDependsOn(project(':bulldog.linux.native').path)
     tasks.create(name: "distribute$boardProject.name", type: Copy, dependsOn: [ project(':bulldog.linux.native').tasks.matching  { Task task -> task.name.contains('BulldogSharedLibrary') } ]) { 
        //delete project.distributionDirectory
-       boardProject.distributionDirectory.mkdirs()
+       destinationDir = boardDistributionDirectory(boardProject.distributionBaseName)
+       destinationDir.mkdirs()
        FileCollection collection = boardProject.distributionFiles
        from collection
-       into boardProject.distributionDirectory
+       into destinationDir
     } 
 } 
 
 boardProjects.each { def boardProject -> 
 	evaluationDependsOn(boardProject.path)
     tasks.create(name: "createZipArchive$boardProject.name", type: Zip) { 
-       baseName = boardProject.distributionBaseName + '-' + boardProject.version	
-       destinationDir = boardProject.distributionDirectory
+       baseName = boardProject.distributionBaseName + '-' + bulldogVersion
+       destinationDir = boardDistributionDirectory(boardProject.distributionBaseName)
        excludes = [ '*.zip' ]
-       from boardProject.distributionDirectory
+       from boardDistributionDirectory(boardProject.distributionBaseName)
     } 
 } 
 
+task docs(type: Javadoc) {
+    source allJavaProjects.collect {project -> project.sourceSets.main.allJava } 
+    classpath = files(allJavaProjects.collect {project -> project.sourceSets.main.compileClasspath}) 
+    destinationDir = new File(distributionDirectory, 'javadoc')
+}
 
 task packageBoardArtifacts(dependsOn: [ tasks.matching { Task task -> task.name.startsWith("singleJar")}, subprojects.assemble]) 
 task distribution(dependsOn: [ tasks.matching { Task task -> task.name.startsWith("distribute")}, packageBoardArtifacts])

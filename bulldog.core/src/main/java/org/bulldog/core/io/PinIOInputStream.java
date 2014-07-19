@@ -18,7 +18,7 @@ public class PinIOInputStream extends InputStream {
 	public int read() throws IOException {
 		int value = 0;
 		for(int i = 0; i < group.getDataPins().length; i++) {
-			DigitalInput in = group.getDataPins()[i].as(DigitalInput.class);
+			DigitalInput in = group.getDataPins()[i];
 			BitMagic.setBit(value, i, in.read().getNumericValue());
 		}
 		

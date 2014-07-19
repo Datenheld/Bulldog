@@ -18,8 +18,9 @@ public class PinIOOutputStream extends OutputStream {
 	@Override
 	public void write(int b) throws IOException {
 		for(int i = 0; i < group.getDataPins().length; i++) {
-			DigitalOutput out = group.getDataPins()[i].as(DigitalOutput.class);
-			out.applySignal(Signal.fromNumericValue(BitMagic.getBit(b, i)));
+			DigitalOutput out = group.getDataPins()[i];
+			Signal signal = Signal.fromNumericValue(BitMagic.getBit(b, i));
+			out.applySignal(signal);
 		}
 		
 		group.enable();

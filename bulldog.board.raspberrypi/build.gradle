@@ -1,5 +1,4 @@
 ext {
-	distributionDirectory = new File('../dist/raspberrypi')
 	distributionBaseName = 'bulldog.raspberrypi'
 	distributionFiles = files('../bulldog.linux.native/build/binaries/bulldogSharedLibrary/raspberrypi/libbulldog-linux.so')
 }
