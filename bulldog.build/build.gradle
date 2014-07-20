@@ -90,7 +90,7 @@ boardProjects.each { def boardProject ->
         destinationDir = boardDistributionDirectory(boardProject.distributionBaseName)
         
         manifest { 
-     		attributes 'Main-Class': 'org.bulldog.examples.PinIOGroupExample' 
+     		attributes 'Main-Class': 'org.bulldog.examples.LcdExample' 
      	}
     
     	javaProjects.each { javaProject -> 
