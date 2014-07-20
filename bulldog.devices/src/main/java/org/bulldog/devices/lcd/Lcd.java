@@ -13,4 +13,5 @@ public interface Lcd {
 	void off();
 	void setCursorPosition(int row, int column);
 	String read();
+	String read(int row, int column, int length);
 }

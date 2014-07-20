@@ -9,7 +9,7 @@ import org.bulldog.core.io.PinIOGroup;
 import org.bulldog.core.util.BitMagic;
 import org.bulldog.core.util.BulldogUtil;
 
-public class HD44780 implements Lcd {
+public class HD44780Compatible implements Lcd {
 
 	private static final int CMD_CLEAR = 0x01;
 	private static final int CMD_HOME = 0b00000010;
@@ -22,7 +22,7 @@ public class HD44780 implements Lcd {
 	private boolean showCursor = false;
 	private HD44780Mode mode = HD44780Mode.EightBit;
 	
-	public HD44780(DigitalIO rs, DigitalIO rw, DigitalIO enable,
+	public HD44780Compatible(DigitalIO rs, DigitalIO rw, DigitalIO enable,
 											   DigitalIO db4,
 											   DigitalIO db5,
 											   DigitalIO db6,
@@ -30,7 +30,7 @@ public class HD44780 implements Lcd {
 		this(rs, rw, new PinIOGroup(enable, 0, db4, db5, db6, db7), HD44780Mode.FourBit);
 	}
 	
-	public HD44780(DigitalIO rs, DigitalIO rw, DigitalIO enable, 
+	public HD44780Compatible(DigitalIO rs, DigitalIO rw, DigitalIO enable, 
 											   DigitalIO db0, 
 											   DigitalIO db1, 
 											   DigitalIO db2, 
@@ -43,7 +43,7 @@ public class HD44780 implements Lcd {
 	}
 	
 	
-	public HD44780(DigitalOutput rs, DigitalOutput rw, PinIOGroup group, HD44780Mode mode) {
+	public HD44780Compatible(DigitalOutput rs, DigitalOutput rw, PinIOGroup group, HD44780Mode mode) {
 		this.dataLine = group;
 		this.rs = rs;
 		this.rw = rw;
@@ -169,7 +169,6 @@ public class HD44780 implements Lcd {
 
 	@Override
 	public String read() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -198,6 +197,12 @@ public class HD44780 implements Lcd {
 	public void setCursorPosition(int row, int column) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String read(int row, int column, int length) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

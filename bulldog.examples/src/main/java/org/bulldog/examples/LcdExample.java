@@ -9,11 +9,18 @@ import org.bulldog.core.io.PinIOGroup;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;
-import org.bulldog.devices.lcd.HD44780;
+import org.bulldog.devices.lcd.HD44780Compatible;
 import org.bulldog.devices.lcd.HD44780Mode;
 import org.bulldog.devices.lcd.Lcd;
 import org.bulldog.devices.lcd.LcdFont;
 
+/**
+ * This example demonstrates how to use a HD44780 compatible (defacto standard)
+ * LCD display in bulldog.
+ * 
+ * @author Dave
+ *
+ */
 public class LcdExample {
 
     public static void main(String[] args) throws IOException
@@ -31,6 +38,8 @@ public class LcdExample {
     	//Grab the platform the application is running on
     	Board board = Platform.createBoard();
 
+    	//Create a pin IO group. This is a nice way of grouping output pins to a parallel interface.
+    	//We can use the IO group like a datastream then and just write bytes to it.
     	PinIOGroup ioGroup = new PinIOGroup(board.getPin(BBBNames.P8_12).as(DigitalIO.class),  //enable pin
     										board.getPin(BBBNames.P8_17).as(DigitalIO.class),  //db 4
     										board.getPin(BBBNames.P9_22).as(DigitalIO.class),  //db 5
@@ -39,10 +48,10 @@ public class LcdExample {
     										
     			);
     	
-    	Lcd display = new HD44780(board.getPin(BBBNames.P8_11).as(DigitalOutput.class),    //rs pin
-    							  board.getPin(BBBNames.P9_15).as(DigitalOutput.class),    //rw pin
-    							  ioGroup,
-    							  HD44780Mode.FourBit);
+    	Lcd display = new HD44780Compatible(board.getPin(BBBNames.P8_11).as(DigitalOutput.class),    //rs pin
+			    							board.getPin(BBBNames.P9_24).as(DigitalOutput.class),    //rw pin
+			    							ioGroup,
+			    							HD44780Mode.FourBit);
     	
     	display.setMode(1, LcdFont.Font_8x10);
     	display.write("World Hello");
@@ -69,6 +78,7 @@ public class LcdExample {
 		//Grab the platform the application is running on
     	Board board = Platform.createBoard();
 
+    	//Create a pin IO group. This is a nice way of grouping output pins to a parallel interface.
     	PinIOGroup ioGroup = new PinIOGroup(board.getPin(BBBNames.P8_12).as(DigitalIO.class),  //enable pin
     										board.getPin(BBBNames.P8_13).as(DigitalIO.class),  //db 0
     										board.getPin(BBBNames.P8_14).as(DigitalIO.class),  //db 1
@@ -81,10 +91,10 @@ public class LcdExample {
     										
     			);
     	
-    	Lcd display = new HD44780(board.getPin(BBBNames.P8_11).as(DigitalOutput.class),    //rs pin
-    							  board.getPin(BBBNames.P9_15).as(DigitalOutput.class),    //rw pin
-    							  ioGroup,
-    							  HD44780Mode.EightBit);
+    	Lcd display = new HD44780Compatible(board.getPin(BBBNames.P8_11).as(DigitalOutput.class),    //rs pin
+    							  			board.getPin(BBBNames.P9_24).as(DigitalOutput.class),    //rw pin
+    							  			ioGroup,
+    							  			HD44780Mode.EightBit);
     	
     	display.setMode(1, LcdFont.Font_8x10);
     	display.write("World Hello");
