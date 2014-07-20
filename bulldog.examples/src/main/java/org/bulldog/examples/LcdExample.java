@@ -11,6 +11,7 @@ import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.devices.lcd.HD44780;
 import org.bulldog.devices.lcd.HD44780Mode;
+import org.bulldog.devices.lcd.Lcd;
 import org.bulldog.devices.lcd.LcdFont;
 
 public class LcdExample {
@@ -38,20 +39,20 @@ public class LcdExample {
     										
     			);
     	
-    	HD44780 display = new HD44780(board.getPin(BBBNames.P8_11).as(DigitalOutput.class),    //rs pin
-    								  board.getPin(BBBNames.P9_15).as(DigitalOutput.class),    //rw pin
-    								  ioGroup,
-    								  HD44780Mode.FourBit);
+    	Lcd display = new HD44780(board.getPin(BBBNames.P8_11).as(DigitalOutput.class),    //rs pin
+    							  board.getPin(BBBNames.P9_15).as(DigitalOutput.class),    //rw pin
+    							  ioGroup,
+    							  HD44780Mode.FourBit);
     	
-    	display.init(1, LcdFont.Font_8x10);
+    	display.setMode(1, LcdFont.Font_8x10);
     	display.write("World Hello");
     	BulldogUtil.sleepMs(5000);
     	
-    	display.init(1, LcdFont.Font_5x8);
+    	display.setMode(1, LcdFont.Font_5x8);
     	display.write("Hello World");
     	BulldogUtil.sleepMs(5000);
     	
-    	display.init(2, LcdFont.Font_5x8);
+    	display.setMode(2, LcdFont.Font_5x8);
     	display.write("Hello World 2");
     	BulldogUtil.sleepMs(3000);
     	
@@ -80,20 +81,20 @@ public class LcdExample {
     										
     			);
     	
-    	HD44780 display = new HD44780(board.getPin(BBBNames.P8_11).as(DigitalOutput.class),    //rs pin
-    								  board.getPin(BBBNames.P9_15).as(DigitalOutput.class),    //rw pin
-    								  ioGroup,
-    								  HD44780Mode.EightBit);
+    	Lcd display = new HD44780(board.getPin(BBBNames.P8_11).as(DigitalOutput.class),    //rs pin
+    							  board.getPin(BBBNames.P9_15).as(DigitalOutput.class),    //rw pin
+    							  ioGroup,
+    							  HD44780Mode.EightBit);
     	
-    	display.init(1, LcdFont.Font_8x10);
+    	display.setMode(1, LcdFont.Font_8x10);
     	display.write("World Hello");
     	BulldogUtil.sleepMs(5000);
     	
-    	display.init(1, LcdFont.Font_5x8);
+    	display.setMode(1, LcdFont.Font_5x8);
     	display.write("Hello World");
     	BulldogUtil.sleepMs(5000);
     	
-    	display.init(2, LcdFont.Font_5x8);
+    	display.setMode(2, LcdFont.Font_5x8);
     	display.write("Hello World 2");
     	BulldogUtil.sleepMs(3000);
     	

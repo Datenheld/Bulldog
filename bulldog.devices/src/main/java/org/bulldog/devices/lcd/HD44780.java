@@ -11,8 +11,8 @@ import org.bulldog.core.util.BulldogUtil;
 
 public class HD44780 implements Lcd {
 
-	public static final int CMD_CLEAR = 0x01;
-	public static final int CMD_HOME = 0b00000010;
+	private static final int CMD_CLEAR = 0x01;
+	private static final int CMD_HOME = 0b00000010;
 	
 	private PinIOGroup dataLine;
 	private DigitalOutput rs;
@@ -53,7 +53,8 @@ public class HD44780 implements Lcd {
 	}
 	
 	
-	public void init(int lines, LcdFont font) throws IOException {
+	@Override
+	public void setMode(int lines, LcdFont font) {
 		if(mode == HD44780Mode.EightBit) {
 			writeCommand(0b00110000);
 			BulldogUtil.sleepMs(20);
@@ -82,7 +83,7 @@ public class HD44780 implements Lcd {
 		BulldogUtil.sleepMs(2);
 	}
 	
-	private void functionSet(int lines, LcdFont font) throws IOException {
+	private void functionSet(int lines, LcdFont font) {
 		byte command = 0b00100000;
 		if(mode == HD44780Mode.FourBit) {
 			command = BitMagic.setBit(command, 4, 0);
@@ -198,4 +199,5 @@ public class HD44780 implements Lcd {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

@@ -2,6 +2,7 @@ package org.bulldog.devices.lcd;
 
 public interface Lcd {
 
+	void setMode(int lines, LcdFont font);
 	void write(String text);
 	void writeAt(int row, int column, String text);
 	void clear();
