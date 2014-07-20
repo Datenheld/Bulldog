@@ -21,7 +21,8 @@ public class HD44780Compatible implements Lcd {
 	private boolean blinkCursor = false;
 	private boolean showCursor = false;
 	private HD44780Mode mode = HD44780Mode.EightBit;
-	
+	private LcdMode lcdMode;
+		
 	public HD44780Compatible(DigitalIO rs, DigitalIO rw, DigitalIO enable,
 											   DigitalIO db4,
 											   DigitalIO db5,
@@ -54,7 +55,7 @@ public class HD44780Compatible implements Lcd {
 	
 	
 	@Override
-	public void setMode(int lines, LcdFont font) {
+	public void setMode(LcdMode lcdMode, LcdFont font) {
 		if(mode == HD44780Mode.EightBit) {
 			writeCommand(0b00110000);
 			BulldogUtil.sleepMs(20);
@@ -72,10 +73,12 @@ public class HD44780Compatible implements Lcd {
 			writeCommand(0b0010);
 		}
 		clear();
-		functionSet(lines, font);
+		functionSet(lcdMode.getRows(), font);
 		off();
 		writeCommand(0x06);
 		on();
+		
+		this.lcdMode = lcdMode;
 	}
 	
 	public void home() {
@@ -91,7 +94,7 @@ public class HD44780Compatible implements Lcd {
 			command = BitMagic.setBit(command, 4, 1);
 		}
 		
-		if(lines == 2) {
+		if(lines > 1) {
 			command = BitMagic.setBit(command, 3, 1);
 		} else {
 			command = BitMagic.setBit(command, 3, 0);
@@ -132,6 +135,26 @@ public class HD44780Compatible implements Lcd {
 		BulldogUtil.sleepMs(5);
 	}
 	
+	private byte readFromDisplay() {
+		rw.applySignal(Signal.High);
+		rs.applySignal(Signal.High);
+	
+		byte value = 0;
+		try {
+			if(mode == HD44780Mode.FourBit) {
+				byte highNibble = dataLine.readByte();
+				byte lowNibble = dataLine.readByte();
+				value = (byte)((highNibble << 4) | lowNibble);
+			} else {
+				value = dataLine.readByte();
+			}
+		} catch(Exception ex) {
+			throw new RuntimeException(ex);
+		}
+		
+		return value;
+	}
+	
 	private void writeData(int data) {
 		rw.applySignal(Signal.Low);
 		rs.applySignal(Signal.High);
@@ -161,18 +184,33 @@ public class HD44780Compatible implements Lcd {
 	}
 
 
-
 	@Override
 	public void writeAt(int row, int column, String text) {
-		
+		setCursorPosition(row, column);
+		write(text);
 	}
 
 	@Override
-	public String read() {
-		return null;
+	public String readLine(int line) {
+		return read(line, 0, lcdMode.getRows() * lcdMode.getColumns());
 	}
 
-
+	@Override
+	public String read(int line, int column, int length) {
+		setCursorPosition(line, column);
+		return read(length);
+	}
+	
+	@Override
+	public String read(int length) {
+		byte buffer[] = new byte[length];
+		for(int i = 0; i < length; i++) {
+			buffer[i] =  readFromDisplay();
+		}
+		
+		return BulldogUtil.bytesToString(buffer);	
+	}
+	
 	@Override
 	public void blinkCursor(boolean blink) {
 		blinkCursor = blink;
@@ -194,15 +232,10 @@ public class HD44780Compatible implements Lcd {
 	}
 
 	@Override
-	public void setCursorPosition(int row, int column) {
-		// TODO Auto-generated method stub
-		
+	public void setCursorPosition(int line, int column) {
+		int memoryPosition = lcdMode.getMemoryOffset(line, column);
+		writeCommand(0x80 | memoryPosition);
 	}
 
-	@Override
-	public String read(int row, int column, int length) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

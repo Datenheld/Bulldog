@@ -27,12 +27,16 @@ def allJavaProjects = new LinkedList(javaProjects);
 allJavaProjects.addAll(boardProjects)
 		
 if(hasProperty('board')) {
+	println "building for " + board
 	boardProjects = boardProjects.findAll { it.path.contains(board) };
 } 
 
-configure(nativeProjects) {
-	apply from: new File(project.projectDir, 'build.gradle')
-	version = bulldogVersion
+if(buildNative) {
+	println "omit native"
+	configure(nativeProjects) {
+		apply from: new File(project.projectDir, 'build.gradle')
+		version = bulldogVersion
+	}
 }
 					 
 configure(allJavaProjects) { 

@@ -2,7 +2,7 @@ package org.bulldog.devices.lcd;
 
 public interface Lcd {
 
-	void setMode(int lines, LcdFont font);
+	void setMode(LcdMode mode, LcdFont font);
 	void write(String text);
 	void writeAt(int row, int column, String text);
 	void clear();
@@ -11,7 +11,8 @@ public interface Lcd {
 	void home();
 	void on();
 	void off();
-	void setCursorPosition(int row, int column);
-	String read();
-	String read(int row, int column, int length);
+	void setCursorPosition(int line, int column);
+	String readLine(int line);
+	String read(int length);
+	String read(int line, int column, int length);
 }
