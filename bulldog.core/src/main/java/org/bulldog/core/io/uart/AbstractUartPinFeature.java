@@ -5,7 +5,7 @@ import org.bulldog.core.gpio.base.AbstractPinFeature;
 
 public abstract class AbstractUartPinFeature extends AbstractPinFeature implements UartRx, UartTx {
 
-	private static final String NAME = "I2C %s on Pin %s";
+	private static final String NAME = "UART %s on Pin %s";
 	private UartSignalType signalType;
 	
 	public AbstractUartPinFeature(Pin pin, UartSignalType signalType) {

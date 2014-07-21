@@ -220,13 +220,21 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 		getI2cBuses().add(new LinuxI2cBus(BBBNames.I2C_1, "/dev/i2c-1"));
 	}
 
+	private BBBUartPort createSerialPort(String name, String path, String slotName, Pin rx, Pin tx) {
+		BBBUartPort uart = new BBBUartPort(name, path, slotName, rx, tx);
+		if(uart.isSlotLoaded()) {
+			uart.setup();
+		}
+		return uart;
+	}
+	
 	private void createSerialPorts() {
-		getSerialPorts().add(new BBBUartPort(BBBNames.UART0, "/dev/ttyO0", "BB-UART0", null, null));
-		getSerialPorts().add(new BBBUartPort(BBBNames.UART1, "/dev/ttyO1", "BB-UART1", getPin(BBBNames.P9_26), getPin(BBBNames.P9_24)));
-		getSerialPorts().add(new BBBUartPort(BBBNames.UART2, "/dev/ttyO2", "BB-UART2", getPin(BBBNames.P9_21), getPin(BBBNames.P9_22)));
-		getSerialPorts().add(new BBBUartPort(BBBNames.UART3, "/dev/ttyO3", "BB-UART3", null, getPin(BBBNames.P9_42)));
-		getSerialPorts().add(new BBBUartPort(BBBNames.UART4, "/dev/ttyO4", "BB-UART4", getPin(BBBNames.P9_11), getPin(BBBNames.P9_13)));
-		getSerialPorts().add(new BBBUartPort(BBBNames.UART5, "/dev/ttyO5", "BB-UART5", getPin(BBBNames.P8_38), getPin(BBBNames.P8_37)));
+		getSerialPorts().add(createSerialPort(BBBNames.UART0, "/dev/ttyO0", "BB-UART0", null, null));
+		getSerialPorts().add(createSerialPort(BBBNames.UART1, "/dev/ttyO1", "BB-UART1", getPin(BBBNames.P9_26), getPin(BBBNames.P9_24)));
+		getSerialPorts().add(createSerialPort(BBBNames.UART2, "/dev/ttyO2", "BB-UART2", getPin(BBBNames.P9_21), getPin(BBBNames.P9_22)));
+		getSerialPorts().add(createSerialPort(BBBNames.UART3, "/dev/ttyO3", "BB-UART3", null, getPin(BBBNames.P9_42)));
+		getSerialPorts().add(createSerialPort(BBBNames.UART4, "/dev/ttyO4", "BB-UART4", getPin(BBBNames.P9_11), getPin(BBBNames.P9_13)));
+		getSerialPorts().add(createSerialPort(BBBNames.UART5, "/dev/ttyO5", "BB-UART5", getPin(BBBNames.P8_38), getPin(BBBNames.P8_37)));
 	}
 
 	private void createProperties() {

@@ -36,7 +36,7 @@ public class BBBSysFs extends SysFs {
 			}
 		}
 		
-		return - 1;
+		return -1;
 	}
 	
 	public boolean isSlotLoaded(int slotIndex) {
