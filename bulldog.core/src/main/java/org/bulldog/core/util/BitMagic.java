@@ -129,6 +129,18 @@ public final class BitMagic {
 		return s;
 	}
 	
+	public static byte getLowerNibble(byte b) {
+		return (byte)(b & 0x0F);
+	}
+	
+	public static byte getUpperNibble(byte b) {
+		return (byte)(b & 0xF0 >> 4);
+	}
+	
+	public static byte byteFromNibbles(byte upperNibble, byte lowerNibble) {
+		 return (byte)((upperNibble << 4) | lowerNibble);
+	}
+	
 	private static void checkValue(int value) {
 		if(value != 0 && value != 1) {
 			throw new IllegalArgumentException(ERROR_INVALID_VALUE);
@@ -140,5 +152,4 @@ public final class BitMagic {
 			throw new IllegalArgumentException(String.format(ERROR_INVALID_BIT_POSITION, size, size-1));
 		}
 	}
-	
 }

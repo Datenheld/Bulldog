@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.io.bus.i2c.I2cConnection;
+import org.bulldog.core.util.BulldogUtil;
 
 
 /**
@@ -64,18 +65,10 @@ public class I2CLcd {
 	
 	private void writeCommand(int data) throws IOException {
 		writeByteAsNibbles(data, COMMAND);
-		sleep(5);
+		BulldogUtil.sleepMs(5);
 	}
 
 	private void writeData(int data) throws IOException {
 		writeByteAsNibbles(data, DATA);
-	}
-	
-	private void sleep(int milliseconds) {
-		try {
-			Thread.sleep(milliseconds);
-		} catch(Exception ex) {
-			
-		}
 	}
 }

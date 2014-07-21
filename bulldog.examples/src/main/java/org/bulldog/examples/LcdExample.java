@@ -41,7 +41,7 @@ public class LcdExample {
     	Board board = Platform.createBoard();
 
     	//Create a pin IO group. This is a nice way of grouping output pins to a parallel interface.
-    	//We can use the IO group like a datastream then and just write bytes to it.
+    	//We can use the IO group like a datastream then and just write nibbles to it.
     	PinIOGroup ioGroup = new PinIOGroup(board.getPin(BBBNames.P8_12).as(DigitalIO.class),  //enable pin
     										board.getPin(BBBNames.P8_17).as(DigitalIO.class),  //db 4
     										board.getPin(BBBNames.P9_22).as(DigitalIO.class),  //db 5
@@ -62,6 +62,7 @@ public class LcdExample {
     	Board board = Platform.createBoard();
 
     	//Create a pin IO group. This is a nice way of grouping output pins to a parallel interface.
+    	//We can use the IO group like a datastream then and just write bytes to it.
     	PinIOGroup ioGroup = new PinIOGroup(board.getPin(BBBNames.P8_12).as(DigitalIO.class),  //enable pin
     										board.getPin(BBBNames.P8_13).as(DigitalIO.class),  //db 0
     										board.getPin(BBBNames.P8_14).as(DigitalIO.class),  //db 1
@@ -83,6 +84,7 @@ public class LcdExample {
 	}
 
 	private static void doCoolStuffWithDisplay(Lcd display) {
+		
 		display.setMode(LcdMode.Display1x16, LcdFont.Font_8x10);
     	display.write("World Hello");
     	BulldogUtil.sleepMs(5000);

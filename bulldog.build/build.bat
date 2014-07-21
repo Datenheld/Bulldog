@@ -1,1 +1,1 @@
-gradle -x test -Pboard=beaglebone -PbuildNative=false --daemon clean build distribution archiveDistributions
+gradle -x test --daemon clean build distribution archiveDistributions

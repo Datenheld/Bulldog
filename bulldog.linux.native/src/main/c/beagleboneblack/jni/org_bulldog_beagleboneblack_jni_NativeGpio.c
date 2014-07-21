@@ -85,3 +85,16 @@ JNIEXPORT void JNICALL Java_org_bulldog_beagleboneblack_jni_NativeGpio_debounceP
 	}
 }
 
+/*
+ * Class:     org_bulldog_beagleboneblack_jni_NativeGpio
+ * Method:    enableGpio
+ * Signature: V
+ */
+JNIEXPORT void JNICALL Java_org_bulldog_beagleboneblack_jni_NativeGpio_enableGpio
+  (JNIEnv * env, jclass clazz) {
+	BBBIO_sys_Enable_GPIO(BBBIO_GPIO0);
+	BBBIO_sys_Enable_GPIO(BBBIO_GPIO1);
+	BBBIO_sys_Enable_GPIO(BBBIO_GPIO2);
+	BBBIO_sys_Enable_GPIO(BBBIO_GPIO3);
+}
+

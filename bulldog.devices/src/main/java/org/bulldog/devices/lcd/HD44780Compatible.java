@@ -18,6 +18,7 @@ public class HD44780Compatible implements Lcd {
 	private DigitalOutput rs;
 	private DigitalOutput rw;
 	
+	private boolean isOn = false;
 	private boolean blinkCursor = false;
 	private boolean showCursor = false;
 	private HD44780Mode mode = HD44780Mode.EightBit;
@@ -110,10 +111,8 @@ public class HD44780Compatible implements Lcd {
 	}
 	
 	private void writeByteAsNibbles(int data) throws IOException {
-		byte nibble = (byte)(((data & 0xF0) >> 4));
-		dataLine.writeByte(nibble);
-		nibble = (byte)((data & 0x0F));
-		dataLine.writeByte(nibble);
+		dataLine.writeByte(BitMagic.getUpperNibble((byte)data));
+		dataLine.writeByte(BitMagic.getLowerNibble((byte)data));
 	}
 	
 	private void writeToDisplay(int data) {
@@ -144,7 +143,7 @@ public class HD44780Compatible implements Lcd {
 			if(mode == HD44780Mode.FourBit) {
 				byte highNibble = dataLine.readByte();
 				byte lowNibble = dataLine.readByte();
-				value = (byte)((highNibble << 4) | lowNibble);
+				value = BitMagic.byteFromNibbles(highNibble, lowNibble);
 			} else {
 				value = dataLine.readByte();
 			}
@@ -176,11 +175,13 @@ public class HD44780Compatible implements Lcd {
 		}
 		
 		writeCommand(command);
+		isOn = true;
 	}
 	
 	public void off() {
 		byte command = 0b1000;
 		writeCommand(command);
+		isOn = false;
 	}
 
 
@@ -214,13 +215,17 @@ public class HD44780Compatible implements Lcd {
 	@Override
 	public void blinkCursor(boolean blink) {
 		blinkCursor = blink;
-		on();
+		if(isOn) {
+			on();
+		}
 	}
 
 	@Override
 	public void showCursor(boolean show) {
 		showCursor = show;
-		on();
+		if(isOn) {
+			on();
+		}
 	}
 	
 	@Override
