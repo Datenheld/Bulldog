@@ -10,6 +10,7 @@ import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.event.InterruptEventArgs;
 import org.bulldog.core.gpio.event.InterruptListener;
+import org.bulldog.core.util.BulldogUtil;
 
 public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 
@@ -186,7 +187,17 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 		setupOutputIfNecessary();
 		output.stopBlinking();
 	}
+	
+	@Override
+	public boolean isBlinking() {
+		return output.isBlinking();
+	}
 
+	@Override
+	public void awaitBlinkingStopped() {
+		output.awaitBlinkingStopped();
+	}
+	
 	@Override
 	protected void setupImpl() {
 

@@ -35,7 +35,7 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 	
 	public void setDuty(double duty) {
 		if(duty < 0.0 || duty > 1.0) {
-			throw new IllegalArgumentException("Duty cannot be less than 0.0 or greater 1.0");
+			throw new IllegalArgumentException("Duty cannot be less than 0.0 or greater 1.0; Specified value: " + duty);
 		}
 		this.duty = duty;
 		setPwmImpl(getFrequency(), duty);
@@ -47,7 +47,7 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 	
 	public void setFrequency(double frequency) {
 		if(frequency < 1.0f) {
-			throw new IllegalArgumentException("Frequency cannot be less than 1.0 Hz");
+			throw new IllegalArgumentException("Frequency cannot be less than 1.0 Hz; Specified value: " + frequency);
 		}
 		this.frequency = frequency;
 		setPwmImpl(frequency, getDuty());

@@ -19,4 +19,6 @@ public interface DigitalOutput extends PinFeature {
 	void startBlinking(int periodLengthMilliseconds, int durationMilliseconds);
 	void blinkTimes(int periodLengthMilliseconds, int times);
 	void stopBlinking();
+	boolean isBlinking();
+	void awaitBlinkingStopped();
 }

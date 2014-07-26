@@ -2,27 +2,33 @@ package org.bulldog.core.gpio.util;
 
 import org.bulldog.core.gpio.Pwm;
 import org.bulldog.core.util.easing.Easing;
+import org.bulldog.core.util.easing.EasingOptions;
 
 public class PwmController {
 
-	public void dutyTransition(Pwm pwm, double toDuty, int milliseconds, Easing easing) {
+	public void dutyTransition(Pwm pwm, double toDuty, int milliseconds, Easing easing, EasingOptions option) {
 		long startTime = System.currentTimeMillis();
 		double startDuty = pwm.getDuty();
 		double diff = Math.abs(startDuty - toDuty);
-		
 		long currentTime = 0;
 		while(currentTime < milliseconds) {
 			currentTime = System.currentTimeMillis() - startTime;
-			double currentDuty = diff * easing.easeInOut(currentTime, milliseconds);
+			double currentDuty = diff * option.calculate(easing, currentTime, milliseconds);
 			if(startDuty < toDuty) {
-				pwm.setDuty(startDuty + currentDuty);
+				double duty = startDuty + currentDuty;
+				if(duty > 1.0) { duty = 1.0; }
+				if(duty < 0.0) { duty = 0.0; }
+				pwm.setDuty(duty);
 			} else {
-				pwm.setDuty(startDuty - currentDuty);
+				double duty = startDuty - currentDuty;
+				if(duty > 1.0) { duty = 1.0; }
+				if(duty < 0.0) { duty = 0.0; }
+				pwm.setDuty(duty);
 			}
 		}
 	}
 	
-	public void frequencyTransition(Pwm pwm, double toFrequency, int milliseconds, Easing easing) {
+	public void frequencyTransition(Pwm pwm, double toFrequency, int milliseconds, Easing easing, EasingOptions option) {
 		long startTime = System.currentTimeMillis();
 		double startFrequency = pwm.getFrequency();
 		double diff = Math.abs(startFrequency - toFrequency);
@@ -30,7 +36,7 @@ public class PwmController {
 		long currentTime = 0;
 		while(currentTime < milliseconds) {
 			currentTime = System.currentTimeMillis() - startTime;
-			double currentDuty = diff * easing.easeInOut(currentTime, milliseconds);
+			double currentDuty = diff * option.calculate(easing, currentTime, milliseconds);
 			if(startFrequency < toFrequency) {
 				pwm.setDuty(startFrequency + currentDuty);
 			} else {

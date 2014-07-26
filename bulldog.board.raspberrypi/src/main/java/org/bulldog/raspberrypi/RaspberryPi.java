@@ -25,6 +25,7 @@ public class RaspberryPi extends AbstractBoard {
 	}
 	
 	private RaspberryPi() {
+		super();
 		if(getRevision() >= 4) {
 			createPinsRev2();
 		} else {

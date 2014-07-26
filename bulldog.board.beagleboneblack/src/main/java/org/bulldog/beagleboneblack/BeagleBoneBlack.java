@@ -28,10 +28,10 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 	private BBBSysFs sysFs = new BBBSysFs();
 	
 	private BeagleBoneBlack() {
+		super();
 		createPins();
 		createBuses();
 		createProperties();
-		createShutdownHook();
 	}
 	
 	private void createPins() {

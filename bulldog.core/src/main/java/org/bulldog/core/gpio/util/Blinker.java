@@ -6,6 +6,8 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import org.bulldog.core.gpio.DigitalOutput;
+import org.bulldog.core.util.BulldogUtil;
+import org.bulldog.core.util.DaemonThreadFactory;
 
 public class Blinker implements Runnable {
 
@@ -18,7 +20,7 @@ public class Blinker implements Runnable {
 	private boolean doTimes = false;
 
 	public Blinker(DigitalOutput output) {
-		executorService = Executors.newScheduledThreadPool(1);
+		executorService = Executors.newScheduledThreadPool(1, new DaemonThreadFactory());
 		this.output = output;
 	}
 
@@ -68,5 +70,19 @@ public class Blinker implements Runnable {
 		}
 				
 		output.toggle();
+	}
+	
+	public boolean isBlinking() {
+		if(this.future != null) {
+			return !future.isDone();
+		}
+		
+		return false;
+	}
+	
+	public void awaitBlinkingStopped() {
+		while(isBlinking()) {
+			BulldogUtil.sleepMs(1);
+		}
 	}
 }

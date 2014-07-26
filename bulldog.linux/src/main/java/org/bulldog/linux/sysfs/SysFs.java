@@ -46,6 +46,7 @@ public class SysFs {
 	 
 	public void echoAndWait(String path, String value, int waitMs) {
 		try {
+			System.out.println(path + " : " + value);
 			waitForFileCreation(path, WAIT_TIMEOUT_MS);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 			writer.write(value);
