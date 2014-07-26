@@ -154,4 +154,7 @@ public final class BBBNames {
 	public static final String I2C_0 = "I2C_0";
 	public static final String I2C_1 = "I2C_1";
 	
+	public static final String SPI_0 = "SPI_0";
+	public static final String SPI_1 = "SPI_1";
+	
 }

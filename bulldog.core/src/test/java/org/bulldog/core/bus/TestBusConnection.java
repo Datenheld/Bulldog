@@ -16,39 +16,39 @@ public class TestBusConnection {
 		BusConnection busConnection = new BusConnection(bus, 0x10);
 		TestCase.assertEquals(0x10, busConnection.getAddress());
 		
-		bus.selectAddress(0x05);
-		TestCase.assertEquals(0x05, bus.getSelectedAddress());
+		bus.selectSlave(0x05);
+		TestCase.assertTrue(bus.isSlaveSelected(0x05));
 		busConnection.readByte();
-		TestCase.assertEquals(0x10, bus.getSelectedAddress());
+		TestCase.assertTrue(bus.isSlaveSelected(0x10));
 		TestCase.assertTrue(bus.isOpen());
 		TestCase.assertEquals(0x10, busConnection.getAddress());
 		
 		bus.close();
 		TestCase.assertFalse(bus.isOpen());
-		bus.selectAddress(0x10);
-		TestCase.assertEquals(0x10, bus.getSelectedAddress());
+		bus.selectSlave(0x10);
+		TestCase.assertTrue(bus.isSlaveSelected(0x10));
 		bus.open();
 		TestCase.assertTrue(bus.isOpen());
 		busConnection.writeByte(0xff);
-		TestCase.assertEquals(0x10, bus.getSelectedAddress());
+		TestCase.assertTrue(bus.isSlaveSelected(0x10));
 		TestCase.assertTrue(bus.isOpen());
 		
 		bus.close();
 		TestCase.assertFalse(bus.isOpen());
-		bus.selectAddress(0x10);
-		TestCase.assertEquals(0x10, bus.getSelectedAddress());
+		bus.selectSlave(0x10);
+		TestCase.assertTrue(bus.isSlaveSelected(0x10));
 		TestCase.assertFalse(bus.isOpen());
 		busConnection.getOutputStream();
-		TestCase.assertEquals(0x10, bus.getSelectedAddress());
+		TestCase.assertTrue(bus.isSlaveSelected(0x10));
 		TestCase.assertTrue(bus.isOpen());
 		
 		bus.close();
 		TestCase.assertFalse(bus.isOpen());
-		bus.selectAddress(0x10);
-		TestCase.assertEquals(0x10, bus.getSelectedAddress());
+		bus.selectSlave(0x10);
+		TestCase.assertTrue(bus.isSlaveSelected(0x10));
 		TestCase.assertFalse(bus.isOpen());
 		busConnection.getInputStream();
-		TestCase.assertEquals(0x10, bus.getSelectedAddress());
+		TestCase.assertTrue(bus.isSlaveSelected(0x10));
 		TestCase.assertTrue(bus.isOpen());
 	}
 	

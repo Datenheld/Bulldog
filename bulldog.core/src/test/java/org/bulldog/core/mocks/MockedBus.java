@@ -49,12 +49,12 @@ public class MockedBus implements Bus {
 		return 0;
 	}
 
-	public void selectAddress(int address) throws IOException {
+	public void selectSlave(int address) throws IOException {
 		selectedAddress = address;
 	}
 
-	public int getSelectedAddress() {
-		return selectedAddress;
+	public boolean isSlaveSelected(int address) {
+		return selectedAddress == address;
 	}
 
 	public BusConnection createConnection(int address) {

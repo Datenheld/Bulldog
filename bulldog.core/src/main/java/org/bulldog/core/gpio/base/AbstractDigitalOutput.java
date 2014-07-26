@@ -4,7 +4,6 @@ import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.util.Blinker;
-import org.bulldog.core.util.BulldogUtil;
 
 public abstract class AbstractDigitalOutput extends AbstractPinFeature implements DigitalOutput {
 

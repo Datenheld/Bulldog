@@ -7,8 +7,6 @@ import java.io.FileNotFoundException;
 import org.bulldog.core.Signal;
 import org.bulldog.core.util.BulldogUtil;
 
-
-
 public class SysFsPin {
 
 	private SysFs sysfsUtil = new SysFs();

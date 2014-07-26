@@ -1,229 +1,237 @@
 package org.bulldog.linux.io;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.bulldog.core.Polarity;
-import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.io.bus.BusConnection;
 import org.bulldog.core.io.bus.spi.SpiBus;
 import org.bulldog.core.io.bus.spi.SpiConnection;
+import org.bulldog.core.io.bus.spi.SpiMessage;
+import org.bulldog.core.platform.Board;
+import org.bulldog.core.util.BulldogUtil;
+import org.bulldog.linux.jni.NativeSpi;
 
-public class LinuxSpiBus implements SpiBus {
-
-	@Override
-	public void selectAddress(int address) throws IOException {
-		// TODO Auto-generated method stub
-		
+public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
+	
+	private List<DigitalOutput> slaveSelectPins = new ArrayList<DigitalOutput>();
+	private List<DigitalOutput> selectedSlaveSelectPins = new ArrayList<DigitalOutput>();
+	private Board board;
+	
+	public LinuxSpiBus(String name, String deviceFilePath, Board board) {
+		super(name, deviceFilePath);
+		this.board = board;
 	}
-
-	@Override
-	public int getSelectedAddress() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
+	
 	public BusConnection createConnection(int address) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getAlias() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setAlias(String alias) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void open() throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean isOpen() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void close() throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void writeByte(int b) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void writeBytes(byte[] bytes) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void writeString(String string) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public byte readByte() throws IOException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int readBytes(byte[] buffer) throws IOException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public String readString() throws IOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public OutputStream getOutputStream() throws IOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public InputStream getInputStream() throws IOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Pin getMISO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Pin getMOSI() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Pin getSCLK() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Pin> getSS() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getFrequency() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setFrequency(float frequency) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setBitsPerWord(int bpw) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getBitsPerWord() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setDelayMicroseconds(int delay) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getDelayMicroseconds() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setClockphase() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getClockphase() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setMode(int mode) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getMode() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setClockPolarity(Polarity polarity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Polarity getClockPolarity() {
-		// TODO Auto-generated method stub
-		return null;
+		return createSpiConnection(address);
 	}
 
 	@Override
 	public SpiConnection createSpiConnection(int address) {
-		// TODO Auto-generated method stub
+		registerSlave(address);
+		return new SpiConnection(this, address);
+	}
+
+	public byte readByte() throws IOException {
+		try {
+			byte[] buffer = new byte[1];
+			getInputStream().read(buffer);
+			return buffer[0];
+		} catch(Exception ex) {
+			throw new IOException(ERROR_READING_BYTE);
+		}
+	}
+	
+	protected int openImpl() {
+		return NativeSpi.spiOpen(getDeviceFilePath(), 10000, 8, 0);
+	}
+	
+	protected int closeImpl() {
+		return NativeSpi.spiClose(getFileDescriptor());
+	}
+
+	@Override
+	public int readBytes(byte[] buffer) throws IOException {
+		return getInputStream().read(buffer);
+	}
+
+	@Override
+	public String readString() throws IOException {
+		return BulldogUtil.convertStreamToString(getInputStream());
+	}
+
+	public void selectSlave(int address) throws IOException {
+		DigitalOutput output = board.getPin(address).as(DigitalOutput.class);
+		registerSlave(address);
+		if(getSelectedSlaveSelectPins().contains(output)) { return; }
+		getSelectedSlaveSelectPins().add(output);
+	}
+	
+	@Override
+	public void selectSlave(DigitalOutput output) {
+		registerSlave(output);
+		if(getSelectedSlaveSelectPins().contains(output)) { return; }
+		getSelectedSlaveSelectPins().add(output);
+	}
+	
+	public void deselectSlave(int address) {
+		DigitalOutput output = board.getPin(address).as(DigitalOutput.class);
+		getSelectedSlaveSelectPins().remove(output);
+	}
+	
+	@Override
+	public void deselectSlave(DigitalOutput output) {
+		selectedSlaveSelectPins.remove(output);
+	}
+	
+	@Override
+	public void registerSlave(DigitalOutput output) {
+		if(!this.getSlaveSelectPins().contains(output)) {
+			getSlaveSelectPins().add(output);
+		}
+	}
+
+	@Override
+	public void deregisterSlave(DigitalOutput output) {
+		if(getSelectedSlaveSelectPins().contains(output)) { 
+			getSelectedSlaveSelectPins().remove(output);
+		}
+		
+		if(getSlaveSelectPins().contains(output)) {
+			getSlaveSelectPins().remove(output);
+		}
+	}
+
+	@Override
+	public void registerSlave(int address) {
+		DigitalOutput output = board.getPin(address).as(DigitalOutput.class);
+		
+		if(!this.getSlaveSelectPins().contains(output)) {
+			getSlaveSelectPins().add(output);
+		}
+	}
+
+	@Override
+	public void deregisterSlave(int address) {
+		DigitalOutput output = board.getPin(address).as(DigitalOutput.class);
+		
+		if(getSelectedSlaveSelectPins().contains(output)) { 
+			getSelectedSlaveSelectPins().remove(output);
+		}
+		
+		if(getSlaveSelectPins().contains(output)) {
+			getSlaveSelectPins().remove(output);
+		}
+	}
+
+	private void startOutput() {
+		for(DigitalOutput output : this.getSelectedSlaveSelectPins()) {
+			output.low();
+		}
+	}
+	
+	private void endOutput() {
+		for(DigitalOutput output : this.getSelectedSlaveSelectPins()) {
+			output.high();
+		}
+	}
+	
+	public void writeByte(int b) throws IOException {
+		try {
+			startOutput();
+			getOutputStream().write(b);
+			getOutputStream().flush();
+			endOutput();
+		} catch(Exception ex) {
+			throw new IOException(ERROR_WRITING_BYTE);
+		}
+	}
+	
+	@Override
+	public void writeBytes(byte[] bytes) throws IOException {
+		startOutput();
+		//this.transfer(bytes);
+		getOutputStream().write(bytes);
+		getOutputStream().flush();
+		/*ByteBuffer rxBuffer = ByteBuffer.allocateDirect(2);
+		rxBuffer.put(bytes);
+		rxBuffer.rewind();
+		NativeSpi.spiTransfer(this.getFileDescriptor(), rxBuffer, rxBuffer, 1, 0, 10000, 16);*/
+		endOutput();
+	}
+
+	@Override
+	public void writeString(String string) throws IOException {
+		writeBytes(string.getBytes());
+	}
+
+	@Override
+	public SpiConnection createSpiConnection(DigitalOutput output) {
+		if(!getSlaveSelectPins().contains(output)) {
+			getSlaveSelectPins().add(output);
+		}
+		
+		return new SpiConnection(this, output.getPin().getAddress());
+	}
+
+	@Override
+	public SpiMessage transfer(byte[] data) {
+		ByteBuffer buffer = ByteBuffer.allocateDirect(data.length);
+		ByteBuffer recvBuffer = ByteBuffer.allocateDirect(data.length);
+		buffer.put(data);
+		buffer.rewind();
+		NativeSpi.spiTransfer(this.getFileDescriptor(), buffer, recvBuffer, 1, 0, 10000, 16);
 		return null;
 	}
 
 	@Override
-	public SpiConnection createSpiConnection(Pin slaveSelect) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DigitalOutput> getSlaveSelectPins() {
+		return this.slaveSelectPins;
 	}
 
+	@Override
+	public List<DigitalOutput> getSelectedSlaveSelectPins() {
+		return this.selectedSlaveSelectPins;
+	}
 
+	@Override
+	public void broadcast(byte data) throws IOException {
+		for(DigitalOutput output : this.getSlaveSelectPins()) {
+			selectSlave(output);
+		}
+		
+		writeByte(data);
+		
+		for(DigitalOutput output : this.getSlaveSelectPins()) {
+			deselectSlave(output);
+		}
+	}
 
+	@Override
+	public void broadcast(byte[] data) throws IOException {
+		for(DigitalOutput output : this.getSlaveSelectPins()) {
+			selectSlave(output);
+		}
+		
+		writeBytes(data);
+		
+		for(DigitalOutput output : this.getSlaveSelectPins()) {
+			deselectSlave(output);
+		}
+	}
 
+	@Override
+	public boolean isSlaveSelected(int address) {
+		for(DigitalOutput output : selectedSlaveSelectPins) {
+			if(output.getPin().getAddress() == address) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 }
