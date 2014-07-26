@@ -13,6 +13,7 @@ public class NativeGpio {
 	public static native void pinMode(int port, int pin, int direction);
 	public static native int digitalRead(int port, int pin);
 	public static native void digitalWrite(int port, int pin, int state);
+	public static native void enableGpio();
 	//public static native int debouncePin(int port, int pin, int ms);
 	
 	private static boolean isInitialized = false;
@@ -30,6 +31,7 @@ public class NativeGpio {
 			return;
 		}
 		setup();
+		enableGpio();
 		isInitialized = true;
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			@Override

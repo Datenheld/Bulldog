@@ -15,13 +15,9 @@ public class BBBUartPinFeature extends AbstractUartPinFeature {
 	}
 
 	@Override
-	public boolean isBlocking() {
-		return false;
-	}
-
-	@Override
 	protected void setupImpl() {
 		port.setup();
+		blockPin();
 	}
 
 	@Override

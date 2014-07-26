@@ -55,6 +55,14 @@ JNIEXPORT jint JNICALL Java_org_bulldog_beagleboneblack_jni_NativeGpio_digitalRe
 JNIEXPORT void JNICALL Java_org_bulldog_beagleboneblack_jni_NativeGpio_digitalWrite
   (JNIEnv *, jclass, jint, jint, jint);
 
+/*
+ * Class:     org_bulldog_beagleboneblack_jni_NativeGpio
+ * Method:    enableGpio
+ * Signature: (III)V
+ */
+JNIEXPORT void JNICALL Java_org_bulldog_beagleboneblack_jni_NativeGpio_enableGpio
+  (JNIEnv * env, jclass clazz);
+
 #ifdef __cplusplus
 }
 #endif

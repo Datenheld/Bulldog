@@ -105,10 +105,14 @@ public class PinIOGroup implements IOPort {
 		return dataPins;
 	}
 	
-	public void enable() {
+	public void startEnable() {
 		enablePin.applySignal(Signal.High);
 		BulldogUtil.sleepMs(delayMs);
+	}
+	
+	public void endEnable() {
 		enablePin.applySignal(Signal.Low);
+		BulldogUtil.sleepMs(delayMs);
 	}
 	
 }
