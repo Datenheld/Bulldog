@@ -102,6 +102,16 @@ boardProjects.each { def boardProject ->
     } 
 } 
 
+task singleJarSources(type: Copy) {
+    baseName = "sources"
+    destinationDir = new File(distributionDirectory, 'sources')
+    
+	allJavaProjects.each { javaProject -> 
+		evaluationDependsOn(javaProject.path) 
+		from zipTree(javaProject.sourcesJar.archivePath) 
+	}	
+}
+
 boardProjects.each { def boardProject -> 
 	evaluationDependsOn(boardProject.path)
 	evaluationDependsOn(project(':bulldog.linux.native').path)
@@ -112,13 +122,23 @@ boardProjects.each { def boardProject ->
        FileCollection collection = boardProject.distributionFiles
        from collection
        into destinationDir
-    } 
+    }     
 } 
 
 boardProjects.each { def boardProject -> 
 	evaluationDependsOn(boardProject.path)
     tasks.create(name: "createZipArchive$boardProject.name", type: Zip) { 
        baseName = boardProject.distributionBaseName + '-' + bulldogVersion
+       destinationDir = boardDistributionDirectory(boardProject.distributionBaseName)
+       excludes = [ '*.zip', '*sources.*' ]
+       from boardDistributionDirectory(boardProject.distributionBaseName)
+    } 
+} 
+
+boardProjects.each { def boardProject -> 
+	evaluationDependsOn(boardProject.path)
+    tasks.create(name: "createZipArchiveWithSources$boardProject.name", type: Zip) { 
+       baseName = boardProject.distributionBaseName + 'WithSources-' + bulldogVersion
        destinationDir = boardDistributionDirectory(boardProject.distributionBaseName)
        excludes = [ '*.zip' ]
        from boardDistributionDirectory(boardProject.distributionBaseName)
