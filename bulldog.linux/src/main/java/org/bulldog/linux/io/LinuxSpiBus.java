@@ -3,6 +3,7 @@ package org.bulldog.linux.io;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bulldog.core.gpio.DigitalOutput;
@@ -17,7 +18,6 @@ import org.bulldog.linux.jni.NativeSpi;
 public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 	
 	private List<DigitalOutput> slaveSelectPins = new ArrayList<DigitalOutput>();
-	private List<DigitalOutput> selectedSlaveSelectPins = new ArrayList<DigitalOutput>();
 	private Board board;
 	
 	public LinuxSpiBus(String name, String deviceFilePath, Board board) {
@@ -31,9 +31,24 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 
 	@Override
 	public SpiConnection createSpiConnection(int address) {
-		registerSlave(address);
 		return new SpiConnection(this, address);
 	}
+	
+	@Override
+	public SpiConnection createSpiConnection(DigitalOutput output) {		
+		return new SpiConnection(this, output.getPin().getAddress());
+	}
+	
+	@Override
+	public SpiConnection createSpiConnection(DigitalOutput... chipSelects) {
+		return new SpiConnection(this, chipSelects);
+	}
+	
+	@Override
+	public SpiConnection createSpiConnection(int... addresses) {
+		return new SpiConnection(this, addresses);
+	}
+	
 
 	public byte readByte() throws IOException {
 		try {
@@ -65,76 +80,41 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 
 	public void selectSlave(int address) throws IOException {
 		DigitalOutput output = board.getPin(address).as(DigitalOutput.class);
-		registerSlave(address);
-		if(getSelectedSlaveSelectPins().contains(output)) { return; }
-		getSelectedSlaveSelectPins().add(output);
+		selectSlave(output);
 	}
+	
 	
 	@Override
 	public void selectSlave(DigitalOutput output) {
-		registerSlave(output);
-		if(getSelectedSlaveSelectPins().contains(output)) { return; }
-		getSelectedSlaveSelectPins().add(output);
-	}
-	
-	public void deselectSlave(int address) {
-		DigitalOutput output = board.getPin(address).as(DigitalOutput.class);
-		getSelectedSlaveSelectPins().remove(output);
+		getSlaveSelectPins().clear();
+		getSlaveSelectPins().add(output);
 	}
 	
 	@Override
-	public void deselectSlave(DigitalOutput output) {
-		selectedSlaveSelectPins.remove(output);
+	public void selectSlaves(DigitalOutput... chipSelects) {
+		getSlaveSelectPins().clear();
+		getSlaveSelectPins().addAll(Arrays.asList(chipSelects));
 	}
 	
-	@Override
-	public void registerSlave(DigitalOutput output) {
-		if(!this.getSlaveSelectPins().contains(output)) {
-			getSlaveSelectPins().add(output);
-		}
-	}
 
 	@Override
-	public void deregisterSlave(DigitalOutput output) {
-		if(getSelectedSlaveSelectPins().contains(output)) { 
-			getSelectedSlaveSelectPins().remove(output);
+	public void selectSlaves(Integer... chipSelectAddresses) {
+		List<DigitalOutput> outputs = new ArrayList<DigitalOutput>();
+		for(Integer cs : chipSelectAddresses) {
+			DigitalOutput output = board.getPin(cs).as(DigitalOutput.class);
+			outputs.add(output);
 		}
-		
-		if(getSlaveSelectPins().contains(output)) {
-			getSlaveSelectPins().remove(output);
-		}
+		selectSlaves(outputs.toArray(new DigitalOutput[outputs.size()]));
 	}
-
-	@Override
-	public void registerSlave(int address) {
-		DigitalOutput output = board.getPin(address).as(DigitalOutput.class);
-		
-		if(!this.getSlaveSelectPins().contains(output)) {
-			getSlaveSelectPins().add(output);
-		}
-	}
-
-	@Override
-	public void deregisterSlave(int address) {
-		DigitalOutput output = board.getPin(address).as(DigitalOutput.class);
-		
-		if(getSelectedSlaveSelectPins().contains(output)) { 
-			getSelectedSlaveSelectPins().remove(output);
-		}
-		
-		if(getSlaveSelectPins().contains(output)) {
-			getSlaveSelectPins().remove(output);
-		}
-	}
-
+	
 	private void startOutput() {
-		for(DigitalOutput output : this.getSelectedSlaveSelectPins()) {
+		for(DigitalOutput output : getSlaveSelectPins()) {
 			output.low();
 		}
 	}
 	
 	private void endOutput() {
-		for(DigitalOutput output : this.getSelectedSlaveSelectPins()) {
+		for(DigitalOutput output : getSlaveSelectPins()) {
 			output.high();
 		}
 	}
@@ -156,25 +136,16 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 		//this.transfer(bytes);
 		getOutputStream().write(bytes);
 		getOutputStream().flush();
-		/*ByteBuffer rxBuffer = ByteBuffer.allocateDirect(2);
-		rxBuffer.put(bytes);
-		rxBuffer.rewind();
-		NativeSpi.spiTransfer(this.getFileDescriptor(), rxBuffer, rxBuffer, 1, 0, 10000, 16);*/
+		//ByteBuffer rxBuffer = ByteBuffer.allocateDirect(2);
+		//rxBuffer.put(bytes);
+		//rxBuffer.rewind();
+		//NativeSpi.spiTransfer(this.getFileDescriptor(), rxBuffer, rxBuffer, 1, 0, 10000, 16);
 		endOutput();
 	}
 
 	@Override
 	public void writeString(String string) throws IOException {
 		writeBytes(string.getBytes());
-	}
-
-	@Override
-	public SpiConnection createSpiConnection(DigitalOutput output) {
-		if(!getSlaveSelectPins().contains(output)) {
-			getSlaveSelectPins().add(output);
-		}
-		
-		return new SpiConnection(this, output.getPin().getAddress());
 	}
 
 	@Override
@@ -189,43 +160,12 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 
 	@Override
 	public List<DigitalOutput> getSlaveSelectPins() {
-		return this.slaveSelectPins;
-	}
-
-	@Override
-	public List<DigitalOutput> getSelectedSlaveSelectPins() {
-		return this.selectedSlaveSelectPins;
-	}
-
-	@Override
-	public void broadcast(byte data) throws IOException {
-		for(DigitalOutput output : this.getSlaveSelectPins()) {
-			selectSlave(output);
-		}
-		
-		writeByte(data);
-		
-		for(DigitalOutput output : this.getSlaveSelectPins()) {
-			deselectSlave(output);
-		}
-	}
-
-	@Override
-	public void broadcast(byte[] data) throws IOException {
-		for(DigitalOutput output : this.getSlaveSelectPins()) {
-			selectSlave(output);
-		}
-		
-		writeBytes(data);
-		
-		for(DigitalOutput output : this.getSlaveSelectPins()) {
-			deselectSlave(output);
-		}
+		return slaveSelectPins;
 	}
 
 	@Override
 	public boolean isSlaveSelected(int address) {
-		for(DigitalOutput output : selectedSlaveSelectPins) {
+		for(DigitalOutput output : getSlaveSelectPins()) {
 			if(output.getPin().getAddress() == address) {
 				return true;
 			}
@@ -233,5 +173,12 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 		
 		return false;
 	}
-	
+
+	@Override
+	public void broadcast(byte[] bytes, DigitalOutput... chipSelects) throws IOException {
+		selectSlaves(chipSelects);
+		writeBytes(bytes);
+	}
+
+
 }

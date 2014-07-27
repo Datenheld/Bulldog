@@ -3,7 +3,6 @@ package org.bulldog.core.io.bus.spi;
 import java.io.IOException;
 import java.util.List;
 
-import org.bulldog.core.Polarity;
 import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.io.bus.Bus;
 
@@ -14,7 +13,6 @@ public interface SpiBus extends Bus {
 	Pin getMOSI();
 	Pin getSCLK(); */
 	List<DigitalOutput> getSlaveSelectPins();
-	List<DigitalOutput> getSelectedSlaveSelectPins();
 	
 	/*
 	int getFrequency();
@@ -38,25 +36,16 @@ public interface SpiBus extends Bus {
 	void setLeastSignificantBitFirst(boolean first);
 	boolean getLeastSignificantBitFirst();*/
 	
-	void registerSlave(DigitalOutput output);
-	void deregisterSlave(DigitalOutput output);
-	void registerSlave(int address);
-	void deregisterSlave(int address);
-	
-	/**
-	 * This method deselects a slave
-	 * 
-	 * @param address The address of the pin that is used for chip select
-	 */
-	void deselectSlave(int address);
 	void selectSlave(DigitalOutput chipSelect);
-	void deselectSlave(DigitalOutput chipSelect);
+	void selectSlaves(DigitalOutput... chipSelects);
+	void selectSlaves(Integer... chipSelectAddresses);
 	
-	SpiConnection createSpiConnection(int address);
+	SpiConnection createSpiConnection(int chipSelectAddress);
 	SpiConnection createSpiConnection(DigitalOutput chipSelect);
+	SpiConnection createSpiConnection(DigitalOutput... chipSelects);
+	SpiConnection createSpiConnection(int...chipSelectAddress);
 	
-	void broadcast(byte data) throws IOException;
-	void broadcast(byte[] data) throws IOException;
+	void broadcast(byte[] bytes, DigitalOutput... chipSelects) throws IOException;
 	
 	SpiMessage transfer(byte[] data);
 }

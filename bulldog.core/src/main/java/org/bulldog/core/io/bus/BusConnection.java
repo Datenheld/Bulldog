@@ -57,7 +57,7 @@ public class BusConnection {
 			getBus().open();
 		}
 		
-		if(getBus().isSlaveSelected(address)) {
+		if(!getBus().isSlaveSelected(address)) {
 			getBus().selectSlave(address);
 		}
 	}

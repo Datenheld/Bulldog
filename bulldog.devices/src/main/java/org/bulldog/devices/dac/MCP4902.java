@@ -49,10 +49,7 @@ public class MCP4902 extends SpiDevice {
 		byte[] bytes = new byte[2];
 		bytes[0] = (byte)((0xFF00 & command) >> 8);
 		bytes[1] = (byte)((0X00FF & command));
-		System.out.println("0: " + BitMagic.toBitString(bytes[0]));
-		System.out.println("1: " + BitMagic.toBitString(bytes[1]));
-		System.out.println();
-		this.getBusConnection().writeBytes(bytes);
+		getBusConnection().writeBytes(bytes);
 	}
 	
 	public void shutdownDacA() throws IOException {

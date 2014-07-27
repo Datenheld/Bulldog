@@ -1,13 +1,42 @@
 package org.bulldog.core.io.bus.spi;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.io.bus.BusConnection;
 
 public class SpiConnection extends BusConnection {
 
+	private List<Integer> chipSelectList = new ArrayList<Integer>();
+	
 	public SpiConnection(SpiBus bus, int address) {
 		super(bus, address);
+		chipSelectList.add(address);
+	}
+	
+	public SpiConnection(SpiBus bus, DigitalOutput... outputs) {
+		super(bus, 0);
+		for(DigitalOutput output : outputs) {
+			chipSelectList.add(output.getPin().getAddress());
+		}
+	}
+	
+	public SpiConnection(SpiBus bus, int... addresses) {
+		super(bus, 0);
+		for(Integer i : addresses) {
+			chipSelectList.add(i);
+		}
+	}
+	
+	@Override
+	protected void acquireBus() throws IOException {
+		if(!getBus().isOpen()) {
+			getBus().open();
+		}
+		
+		getBus().selectSlaves(chipSelectList.toArray(new Integer[chipSelectList.size()]));
 	}
 	
 	/**
@@ -17,10 +46,8 @@ public class SpiConnection extends BusConnection {
 	 * @throws IOException 
 	 */
 	public SpiMessage transfer(byte[] bytes) throws IOException {
-		SpiBus bus = (SpiBus) this.getBus();
-		bus.selectSlave(this.getAddress());
-		SpiMessage message = bus.transfer(bytes);
-		bus.deselectSlave(this.getAddress());
+		acquireBus();
+		SpiMessage message = getBus().transfer(bytes);
 		return message;
 	}
 	

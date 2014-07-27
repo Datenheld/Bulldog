@@ -111,7 +111,7 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 
 	@Override
 	public String getName() {
-		return String.format(NAME_FORMAT, getPin());
+		return String.format(NAME_FORMAT, getPin().getName());
 	}
 
 	@Override

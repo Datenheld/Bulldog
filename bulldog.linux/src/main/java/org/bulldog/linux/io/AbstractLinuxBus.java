@@ -15,6 +15,7 @@ public abstract class AbstractLinuxBus implements Bus {
 	protected static final String ERROR_SELECTING_SLAVE = "Error selecting slave on address %s";
 	protected static final String ERROR_WRITING_BYTE = "Byte could not be written to bus";
 	protected static final String ERROR_READING_BYTE = "Byte could not be read from bus";
+	protected static final String ERROR_BUS_NOT_OPENED = "Bus has not been opened!";
 	
 	private String deviceFilePath;
 	private boolean isOpen = false;
@@ -44,11 +45,17 @@ public abstract class AbstractLinuxBus implements Bus {
 	
 	@Override
 	public FileInputStream getInputStream() throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_BUS_NOT_OPENED);
+		}
 		return inputStream;
 	}
 	
 	@Override
 	public FileOutputStream getOutputStream() throws IOException {
+		if(!isOpen()) {
+			throw new IllegalStateException(ERROR_BUS_NOT_OPENED);
+		}
 		return outputStream;
 	}
 	
