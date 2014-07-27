@@ -47,7 +47,6 @@ JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeI2c_i2cOpen
 	char fileName[256];
 	int len = (*env)->GetStringLength(env, path);
 	(*env)->GetStringUTFRegion(env, path, 0, len, fileName);
-	printf(fileName);
  	return i2cOpen(fileName);
 }
 

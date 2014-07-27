@@ -19,6 +19,7 @@ import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.linux.gpio.LinuxDigitalInput;
 import org.bulldog.linux.gpio.LinuxDigitalOutput;
 import org.bulldog.linux.io.LinuxI2cBus;
+import org.bulldog.linux.io.LinuxSpiBus;
 import org.bulldog.linux.util.LinuxLibraryLoader;
 
 public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationListener {
@@ -28,10 +29,10 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 	private BBBSysFs sysFs = new BBBSysFs();
 	
 	private BeagleBoneBlack() {
+		super();
 		createPins();
 		createBuses();
 		createProperties();
-		createShutdownHook();
 	}
 	
 	private void createPins() {
@@ -221,11 +222,17 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 	private void createBuses() {
 		createI2cBuses();
 		createSerialPorts();
+		createSpiBuses();
 	}
 
 	private void createI2cBuses() {
 		getI2cBuses().add(new LinuxI2cBus(BBBNames.I2C_0, "/dev/i2c-0"));
 		getI2cBuses().add(new LinuxI2cBus(BBBNames.I2C_1, "/dev/i2c-1"));
+	}
+	
+	private void createSpiBuses() {
+		getSpiBuses().add(new LinuxSpiBus(BBBNames.SPI_0, "/dev/spidev1.0", this));
+		getSpiBuses().add(new LinuxSpiBus(BBBNames.SPI_1, "/dev/spidev1.1", this));
 	}
 
 	private BBBUartPort createSerialPort(String name, String path, String slotName, Pin rx, Pin tx) {

@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import org.bulldog.core.io.IOPort;
 import org.bulldog.core.io.bus.i2c.I2cBus;
+import org.bulldog.core.io.bus.spi.SpiBus;
 import org.bulldog.core.io.serial.SerialPort;
 
 public interface Board extends PinProvider {
@@ -13,6 +14,9 @@ public interface Board extends PinProvider {
 	
 	List<I2cBus> getI2cBuses();
 	I2cBus getI2cBus(String name);
+	
+	List<SpiBus> getSpiBuses();
+	SpiBus getSpiBus(String name);
 	
 	List<SerialPort> getSerialPorts();
 	SerialPort getSerialPort(String name);

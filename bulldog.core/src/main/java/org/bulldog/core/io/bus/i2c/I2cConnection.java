@@ -30,4 +30,7 @@ public class I2cConnection extends BusConnection {
 		System.arraycopy(data, 0, bytesToWrite, 1, data.length);
 	}
 	
+	public I2cBus getBus() {
+		return (I2cBus)super.getBus();
+	}
 }

@@ -31,13 +31,11 @@ if(hasProperty('board')) {
 	boardProjects = boardProjects.findAll { it.path.contains(board) };
 } 
 
-if(buildNative) {
-	println "omit native"
-	configure(nativeProjects) {
-		apply from: new File(project.projectDir, 'build.gradle')
-		version = bulldogVersion
-	}
+configure(nativeProjects) {
+	apply from: new File(project.projectDir, 'build.gradle')
+	version = bulldogVersion
 }
+
 					 
 configure(allJavaProjects) { 
    	   
@@ -62,7 +60,7 @@ configure(allJavaProjects) {
     	}
     }
     
-    task sourcesJar(type: Jar, dependsOn:classes) { 
+    /*task sourcesJar(type: Jar, dependsOn:classes) { 
        classifier = 'sources' 
        from sourceSets.main.allSource 
 	} 
@@ -75,7 +73,7 @@ configure(allJavaProjects) {
 	artifacts { 
 	     archives sourcesJar 
 	     archives javadocJar 
-	} 
+	} */
     
     uploadArchives {
     	repositories {
@@ -94,7 +92,7 @@ boardProjects.each { def boardProject ->
         destinationDir = boardDistributionDirectory(boardProject.distributionBaseName)
         
         manifest { 
-     		attributes 'Main-Class': 'org.bulldog.examples.LcdExample' 
+     		attributes 'Main-Class': 'org.bulldog.examples.SpiExample' 
      	}
     
     	javaProjects.each { javaProject -> 
@@ -106,6 +104,16 @@ boardProjects.each { def boardProject ->
     } 
 } 
 
+/*task singleJarSources(type: Copy) {
+    baseName = "sources"
+    destinationDir = new File(distributionDirectory, 'sources')
+    
+	allJavaProjects.each { javaProject -> 
+		evaluationDependsOn(javaProject.path) 
+		from zipTree(javaProject.sourcesJar.archivePath) 
+	}	
+}*/
+
 boardProjects.each { def boardProject -> 
 	evaluationDependsOn(boardProject.path)
 	evaluationDependsOn(project(':bulldog.linux.native').path)
@@ -116,13 +124,23 @@ boardProjects.each { def boardProject ->
        FileCollection collection = boardProject.distributionFiles
        from collection
        into destinationDir
-    } 
+    }     
 } 
 
 boardProjects.each { def boardProject -> 
 	evaluationDependsOn(boardProject.path)
     tasks.create(name: "createZipArchive$boardProject.name", type: Zip) { 
        baseName = boardProject.distributionBaseName + '-' + bulldogVersion
+       destinationDir = boardDistributionDirectory(boardProject.distributionBaseName)
+       excludes = [ '*.zip', '*sources.*' ]
+       from boardDistributionDirectory(boardProject.distributionBaseName)
+    } 
+} 
+
+boardProjects.each { def boardProject -> 
+	evaluationDependsOn(boardProject.path)
+    tasks.create(name: "createZipArchiveWithSources$boardProject.name", type: Zip) { 
+       baseName = boardProject.distributionBaseName + 'WithSources-' + bulldogVersion
        destinationDir = boardDistributionDirectory(boardProject.distributionBaseName)
        excludes = [ '*.zip' ]
        from boardDistributionDirectory(boardProject.distributionBaseName)

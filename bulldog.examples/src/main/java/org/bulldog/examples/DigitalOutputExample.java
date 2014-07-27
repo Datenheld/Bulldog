@@ -40,11 +40,11 @@ public class DigitalOutputExample {
     	
     	//Let it blink 3 times
     	output.blinkTimes(500, 3);
-    	BulldogUtil.sleepMs(2000);
+    	output.awaitBlinkingStopped();
     	
     	//Let it blink 5 seconds, 10 times a second
     	output.startBlinking(100, 5000);
-    	BulldogUtil.sleepMs(5500);
+    	output.awaitBlinkingStopped();
     	
     	//Let it blink 5 times a second indefinitely
     	output.startBlinking(200);

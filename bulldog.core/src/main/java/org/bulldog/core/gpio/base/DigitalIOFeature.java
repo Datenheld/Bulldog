@@ -186,7 +186,17 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 		setupOutputIfNecessary();
 		output.stopBlinking();
 	}
+	
+	@Override
+	public boolean isBlinking() {
+		return output.isBlinking();
+	}
 
+	@Override
+	public void awaitBlinkingStopped() {
+		output.awaitBlinkingStopped();
+	}
+	
 	@Override
 	protected void setupImpl() {
 

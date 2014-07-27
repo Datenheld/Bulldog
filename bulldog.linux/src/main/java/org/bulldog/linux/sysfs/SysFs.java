@@ -29,16 +29,31 @@ public class SysFs {
 	public void echo(String path, Object value) {
 		echo(path, String.valueOf(value));
 	}
-	 
+	
 	public void echo(String path, String value) {
 		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+			writer.write(value);
+			writer.close();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void echoAndWait(String path, Object value, int waitMs) {
+		echoAndWait(path, String.valueOf(value), waitMs);
+	}
+	 
+	public void echoAndWait(String path, String value, int waitMs) {
+		try {
+			System.out.println(path + " : " + value);
 			waitForFileCreation(path, WAIT_TIMEOUT_MS);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 			writer.write(value);
-			BulldogUtil.sleepMs(10);
+			BulldogUtil.sleepMs(waitMs);
 			writer.close();
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 	

@@ -141,6 +141,13 @@ public final class BitMagic {
 		 return (byte)((upperNibble << 4) | lowerNibble);
 	}
 	
+	public static byte reverse(byte b) {
+		b = (byte) ((b & 0xF0) >> 4 | (b & 0x0F) << 4);
+		b = (byte) ((b & 0xCC) >> 2 | (b & 0x33) << 2);
+		b = (byte) ((b & 0xAA) >> 1 | (b & 0x55) << 1);
+	    return b;
+	}
+	
 	private static void checkValue(int value) {
 		if(value != 0 && value != 1) {
 			throw new IllegalArgumentException(ERROR_INVALID_VALUE);

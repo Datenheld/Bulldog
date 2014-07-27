@@ -52,13 +52,13 @@ public class BusConnection {
 		return bus.readString();
 	}
 	
-	private void acquireBus() throws IOException {
+	protected void acquireBus() throws IOException {
 		if(!getBus().isOpen()) {
 			getBus().open();
 		}
 		
-		if(getBus().getSelectedAddress() != address) {
-			getBus().selectAddress(address);
+		if(getBus().isSlaveSelected(address)) {
+			getBus().selectSlave(address);
 		}
 	}
 	

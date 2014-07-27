@@ -7,8 +7,6 @@ import java.io.FileNotFoundException;
 import org.bulldog.core.Signal;
 import org.bulldog.core.util.BulldogUtil;
 
-
-
 public class SysFsPin {
 
 	private SysFs sysfsUtil = new SysFs();
@@ -25,7 +23,7 @@ public class SysFsPin {
 	
 	public void exportIfNecessary() {
 		if(!isExported()) {
-			sysfsUtil.echo(directory + "/export", getPin());
+			sysfsUtil.echoAndWait(directory + "/export", getPin(), 10);
 			File file = new File(this.getValueFilePath());
 			long startTime = System.currentTimeMillis();
 			long delta = 0;

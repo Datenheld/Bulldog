@@ -10,6 +10,7 @@ import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.base.AbstractPwm;
 import org.bulldog.core.util.BulldogUtil;
+import org.bulldog.core.util.DaemonThreadFactory;
 
 public class SoftPwm extends AbstractPwm implements Runnable {
 
@@ -38,7 +39,7 @@ public class SoftPwm extends AbstractPwm implements Runnable {
 
 	private void createScheduler() {
 		if(executorService != null) { return; }
-		executorService = Executors.newScheduledThreadPool(1);
+		executorService = Executors.newScheduledThreadPool(1, new DaemonThreadFactory());
 		future = executorService.scheduleAtFixedRate(this, 0, periodInNanoseconds, TimeUnit.NANOSECONDS);
 	}
 
