@@ -28,15 +28,15 @@ public class LinuxI2cBus extends AbstractLinuxBus implements I2cBus {
 	
 	@Override
 	public int getFrequency() {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException("Unsupported by generic bus object: " + this.getClass());
 	}
 	
 	public Pin getSCL() {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException("Unsupported by generic bus object: " + this.getClass());
 	}
 
 	public Pin getSDA() {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException("Unsupported by generic bus object: " + this.getClass());
 	}
 	
 	public byte readByte() throws IOException {

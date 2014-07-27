@@ -13,7 +13,16 @@ extern "C" {
  * Signature: (Ljava/lang/String;III)I
  */
 JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeSpi_spiOpen
-  (JNIEnv *, jclass, jstring, jint, jint, jint);
+  (JNIEnv *, jclass, jstring, jint, jint, jint, jboolean);
+
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeSpi
+ * Method:    spiOpen
+ * Signature: (Ljava/lang/String;III)I
+ */
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeSpi_spiConfig
+  (JNIEnv *, jclass, jint, jint, jint, jint, jboolean);
 
 /*
  * Class:     org_bulldog_linux_jni_NativeSpi

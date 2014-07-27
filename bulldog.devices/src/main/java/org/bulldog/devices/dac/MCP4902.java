@@ -14,8 +14,8 @@ public class MCP4902 extends SpiDevice {
 		this(bus.createSpiConnection(chipSelect));
 	}
 	
-	public MCP4902(SpiBus bus, int address) {
-		this(bus.createSpiConnection(address));
+	public MCP4902(SpiBus bus, int addressOfChipselect) {
+		this(bus.createSpiConnection(addressOfChipselect));
 	}
 
 	public MCP4902(SpiConnection connection) {

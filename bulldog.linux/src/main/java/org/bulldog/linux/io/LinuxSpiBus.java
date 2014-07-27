@@ -7,10 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.bulldog.core.gpio.DigitalOutput;
+import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.bus.BusConnection;
 import org.bulldog.core.io.bus.spi.SpiBus;
 import org.bulldog.core.io.bus.spi.SpiConnection;
 import org.bulldog.core.io.bus.spi.SpiMessage;
+import org.bulldog.core.io.bus.spi.SpiMode;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.linux.jni.NativeSpi;
@@ -19,6 +21,12 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 	
 	private List<DigitalOutput> slaveSelectPins = new ArrayList<DigitalOutput>();
 	private Board board;
+	
+	private int speed = 10000;
+	private int bitsPerWord = 8;
+	private int delayMicroSeconds = 0;
+	private SpiMode mode = SpiMode.Mode0;
+	private boolean lsbFirst = false;
 	
 	public LinuxSpiBus(String name, String deviceFilePath, Board board) {
 		super(name, deviceFilePath);
@@ -49,6 +57,14 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 		return new SpiConnection(this, addresses);
 	}
 	
+	private void configure() {
+		if(isOpen()) {
+			int value =	NativeSpi.spiConfig(getFileDescriptor(), getMode().getNumericValue(), getSpeedInHz(), getBitsPerWord(), lsbFirst);
+			if(value < 0) {
+				throw new RuntimeException("Configuration of SPI failed");
+			}
+		}
+	}
 
 	public byte readByte() throws IOException {
 		try {
@@ -61,7 +77,7 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 	}
 	
 	protected int openImpl() {
-		return NativeSpi.spiOpen(getDeviceFilePath(), 10000, 8, 0);
+		return NativeSpi.spiOpen(getDeviceFilePath(), getMode().getNumericValue(), getSpeedInHz(), getBitsPerWord(), lsbFirst);
 	}
 	
 	protected int closeImpl() {
@@ -82,7 +98,6 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 		DigitalOutput output = board.getPin(address).as(DigitalOutput.class);
 		selectSlave(output);
 	}
-	
 	
 	@Override
 	public void selectSlave(DigitalOutput output) {
@@ -133,13 +148,8 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 	@Override
 	public void writeBytes(byte[] bytes) throws IOException {
 		startOutput();
-		//this.transfer(bytes);
 		getOutputStream().write(bytes);
 		getOutputStream().flush();
-		//ByteBuffer rxBuffer = ByteBuffer.allocateDirect(2);
-		//rxBuffer.put(bytes);
-		//rxBuffer.rewind();
-		//NativeSpi.spiTransfer(this.getFileDescriptor(), rxBuffer, rxBuffer, 1, 0, 10000, 16);
 		endOutput();
 	}
 
@@ -149,13 +159,31 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 	}
 
 	@Override
-	public SpiMessage transfer(byte[] data) {
-		ByteBuffer buffer = ByteBuffer.allocateDirect(data.length);
-		ByteBuffer recvBuffer = ByteBuffer.allocateDirect(data.length);
-		buffer.put(data);
-		buffer.rewind();
-		NativeSpi.spiTransfer(this.getFileDescriptor(), buffer, recvBuffer, 1, 0, 10000, 16);
-		return null;
+	public SpiMessage transfer(byte[] buffer) {
+		startOutput();
+		
+		byte[] sentBytes = buffer.clone();
+		
+		ByteBuffer bufferPointer = ByteBuffer.allocateDirect(buffer.length);
+		bufferPointer.put(buffer);
+		bufferPointer.rewind();
+		
+		int length = buffer.length / (getBitsPerWord() / 8);
+		
+		NativeSpi.spiTransfer(getFileDescriptor(), bufferPointer, bufferPointer, length, getDelayMicroseconds(), getSpeedInHz(), getBitsPerWord());
+		
+		endOutput();
+		
+		return createSpiMessage(bufferPointer, sentBytes);
+	}
+
+	private SpiMessage createSpiMessage(ByteBuffer buffer, byte[] sentBytes) {
+		SpiMessage message = new SpiMessage();
+		byte[] rxBytes = new byte[sentBytes.length];
+		buffer.get(rxBytes);
+		message.setReceivedBytes(rxBytes);
+		message.setSentBytes(sentBytes);
+		return message;
 	}
 
 	@Override
@@ -178,6 +206,87 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 	public void broadcast(byte[] bytes, DigitalOutput... chipSelects) throws IOException {
 		selectSlaves(chipSelects);
 		writeBytes(bytes);
+	}
+	
+	@Override
+	public Pin getMISO() {
+		throw new UnsupportedOperationException("Unsupported by generic bus object: " + this.getClass());
+	}
+
+	@Override
+	public Pin getMOSI() {
+		throw new UnsupportedOperationException("Unsupported by generic bus object: " + this.getClass());
+	}
+
+	@Override
+	public Pin getSCLK() {
+		throw new UnsupportedOperationException("Unsupported by generic bus object: " + this.getClass());
+	}
+
+	@Override
+	public int getSpeedInHz() {
+		return this.speed;
+	}
+
+	@Override
+	public void setSpeedInHz(int speedInHz) {
+		this.speed = speedInHz;
+		configure();
+	}
+
+	@Override
+	public void setBitsPerWord(int bpw) {
+		this.bitsPerWord = bpw;	
+		configure();
+	}
+
+	@Override
+	public int getBitsPerWord() {
+		return this.bitsPerWord;
+	}
+
+	@Override
+	public void setDelayMicroseconds(int delay) {
+		this.delayMicroSeconds = delay;
+	}
+
+	@Override
+	public int getDelayMicroseconds() {
+		return this.delayMicroSeconds;
+	}
+
+
+	@Override
+	public void setMode(SpiMode mode) {
+		this.mode = mode;
+		configure();
+	}
+
+	@Override
+	public SpiMode getMode() {
+		return mode;
+	}
+
+	@Override
+	public void useLeastSignificantBitFirst() {
+		lsbFirst = true;
+		configure();
+	}
+
+	@Override
+	public void useMostSignificantBitFirst() {
+		lsbFirst = false;
+		configure();
+	}
+
+	@Override
+	public boolean isLSBUsed() {
+		return lsbFirst;
+	}
+
+	@Override
+	public boolean isMSBUsed() {
+		return !lsbFirst;
 	}
 
 

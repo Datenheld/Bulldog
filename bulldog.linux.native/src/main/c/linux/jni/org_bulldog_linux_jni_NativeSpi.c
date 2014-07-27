@@ -11,11 +11,21 @@
  * Signature: (Ljava/lang/String;III)I
  */
 JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeSpi_spiOpen
-  (JNIEnv * env, jclass clazz, jstring path, jint speed, jint bitsPerWord, jint mode) {
+  (JNIEnv * env, jclass clazz, jstring path, jint mode, jint speed, jint bitsPerWord, jboolean lsbFirst) {
 	char fileName[256];
 	int len = (*env)->GetStringLength(env, path);
 	(*env)->GetStringUTFRegion(env, path, 0, len, fileName);
-	return spiOpen(fileName, mode, bitsPerWord, speed);
+	return spiOpen(fileName, mode, speed, bitsPerWord, lsbFirst == JNI_TRUE ? 1 : 0);
+}
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeSpi
+ * Method:    spiOpen
+ * Signature: (Ljava/lang/String;III)I
+ */
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeSpi_spiConfig
+  (JNIEnv * env, jclass clazz, jint fileDescriptor, jint mode, jint speed, jint bitsPerWord, jboolean lsbFirst) {
+	return spiConfig(fileDescriptor, mode, speed, bitsPerWord, lsbFirst == JNI_TRUE ? 1 : 0);
 }
 
 /*

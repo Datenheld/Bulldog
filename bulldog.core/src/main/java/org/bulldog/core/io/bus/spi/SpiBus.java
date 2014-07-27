@@ -4,37 +4,33 @@ import java.io.IOException;
 import java.util.List;
 
 import org.bulldog.core.gpio.DigitalOutput;
+import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.bus.Bus;
 
 
 public interface SpiBus extends Bus {
-
-	/*Pin getMISO();
+	
+	Pin getMISO();
 	Pin getMOSI();
-	Pin getSCLK(); */
+	Pin getSCLK();
 	List<DigitalOutput> getSlaveSelectPins();
 	
-	/*
-	int getFrequency();
-	void setFrequency(float frequency);
+	int getSpeedInHz();
+	void setSpeedInHz(int hz);
 	
 	void setBitsPerWord(int bpw);
 	int getBitsPerWord();	
 	
 	void setDelayMicroseconds(int delay);
 	int getDelayMicroseconds();
+		
+	void setMode(SpiMode mode);
+	SpiMode getMode();
 	
-	void setClockphase();
-	int getClockphase();
-	
-	void setMode(int mode);
-	int getMode();
-	
-	void setClockPolarity(Polarity polarity);
-	Polarity getClockPolarity();
-	
-	void setLeastSignificantBitFirst(boolean first);
-	boolean getLeastSignificantBitFirst();*/
+	void useLeastSignificantBitFirst();
+	void useMostSignificantBitFirst();
+	boolean isLSBUsed();
+	boolean isMSBUsed();
 	
 	void selectSlave(DigitalOutput chipSelect);
 	void selectSlaves(DigitalOutput... chipSelects);
@@ -46,6 +42,5 @@ public interface SpiBus extends Bus {
 	SpiConnection createSpiConnection(int...chipSelectAddress);
 	
 	void broadcast(byte[] bytes, DigitalOutput... chipSelects) throws IOException;
-	
-	SpiMessage transfer(byte[] data);
+	SpiMessage transfer(byte[] buffer);
 }
