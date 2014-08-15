@@ -12,6 +12,8 @@ public class BBBI2cBus extends LinuxI2cBus {
 	
 	public BBBI2cBus(String name, String deviceFilePath, Pin sdaPin, Pin sclPin, int frequency) {
 		super(name, deviceFilePath);
+		this.sdaPin = sdaPin;
+		this.sclPin = sclPin;
 		sdaPin.addFeature(new BBBI2cPinFeature(this, sdaPin, I2cSignalType.SDA));
 		sclPin.addFeature(new BBBI2cPinFeature(this, sclPin, I2cSignalType.SCL));
 	}

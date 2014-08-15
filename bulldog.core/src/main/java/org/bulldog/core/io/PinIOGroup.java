@@ -15,8 +15,8 @@ public class PinIOGroup implements IOPort {
 	private PinIOInputStream inputStream;
 	private PinIOOutputStream outputStream;
 	
-	private String name;
 	private String alias;
+	private String name;
 	
 	private int delayMs = 1;
 	
@@ -30,8 +30,19 @@ public class PinIOGroup implements IOPort {
 		this.delayMs = delayMs;
 		inputStream = new PinIOInputStream(this);
 		outputStream = new PinIOOutputStream(this);
+		this.name = buildName();
 	}
 
+	private String buildName() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("PinIOGroup: \n");
+		builder.append("[Enable] " + enablePin.getName() + "\n");
+		for(int i = 0; i < dataPins.length; i++) {
+			builder.append("[Data " + i + "] " + dataPins[i].getName() + "\n");
+		}
+		return builder.toString();
+	}
+	
 	@Override
 	public String getName() {
 		return name;
@@ -115,4 +126,8 @@ public class PinIOGroup implements IOPort {
 		BulldogUtil.sleepMs(delayMs);
 	}
 	
+	@Override
+	public String toString() {
+		return getName();
+	}
 }

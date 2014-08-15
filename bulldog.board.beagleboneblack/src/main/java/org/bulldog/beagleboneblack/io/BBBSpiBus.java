@@ -7,7 +7,6 @@ public class BBBSpiBus extends LinuxSpiBus {
 
 	public BBBSpiBus(String name, String deviceFilePath, Board board) {
 		super(name, deviceFilePath, board);
-		// TODO Auto-generated constructor stub
 	}
 
 }

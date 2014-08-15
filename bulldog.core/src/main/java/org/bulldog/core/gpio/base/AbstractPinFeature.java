@@ -52,4 +52,14 @@ public abstract class AbstractPinFeature implements PinFeature {
 	public boolean isSetup() {
 		return isSetup;
 	}
+	
+	@Override
+	public String toString() {
+		String string =  this.getName();
+		if(string == null) {
+			string = super.toString();
+		}
+		
+		return string;
+	}
 }

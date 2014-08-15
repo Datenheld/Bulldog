@@ -15,7 +15,7 @@ public class ExponentialEasing implements Easing {
 		if (t==d) { return 1.0f; }
 		if ((t/=d/2) < 1) { return 0.5f * (float)Math.pow(2, 10 * (t - 1)); }
 		
-		return 0.5f * (-(float)Math.pow(2, -10 * --t) + 2);
+		return 0.5f * (-(float)Math.pow(2, -10 * (t-1)) + 2);
 	}
 	
 }

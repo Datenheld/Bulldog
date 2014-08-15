@@ -36,6 +36,7 @@ public interface SpiBus extends Bus {
 	void selectSlaves(DigitalOutput... chipSelects);
 	void selectSlaves(Integer... chipSelectAddresses);
 	
+	SpiConnection createSpiConnection();
 	SpiConnection createSpiConnection(int chipSelectAddress);
 	SpiConnection createSpiConnection(DigitalOutput chipSelect);
 	SpiConnection createSpiConnection(DigitalOutput... chipSelects);

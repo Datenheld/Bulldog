@@ -120,7 +120,7 @@ public final class BitMagic {
 	}
 	
 	public static String toBitString(int dword) {
-		String s = String.format("0b%32s", Integer.toBinaryString(dword & 0xFFFFFFFF)).replace(' ', '0');
+		String s = String.format("0b%32s", Integer.toBinaryString(dword)).replace(' ', '0');
 		return s;
 	}
 	

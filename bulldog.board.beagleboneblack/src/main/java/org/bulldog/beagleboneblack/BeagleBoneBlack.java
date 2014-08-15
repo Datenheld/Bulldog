@@ -231,8 +231,10 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 	}
 	
 	private void createSpiBuses() {
-		getSpiBuses().add(new LinuxSpiBus(BBBNames.SPI_0, "/dev/spidev1.0", this));
-		getSpiBuses().add(new LinuxSpiBus(BBBNames.SPI_1, "/dev/spidev1.1", this));
+		getSpiBuses().add(new LinuxSpiBus(BBBNames.SPI_0_CS0, "/dev/spidev0.0", this));
+		getSpiBuses().add(new LinuxSpiBus(BBBNames.SPI_0_CS1, "/dev/spidev0.1", this));
+		getSpiBuses().add(new LinuxSpiBus(BBBNames.SPI_1_CS0, "/dev/spidev1.0", this));
+		getSpiBuses().add(new LinuxSpiBus(BBBNames.SPI_1_CS1, "/dev/spidev1.1", this));
 	}
 
 	private BBBUartPort createSerialPort(String name, String path, String slotName, Pin rx, Pin tx) {

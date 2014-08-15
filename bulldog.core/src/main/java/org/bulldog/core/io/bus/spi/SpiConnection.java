@@ -30,13 +30,19 @@ public class SpiConnection extends BusConnection {
 		}
 	}
 	
+	public SpiConnection(SpiBus bus) {
+		super(bus, 0);
+	}
+	
 	@Override
 	protected void acquireBus() throws IOException {
 		if(!getBus().isOpen()) {
 			getBus().open();
 		}
 		
-		getBus().selectSlaves(chipSelectList.toArray(new Integer[chipSelectList.size()]));
+		if(chipSelectList.size() > 0) {
+			getBus().selectSlaves(chipSelectList.toArray(new Integer[chipSelectList.size()]));
+		}
 	}
 	
 	/**

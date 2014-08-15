@@ -13,7 +13,7 @@ public class Pin {
 	private String name = null;
 	private String alias = null;
 	private String port = null;
-	private int indexOnPort = -0;
+	private int indexOnPort = 0;
 	private PinFeature activeFeature = null;
 	private PinFeature blocker = null;
 	private List<FeatureActivationListener> activationListeners = new ArrayList<FeatureActivationListener>();

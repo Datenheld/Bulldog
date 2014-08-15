@@ -96,7 +96,7 @@ public class TestPin {
 		TestCase.assertNull(pin.getActiveFeature());
 		
 		try {
-			feature = pin.as(MockedPinFeature1.class);
+			pin.as(MockedPinFeature1.class);
 			TestCase.fail();
 		} catch(IllegalArgumentException ex) {}
 	}

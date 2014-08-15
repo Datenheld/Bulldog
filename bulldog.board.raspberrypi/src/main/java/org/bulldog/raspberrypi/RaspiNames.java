@@ -27,4 +27,8 @@ public class RaspiNames {
 	
 	public static final String PWM_PIN = P1_12;
 	
+	public static final String I2C_0 = "I2C_0";
+	public static final String SPI_0_CS0 = "SPI_0_0";
+	public static final String SPI_0_CS1 = "SPI_0_1";
+	
 }

@@ -3,11 +3,13 @@ package org.bulldog.raspberrypi;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.base.DigitalIOFeature;
 import org.bulldog.core.platform.AbstractBoard;
+import org.bulldog.linux.io.LinuxSpiBus;
 import org.bulldog.linux.sysinfo.CpuInfo;
 import org.bulldog.linux.util.LinuxLibraryLoader;
 import org.bulldog.raspberrypi.gpio.RaspiDigitalInput;
 import org.bulldog.raspberrypi.gpio.RaspiDigitalOutput;
 import org.bulldog.raspberrypi.gpio.RaspiPwm;
+import org.bulldog.raspberrypi.io.RaspberryPiI2cBus;
 
 public class RaspberryPi extends AbstractBoard {
 
@@ -31,6 +33,8 @@ public class RaspberryPi extends AbstractBoard {
 		} else {
 			createPinsRev1();
 		}
+		
+		createIOPorts();
 	}
 
 	@Override
@@ -93,6 +97,12 @@ public class RaspberryPi extends AbstractBoard {
 		RaspberryPiPin pin = new RaspberryPiPin(name, gpioAddress, port, portIndex, gpioAddress);
 		pin.addFeature(new DigitalIOFeature(pin, new RaspiDigitalInput(pin), new RaspiDigitalOutput(pin)));
 		return pin;
+	}
+	
+	private void createIOPorts() {
+		getI2cBuses().add(new RaspberryPiI2cBus(RaspiNames.I2C_0, "/dev/i2c-0", getPin(RaspiNames.P1_3), getPin(RaspiNames.P1_5)));
+		getSpiBuses().add(new LinuxSpiBus(RaspiNames.SPI_0_CS0, "/dev/spidev0.0", this));
+		getSpiBuses().add(new LinuxSpiBus(RaspiNames.SPI_0_CS1, "/dev/spidev0.1", this));
 	}
 	
 	private int getRevision() {

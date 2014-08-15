@@ -6,6 +6,7 @@ import java.util.Arrays;
 import org.bulldog.beagleboneblack.BBBNames;
 import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.io.bus.spi.SpiBus;
+import org.bulldog.core.io.bus.spi.SpiConnection;
 import org.bulldog.core.io.bus.spi.SpiMode;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
@@ -20,13 +21,24 @@ public class SpiExample {
 		final Board board = Platform.createBoard();
     	
 		//Retrieve the bus object
-		SpiBus bus = board.getSpiBus(BBBNames.SPI_0);
+		SpiBus bus = board.getSpiBus(BBBNames.SPI_1_CS0);
 		
+		//We shall handle our chip selects via bulldog. This gives us better flexibility.
+		//and allows for more devices without multiplexing the internal CS lines.
 		DigitalOutput chipSelect1 =  board.getPin(BBBNames.P8_12).as(DigitalOutput.class);
 		MCP4902 dac1 = new MCP4902(bus, chipSelect1);
 		
 		DigitalOutput chipSelect2 =  board.getPin(BBBNames.P8_14).as(DigitalOutput.class);
 		MCP4902 dac2 = new MCP4902(bus, chipSelect2);
+		
+		//If you want to use the builtin chip select feature, you needn't use 
+		//any manual chip selects and you needn't select slaves at all.
+		//But if you want to talk to more than one device you have to implement
+		//your custom chip select multiplexing. This is something that libbulldog
+		//does for you when you use the simple "manual" cs line feature.
+		SpiConnection connection = bus.createSpiConnection();
+		connection.writeByte(0xFF);
+		
 		
 		//Before we can do anything, let's open the bus. This is only necessary if the bus
 		//is directly used. Connections will attempt to open the bus if it is closed.

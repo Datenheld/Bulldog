@@ -10,6 +10,9 @@ public class BBBPwmManager {
 	private Set<BBBPwm> activePwms = new HashSet<BBBPwm>();
 	
 	public boolean canActivatePwmOnPin(BBBPwm pwm) {
+		if(pwm == null) {
+			throw new IllegalArgumentException("pwm must not be null!");
+		}
 		BBBPwm activePwm = getActivePin(pwm);
 		return activePwm == null && !(pwm == activePwm);
 	}

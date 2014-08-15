@@ -38,6 +38,11 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 	}
 
 	@Override
+	public SpiConnection createSpiConnection() {
+		return new SpiConnection(this);
+	}
+	
+	@Override
 	public SpiConnection createSpiConnection(int address) {
 		return new SpiConnection(this, address);
 	}
@@ -108,7 +113,9 @@ public class LinuxSpiBus extends AbstractLinuxBus implements SpiBus {
 	@Override
 	public void selectSlaves(DigitalOutput... chipSelects) {
 		getSlaveSelectPins().clear();
-		getSlaveSelectPins().addAll(Arrays.asList(chipSelects));
+		if(chipSelects != null && chipSelects.length > 0) {
+			getSlaveSelectPins().addAll(Arrays.asList(chipSelects));
+		}
 	}
 	
 
