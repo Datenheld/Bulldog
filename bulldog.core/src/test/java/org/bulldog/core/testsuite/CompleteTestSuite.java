@@ -7,6 +7,7 @@ import org.bulldog.core.gpio.base.TestAbstractDigitalInput;
 import org.bulldog.core.gpio.base.TestAbstractDigitalOutput;
 import org.bulldog.core.gpio.base.TestAbstractPinFeature;
 import org.bulldog.core.gpio.base.TestAbstractPwm;
+import org.bulldog.core.gpio.base.TestDigitalIOFeature;
 import org.bulldog.core.gpio.base.TestPin;
 import org.bulldog.core.gpio.util.TestSoftPwm;
 import org.bulldog.core.platform.TestAbstractBoard;
@@ -25,6 +26,7 @@ import org.junit.runners.Suite.SuiteClasses;
 				TestAbstractPinFeature.class,
 				TestAbstractDigitalOutput.class,
 				TestAbstractDigitalInput.class,
+				TestDigitalIOFeature.class,
 				TestAbstractAnalogInput.class,
 				TestAbstractPwm.class,
 				TestSignal.class,

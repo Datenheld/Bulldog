@@ -134,7 +134,11 @@ public final class BitMagic {
 	}
 	
 	public static byte getUpperNibble(byte b) {
-		return (byte)(b & 0xF0 >> 4);
+		return (byte)((b & 0xF0) >> 4);
+	}
+	
+	public static byte byteFromNibbles(int upperNibble, int lowerNibble) {
+		 return byteFromNibbles((byte)upperNibble, (byte)lowerNibble);
 	}
 	
 	public static byte byteFromNibbles(byte upperNibble, byte lowerNibble) {

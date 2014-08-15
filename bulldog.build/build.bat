@@ -1,1 +1,1 @@
-gradle -x test --daemon clean build distribution archiveDistributions
+gradle -x test --daemon clean build docs distribution archiveDistributions

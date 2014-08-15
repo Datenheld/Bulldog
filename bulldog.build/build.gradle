@@ -60,7 +60,7 @@ configure(allJavaProjects) {
     	}
     }
     
-    /*task sourcesJar(type: Jar, dependsOn:classes) { 
+    task sourcesJar(type: Jar, dependsOn:classes) { 
        classifier = 'sources' 
        from sourceSets.main.allSource 
 	} 
@@ -73,7 +73,7 @@ configure(allJavaProjects) {
 	artifacts { 
 	     archives sourcesJar 
 	     archives javadocJar 
-	} */
+	} 
     
     uploadArchives {
     	repositories {
@@ -104,7 +104,7 @@ boardProjects.each { def boardProject ->
     } 
 } 
 
-/*task singleJarSources(type: Copy) {
+task singleJarSources(type: Copy) {
     baseName = "sources"
     destinationDir = new File(distributionDirectory, 'sources')
     
@@ -112,7 +112,7 @@ boardProjects.each { def boardProject ->
 		evaluationDependsOn(javaProject.path) 
 		from zipTree(javaProject.sourcesJar.archivePath) 
 	}	
-}*/
+}
 
 boardProjects.each { def boardProject -> 
 	evaluationDependsOn(boardProject.path)

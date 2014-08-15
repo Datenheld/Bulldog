@@ -11,7 +11,7 @@ import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;
 
 /**
- * For this example, UART2 on the BeagleboneBlack ist connected to UART1.
+ * For this example, UART2 on the BeagleboneBlack is connected to UART1.
  * UART2 reads the data from UART1 event driven and writes to UART1.
  * UART1 reads the data from UART2 synchronously and writes to UART2.
  * 

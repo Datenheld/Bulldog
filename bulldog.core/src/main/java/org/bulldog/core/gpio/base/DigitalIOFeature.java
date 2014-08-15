@@ -199,12 +199,24 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 	
 	@Override
 	protected void setupImpl() {
-
 	}
 
 	@Override
 	protected void teardownImpl() {
-
+	}
+	
+	public boolean isBlocking() {
+		return getPin().getBlocker() == this || getPin().getBlocker() == output || getPin().getBlocker() == input;
 	}
 
+	@Override
+	public boolean isInputActive() {
+		return input.isSetup();
+	}
+
+	@Override
+	public boolean isOutputActive() {
+		return output.isSetup();
+	}
+	
 }

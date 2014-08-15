@@ -212,6 +212,37 @@ public class TestBitMagic {
 	}
 	
 	@Test
+	public void testNibbles() {
+		byte testByte = (byte)0xFA;
+		TestCase.assertEquals(0x0A, BitMagic.getLowerNibble(testByte));
+		TestCase.assertEquals(0x0F, BitMagic.getUpperNibble(testByte));
+		
+		testByte = (byte)0x0A;
+		TestCase.assertEquals(0x0A, BitMagic.getLowerNibble(testByte));
+		TestCase.assertEquals(0x00, BitMagic.getUpperNibble(testByte));
+		
+		testByte = (byte)0x00;
+		TestCase.assertEquals(0x00, BitMagic.getLowerNibble(testByte));
+		TestCase.assertEquals(0x00, BitMagic.getUpperNibble(testByte));
+		
+		testByte = (byte)0xFF;
+		TestCase.assertEquals(0x0F, BitMagic.getLowerNibble(testByte));
+		TestCase.assertEquals(0x0F, BitMagic.getUpperNibble(testByte));
+		
+		TestCase.assertEquals((byte)0xFF, BitMagic.byteFromNibbles(0x0F, 0x0F));
+		TestCase.assertEquals((byte)0xAB, BitMagic.byteFromNibbles(0x0A, 0x0B));
+	}
+	
+	@Test
+	public void testReversing() {
+		TestCase.assertEquals((byte)0b10000000, BitMagic.reverse((byte)0b00000001));
+		TestCase.assertEquals((byte)0b11000000, BitMagic.reverse((byte)0b00000011));
+		TestCase.assertEquals((byte)0b10001000, BitMagic.reverse((byte)0b00010001));
+		TestCase.assertEquals((byte)0x00, BitMagic.reverse((byte)0x00));
+		TestCase.assertEquals((byte)0xFF, BitMagic.reverse((byte)0xFF));
+	}
+	
+	@Test
 	public void testBitToString() {
 		TestCase.assertEquals("0b00000000", BitMagic.toBitString((byte)0b00000000));
 		TestCase.assertEquals("0b00100010", BitMagic.toBitString((byte)0b00100010));

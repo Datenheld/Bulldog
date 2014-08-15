@@ -31,7 +31,6 @@ int spiOpen(char* busDevice, int mode, int speed, int bitsPerWord, int lsbFirst)
 
 int spiConfig(int fileDescriptor, int mode, int speed, int bitsPerWord, int lsbFirst) {
 
-	printf("MODE: %i\n", mode);
 	if(ioctl(fileDescriptor, SPI_IOC_WR_MODE, &mode) < 0) {
 		errorMessage("cannot set spi mode: %s", strerror(errno));
 		return -1 ;
@@ -42,7 +41,6 @@ int spiConfig(int fileDescriptor, int mode, int speed, int bitsPerWord, int lsbF
 		return -1 ;
 	}
 
-	printf("BPW: %i\n", bitsPerWord);
 	if(ioctl(fileDescriptor, SPI_IOC_WR_BITS_PER_WORD, &bitsPerWord) < 0) {
 		errorMessage("cannot set spi bits per word: %s", strerror(errno));
 		return -1;

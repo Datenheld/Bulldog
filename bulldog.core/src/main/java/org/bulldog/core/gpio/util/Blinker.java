@@ -66,7 +66,7 @@ public class Blinker implements Runnable {
 			}
 		} else {
 			times = times - 1;
-			if(times == 0) { stopBlinking(); }
+			if(times == 0) { stopBlinking(); doTimes = false; }
 		}
 				
 		output.toggle();
