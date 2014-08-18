@@ -27,7 +27,6 @@ def nativeProjects = [
 def allJavaProjects = new LinkedList(javaProjects);
 allJavaProjects.addAll(boardProjects)
 
-def distributions = new LinkedList();
 		
 if(hasProperty('board')) {
 	println "building for " + board
@@ -87,12 +86,6 @@ configure(allJavaProjects) {
     }	
 }
 
-boardProjects.each { def boardProject ->
-	evaluationDependsOn(boardProject.path)
-	distributions.addAll(boardProject.distributions);
-}
-
-
 boardProjects.each { def boardProject -> 
 	evaluationDependsOn(boardProject.path) 
 	boardProject.distributions.each { distribution ->
@@ -102,6 +95,7 @@ boardProjects.each { def boardProject ->
 	        
 	        manifest { 
 	     		attributes 'Main-Class': 'org.bulldog.examples.PwmExample' 
+	     		attributes 'Created-By': 'libbulldog.org - Version ' + bulldogVersion
 	     	}
 	    
 	    	javaProjects.each { javaProject -> 
@@ -113,16 +107,6 @@ boardProjects.each { def boardProject ->
 		}
     } 
 } 
-
-task singleJarSources(type: Copy) {
-    baseName = "sources"
-    destinationDir = new File(distributionDirectory, 'sources')
-    
-	allJavaProjects.each { javaProject -> 
-		evaluationDependsOn(javaProject.path) 
-		from zipTree(javaProject.sourcesJar.archivePath) 
-	}	
-}
 
 boardProjects.each { def boardProject -> 
 	evaluationDependsOn(boardProject.path)
@@ -147,18 +131,7 @@ boardProjects.each { def boardProject ->
 	       destinationDir = boardDistributionDirectory(distribution.distributionBaseName)
 	       excludes = [ '*.zip', '*sources.*' ]
 	       from boardDistributionDirectory(distribution.distributionBaseName)
-	    } 
-    }
-} 
-
-boardProjects.each { def boardProject -> 
-	evaluationDependsOn(boardProject.path)
-	boardProject.distributions.each { distribution ->
-	    tasks.create(name: "createZipArchiveWithSources$distribution.distributionBaseName", type: Zip) { 
-	       baseName = distribution.distributionBaseName + 'WithSources-' + bulldogVersion
-	       destinationDir = boardDistributionDirectory(distribution.distributionBaseName)
-	       excludes = [ '*.zip' ]
-	       from boardDistributionDirectory(distribution.distributionBaseName)
+	       from 'src/main/resources'
 	    } 
     }
 } 

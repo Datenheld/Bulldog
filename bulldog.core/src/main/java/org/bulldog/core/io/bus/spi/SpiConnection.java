@@ -48,7 +48,8 @@ public class SpiConnection extends BusConnection {
 	/**
 	 * Full duplex transfer
 	 * @param bytes
-	 * @return
+	 * @return a SpiMessage containing the data that has been sent
+	 * 		   and the data that has been received.
 	 * @throws IOException 
 	 */
 	public SpiMessage transfer(byte[] bytes) throws IOException {
