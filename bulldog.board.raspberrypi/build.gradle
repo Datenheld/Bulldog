@@ -1,8 +1,11 @@
 ext {
-	distributionBaseName = 'bulldog.raspberrypi'
-	distributionFiles = files('../bulldog.linux.native/build/binaries/bulldogSharedLibrary/raspberrypi/libbulldog-linux.so')
+	distributions = [ new RaspberryPiDistribution() ]
 }
 
+class RaspberryPiDistribution {
+	def distributionBaseName = 'bulldog.raspberrypi'
+	def distributionFiles = ['../bulldog.linux.native/build/binaries/bulldogSharedLibrary/raspberrypi/libbulldog-linux.so']
+}
 
 dependencies {
     compile project(':bulldog.core')

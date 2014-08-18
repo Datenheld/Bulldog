@@ -68,12 +68,25 @@ public class PwmExample {
 		softPwm.setDuty(0.2f);
 		softPwm.enable();
 		
-		while(true) {
+		for(int i = 0; i < 10; i++) {
 			for(double d = 0.0; d < 1.0; d += 0.01) {
 				pwm5.setDuty(d);
 				pwm6.setDuty(d);
+			
+				BulldogUtil.sleepMs(1);
 			}
-			BulldogUtil.sleepMs(10);
+			
+			for(double d = 1.0; d > 0.0; d -= 0.01) {
+				pwm5.setDuty(d);
+				pwm6.setDuty(d);
+				
+				BulldogUtil.sleepMs(1);
+			}
+		}
+		
+		while(true) {
+			System.out.println("You can exit with ctrl + c");
+			BulldogUtil.sleepMs(100);
 		}
 		
 	}

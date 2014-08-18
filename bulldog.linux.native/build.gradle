@@ -9,13 +9,19 @@ model {
             	  linker.executable = System.properties['org.bulldog.gcc.arm.linker']
             	  assembler.executable = System.properties['org.bulldog.gcc.arm.assembler']
             	  staticLibArchiver.executable = System.properties['org.bulldog.gcc.arm.archiver']
-	              addPlatformConfiguration(new BeagleboneArmArchitecture())
+	              addPlatformConfiguration(new BeagleboneArmSoftFpArchitecture())
+	              addPlatformConfiguration(new BeagleboneArmHardFpArchitecture())
 	              addPlatformConfiguration(new RaspberryPiArmArchitecture())
 	        }
     }
     
     platforms {
-        beagleboneblack {
+        beagleboneblackSoftFp {
+            architecture "arm"
+            operatingSystem "linux"
+        }
+        
+        beagleboneblackHardFp {
             architecture "arm"
             operatingSystem "linux"
         }
@@ -60,13 +66,13 @@ libraries() {
 	}	
 }
 
-class BeagleboneArmArchitecture implements TargetPlatformConfiguration {
+class BeagleboneArmSoftFpArchitecture implements TargetPlatformConfiguration {
 
-	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline", , "-mfloat-abi=softfp"]
+	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline", "-mtune=cortex-a8", "-mfloat-abi=softfp"]
 	def linkerArgs =  ["--gc-sections", "-shared"]
 
     boolean supportsPlatform(Platform element) {
-    	return element.toString().contains('beagleboneblack')
+    	return element.toString().contains('beagleboneblackSoftFp')
     }
 
     List<String> getCppCompilerArgs() {
@@ -98,6 +104,43 @@ class BeagleboneArmArchitecture implements TargetPlatformConfiguration {
     }
 }
 
+class BeagleboneArmHardFpArchitecture implements TargetPlatformConfiguration {
+
+	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline", "-mtune=cortex-a8", "-mfloat-abi=hard"]
+	def linkerArgs =  ["--gc-sections", "-shared"]
+
+    boolean supportsPlatform(Platform element) {
+    	return element.toString().contains('beagleboneblackHardFp')
+    }
+
+    List<String> getCppCompilerArgs() {
+       compilerArgs
+    }
+
+    List<String> getCCompilerArgs() {
+       compilerArgs
+    }
+
+    List<String> getObjectiveCCompilerArgs() {
+        []
+    }
+
+    List<String> getObjectiveCppCompilerArgs() {
+        []
+    }
+
+    List<String> getAssemblerArgs() {
+        []
+    }
+
+    List<String> getLinkerArgs() {
+       linkerArgs
+    }
+
+    List<String> getStaticLibraryArchiverArgs() {
+        []
+    }
+}
 
 class RaspberryPiArmArchitecture implements TargetPlatformConfiguration {
 

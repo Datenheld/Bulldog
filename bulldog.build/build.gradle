@@ -23,8 +23,11 @@ def nativeProjects = [
 					  project(":bulldog.linux.native")
 					 ]
 					 
+					 
 def allJavaProjects = new LinkedList(javaProjects);
 allJavaProjects.addAll(boardProjects)
+
+def distributions = new LinkedList();
 		
 if(hasProperty('board')) {
 	println "building for " + board
@@ -84,23 +87,30 @@ configure(allJavaProjects) {
     }	
 }
 
+boardProjects.each { def boardProject ->
+	evaluationDependsOn(boardProject.path)
+	distributions.addAll(boardProject.distributions);
+}
+
 
 boardProjects.each { def boardProject -> 
 	evaluationDependsOn(boardProject.path) 
-    tasks.create(name: "singleJar$boardProject.name", type: Jar) { 
-        baseName = boardProject.distributionBaseName
-        destinationDir = boardDistributionDirectory(boardProject.distributionBaseName)
-        
-        manifest { 
-     		attributes 'Main-Class': 'org.bulldog.examples.SpiExample' 
-     	}
-    
-    	javaProjects.each { javaProject -> 
-    		evaluationDependsOn(javaProject.path) 
-    		from zipTree(javaProject.jar.archivePath) 
-		}	
-		
-		from zipTree(boardProject.jar.archivePath)
+	boardProject.distributions.each { distribution ->
+    	tasks.create(name: "singleJar$distribution.distributionBaseName", type: Jar) { 
+	        baseName = distribution.distributionBaseName
+	        destinationDir = boardDistributionDirectory(distribution.distributionBaseName)
+	        
+	        manifest { 
+	     		attributes 'Main-Class': 'org.bulldog.examples.PwmExample' 
+	     	}
+	    
+	    	javaProjects.each { javaProject -> 
+	    		evaluationDependsOn(javaProject.path) 
+	    		from zipTree(javaProject.jar.archivePath) 
+			}	
+			
+			from zipTree(boardProject.jar.archivePath)
+		}
     } 
 } 
 
@@ -117,34 +127,40 @@ task singleJarSources(type: Copy) {
 boardProjects.each { def boardProject -> 
 	evaluationDependsOn(boardProject.path)
 	evaluationDependsOn(project(':bulldog.linux.native').path)
-    tasks.create(name: "distribute$boardProject.name", type: Copy, dependsOn: [ project(':bulldog.linux.native').tasks.matching  { Task task -> task.name.contains('BulldogSharedLibrary') } ]) { 
-       //delete project.distributionDirectory
-       destinationDir = boardDistributionDirectory(boardProject.distributionBaseName)
-       destinationDir.mkdirs()
-       FileCollection collection = boardProject.distributionFiles
-       from collection
-       into destinationDir
+	boardProject.distributions.each { distribution ->
+	    tasks.create(name: "distribute$distribution.distributionBaseName", type: Copy, dependsOn: [ project(':bulldog.linux.native').tasks.matching  { Task task -> task.name.contains('BulldogSharedLibrary') } ]) { 
+	       //delete project.distributionDirectory
+	       destinationDir = boardDistributionDirectory(distribution.distributionBaseName)
+	       destinationDir.mkdirs()
+	       FileCollection collection = files(distribution.distributionFiles)
+	       from collection
+	       into destinationDir
+       }
     }     
 } 
 
 boardProjects.each { def boardProject -> 
 	evaluationDependsOn(boardProject.path)
-    tasks.create(name: "createZipArchive$boardProject.name", type: Zip) { 
-       baseName = boardProject.distributionBaseName + '-' + bulldogVersion
-       destinationDir = boardDistributionDirectory(boardProject.distributionBaseName)
-       excludes = [ '*.zip', '*sources.*' ]
-       from boardDistributionDirectory(boardProject.distributionBaseName)
-    } 
+	boardProject.distributions.each { distribution ->
+	    tasks.create(name: "createZipArchive$distribution.distributionBaseName", type: Zip) { 
+	       baseName = distribution.distributionBaseName + '-' + bulldogVersion
+	       destinationDir = boardDistributionDirectory(distribution.distributionBaseName)
+	       excludes = [ '*.zip', '*sources.*' ]
+	       from boardDistributionDirectory(distribution.distributionBaseName)
+	    } 
+    }
 } 
 
 boardProjects.each { def boardProject -> 
 	evaluationDependsOn(boardProject.path)
-    tasks.create(name: "createZipArchiveWithSources$boardProject.name", type: Zip) { 
-       baseName = boardProject.distributionBaseName + 'WithSources-' + bulldogVersion
-       destinationDir = boardDistributionDirectory(boardProject.distributionBaseName)
-       excludes = [ '*.zip' ]
-       from boardDistributionDirectory(boardProject.distributionBaseName)
-    } 
+	boardProject.distributions.each { distribution ->
+	    tasks.create(name: "createZipArchiveWithSources$distribution.distributionBaseName", type: Zip) { 
+	       baseName = distribution.distributionBaseName + 'WithSources-' + bulldogVersion
+	       destinationDir = boardDistributionDirectory(distribution.distributionBaseName)
+	       excludes = [ '*.zip' ]
+	       from boardDistributionDirectory(distribution.distributionBaseName)
+	    } 
+    }
 } 
 
 task docs(type: Javadoc) {

@@ -25,7 +25,6 @@ package org.bulldog.core.gpio.event;
  * the threshold event occurs, that object's appropriate
  * method is invoked.
  *
- * @see ThresholdEvent
  */
 public interface ThresholdListener {
 

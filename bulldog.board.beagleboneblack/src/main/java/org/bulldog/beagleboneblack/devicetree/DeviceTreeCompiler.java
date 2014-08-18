@@ -13,8 +13,8 @@ public class DeviceTreeCompiler {
 	private static final String COMPILER_CALL = "dtc -O dtb -o %s -b 0 -@ %s";
 	
 	public static void compileOverlay(String overlay, String deviceName) throws IOException, InterruptedException {
-		String objectFile = String.format(OBJECT_FILE_PATTERN, FIRMWARE_PATH, deviceName, ".dtbo");
-		String overlayFile = String.format(DEFINITION_FILE_PATTERN, FIRMWARE_PATH, deviceName, ".dts");
+		String objectFile = String.format(OBJECT_FILE_PATTERN, FIRMWARE_PATH, deviceName);
+		String overlayFile = String.format(DEFINITION_FILE_PATTERN, FIRMWARE_PATH, deviceName);
 		
 		File file = new File(overlayFile);
 		FileOutputStream outputStream = new FileOutputStream(file);

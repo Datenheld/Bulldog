@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalInput;
-import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.gpio.Pwm;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
@@ -22,7 +21,6 @@ public class App
     public static void main(String[] args) throws IOException
     {
     	Board board = Platform.createBoard();
-    	DigitalOutput out = board.getPin(RaspiNames.P1_7).as(DigitalOutput.class);
     	DigitalInput in = board.getPin(RaspiNames.P1_5).as(DigitalInput.class);
     	Pwm pwm = board.getPin(RaspiNames.PWM_PIN).as(Pwm.class);
     	pwm.setFrequency(100000);
