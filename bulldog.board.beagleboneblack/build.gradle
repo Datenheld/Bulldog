@@ -1,0 +1,19 @@
+ext {
+	distributions = [ new SoftFpDistribution(), new HardFpDistribution() ]
+}
+
+class SoftFpDistribution {
+	def distributionBaseName = 'bulldog.beagleboneblack.softfp'
+	def distributionFiles = ['../bulldog.linux.native/build/binaries/bulldogSharedLibrary/beagleboneblackSoftFp/libbulldog-linux.so']
+}
+
+class HardFpDistribution {
+	def distributionBaseName = 'bulldog.beagleboneblack.hardfp'
+	def distributionFiles = ['../bulldog.linux.native/build/binaries/bulldogSharedLibrary/beagleboneblackHardFp/libbulldog-linux.so']
+}
+
+dependencies {
+    compile project(':bulldog.core')
+    compile project(':bulldog.linux')
+    runtime fileTree(dir: project(':bulldog.linux.native').buildDir, include: '**/*.so')
+}

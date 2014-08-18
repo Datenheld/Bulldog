@@ -1,0 +1,14 @@
+ext {
+	distributions = [ new RaspberryPiDistribution() ]
+}
+
+class RaspberryPiDistribution {
+	def distributionBaseName = 'bulldog.raspberrypi'
+	def distributionFiles = ['../bulldog.linux.native/build/binaries/bulldogSharedLibrary/raspberrypi/libbulldog-linux.so']
+}
+
+dependencies {
+    compile project(':bulldog.core')
+    compile project(':bulldog.linux')
+    runtime fileTree(dir: project(':bulldog.linux.native').buildDir, include: '**/*.so')
+}

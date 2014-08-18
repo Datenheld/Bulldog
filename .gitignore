@@ -1,0 +1,11 @@
+/bulldog.tools/
+/.metadata/
+target/
+.settings/
+.gradle/
+Debug/
+Release/
+build/
+bin/
+bulldog.repository/
+dist/**/sources/**

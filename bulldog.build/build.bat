@@ -1,0 +1,1 @@
+gradle -x test --daemon clean build docs distribution archiveDistributions

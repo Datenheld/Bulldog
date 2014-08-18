@@ -1,0 +1,7 @@
+includeFlat "bulldog.core", 
+			"bulldog.devices", 
+			"bulldog.examples",
+			"bulldog.linux.native", 
+			"bulldog.linux", 
+			"bulldog.board.beagleboneblack",
+			"bulldog.board.raspberrypi"
