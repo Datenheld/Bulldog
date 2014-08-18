@@ -23,5 +23,6 @@ Contents of this archive:
 
 Installation:
 
-    Just copy the native library and the jar to the place you want them to be. They must be in the same directory. 
-    Then, just use the jar in your project like you would use any other jar.
+    Just copy the native library and the jar to the place you want them to be.
+    They must be in the same directory. Then, just use the jar in your project
+    like you would use any other jar.
