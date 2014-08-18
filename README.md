@@ -1,7 +1,7 @@
 Bulldog
 =======
 
-Bulldog is a Java library for the Beaglebone Black written in Java.
+Bulldog is a Java library for the Beaglebone Black.
 
 Visit its website: http://www.libbulldog.org
 
