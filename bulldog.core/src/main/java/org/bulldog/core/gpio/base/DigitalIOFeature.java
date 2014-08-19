@@ -51,61 +51,73 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 
 	@Override
 	public void disableInterrupts() {
+		setupInputIfNecessary();
 		input.disableInterrupts();
 	}
 
 	@Override
 	public void enableInterrupts() {
+		setupInputIfNecessary();
 		input.enableInterrupts();
 	}
 
 	@Override
 	public boolean areInterruptsEnabled() {
+		setupInputIfNecessary();
 		return input.areInterruptsEnabled();
 	}
 
 	@Override
 	public void setInterruptDebounceMs(int milliSeconds) {
+		setupInputIfNecessary();
 		input.setInterruptDebounceMs(milliSeconds);
 	}
 
 	@Override
 	public int getInterruptDebounceMs() {
+		setupInputIfNecessary();
 		return input.getInterruptDebounceMs();
 	}
 
 	@Override
 	public void setInterruptTrigger(Edge edge) {
+		setupInputIfNecessary();
 		input.setInterruptTrigger(edge);
 	}
 
 	@Override
 	public Edge getInterruptTrigger() {
+		setupInputIfNecessary();
 		return input.getInterruptTrigger();
 	}
 
 	@Override
 	public void fireInterruptEvent(InterruptEventArgs args) {
+		setupInputIfNecessary();
 		input.fireInterruptEvent(args);
 	}
 
 	@Override
 	public void addInterruptListener(InterruptListener listener) {
+		setupInputIfNecessary();
 		input.addInterruptListener(listener);
 	}
 
 	@Override
 	public void removeInterruptListener(InterruptListener listener) {
+		setupInputIfNecessary();
 		input.removeInterruptListener(listener);
 	}
 
 	@Override
 	public void clearInterruptListeners() {
+		setupInputIfNecessary();
 		input.clearInterruptListeners();
 	}
 
 	@Override
 	public List<InterruptListener> getInterruptListeners() {
+		setupInputIfNecessary();
 		return input.getInterruptListeners();
 	}
 
@@ -128,6 +140,7 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 
 	@Override
 	public Signal getAppliedSignal() {
+		setupOutputIfNecessary();
 		return output.getAppliedSignal();
 	}
 
@@ -189,11 +202,13 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 	
 	@Override
 	public boolean isBlinking() {
+		setupOutputIfNecessary();
 		return output.isBlinking();
 	}
 
 	@Override
 	public void awaitBlinkingStopped() {
+		setupOutputIfNecessary();
 		output.awaitBlinkingStopped();
 	}
 	
@@ -203,6 +218,11 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 
 	@Override
 	protected void teardownImpl() {
+		if(isInputActive()) {
+			input.teardown();
+		} else if(isOutputActive()) {
+			output.teardown();
+		}
 	}
 	
 	public boolean isBlocking() {
