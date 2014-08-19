@@ -39,27 +39,27 @@ public class ServoExample {
     	BulldogUtil.sleepMs(1000);
     	
     	// Controlling the servo using the move API
-    	System.out.println("Moving to 45°");
+    	System.out.println("Moving to 45 degrees");
     	servo.moveTo(45.0f);
     	
-    	// move 45 degrees (from 45° to 90°) in 3000 milliseconds
-    	System.out.println("Moving to 90°");
+    	// move 45 degrees (from 45 degrees to 90 degrees) in 3000 milliseconds
+    	System.out.println("Moving to 90 degrees");
     	servo.moveTo(90.0f, 2000);
     	
-    	// performing a sweep (90° to 180° to 0° in 5000 milliseconds)
+    	// performing a sweep (90 degrees to 180 degrees to 0 degrees in 5000 milliseconds)
     	System.out.println("Sweeping");
     	servo.move(new Sweep(3000));
     	
     	// perform a linear move - move to position in specified time
-    	System.out.println("Moving to 60 in 2 seconds°");
+    	System.out.println("Moving to 60 in 2 seconds degrees");
     	servo.move(new LinearMove(60.0f, 2000));
     	
-    	// perform an eased move (a smoothed move) to 120° in 2000 milliseconds
-    	System.out.println("Moving to 120° in 2 seconds");
+    	// perform an eased move (a smoothed move) to 120 degrees in 2000 milliseconds
+    	System.out.println("Moving to 120 degrees in 2 seconds");
     	servo.move(new EasedMove(new SineEasing(), 120.0f, 2000, EasingOptions.EaseInOut));
     	
     	// perform a smooth move
-    	System.out.println("Moving to 0° as fast as possible, but smoothed");
+    	System.out.println("Moving to 0 degrees as fast as possible, but smoothed");
     	servo.moveSmoothTo(0.0f);
     	
     	// move async
