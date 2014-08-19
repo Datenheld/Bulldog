@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.bulldog.core.gpio.Pwm;
+import org.bulldog.core.util.DaemonThreadFactory;
 import org.bulldog.core.util.easing.SineEasing;
 import org.bulldog.devices.actuators.Actuator;
 import org.bulldog.devices.actuators.movement.DirectMove;
@@ -29,13 +30,13 @@ public class Servo implements Actuator {
 	private double maxAngleDuty;
 	private int degreeMilliseconds; 
 	
-	private ExecutorService executor = Executors.newSingleThreadExecutor();
+	private ExecutorService executor = Executors.newSingleThreadExecutor(new DaemonThreadFactory());
 	private Future<?> currentMove = null;
 	
 	private List<ServoListener> listeners = Collections.synchronizedList(new ArrayList<ServoListener>());
 	
 	public Servo (Pwm pwm) {
-		this(pwm, INITIAL_POSITION_DEFAULT);
+		this(pwm, INITIAL_POSITION_DEFAULT); 
 	}
 	
 	public Servo(Pwm pwm, float initialAngle) {
@@ -55,6 +56,7 @@ public class Servo implements Actuator {
 	}
 	
 	public void setAngle(double degrees) {
+		double oldAngle = angle;
 		angle = degrees;
 		if(angle < 0.0f) {
 			angle = 0.0f;
@@ -65,6 +67,7 @@ public class Servo implements Actuator {
 		}
 		
 		pwm.setDuty(getDutyForAngle(angle));
+		fireAngleChanged(oldAngle, angle);
 	}
 	
 	public void moveTo(double angle) {
@@ -190,5 +193,14 @@ public class Servo implements Actuator {
 	@Override
 	public int getRefreshIntervalMilliseconds() {
 		return (int) (1000 / this.getPwm().getFrequency());
+	}
+
+	@Override
+	public boolean isMoving() {
+		if(currentMove != null) {
+			return !currentMove.isDone();
+		}
+		
+		return false;
 	}
 }

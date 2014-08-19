@@ -68,4 +68,10 @@ public class UnipolarStepper extends AbstractStepper {
 		
 	}
 
+	@Override
+	public boolean isMoving() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
