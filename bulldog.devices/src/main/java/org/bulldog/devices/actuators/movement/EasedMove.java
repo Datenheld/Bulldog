@@ -43,15 +43,15 @@ public class EasedMove implements Move {
 			double positionFactor = options.calculate(easing, i, amountSteps);
 			double step = positionFactor * delta;
 			if(isInverse) {
-				actuator.moveTo(startPosition - step);
+				actuator.setPosition(startPosition - step);
 			} else {
-				actuator.moveTo(startPosition + step);
+				actuator.setPosition(startPosition + step);
 			}
 			
 			BulldogUtil.sleepMs(actuator.getRefreshIntervalMilliseconds());
 		}
 		
-		actuator.moveTo(toPosition);
+		actuator.setPosition(toPosition);
 		BulldogUtil.sleepMs(actuator.getRefreshIntervalMilliseconds());
 	}
 

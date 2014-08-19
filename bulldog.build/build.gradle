@@ -57,9 +57,6 @@ configure(allJavaProjects) {
     jar {
         manifest.attributes 'Implementation-Version': version
         manifest.attributes provider: 'Datenheld'
-        from ("${projectDir}/src/main/java/") {
-        	include('*/**')
-    	}
     }
     
     task sourcesJar(type: Jar, dependsOn:classes) { 
@@ -94,7 +91,7 @@ boardProjects.each { def boardProject ->
 	        destinationDir = boardDistributionDirectory(distribution.distributionBaseName)
 	        
 	        manifest { 
-	     		attributes 'Main-Class': 'org.bulldog.examples.ButtonExample' 
+	     		attributes 'Main-Class': 'org.bulldog.examples.ServoExample' 
 	     		attributes 'Created-By': 'libbulldog.org - Version ' + bulldogVersion
 	     	}
 	    

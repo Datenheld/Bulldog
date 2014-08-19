@@ -14,7 +14,7 @@ public class DirectMove implements Move {
 	@Override
 	public void execute(Actuator actuator) {
 		double startPosition = actuator.getPosition();
-		actuator.moveTo(toPosition);
+		actuator.setPosition(toPosition);
 		int sleepyTime = (int)Math.abs(toPosition - startPosition) * actuator.getMillisecondsPerUnit();
 		BulldogUtil.sleepMs(sleepyTime);
 	}

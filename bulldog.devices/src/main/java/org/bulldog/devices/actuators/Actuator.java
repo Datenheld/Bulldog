@@ -11,6 +11,7 @@ public interface Actuator {
 	public void move(Move move);
 	public void moveAsync(Move move);
 	public void awaitMoveCompleted();
+	public boolean isMoving();
 	
 	public int getMillisecondsPerUnit();
 	public int getRefreshIntervalMilliseconds();
