@@ -57,6 +57,9 @@ configure(allJavaProjects) {
     jar {
         manifest.attributes 'Implementation-Version': version
         manifest.attributes provider: 'Datenheld'
+        from ("${projectDir}/src/main/java/") {
+        	include('*/**/*.dts.*')
+    	}
     }
     
     task sourcesJar(type: Jar, dependsOn:classes) { 
