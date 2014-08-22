@@ -5,7 +5,6 @@ import org.bulldog.core.gpio.base.DigitalIOFeature;
 import org.bulldog.core.platform.AbstractBoard;
 import org.bulldog.linux.io.LinuxSpiBus;
 import org.bulldog.linux.sysinfo.CpuInfo;
-import org.bulldog.linux.util.LinuxLibraryLoader;
 import org.bulldog.raspberrypi.gpio.RaspiDigitalInput;
 import org.bulldog.raspberrypi.gpio.RaspiDigitalOutput;
 import org.bulldog.raspberrypi.gpio.RaspiPwm;
@@ -14,19 +13,8 @@ import org.bulldog.raspberrypi.io.RaspberryPiI2cBus;
 public class RaspberryPi extends AbstractBoard {
 
 	private static final String NAME = "Raspberry Pi";
-	
-	private static RaspberryPi instance;
-	
-	public static RaspberryPi getInstance() {
-		if(instance == null) {
-			LinuxLibraryLoader.loadNativeLibrary();
-			instance = new RaspberryPi();
-		}
 		
-		return instance;
-	}
-	
-	private RaspberryPi() {
+	RaspberryPi() {
 		super();
 		if(getRevision() >= 4) {
 			createPinsRev2();

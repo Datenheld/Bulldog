@@ -2,6 +2,7 @@ package org.bulldog.beagleboneblack;
 
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.BoardFactory;
+import org.bulldog.linux.util.LinuxLibraryLoader;
 
 public class BeagleBoneBlackBoardFactory implements BoardFactory {
 
@@ -12,7 +13,8 @@ public class BeagleBoneBlackBoardFactory implements BoardFactory {
 
 	@Override
 	public Board createBoard() {
-		return BeagleBoneBlack.getInstance();
+		LinuxLibraryLoader.loadNativeLibrary();
+		return new BeagleBoneBlack();
 	}
 
 }

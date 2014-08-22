@@ -381,7 +381,9 @@ public class Pin {
 		}
 
 		fireFeatureActivating(feature);
-		feature.setup();
+		if(!feature.isSetup()) {
+			feature.setup();
+		}
 		setActiveFeature(feature);
 		fireFeatureActivated(feature);
 	}

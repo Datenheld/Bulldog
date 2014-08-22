@@ -11,16 +11,24 @@ public class LinuxEpollThread implements Runnable {
 
 	private Thread listenerThread = new Thread(this);
 	private boolean running = false;
-	private int epollFd = 0;
+	private static int epollFd = 0;
 	private int fileDescriptor = 0;
 	private boolean isSetup = false;
 	private String filename;
 	private List<LinuxEpollListener> listeners = new ArrayList<LinuxEpollListener>();
 	
+	static {
+		epollFd = NativeEpoll.epollCreate();
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			public void run() {
+				NativeEpoll.shutdown(epollFd);
+			}
+		});
+	}
+	
 	public LinuxEpollThread(String filename) {
 		listenerThread.setDaemon(true);
 		this.filename = filename;
-		epollFd = NativeEpoll.epollCreate();
 	}
 	
 	public void setup() {
@@ -63,7 +71,6 @@ public class LinuxEpollThread implements Runnable {
 			NativeEpoll.removeFile(epollFd, fileDescriptor);
 		}
 		isSetup = false;
-		//NativeEpoll.shutdown(epollFd);
 	}
 	
 	public boolean isRunning() {

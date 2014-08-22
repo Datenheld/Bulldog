@@ -96,6 +96,10 @@ public abstract class AbstractBoard extends AbstractPinProvider implements Board
 	
 	public abstract String getName();
 	
+	public void shutdown() {
+		cleanup();
+	}
+	
 	public void cleanup() {
 		for(Pin pin : this.getPins()) {
 			if(pin.getActiveFeature() == null) { continue; }
