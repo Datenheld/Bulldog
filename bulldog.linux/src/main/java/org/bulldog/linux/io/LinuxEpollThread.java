@@ -17,22 +17,14 @@ public class LinuxEpollThread implements Runnable {
 	private String filename;
 	private List<LinuxEpollListener> listeners = new ArrayList<LinuxEpollListener>();
 	
-	static {
-		epollFd = NativeEpoll.epollCreate();
-		Runtime.getRuntime().addShutdownHook(new Thread() {
-			public void run() {
-				NativeEpoll.shutdown(epollFd);
-			}
-		});
-	}
-	
 	public LinuxEpollThread(String filename) {
 		listenerThread.setDaemon(true);
 		this.filename = filename;
 	}
-	
+		
 	public void setup() {
 		if(!isSetup) {
+			epollFd = NativeEpoll.epollCreate();
 			fileDescriptor = NativeEpoll.addFile(epollFd, NativeEpoll.EPOLL_CTL_ADD, filename, NativeEpoll.EPOLLPRI | NativeEpoll.EPOLLIN | NativeEpoll.EPOLLET);
 			isSetup = true;
 		}
@@ -70,6 +62,7 @@ public class LinuxEpollThread implements Runnable {
 		if(isSetup) {
 			NativeEpoll.removeFile(epollFd, fileDescriptor);
 		}
+		NativeEpoll.shutdown(epollFd);
 		isSetup = false;
 	}
 	
