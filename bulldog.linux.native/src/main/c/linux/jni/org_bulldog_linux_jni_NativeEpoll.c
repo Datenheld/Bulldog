@@ -74,9 +74,15 @@ JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeEpoll_addFile(
 		printf("epoll_ctl failed: %s", strerror(errno));
 	}
 
-	return epollCtl;
+	return fd;
 }
 
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeEpoll_removeFile(
+		JNIEnv * env, jclass clazz, jint epollfd, jint fd)
+{
+	int epollCtl = epoll_ctl(epollfd, EPOLL_CTL_DEL, fd, NULL);
+	return epollCtl;
+}
 /*
  * Class:     org_bulldog_linux_jni_NativeEpoll
  * Method:    waitForInterrupt

@@ -94,7 +94,7 @@ boardProjects.each { def boardProject ->
 	        destinationDir = boardDistributionDirectory(distribution.distributionBaseName)
 	        
 	        manifest { 
-	     		attributes 'Main-Class': 'org.bulldog.examples.ServoExample' 
+	     		attributes 'Main-Class': 'org.bulldog.examples.App' 
 	     		attributes 'Created-By': 'libbulldog.org - Version ' + bulldogVersion
 	     	}
 	    
