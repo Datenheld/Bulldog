@@ -11,7 +11,7 @@ public class LinuxEpollThread implements Runnable {
 
 	private Thread listenerThread = new Thread(this);
 	private boolean running = false;
-	private static int epollFd = 0;
+	private int epollFd = 0;
 	private int fileDescriptor = 0;
 	private boolean isSetup = false;
 	private String filename;
