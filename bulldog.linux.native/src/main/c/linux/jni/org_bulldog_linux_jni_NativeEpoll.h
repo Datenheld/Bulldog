@@ -53,6 +53,14 @@ JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeEpoll_addFile
 
 /*
  * Class:     org_bulldog_linux_jni_NativeEpoll
+ * Method:    removeFile
+ * Signature: (II)I
+ */
+JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeEpoll_removeFile(
+		JNIEnv * , jclass , jint , jint );
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeEpoll
  * Method:    waitForInterrupt
  * Signature: (I)[Lorg/bulldog/beagleboneblack/jni/NativePollResult;
  */

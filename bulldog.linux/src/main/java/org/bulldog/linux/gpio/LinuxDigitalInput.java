@@ -28,10 +28,6 @@ public class LinuxDigitalInput extends AbstractDigitalInput implements LinuxEpol
 	public Signal read() {
 		return sysFsPin.getValue();
 	}
-
-	public void shutdown() {
-		interruptControl.shutdown();
-	}
 	
 	@Override
 	public void addInterruptListener(InterruptListener listener) {
@@ -62,9 +58,7 @@ public class LinuxDigitalInput extends AbstractDigitalInput implements LinuxEpol
 	}
 
 	protected void disableInterruptsImpl() {
-		if(interruptControl.isRunning()) {
-			interruptControl.stop();
-		}
+		interruptControl.teardown();
 	}
 
 	@Override
