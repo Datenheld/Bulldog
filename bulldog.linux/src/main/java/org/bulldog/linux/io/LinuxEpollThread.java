@@ -34,6 +34,7 @@ public class LinuxEpollThread implements Runnable {
 		if(running) { return; }
 		if(listenerThread.isAlive()) { return; }
 		listenerThread = new Thread(this);
+		listenerThread.setDaemon(true);
 		listenerThread.start();
 		running = true;
 	}
