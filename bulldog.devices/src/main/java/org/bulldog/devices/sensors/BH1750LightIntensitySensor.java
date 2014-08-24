@@ -6,7 +6,6 @@ import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.io.bus.i2c.I2cConnection;
 import org.bulldog.core.io.bus.i2c.I2cDevice;
 import org.bulldog.core.util.BitMagic;
-import org.bulldog.core.util.BulldogUtil;
 
 public class BH1750LightIntensitySensor extends I2cDevice {
 

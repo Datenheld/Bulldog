@@ -1,5 +1,5 @@
 ext {
-	bulldogVersion = '0.1.0'
+	bulldogVersion = '0.1.1'
 	distributionDirectory = new File('../dist', 'Version-' + bulldogVersion);
 }
 
