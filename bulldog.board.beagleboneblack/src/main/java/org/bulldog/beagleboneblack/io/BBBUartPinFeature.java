@@ -1,6 +1,7 @@
 package org.bulldog.beagleboneblack.io;
 
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.io.uart.AbstractUartPinFeature;
 import org.bulldog.core.io.uart.UartPort;
 import org.bulldog.core.io.uart.UartSignalType;
@@ -15,7 +16,7 @@ public class BBBUartPinFeature extends AbstractUartPinFeature {
 	}
 
 	@Override
-	protected void setupImpl() {
+	protected void setupImpl(PinFeatureConfiguration configuration) {
 		port.setup();
 		blockPin();
 	}

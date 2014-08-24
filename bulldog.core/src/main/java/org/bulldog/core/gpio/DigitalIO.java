@@ -16,6 +16,8 @@
  */
 package org.bulldog.core.gpio;
 
+import org.bulldog.core.IODirection;
+
 /**
  * The Interface DigitalIO is a composition of the
  * interfaces {@link DigitalInput} and {@link DigitalOutput}.
@@ -45,5 +47,18 @@ public interface DigitalIO extends DigitalInput, DigitalOutput {
 	 * @return true, if the pin is currently used as an output.
 	 */
 	boolean isOutputActive();
-
+	
+	/**
+	 * Sets the direction of the DigitalIO
+	 * 
+	 * @param direction
+	 */
+	void setDirection(IODirection direction);
+	
+	/**
+	 * Gets the direction of the DigitalIO
+	 * 
+	 * @return  the direction of the IO
+	 */
+	IODirection getDirection();
 }

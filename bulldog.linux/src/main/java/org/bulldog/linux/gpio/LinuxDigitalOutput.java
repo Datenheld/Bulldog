@@ -2,6 +2,7 @@ package org.bulldog.linux.gpio;
 
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.gpio.base.AbstractDigitalOutput;
 import org.bulldog.linux.sysfs.SysFsPin;
 
@@ -15,7 +16,7 @@ public class LinuxDigitalOutput extends AbstractDigitalOutput {
 	}
 
 	@Override
-	protected void setupImpl() {
+	protected void setupImpl(PinFeatureConfiguration configuration) {
 		exportPinIfNecessary();
 	}
 

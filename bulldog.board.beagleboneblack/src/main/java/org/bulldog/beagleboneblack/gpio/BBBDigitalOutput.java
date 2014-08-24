@@ -4,6 +4,7 @@ import org.bulldog.beagleboneblack.BeagleBonePin;
 import org.bulldog.beagleboneblack.jni.NativeGpio;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.gpio.base.AbstractDigitalOutput;
 
 public class BBBDigitalOutput extends AbstractDigitalOutput {
@@ -12,7 +13,7 @@ public class BBBDigitalOutput extends AbstractDigitalOutput {
 		super(pin);
 	}
 
-	protected void setupImpl() {
+	protected void setupImpl(PinFeatureConfiguration configuration) {
 		BeagleBonePin bbbPin = (BeagleBonePin)getPin();
 		NativeGpio.pinMode(bbbPin.getPortNumeric(), bbbPin.getIndexOnPort(), NativeGpio.DIRECTION_OUT);
 		applySignal(getAppliedSignal());

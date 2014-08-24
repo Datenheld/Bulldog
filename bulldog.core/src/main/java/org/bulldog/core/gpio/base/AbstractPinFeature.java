@@ -2,11 +2,13 @@ package org.bulldog.core.gpio.base;
 
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.gpio.PinFeature;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 
 public abstract class AbstractPinFeature implements PinFeature {
 
 	private Pin pin;
 	private boolean isSetup = false;
+	private PinFeatureConfiguration configuration;
 	
 	public AbstractPinFeature(Pin pin) {
 		this.pin = pin;
@@ -36,11 +38,12 @@ public abstract class AbstractPinFeature implements PinFeature {
 		getPin().unblock(this);
 	}
 	
-	protected abstract void setupImpl();
+	protected abstract void setupImpl(PinFeatureConfiguration configuration);
 	protected abstract void teardownImpl();
 	
-	public void setup() {
-		setupImpl();
+	public void setup(PinFeatureConfiguration configuration) {
+		this.configuration = configuration;
+		setupImpl(configuration);
 		isSetup = true;
 	}
 	
@@ -51,6 +54,20 @@ public abstract class AbstractPinFeature implements PinFeature {
 	
 	public boolean isSetup() {
 		return isSetup;
+	}
+	
+	public PinFeatureConfiguration getConfiguration() {
+		return this.configuration;
+	}
+	
+	public boolean isActiveOnPin() {
+		return pin.getActiveFeature() == this;
+	}
+	
+	@Override
+	public boolean isActiveAs(Class<? extends PinFeature> featureClass) {
+		return (featureClass.isAssignableFrom(getConfiguration().getDesiredFeature())
+				&& pin.getActiveFeature() == this);
 	}
 	
 	@Override

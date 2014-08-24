@@ -15,7 +15,11 @@ public interface PinFeature {
 	void unblockPin();
 	
 	boolean isSetup();
+	boolean isActiveOnPin();
+	boolean isActiveAs(Class<? extends PinFeature> featureClass);
 	
-	void setup();
+	void setup(PinFeatureConfiguration configuration);
 	void teardown();
+	
+	PinFeatureConfiguration getConfiguration();
 }

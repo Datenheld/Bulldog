@@ -1,10 +1,9 @@
 package org.bulldog.devices.portexpander;
 
-import org.bulldog.core.Edge;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.gpio.base.AbstractDigitalInput;
-import org.bulldog.core.gpio.event.InterruptEventArgs;
 import org.bulldog.core.util.BitMagic;
 
 public class PCF8574DigitalInput extends AbstractDigitalInput {
@@ -23,7 +22,7 @@ public class PCF8574DigitalInput extends AbstractDigitalInput {
 	}
 
 	@Override
-	protected void setupImpl() {
+	protected void setupImpl(PinFeatureConfiguration configuration) {
 		byte state = expander.getState();
 		byte newState = BitMagic.setBit(state, getPin().getAddress(), 1);
 		expander.writeState(newState);
@@ -33,23 +32,6 @@ public class PCF8574DigitalInput extends AbstractDigitalInput {
 	protected void teardownImpl() {
 	}
 
-	public void handleInterruptEvent(Signal oldState, Signal currentState) {
-		if(!areInterruptsEnabled()) { return; }
-		
-		Edge edge = determineInterruptEdge(oldState, currentState);
-		if(!isInterruptTrigger(edge)) { return; }
-		
-		fireInterruptEvent(new InterruptEventArgs(getPin(), edge));
-	}
-		
-	private boolean isInterruptTrigger(Edge edge) {
-		return edge == getInterruptTrigger() || getInterruptTrigger() == Edge.Both;
-	}
-
-	private Edge determineInterruptEdge(Signal oldState, Signal currentState) {
-		if(currentState == Signal.Low && oldState == Signal.High) { return Edge.Falling; }
-		return Edge.Rising;
-	}
 
 	@Override
 	protected void enableInterruptsImpl() {}

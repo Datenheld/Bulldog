@@ -15,19 +15,30 @@ public class PinIOGroup implements IOPort {
 	private PinIOInputStream inputStream;
 	private PinIOOutputStream outputStream;
 	
+	private Signal enableLevel = Signal.High;
+	
 	private String alias;
 	private String name;
 	
 	private int delayMs = 1;
+	
+	public PinIOGroup(DigitalIO enablePin, Signal enableLevel, DigitalIO... dataPins) {
+		this(enablePin, enableLevel, 1, dataPins);
+	}
 	
 	public PinIOGroup(DigitalIO enablePin, DigitalIO... dataPins) {
 		this(enablePin, 1, dataPins);
 	}
 	
 	public PinIOGroup(DigitalIO enablePin, int delayMs, DigitalIO... dataPins) {
+		this(enablePin, Signal.High, delayMs, dataPins);
+	}
+	
+	public PinIOGroup(DigitalIO enablePin, Signal enableLevel, int delayMs, DigitalIO... dataPins) {
 		this.enablePin = enablePin;
 		this.dataPins = dataPins;
 		this.delayMs = delayMs;
+		this.enableLevel = enableLevel;
 		inputStream = new PinIOInputStream(this);
 		outputStream = new PinIOOutputStream(this);
 		this.name = buildName();
@@ -117,13 +128,21 @@ public class PinIOGroup implements IOPort {
 	}
 	
 	public void startEnable() {
-		enablePin.applySignal(Signal.High);
+		enablePin.applySignal(enableLevel);
 		BulldogUtil.sleepMs(delayMs);
 	}
 	
 	public void endEnable() {
-		enablePin.applySignal(Signal.Low);
+		enablePin.applySignal(enableLevel.inverse());
 		BulldogUtil.sleepMs(delayMs);
+	}
+	
+	public void setEnableLevel(Signal enableLevel) {
+		this.enableLevel = enableLevel;
+	}
+	
+	public Signal getEnableLevel() {
+		return enableLevel;
 	}
 	
 	@Override

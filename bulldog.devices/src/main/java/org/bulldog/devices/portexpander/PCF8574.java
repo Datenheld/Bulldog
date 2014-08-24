@@ -2,10 +2,11 @@ package org.bulldog.devices.portexpander;
 
 import java.io.IOException;
 
+import org.bulldog.core.Edge;
 import org.bulldog.core.Signal;
+import org.bulldog.core.gpio.DigitalIO;
 import org.bulldog.core.gpio.DigitalInput;
 import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.gpio.base.DigitalIOFeature;
 import org.bulldog.core.gpio.event.InterruptEventArgs;
 import org.bulldog.core.gpio.event.InterruptListener;
 import org.bulldog.core.io.bus.i2c.I2cBus;
@@ -62,11 +63,25 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 	private void createPins() {
 		for(int i = 0; i <= 7; i++) {
 			Pin pin = new Pin("P" + i, i, "P", i);
-			pin.addFeature(new DigitalIOFeature(pin, new PCF8574DigitalInput(pin, this), new PCF8574DigitalOutput(pin, this)));
+			pin.addFeature(new PCF8574DigitalInput(pin, this));
+			pin.addFeature(new PCF8574DigitalOutput(pin, this));
 			getPins().add(pin);
 		}
 	}
 
+	private void handleInterruptEvent(DigitalInput input, Signal oldState, Signal currentState) {
+		if(!input.areInterruptsEnabled()) { return; }
+		
+		Edge edge = determineInterruptEdge(oldState, currentState);
+		if(!isInterruptTrigger(input, edge)) { return; }
+		
+		input.fireInterruptEvent(new InterruptEventArgs(input.getPin(), edge));
+	}
+		
+	private boolean isInterruptTrigger(DigitalInput input, Edge edge) {
+		return edge == input.getInterruptTrigger() || input.getInterruptTrigger() == Edge.Both;
+	}
+	
 	@Override
 	public void interruptRequest(InterruptEventArgs args) {
 		byte lastKnownState = (byte) state;
@@ -74,14 +89,25 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 		for(int i = 0; i <= 7; i++) {
 			Pin currentPin = getPin(i);
 			
-			if(!currentPin.isFeatureActive(PCF8574DigitalInput.class)) { continue; }
+			if(!currentPin.isFeatureActive(DigitalInput.class)) { continue; }
+			if(currentPin.isFeatureActive(DigitalIO.class)) {
+				DigitalIO io = currentPin.getFeature(DigitalIO.class);
+				if(!io.isInputActive()) {
+					continue;
+				}
+			}
 			
-			PCF8574DigitalInput input = currentPin.as(PCF8574DigitalInput.class);
+			DigitalInput input = currentPin.as(DigitalInput.class);
 			int lastKnownPinState = BitMagic.getBit(lastKnownState, currentPin.getAddress());
 			int currentState =  BitMagic.getBit(readState, currentPin.getAddress());
 			if(lastKnownPinState == currentState) { continue; }
-			input.handleInterruptEvent(Signal.fromNumericValue(lastKnownState), Signal.fromNumericValue(currentState));
+			handleInterruptEvent(input, Signal.fromNumericValue(lastKnownState), Signal.fromNumericValue(currentState));
 		}
+	}
+	
+	private Edge determineInterruptEdge(Signal oldState, Signal currentState) {
+		if(currentState == Signal.Low && oldState == Signal.High) { return Edge.Falling; }
+		return Edge.Rising;
 	}
 	
 	public byte getState() {

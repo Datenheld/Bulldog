@@ -1,6 +1,7 @@
 package org.bulldog.devices.pwmdriver;
 
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.gpio.base.AbstractPwm;
 
 public class PCA9685Pwm extends AbstractPwm {
@@ -13,7 +14,7 @@ public class PCA9685Pwm extends AbstractPwm {
 	}
 
 	@Override
-	protected void setupImpl() {
+	protected void setupImpl(PinFeatureConfiguration configuration) {
 	}
 
 	@Override

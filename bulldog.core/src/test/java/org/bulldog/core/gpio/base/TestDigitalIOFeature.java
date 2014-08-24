@@ -2,8 +2,10 @@ package org.bulldog.core.gpio.base;
 
 import junit.framework.TestCase;
 
+import org.bulldog.core.IODirection;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalIO;
+import org.bulldog.core.gpio.DigitalInput;
 import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.mocks.MockedDigitalInput;
@@ -16,13 +18,15 @@ public class TestDigitalIOFeature {
 	private Pin pin;
 	private GpioTester gpioTester;
 	private MockedDigitalInput mockedInput;
+	private DigitalIOFeature feature;
 	
 	@Before
 	public void setup() {
 		pin = new Pin("Testpin", 0, "A", 0);
 		mockedInput = new MockedDigitalInput(pin);
 		MockedDigitalOutput output = new MockedDigitalOutput(pin);
-		pin.addFeature(new DigitalIOFeature(pin, mockedInput, output));
+		feature = new DigitalIOFeature(pin, mockedInput, output);
+		pin.addFeature(feature);
 		gpioTester = new GpioTester();
 	}
 	
@@ -37,7 +41,6 @@ public class TestDigitalIOFeature {
 		String name = output.getName();
 		TestCase.assertNotNull(name);
 	}
-	
 	
 	@Test
 	public void testBlinking() {
@@ -80,6 +83,47 @@ public class TestDigitalIOFeature {
 		TestCase.assertEquals(io.getAppliedSignal(), Signal.High);
 		TestCase.assertTrue(io.isOutputActive());
 		TestCase.assertFalse(io.isInputActive());
+		
+		io.setDirection(IODirection.Out);
+		TestCase.assertFalse(io.isInputActive());
+		TestCase.assertTrue(io.isOutputActive());
+		
+		io.setDirection(IODirection.In);
+		TestCase.assertTrue(io.isInputActive());
+		TestCase.assertFalse(io.isOutputActive());
+	}
+	
+	@Test
+	public void testInputConfiguration() {
+		DigitalInput input = pin.as(DigitalInput.class);
+		TestCase.assertTrue(feature.isInputActive());
+		TestCase.assertFalse(feature.isOutputActive());
+		TestCase.assertTrue(input.isSetup());
+		TestCase.assertFalse(pin.isFeatureActive(DigitalIO.class));
+		TestCase.assertTrue(pin.isFeatureActive(DigitalInput.class));
+		TestCase.assertFalse(pin.isFeatureActive(DigitalOutput.class));
+	}
+	
+	@Test
+	public void testOutputConfiguration() {
+		DigitalOutput output = pin.as(DigitalOutput.class);
+		TestCase.assertTrue(feature.isOutputActive());
+		TestCase.assertFalse(feature.isInputActive());
+		TestCase.assertTrue(output.isSetup());
+		TestCase.assertFalse(pin.isFeatureActive(DigitalIO.class));
+		TestCase.assertFalse(pin.isFeatureActive(DigitalInput.class));
+		TestCase.assertTrue(pin.isFeatureActive(DigitalOutput.class));
+	}
+	
+	@Test
+	public void testInputOutputConfiguration() {
+		DigitalIO io = pin.as(DigitalIO.class);
+		TestCase.assertFalse(feature.isOutputActive());
+		TestCase.assertFalse(feature.isInputActive());
+		TestCase.assertTrue(io.isSetup());
+		TestCase.assertTrue(pin.isFeatureActive(DigitalIO.class));
+		TestCase.assertTrue(pin.isFeatureActive(DigitalInput.class));
+		TestCase.assertTrue(pin.isFeatureActive(DigitalOutput.class));
 	}
 	
 }

@@ -1,6 +1,7 @@
 package org.bulldog.core.mocks;
 
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.gpio.base.AbstractPwm;
 
 public class MockedPwm extends AbstractPwm {
@@ -14,7 +15,7 @@ public class MockedPwm extends AbstractPwm {
 	}
 
 	@Override
-	protected void setupImpl() {
+	protected void setupImpl(PinFeatureConfiguration configuration) {
 	}
 
 	@Override

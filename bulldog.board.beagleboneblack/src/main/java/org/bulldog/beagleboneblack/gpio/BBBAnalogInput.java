@@ -10,6 +10,7 @@ import java.util.concurrent.Future;
 
 import org.bulldog.beagleboneblack.jni.NativeAdc;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.gpio.base.AbstractAnalogInput;
 
 public class BBBAnalogInput extends AbstractAnalogInput {
@@ -22,7 +23,7 @@ public class BBBAnalogInput extends AbstractAnalogInput {
 		this.channelId = channel;
 	}
 
-	protected void setupImpl() {
+	protected void setupImpl(PinFeatureConfiguration configuration) {
 		if(buffer == null) {
 			buffer = ByteBuffer.allocateDirect(4 * 100).order(ByteOrder.LITTLE_ENDIAN).asIntBuffer();
 		}

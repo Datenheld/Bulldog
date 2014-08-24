@@ -2,6 +2,7 @@ package org.bulldog.raspberrypi.gpio;
 
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.gpio.base.AbstractDigitalOutput;
 import org.bulldog.raspberrypi.BCM2835;
 import org.bulldog.raspberrypi.RaspberryPiPin;
@@ -13,7 +14,7 @@ public class RaspiDigitalOutput extends AbstractDigitalOutput {
 	}
 
 	@Override
-	protected void setupImpl() {
+	protected void setupImpl(PinFeatureConfiguration configuration) {
 		RaspberryPiPin pin = (RaspberryPiPin)getPin();
 		BCM2835.configureAsInput(pin.getGpioNumber());
 		BCM2835.configureAsOutput(pin.getGpioNumber());

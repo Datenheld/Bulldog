@@ -3,11 +3,13 @@ package org.bulldog.core.gpio.base;
 import java.util.List;
 
 import org.bulldog.core.Edge;
+import org.bulldog.core.IODirection;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalIO;
 import org.bulldog.core.gpio.DigitalInput;
 import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.gpio.event.InterruptEventArgs;
 import org.bulldog.core.gpio.event.InterruptListener;
 
@@ -16,6 +18,7 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 	private static final String NAME_FORMAT = "Digital IO on Pin %s";
 	private DigitalOutput output;
 	private DigitalInput input;
+	private IODirection direction;
 	
 	public DigitalIOFeature(Pin pin, DigitalInput input, DigitalOutput output) {
 		super(pin);
@@ -32,14 +35,16 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 	private void setupInputIfNecessary() {
 		if(!input.isSetup()) {
 			if(output.isSetup()) { output.teardown(); }
-			input.setup();
+			input.setup(getConfiguration());
+			direction = IODirection.In;
 		}
 	}
 	
 	private void setupOutputIfNecessary() {
 		if(!output.isSetup()) {
 			if(input.isSetup()) { input.teardown(); };
-			output.setup();
+			output.setup(getConfiguration());
+			direction = IODirection.Out;
 		}
 	}
 
@@ -213,7 +218,16 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 	}
 	
 	@Override
-	protected void setupImpl() {
+	protected void setupImpl(PinFeatureConfiguration configuration) {
+		if(input.getClass().equals(configuration.getDesiredFeature())) {
+			input.setup(configuration);
+		} else if(output.getClass().equals(configuration.getDesiredFeature())) {
+			output.setup(configuration);
+		} else if(configuration.getDesiredFeature().isAssignableFrom(input.getClass())) {
+			input.setup(configuration);
+		} else if(configuration.getDesiredFeature().isAssignableFrom(output.getClass())) {
+			output.setup(configuration);
+		}
 	}
 
 	@Override
@@ -237,6 +251,21 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 	@Override
 	public boolean isOutputActive() {
 		return output.isSetup();
+	}
+
+	@Override
+	public void setDirection(IODirection direction) {
+		this.direction = direction;
+		if(direction == IODirection.Out) {
+			setupOutputIfNecessary();
+		} else if(direction == IODirection.In) {
+			setupInputIfNecessary();
+		}
+	}
+
+	@Override
+	public IODirection getDirection() {
+		return this.direction;
 	}
 	
 }

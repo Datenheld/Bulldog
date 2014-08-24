@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.gpio.base.AbstractPwm;
 import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.core.util.DaemonThreadFactory;
@@ -66,10 +67,9 @@ public class SoftPwm extends AbstractPwm implements Runnable {
 	}
 	
 	@Override
-	public void setupImpl() {
-		output.setup();
+	public void setupImpl(PinFeatureConfiguration configuration) {
+		output.setup(configuration);
 	}
-
 
 	@Override
 	public void teardownImpl() {
@@ -82,7 +82,6 @@ public class SoftPwm extends AbstractPwm implements Runnable {
 		periodInNanoseconds = (int) ((1.0 / frequency) * NANOSECONDS_PER_SECOND);
 		dutyInNanoseconds = (int) (periodInNanoseconds * duty);
 	}
-
 
 	@Override
 	protected void enableImpl() {

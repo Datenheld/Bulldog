@@ -1,6 +1,7 @@
 package org.bulldog.raspberrypi.gpio;
 
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.gpio.base.AbstractPwm;
 import org.bulldog.core.util.BitMagic;
 import org.bulldog.core.util.BulldogUtil;
@@ -16,7 +17,7 @@ public class RaspiPwm extends AbstractPwm {
 	}
 
 	@Override
-	protected void setupImpl() {
+	protected void setupImpl(PinFeatureConfiguration configuration) {
 		RaspberryPiPin pin = (RaspberryPiPin)getPin();
 		BCM2835.configureAlternateFunction(pin.getGpioNumber(), 5);
 		stopClock();

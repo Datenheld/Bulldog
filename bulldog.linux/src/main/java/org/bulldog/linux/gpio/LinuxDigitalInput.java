@@ -3,6 +3,7 @@ package org.bulldog.linux.gpio;
 import org.bulldog.core.Edge;
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.gpio.base.AbstractDigitalInput;
 import org.bulldog.core.gpio.event.InterruptEventArgs;
 import org.bulldog.core.gpio.event.InterruptListener;
@@ -62,7 +63,7 @@ public class LinuxDigitalInput extends AbstractDigitalInput implements LinuxEpol
 	}
 
 	@Override
-	protected void setupImpl() {
+	protected void setupImpl(PinFeatureConfiguration configuration) {
 		exportPinIfNecessary();
 		interruptControl.setup();
 	}

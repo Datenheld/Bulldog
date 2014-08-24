@@ -3,6 +3,7 @@ package org.bulldog.core.mocks;
 import java.util.concurrent.Future;
 
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.gpio.base.AbstractAnalogInput;
 
 public class MockedAnalogInput extends AbstractAnalogInput {
@@ -50,7 +51,7 @@ public class MockedAnalogInput extends AbstractAnalogInput {
 	}
 
 	@Override
-	protected void setupImpl() {
+	protected void setupImpl(PinFeatureConfiguration configuration) {
 	}
 
 	@Override

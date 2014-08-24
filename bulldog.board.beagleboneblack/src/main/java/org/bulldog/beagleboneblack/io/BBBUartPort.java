@@ -1,5 +1,6 @@
 package org.bulldog.beagleboneblack.io;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.bulldog.beagleboneblack.sysfs.BBBSysFs;
@@ -28,6 +29,9 @@ public class BBBUartPort extends LinuxSerialPort implements UartPort {
 		this.name = name;
 		addRxFeatureToPin(rx);
 		addTxFeatureToPin(tx);
+		if(new File(filename).exists()) {
+			activateUartPinFeatures();
+		}
 	}
 	
 	@Override
@@ -50,13 +54,17 @@ public class BBBUartPort extends LinuxSerialPort implements UartPort {
 		if(setupInProgress) { return; }
 		setupInProgress = true;
 		sysFs.createSlotIfNotExists(getSlotName());
+		activateUartPinFeatures();
+		setupInProgress = false;
+	}
+
+	private void activateUartPinFeatures() {
 		if(getRx() != null) {
 			getRx().activateFeature(UartTx.class);
 		} 
 		if(getTx() != null) {
 			getTx().activateFeature(UartRx.class);
 		}
-		setupInProgress = false;
 	}
 	
 	public void teardown() {

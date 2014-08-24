@@ -9,6 +9,7 @@ import org.bulldog.beagleboneblack.devicetree.DeviceTreeCompiler;
 import org.bulldog.beagleboneblack.sysfs.BBBSysFs;
 import org.bulldog.beagleboneblack.sysfs.SysFsPwm;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.gpio.base.AbstractPwm;
 import org.bulldog.core.util.BulldogUtil;
 
@@ -46,7 +47,7 @@ public class BBBPwm extends AbstractPwm {
 	}
 
 	@Override
-	protected void setupImpl() {
+	protected void setupImpl(PinFeatureConfiguration configuration) {
 		if(!PWM_MANAGER.canActivatePwmOnPin(this)) {
 			BBBPwm activePwm  = PWM_MANAGER.getActivePin(this);
 			throw new RuntimeException("You cannot activate "+activePwm.getName()+" on this pin. It is already active on: " + activePwm.getPin().getName());

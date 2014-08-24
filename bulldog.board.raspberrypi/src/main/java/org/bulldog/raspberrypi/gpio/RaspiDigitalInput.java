@@ -2,6 +2,7 @@ package org.bulldog.raspberrypi.gpio;
 
 import org.bulldog.core.Signal;
 import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.linux.gpio.LinuxDigitalInput;
 import org.bulldog.linux.io.LinuxEpollListener;
 
@@ -15,8 +16,8 @@ public class RaspiDigitalInput extends LinuxDigitalInput implements LinuxEpollLi
 		return getSysFsPin().getValue();
 	}
 
-	public void setup() {
-		super.setup();
+	public void setup(PinFeatureConfiguration configuration) {
+		super.setup(configuration);
 	}
 	
 }

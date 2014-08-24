@@ -38,6 +38,11 @@ configure(nativeProjects) {
 	version = bulldogVersion
 }
 
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmmss')
+    return formattedDate
+}
 					 
 configure(allJavaProjects) { 
    	   
@@ -127,7 +132,7 @@ boardProjects.each { def boardProject ->
 	evaluationDependsOn(boardProject.path)
 	boardProject.distributions.each { distribution ->
 	    tasks.create(name: "createZipArchive$distribution.distributionBaseName", type: Zip) { 
-	       baseName = distribution.distributionBaseName + '-' + bulldogVersion
+	       baseName = distribution.distributionBaseName + '-' + bulldogVersion + "-" + getDate()
 	       destinationDir = boardDistributionDirectory(distribution.distributionBaseName)
 	       excludes = [ '*.zip', '*sources.*' ]
 	       from boardDistributionDirectory(distribution.distributionBaseName)

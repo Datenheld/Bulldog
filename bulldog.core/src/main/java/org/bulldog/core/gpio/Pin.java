@@ -98,9 +98,17 @@ public class Pin {
 	 * @param feature the type (classname) of the desired feature
 	 */
 	public <T extends PinFeature> void activateFeature(Class<T> feature) {
-		checkIfDesiredFeatureIsAvailable(feature);
-		T selectedFeature = (T)getFeature(feature);
-		activateFeature(selectedFeature);
+		this.as(feature);
+	}
+	
+	/**
+	 * Activates a feature on a pin.
+	 *
+	 * @param <T> the type (classname) of the desired feature
+	 * @param configuration the configuration of the feature
+	 */
+	public <T extends PinFeature> void activateFeature(PinFeatureConfiguration configuration) {
+		this.as(configuration);
 	}
 
 	/**
@@ -160,8 +168,24 @@ public class Pin {
 	 */
 	public <T extends PinFeature> T as(Class<T> feature) {
 		checkIfDesiredFeatureIsAvailable(feature);
-		T selectedFeature = getFeature(feature);
-		activateFeature(selectedFeature);
+		T selectedFeature = (T)getFeature(feature);
+		activateFeature(selectedFeature, new PinFeatureConfiguration(feature));
+		return selectedFeature;
+	}
+	
+	/**
+	 * This is a very important method. It is the standard way to configure
+	 * a pin for usage with a desired feature (e.g. PWM, DigitalIO).
+	 *
+	 * @param <T> the concrete type of the pin feature.
+	 * @param the configuration of the feature
+	 * @return the the concrete type of the pin feature.
+	 */
+	@SuppressWarnings("unchecked")
+	public <T extends PinFeature> T as(PinFeatureConfiguration configuration) {
+		checkIfDesiredFeatureIsAvailable(configuration.getDesiredFeature());
+		T selectedFeature = (T)getFeature(configuration.getDesiredFeature());
+		activateFeature(selectedFeature, configuration);
 		return selectedFeature;
 	}
 
@@ -251,7 +275,7 @@ public class Pin {
 	 */
 	public boolean isFeatureActive(Class<? extends PinFeature> featureClass) {
 		if(getActiveFeature() == null) { return false; }
-		return featureClass.isAssignableFrom(getActiveFeature().getClass());
+		return getActiveFeature().isActiveAs(featureClass);
 	}
 
 	/**
@@ -368,7 +392,7 @@ public class Pin {
 	 *
 	 * @param feature the feature to activate
 	 */
-	private void activateFeature(PinFeature feature) {
+	private void activateFeature(PinFeature feature, PinFeatureConfiguration configuration) {
 		if(feature == getActiveFeature()) { return; }
 
 		PinFeature blocker = getBlocker();
@@ -382,7 +406,7 @@ public class Pin {
 
 		fireFeatureActivating(feature);
 		if(!feature.isSetup()) {
-			feature.setup();
+			feature.setup(configuration);
 		}
 		setActiveFeature(feature);
 		fireFeatureActivated(feature);

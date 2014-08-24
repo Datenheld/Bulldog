@@ -14,7 +14,7 @@ import org.bulldog.core.util.BulldogUtil;
  * @author Datenheld
  *
  */
-public class I2CLcd {
+public class I2CLcd implements Lcd {
 
 	public static final byte ENABLE 		= 0b01000000;
 	public static final byte DISABLE	 	= 0b00111111;
@@ -42,7 +42,7 @@ public class I2CLcd {
 		writeCommand(0x0f);
 	}
 
-	public void write(String string) throws IOException {
+	public void write(String string) {
 		for(int i = 0; i < string.length(); i++) {
 			writeData(string.charAt(i));
 		}
@@ -51,24 +51,94 @@ public class I2CLcd {
 	public void clear() {
 	}
 	
-	public void writeByte(byte data) throws IOException {
-		connection.writeByte(data | ENABLE);
-		connection.writeByte(data & DISABLE);
+	public void writeByte(byte data) { 
+		try {
+			connection.writeByte(data | ENABLE);
+			connection.writeByte(data & DISABLE);
+		} catch(Exception ex) {
+			throw new RuntimeException(ex);
+		}
 	}
 
-	private void writeByteAsNibbles(int data, int mask) throws IOException {
+	private void writeByteAsNibbles(int data, int mask) {
 		byte nibble = (byte)(mask | ((data & 0xF0) >> 4));
 		writeByte(nibble);
 		nibble = (byte)(mask | (data & 0x0F));
 		writeByte(nibble);
 	}
 	
-	private void writeCommand(int data) throws IOException {
+	private void writeCommand(int data) {
 		writeByteAsNibbles(data, COMMAND);
 		BulldogUtil.sleepMs(5);
 	}
 
-	private void writeData(int data) throws IOException {
+	private void writeData(int data) {
 		writeByteAsNibbles(data, DATA);
+	}
+
+	@Override
+	public void setMode(LcdMode mode, LcdFont font) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void writeAt(int row, int column, String text) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void blinkCursor(boolean blink) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void showCursor(boolean show) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void home() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void off() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setCursorPosition(int line, int column) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String readLine(int line) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String read(int length) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String read(int line, int column, int length) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
