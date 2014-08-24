@@ -1,7 +1,7 @@
 package org.bulldog.core.io.bus.i2c;
 
-import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.gpio.base.AbstractPinFeature;
+import org.bulldog.core.pinfeatures.Pin;
+import org.bulldog.core.pinfeatures.base.AbstractPinFeature;
 
 public abstract class AbstractI2cPinFeature extends AbstractPinFeature implements I2cSda, I2cScl {
 

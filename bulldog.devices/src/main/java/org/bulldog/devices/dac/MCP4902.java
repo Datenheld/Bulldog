@@ -2,10 +2,10 @@ package org.bulldog.devices.dac;
 
 import java.io.IOException;
 
-import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.io.bus.spi.SpiBus;
 import org.bulldog.core.io.bus.spi.SpiConnection;
 import org.bulldog.core.io.bus.spi.SpiDevice;
+import org.bulldog.core.pinfeatures.DigitalOutput;
 import org.bulldog.core.util.BitMagic;
 
 public class MCP4902 extends SpiDevice {

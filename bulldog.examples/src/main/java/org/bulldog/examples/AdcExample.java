@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import org.bulldog.beagleboneblack.BBBNames;
-import org.bulldog.core.gpio.AnalogInput;
+import org.bulldog.core.pinfeatures.AnalogInput;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;

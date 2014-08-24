@@ -2,24 +2,24 @@ package org.bulldog.beagleboneblack;
 
 import java.io.File;
 
-import org.bulldog.beagleboneblack.gpio.BBBAnalogInput;
-import org.bulldog.beagleboneblack.gpio.BBBDigitalInput;
-import org.bulldog.beagleboneblack.gpio.BBBDigitalOutput;
-import org.bulldog.beagleboneblack.gpio.BBBEmmc;
-import org.bulldog.beagleboneblack.gpio.BBBHdmi;
-import org.bulldog.beagleboneblack.gpio.BBBPwm;
 import org.bulldog.beagleboneblack.io.BBBUartPort;
+import org.bulldog.beagleboneblack.pinfeatures.BBBAnalogInput;
+import org.bulldog.beagleboneblack.pinfeatures.BBBDigitalInput;
+import org.bulldog.beagleboneblack.pinfeatures.BBBDigitalOutput;
+import org.bulldog.beagleboneblack.pinfeatures.BBBEmmc;
+import org.bulldog.beagleboneblack.pinfeatures.BBBHdmi;
+import org.bulldog.beagleboneblack.pinfeatures.BBBPwm;
 import org.bulldog.beagleboneblack.sysfs.BBBSysFs;
-import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.gpio.base.DigitalIOFeature;
-import org.bulldog.core.gpio.event.FeatureActivationEventArgs;
-import org.bulldog.core.gpio.event.FeatureActivationListener;
+import org.bulldog.core.pinfeatures.Pin;
+import org.bulldog.core.pinfeatures.base.DigitalIOFeature;
+import org.bulldog.core.pinfeatures.event.FeatureActivationEventArgs;
+import org.bulldog.core.pinfeatures.event.FeatureActivationListener;
 import org.bulldog.core.platform.AbstractBoard;
 import org.bulldog.core.util.BulldogUtil;
-import org.bulldog.linux.gpio.LinuxDigitalInput;
-import org.bulldog.linux.gpio.LinuxDigitalOutput;
 import org.bulldog.linux.io.LinuxI2cBus;
 import org.bulldog.linux.io.LinuxSpiBus;
+import org.bulldog.linux.pinfeatures.LinuxDigitalInput;
+import org.bulldog.linux.pinfeatures.LinuxDigitalOutput;
 
 public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationListener {
 	

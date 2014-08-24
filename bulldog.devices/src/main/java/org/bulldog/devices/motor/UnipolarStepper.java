@@ -1,8 +1,7 @@
 package org.bulldog.devices.motor;
 
-import org.bulldog.core.gpio.DigitalOutput;
-
 import org.bulldog.core.io.PinIOGroup;
+import org.bulldog.core.pinfeatures.DigitalOutput;
 
 public class UnipolarStepper extends AbstractStepper {
 

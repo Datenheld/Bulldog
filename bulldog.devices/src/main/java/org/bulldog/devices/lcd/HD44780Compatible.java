@@ -3,9 +3,9 @@ package org.bulldog.devices.lcd;
 import java.io.IOException;
 
 import org.bulldog.core.Signal;
-import org.bulldog.core.gpio.DigitalIO;
-import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.io.PinIOGroup;
+import org.bulldog.core.pinfeatures.DigitalIO;
+import org.bulldog.core.pinfeatures.DigitalOutput;
 import org.bulldog.core.util.BitMagic;
 import org.bulldog.core.util.BulldogUtil;
 

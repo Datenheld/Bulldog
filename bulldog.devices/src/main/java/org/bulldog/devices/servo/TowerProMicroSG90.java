@@ -1,6 +1,6 @@
 package org.bulldog.devices.servo;
 
-import org.bulldog.core.gpio.Pwm;
+import org.bulldog.core.pinfeatures.Pwm;
 
 public class TowerProMicroSG90 extends Servo {
 

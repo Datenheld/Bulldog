@@ -1,7 +1,7 @@
 package org.bulldog.core.io.uart;
 
-import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.gpio.base.AbstractPinFeature;
+import org.bulldog.core.pinfeatures.Pin;
+import org.bulldog.core.pinfeatures.base.AbstractPinFeature;
 
 public abstract class AbstractUartPinFeature extends AbstractPinFeature implements UartRx, UartTx {
 

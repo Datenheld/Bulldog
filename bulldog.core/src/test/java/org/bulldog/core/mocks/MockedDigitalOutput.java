@@ -1,9 +1,9 @@
 package org.bulldog.core.mocks;
 
 import org.bulldog.core.Signal;
-import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.gpio.PinFeatureConfiguration;
-import org.bulldog.core.gpio.base.AbstractDigitalOutput;
+import org.bulldog.core.pinfeatures.Pin;
+import org.bulldog.core.pinfeatures.PinFeatureConfiguration;
+import org.bulldog.core.pinfeatures.base.AbstractDigitalOutput;
 
 public class MockedDigitalOutput extends AbstractDigitalOutput {
 

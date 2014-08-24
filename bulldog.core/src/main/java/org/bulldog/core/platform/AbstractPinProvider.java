@@ -3,7 +3,7 @@ package org.bulldog.core.platform;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.pinfeatures.Pin;
 
 public class AbstractPinProvider implements PinProvider {
 

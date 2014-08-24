@@ -1,7 +1,7 @@
 package org.bulldog.beagleboneblack.io;
 
-import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.bus.i2c.I2cSignalType;
+import org.bulldog.core.pinfeatures.Pin;
 import org.bulldog.linux.io.LinuxI2cBus;
 
 public class BBBI2cBus extends LinuxI2cBus {

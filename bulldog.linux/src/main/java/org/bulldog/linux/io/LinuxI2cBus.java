@@ -2,10 +2,10 @@ package org.bulldog.linux.io;
 
 import java.io.IOException;
 
-import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.bus.BusConnection;
 import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.io.bus.i2c.I2cConnection;
+import org.bulldog.core.pinfeatures.Pin;
 import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.linux.jni.NativeI2c;
 

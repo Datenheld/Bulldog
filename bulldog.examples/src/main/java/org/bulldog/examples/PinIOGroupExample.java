@@ -3,8 +3,8 @@ package org.bulldog.examples;
 import java.io.IOException;
 
 import org.bulldog.beagleboneblack.BBBNames;
-import org.bulldog.core.gpio.DigitalIO;
 import org.bulldog.core.io.PinIOGroup;
+import org.bulldog.core.pinfeatures.DigitalIO;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;

@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.bulldog.core.gpio.DigitalOutput;
-import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.bus.BusConnection;
 import org.bulldog.core.io.bus.spi.SpiBus;
 import org.bulldog.core.io.bus.spi.SpiConnection;
 import org.bulldog.core.io.bus.spi.SpiMessage;
 import org.bulldog.core.io.bus.spi.SpiMode;
+import org.bulldog.core.pinfeatures.DigitalOutput;
+import org.bulldog.core.pinfeatures.Pin;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.linux.jni.NativeSpi;

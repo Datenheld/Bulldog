@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import org.bulldog.beagleboneblack.BBBNames;
 import org.bulldog.core.Signal;
-import org.bulldog.core.gpio.DigitalInput;
+import org.bulldog.core.pinfeatures.DigitalInput;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;

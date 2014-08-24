@@ -3,9 +3,9 @@ package org.bulldog.core.io.bus.spi;
 import java.io.IOException;
 import java.util.List;
 
-import org.bulldog.core.gpio.DigitalOutput;
-import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.bus.Bus;
+import org.bulldog.core.pinfeatures.DigitalOutput;
+import org.bulldog.core.pinfeatures.Pin;
 
 
 public interface SpiBus extends Bus {

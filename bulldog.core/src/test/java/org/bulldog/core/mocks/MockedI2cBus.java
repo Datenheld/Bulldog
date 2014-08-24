@@ -2,9 +2,9 @@ package org.bulldog.core.mocks;
 
 import java.io.IOException;
 
-import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.io.bus.i2c.I2cConnection;
+import org.bulldog.core.pinfeatures.Pin;
 
 public class MockedI2cBus extends MockedBus implements I2cBus {
 

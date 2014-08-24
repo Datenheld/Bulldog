@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import org.bulldog.beagleboneblack.BBBNames;
-import org.bulldog.core.gpio.DigitalOutput;
 import org.bulldog.core.io.bus.spi.SpiBus;
 import org.bulldog.core.io.bus.spi.SpiConnection;
 import org.bulldog.core.io.bus.spi.SpiMode;
+import org.bulldog.core.pinfeatures.DigitalOutput;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;

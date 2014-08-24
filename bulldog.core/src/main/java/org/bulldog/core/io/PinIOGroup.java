@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.bulldog.core.Signal;
-import org.bulldog.core.gpio.DigitalIO;
+import org.bulldog.core.pinfeatures.DigitalIO;
 import org.bulldog.core.util.BulldogUtil;
 
 public class PinIOGroup implements IOPort {

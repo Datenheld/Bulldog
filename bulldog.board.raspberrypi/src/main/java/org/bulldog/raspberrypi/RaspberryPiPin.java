@@ -1,6 +1,6 @@
 package org.bulldog.raspberrypi;
 
-import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.pinfeatures.Pin;
 
 public class RaspberryPiPin extends Pin {
 

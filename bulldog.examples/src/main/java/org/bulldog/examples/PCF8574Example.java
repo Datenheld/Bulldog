@@ -4,11 +4,11 @@ import java.io.IOException;
 
 import org.bulldog.beagleboneblack.BBBNames;
 import org.bulldog.core.Signal;
-import org.bulldog.core.gpio.DigitalInput;
-import org.bulldog.core.gpio.DigitalOutput;
-import org.bulldog.core.gpio.event.InterruptEventArgs;
-import org.bulldog.core.gpio.event.InterruptListener;
 import org.bulldog.core.io.bus.i2c.I2cBus;
+import org.bulldog.core.pinfeatures.DigitalInput;
+import org.bulldog.core.pinfeatures.DigitalOutput;
+import org.bulldog.core.pinfeatures.event.InterruptEventArgs;
+import org.bulldog.core.pinfeatures.event.InterruptListener;
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BitMagic;

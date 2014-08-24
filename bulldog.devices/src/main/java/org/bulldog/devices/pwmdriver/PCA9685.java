@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.gpio.Pwm;
 import org.bulldog.core.io.bus.i2c.I2cBus;
 import org.bulldog.core.io.bus.i2c.I2cConnection;
 import org.bulldog.core.io.bus.i2c.I2cDevice;
+import org.bulldog.core.pinfeatures.Pin;
+import org.bulldog.core.pinfeatures.Pwm;
 import org.bulldog.core.util.BulldogUtil;
 
 public class PCA9685 extends I2cDevice {

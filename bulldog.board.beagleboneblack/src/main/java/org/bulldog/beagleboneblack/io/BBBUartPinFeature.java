@@ -1,10 +1,10 @@
 package org.bulldog.beagleboneblack.io;
 
-import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.gpio.PinFeatureConfiguration;
 import org.bulldog.core.io.uart.AbstractUartPinFeature;
 import org.bulldog.core.io.uart.UartPort;
 import org.bulldog.core.io.uart.UartSignalType;
+import org.bulldog.core.pinfeatures.Pin;
+import org.bulldog.core.pinfeatures.PinFeatureConfiguration;
 
 public class BBBUartPinFeature extends AbstractUartPinFeature {
 

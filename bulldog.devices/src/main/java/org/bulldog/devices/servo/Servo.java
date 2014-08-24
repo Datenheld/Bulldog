@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import org.bulldog.core.gpio.Pwm;
+import org.bulldog.core.pinfeatures.Pwm;
 import org.bulldog.core.util.DaemonThreadFactory;
 import org.bulldog.core.util.easing.SineEasing;
 import org.bulldog.devices.actuators.Actuator;

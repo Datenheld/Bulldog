@@ -1,7 +1,7 @@
 package org.bulldog.devices.led;
 
-import org.bulldog.core.gpio.Pwm;
-import org.bulldog.core.gpio.util.PwmController;
+import org.bulldog.core.pinfeatures.Pwm;
+import org.bulldog.core.pinfeatures.util.PwmController;
 import org.bulldog.core.util.easing.Easing;
 import org.bulldog.core.util.easing.EasingOptions;
 import org.bulldog.core.util.easing.SineEasing;

@@ -2,9 +2,9 @@ package org.bulldog.core.mocks;
 
 import java.util.concurrent.Future;
 
-import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.gpio.PinFeatureConfiguration;
-import org.bulldog.core.gpio.base.AbstractAnalogInput;
+import org.bulldog.core.pinfeatures.Pin;
+import org.bulldog.core.pinfeatures.PinFeatureConfiguration;
+import org.bulldog.core.pinfeatures.base.AbstractAnalogInput;
 
 public class MockedAnalogInput extends AbstractAnalogInput {
 

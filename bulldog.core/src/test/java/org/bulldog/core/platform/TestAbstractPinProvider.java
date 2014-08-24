@@ -2,8 +2,8 @@ package org.bulldog.core.platform;
 
 import junit.framework.TestCase;
 
-import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.mocks.MockedBoard;
+import org.bulldog.core.pinfeatures.Pin;
 import org.junit.Test;
 
 public class TestAbstractPinProvider {

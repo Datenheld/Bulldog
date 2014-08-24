@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.bulldog.core.Signal;
-import org.bulldog.core.gpio.DigitalOutput;
+import org.bulldog.core.pinfeatures.DigitalOutput;
 import org.bulldog.core.util.BitMagic;
 
 public class PinIOOutputStream extends OutputStream {

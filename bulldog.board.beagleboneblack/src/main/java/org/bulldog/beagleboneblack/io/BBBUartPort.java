@@ -4,11 +4,11 @@ import java.io.File;
 import java.io.IOException;
 
 import org.bulldog.beagleboneblack.sysfs.BBBSysFs;
-import org.bulldog.core.gpio.Pin;
 import org.bulldog.core.io.uart.UartPort;
 import org.bulldog.core.io.uart.UartRx;
 import org.bulldog.core.io.uart.UartSignalType;
 import org.bulldog.core.io.uart.UartTx;
+import org.bulldog.core.pinfeatures.Pin;
 import org.bulldog.linux.io.LinuxSerialPort;
 
 public class BBBUartPort extends LinuxSerialPort implements UartPort {

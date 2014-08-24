@@ -1,6 +1,6 @@
 package org.bulldog.core.mocks;
 
-import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.pinfeatures.Pin;
 import org.bulldog.core.platform.AbstractBoard;
 
 public class MockedBoard extends AbstractBoard {

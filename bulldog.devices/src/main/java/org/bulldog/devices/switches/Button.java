@@ -6,9 +6,9 @@ import java.util.List;
 
 import org.bulldog.core.Edge;
 import org.bulldog.core.Signal;
-import org.bulldog.core.gpio.DigitalInput;
-import org.bulldog.core.gpio.event.InterruptEventArgs;
-import org.bulldog.core.gpio.event.InterruptListener;
+import org.bulldog.core.pinfeatures.DigitalInput;
+import org.bulldog.core.pinfeatures.event.InterruptEventArgs;
+import org.bulldog.core.pinfeatures.event.InterruptListener;
 
 public class Button implements InterruptListener {
 

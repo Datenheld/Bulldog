@@ -1,8 +1,8 @@
 package org.bulldog.core.mocks;
 
-import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.gpio.PinFeatureConfiguration;
-import org.bulldog.core.gpio.base.AbstractPinFeature;
+import org.bulldog.core.pinfeatures.Pin;
+import org.bulldog.core.pinfeatures.PinFeatureConfiguration;
+import org.bulldog.core.pinfeatures.base.AbstractPinFeature;
 
 public class MockedPinFeature1 extends AbstractPinFeature {
 
