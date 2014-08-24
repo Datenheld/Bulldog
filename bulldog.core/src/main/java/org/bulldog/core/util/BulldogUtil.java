@@ -11,7 +11,7 @@ public final class BulldogUtil {
 		try {
 			Thread.sleep(ms);
 		} catch(Exception ex) {
-			
+			throw new RuntimeException(ex);
 		}
 	}
 	
@@ -60,8 +60,5 @@ public final class BulldogUtil {
 	public static boolean isStringNumeric(String str) {
 	  return str.matches("-?\\d+(\\.\\d+)?");
 	}
-	
-	public static final int getUnsignedByte(byte b) {
-		return b & 0xFF;
-	}
+
 }

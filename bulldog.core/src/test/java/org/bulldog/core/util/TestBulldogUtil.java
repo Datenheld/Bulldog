@@ -13,6 +13,8 @@ import org.junit.Test;
 
 public class TestBulldogUtil {
 
+	private boolean exceptionThrown = false;
+	
 	@Test
 	public void testSleep() {
 		long start = System.currentTimeMillis();
@@ -39,6 +41,22 @@ public class TestBulldogUtil {
 		BulldogUtil.sleepMs(25);
 		delta = System.currentTimeMillis() - start;
 		TestCase.assertEquals(25, delta, 5);
+		
+		start = System.currentTimeMillis();
+		Thread thread = new Thread() {
+			public void run() {
+				try {
+					BulldogUtil.sleepMs(5000);
+				} catch(Exception ex) {
+					exceptionThrown = true;
+				}
+			}
+		};
+		thread.start();
+		BulldogUtil.sleepMs(100);
+		thread.interrupt();
+		BulldogUtil.sleepMs(100);
+		TestCase.assertTrue(exceptionThrown);
 	}
 	
 	@Test

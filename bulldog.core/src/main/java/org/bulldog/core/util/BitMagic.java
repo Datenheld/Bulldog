@@ -163,4 +163,8 @@ public final class BitMagic {
 			throw new IllegalArgumentException(String.format(ERROR_INVALID_BIT_POSITION, size, size-1));
 		}
 	}
+	
+	public static final int getUnsignedByte(byte b) {
+		return b & 0xFF;
+	}
 }

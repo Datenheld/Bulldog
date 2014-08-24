@@ -11,6 +11,7 @@ import org.bulldog.core.mocks.MockedPinFeature3;
 import org.bulldog.core.pinfeatures.Pin;
 import org.bulldog.core.pinfeatures.PinBlockedException;
 import org.bulldog.core.pinfeatures.PinFeature;
+import org.bulldog.core.pinfeatures.PinFeatureConfiguration;
 import org.bulldog.core.pinfeatures.event.FeatureActivationEventArgs;
 import org.bulldog.core.pinfeatures.event.FeatureActivationListener;
 import org.junit.Before;
@@ -69,7 +70,22 @@ public class TestPin {
 		TestCase.assertEquals(type3, feature);
 		
 		pin.removeFeature(MockedPinFeature2.class);
+		
+		PinFeatureConfiguration configuration = new PinFeatureConfiguration(MockedPinFeature1.class);
+		MockedPinFeature1 feature1 = pin.as(configuration);
+		TestCase.assertEquals(type1, feature1);
+		
+		pin.addFeature(type2);
+		PinFeatureConfiguration configuration2 = new PinFeatureConfiguration(MockedPinFeature2.class);
+		pin.activateFeature(configuration2);
+		feature = pin.getActiveFeature();
+		TestCase.assertEquals(type2, feature);
+		
+		PinFeatureConfiguration configuration3 = new PinFeatureConfiguration(MockedPinFeature3.class);
+		MockedPinFeature3 feature3 = pin.as(configuration3);
+		TestCase.assertEquals(type3, feature3);
 	}
+	
 	
 	@Test
 	public void testAddRemoveFeature() {

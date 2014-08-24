@@ -9,6 +9,7 @@ import org.bulldog.core.io.IOPort;
 public class MockedIOPort implements IOPort {
 	
 	private String name;
+	private String alias;
 	
 	public MockedIOPort(String name) {
 		this.name = name;
@@ -21,14 +22,12 @@ public class MockedIOPort implements IOPort {
 
 	@Override
 	public String getAlias() {
-		// TODO Auto-generated method stub
-		return null;
+		return alias;
 	}
 
 	@Override
 	public void setAlias(String alias) {
-		// TODO Auto-generated method stub
-		
+		this.alias = alias;
 	}
 
 	@Override

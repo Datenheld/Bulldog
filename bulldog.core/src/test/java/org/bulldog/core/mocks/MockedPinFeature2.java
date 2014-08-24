@@ -13,7 +13,7 @@ public class MockedPinFeature2 extends AbstractPinFeature {
 
 	@Override
 	public String getName() {
-		return "Mocked Feature";
+		return "Mocked Feature 2";
 	}
 
 	@Override

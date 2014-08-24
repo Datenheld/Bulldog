@@ -45,7 +45,7 @@ public class BH1750LightIntensitySensor extends I2cDevice {
 		
 		byte[] buffer = new byte[2];
 		getBusConnection().readBytes(buffer);
-		int intValue = (((BulldogUtil.getUnsignedByte(buffer[0]) << 8)) | BulldogUtil.getUnsignedByte(buffer[1]));
+		int intValue = (((BitMagic.getUnsignedByte(buffer[0]) << 8)) | BitMagic.getUnsignedByte(buffer[1]));
 		double value = intValue / 1.2;
 		return value;
 	}

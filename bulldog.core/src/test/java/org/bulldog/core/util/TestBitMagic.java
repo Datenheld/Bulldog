@@ -257,4 +257,23 @@ public class TestBitMagic {
 		TestCase.assertEquals("0b0000000000000000000000000000000000000000000000000000000000100010", BitMagic.toBitString(0b00100010L));
 		TestCase.assertEquals("0b0000000000000000000000000000000000000000000000000000000011111111", BitMagic.toBitString(0b11111111L));
 	}
+	
+	
+	@Test
+	public void testUnsignedByte() {
+		int a = BitMagic.getUnsignedByte((byte)255);
+		TestCase.assertEquals(255, a);
+		
+		int b = BitMagic.getUnsignedByte((byte)129);
+		TestCase.assertEquals(129, b);
+		
+		int c = BitMagic.getUnsignedByte((byte)-128);
+		TestCase.assertEquals(128, c);
+		
+		int d = BitMagic.getUnsignedByte((byte)-1);
+		TestCase.assertEquals(255, d);
+	
+		int e = BitMagic.getUnsignedByte((byte)-2);
+		TestCase.assertEquals(254, e);
+	}
 }

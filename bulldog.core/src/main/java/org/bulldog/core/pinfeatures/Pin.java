@@ -107,7 +107,7 @@ public class Pin {
 	 * @param <T> the type (classname) of the desired feature
 	 * @param configuration the configuration of the feature
 	 */
-	public <T extends PinFeature> void activateFeature(PinFeatureConfiguration configuration) {
+	public void activateFeature(PinFeatureConfiguration configuration) {
 		this.as(configuration);
 	}
 

@@ -1,7 +1,8 @@
 package org.bulldog.core.testsuite;
 
 import org.bulldog.core.TestSignal;
-import org.bulldog.core.bus.TestBusConnection;
+import org.bulldog.core.io.bus.TestBusConnection;
+import org.bulldog.core.io.bus.serial.TestSerialDataEventArgs;
 import org.bulldog.core.pinfeatures.base.TestAbstractAnalogInput;
 import org.bulldog.core.pinfeatures.base.TestAbstractDigitalInput;
 import org.bulldog.core.pinfeatures.base.TestAbstractDigitalOutput;
@@ -33,7 +34,8 @@ import org.junit.runners.Suite.SuiteClasses;
 				TestSoftPwm.class,
 				TestBusConnection.class,
 				TestBulldogUtil.class,
-				TestBitMagic.class
+				TestBitMagic.class,
+				TestSerialDataEventArgs.class
 			  })
 public class CompleteTestSuite {
 

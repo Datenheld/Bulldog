@@ -8,4 +8,8 @@ public class MockedPinFeature3 extends MockedPinFeature2 {
 		super(pin);
 	}
 
+	@Override
+	public String getName() {
+		return "Mocked Feature 2";
+	}
 }
