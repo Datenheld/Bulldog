@@ -1,5 +1,3 @@
-import com.sun.org.apache.xalan.internal.xsltc.compiler.Copy
-
 ext {
 	bulldogVersion = '0.1.0'
 	distributionDirectory = new File('../dist', 'Version-' + bulldogVersion);
