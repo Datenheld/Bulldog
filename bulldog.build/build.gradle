@@ -16,7 +16,8 @@ def javaProjects = [
 				   
 def boardProjects = [
 					 project(":bulldog.board.beagleboneblack"),
-					 project(":bulldog.board.raspberrypi")
+					 project(":bulldog.board.raspberrypi"),
+					 project(":bulldog.board.cubieboard")
 					]
 
 def nativeProjects = [

@@ -11,10 +11,14 @@ public class LinuxDigitalOutput extends AbstractDigitalOutput {
 	
 	public LinuxDigitalOutput(Pin pin) {
 		super(pin);
-		sysFsPin = new SysFsPin(getPin().getAddress());
+		sysFsPin = createSysFsPin(pin);
 	}
 
-	@Override
+    protected SysFsPin createSysFsPin(Pin pin) {
+        return new SysFsPin(pin.getAddress());
+    }
+
+    @Override
 	protected void setupImpl() {
 		exportPinIfNecessary();
 	}
