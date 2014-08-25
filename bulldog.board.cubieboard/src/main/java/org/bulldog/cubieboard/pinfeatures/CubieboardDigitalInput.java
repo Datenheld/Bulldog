@@ -1,10 +1,10 @@
-package org.bulldog.cubieboard.gpio;
+package org.bulldog.cubieboard.pinfeatures;
 
-import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.gpio.event.InterruptListener;
+import org.bulldog.core.pinfeatures.Pin;
+import org.bulldog.core.pinfeatures.event.InterruptListener;
 import org.bulldog.cubieboard.CubieboardPin;
-import org.bulldog.linux.gpio.LinuxDigitalInput;
 import org.bulldog.linux.io.LinuxEpollListener;
+import org.bulldog.linux.pinfeatures.LinuxDigitalInput;
 import org.bulldog.linux.sysfs.SysFsPin;
 
 public class CubieboardDigitalInput extends LinuxDigitalInput implements LinuxEpollListener {

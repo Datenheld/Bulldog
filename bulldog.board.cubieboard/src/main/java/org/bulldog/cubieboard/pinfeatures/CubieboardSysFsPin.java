@@ -1,4 +1,4 @@
-package org.bulldog.cubieboard.gpio;
+package org.bulldog.cubieboard.pinfeatures;
 
 import org.bulldog.linux.sysfs.SysFsPin;
 

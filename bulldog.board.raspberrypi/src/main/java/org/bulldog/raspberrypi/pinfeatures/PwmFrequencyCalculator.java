@@ -1,8 +1,4 @@
-<<<<<<< HEAD:bulldog.board.raspberrypi/src/main/java/org/bulldog/raspberrypi/pinfeatures/PwmFrequencyCalculator.java
 package org.bulldog.raspberrypi.pinfeatures;
-=======
-package org.bulldog.raspberrypi.gpio;
->>>>>>> origin/master:bulldog.board.raspberrypi/src/main/java/org/bulldog/raspberrypi/gpio/PwmFrequencyCalculator.java
 
 public class PwmFrequencyCalculator {
 

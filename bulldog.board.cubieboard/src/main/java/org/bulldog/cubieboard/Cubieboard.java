@@ -1,11 +1,11 @@
 package org.bulldog.cubieboard;
 
-import org.bulldog.core.gpio.Pin;
-import org.bulldog.core.gpio.base.DigitalIOFeature;
+import org.bulldog.core.pinfeatures.Pin;
+import org.bulldog.core.pinfeatures.base.DigitalIOFeature;
 import org.bulldog.core.platform.AbstractBoard;
 import org.bulldog.linux.util.LinuxLibraryLoader;
-import org.bulldog.cubieboard.gpio.CubieboardDigitalInput;
-import org.bulldog.cubieboard.gpio.CubieboardDigitalOutput;
+import org.bulldog.cubieboard.pinfeatures.CubieboardDigitalInput;
+import org.bulldog.cubieboard.pinfeatures.CubieboardDigitalOutput;
 
 public class Cubieboard extends AbstractBoard {
 

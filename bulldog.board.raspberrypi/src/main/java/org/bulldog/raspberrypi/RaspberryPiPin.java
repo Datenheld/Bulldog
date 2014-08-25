@@ -1,10 +1,6 @@
 package org.bulldog.raspberrypi;
 
-<<<<<<< HEAD
 import org.bulldog.core.pinfeatures.Pin;
-=======
-import org.bulldog.core.gpio.Pin;
->>>>>>> origin/master
 
 public class RaspberryPiPin extends Pin {
 
