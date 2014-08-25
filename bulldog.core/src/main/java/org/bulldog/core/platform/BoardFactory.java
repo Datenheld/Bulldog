@@ -5,5 +5,4 @@ public interface BoardFactory {
 
 	boolean isCompatibleWithPlatform();
 	Board createBoard();
-	
 }
