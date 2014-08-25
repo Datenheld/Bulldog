@@ -20,21 +20,13 @@ public class LinuxDigitalInput extends AbstractDigitalInput implements LinuxEpol
 	
 	public LinuxDigitalInput(Pin pin) {
 		super(pin);
-		sysFsPin = createSysFsPin(pin);
+		sysFsPin = new SysFsPin(getPin().getAddress());
 		interruptControl = new LinuxEpollThread(sysFsPin.getValueFilePath());
 		interruptControl.addListener(this);
 	}
-
-    protected SysFsPin createSysFsPin(Pin pin) {
-        return new SysFsPin(pin.getAddress());
-    }
-
-    public Signal read() {
+	
+	public Signal read() {
 		return sysFsPin.getValue();
-	}
-
-	public void shutdown() {
-		interruptControl.shutdown();
 	}
 	
 	@Override
@@ -66,9 +58,7 @@ public class LinuxDigitalInput extends AbstractDigitalInput implements LinuxEpol
 	}
 
 	protected void disableInterruptsImpl() {
-		if(interruptControl.isRunning()) {
-			interruptControl.stop();
-		}
+		interruptControl.teardown();
 	}
 
 	@Override

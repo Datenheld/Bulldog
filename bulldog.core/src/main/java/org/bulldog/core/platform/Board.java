@@ -29,4 +29,6 @@ public interface Board extends PinProvider {
 	void setProperty(String propertyName, String value);
 	String getProperty(String propertyName);
 	boolean hasProperty(String propertyName);
+	
+	void shutdown();
 }

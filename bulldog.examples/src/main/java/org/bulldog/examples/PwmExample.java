@@ -84,8 +84,8 @@ public class PwmExample {
 			}
 		}
 		
+		System.out.println("You can exit with ctrl + c");
 		while(true) {
-			System.out.println("You can exit with ctrl + c");
 			BulldogUtil.sleepMs(100);
 		}
 		

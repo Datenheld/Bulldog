@@ -22,7 +22,9 @@ public class NativeEpoll {
 	
 	public static native int epollCreate();
 	public static native int addFile(int epfd, int opcode, String filename, int events);
+	public static native int removeFile(int epfd, int fd);
 	public static native NativePollResult[] waitForInterrupt(int epfd);
 	public static native void stopWait(int epfd);
 	public static native void shutdown(int epfd);
 }
+	

@@ -2,6 +2,7 @@ package org.bulldog.raspberrypi;
 
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.BoardFactory;
+import org.bulldog.linux.util.LinuxLibraryLoader;
 
 
 public class RaspberryPiBoardFactory implements BoardFactory {
@@ -13,7 +14,8 @@ public class RaspberryPiBoardFactory implements BoardFactory {
 
 	@Override
 	public Board createBoard() {
-		return RaspberryPi.getInstance();
+		LinuxLibraryLoader.loadNativeLibrary();
+		return new RaspberryPi();
 	}
 
 }

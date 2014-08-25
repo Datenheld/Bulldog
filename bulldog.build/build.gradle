@@ -1,5 +1,3 @@
-import com.sun.org.apache.xalan.internal.xsltc.compiler.Copy
-
 ext {
 	bulldogVersion = '0.1.0'
 	distributionDirectory = new File('../dist', 'Version-' + bulldogVersion);
@@ -18,8 +16,7 @@ def javaProjects = [
 				   
 def boardProjects = [
 					 project(":bulldog.board.beagleboneblack"),
-					 project(":bulldog.board.raspberrypi"),
-					 project(":bulldog.board.cubieboard")
+					 project(":bulldog.board.raspberrypi")
 					]
 
 def nativeProjects = [
@@ -61,7 +58,7 @@ configure(allJavaProjects) {
         manifest.attributes 'Implementation-Version': version
         manifest.attributes provider: 'Datenheld'
         from ("${projectDir}/src/main/java/") {
-        	include('*/**')
+        	include('*/**/*.dts.*')
     	}
     }
     
@@ -97,7 +94,7 @@ boardProjects.each { def boardProject ->
 	        destinationDir = boardDistributionDirectory(distribution.distributionBaseName)
 	        
 	        manifest { 
-	     		attributes 'Main-Class': 'org.bulldog.examples.PwmExample' 
+	     		attributes 'Main-Class': 'org.bulldog.examples.App' 
 	     		attributes 'Created-By': 'libbulldog.org - Version ' + bulldogVersion
 	     	}
 	    
@@ -115,7 +112,7 @@ boardProjects.each { def boardProject ->
 	evaluationDependsOn(boardProject.path)
 	evaluationDependsOn(project(':bulldog.linux.native').path)
 	boardProject.distributions.each { distribution ->
-	    tasks.create(name: "distribute$distribution.distributionBaseName", type: Copy, dependsOn: [ project(':bulldog.linux.native').tasks.matching  { Task task -> task.name.contains('BulldogSharedLibrary') } ]) {
+	    tasks.create(name: "distribute$distribution.distributionBaseName", type: Copy, dependsOn: [ project(':bulldog.linux.native').tasks.matching  { Task task -> task.name.contains('BulldogSharedLibrary') } ]) { 
 	       //delete project.distributionDirectory
 	       destinationDir = boardDistributionDirectory(distribution.distributionBaseName)
 	       destinationDir.mkdirs()

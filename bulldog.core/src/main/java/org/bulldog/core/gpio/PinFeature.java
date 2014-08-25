@@ -8,6 +8,7 @@ public interface PinFeature {
 	Pin getPin();
 	
 	boolean isActivatedFeature();
+	void activate();
 	
 	boolean isBlocking();
 	void blockPin();

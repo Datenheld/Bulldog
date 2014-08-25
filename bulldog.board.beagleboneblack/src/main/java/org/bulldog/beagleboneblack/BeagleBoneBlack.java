@@ -20,15 +20,13 @@ import org.bulldog.linux.gpio.LinuxDigitalInput;
 import org.bulldog.linux.gpio.LinuxDigitalOutput;
 import org.bulldog.linux.io.LinuxI2cBus;
 import org.bulldog.linux.io.LinuxSpiBus;
-import org.bulldog.linux.util.LinuxLibraryLoader;
 
 public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationListener {
 	
-	private static BeagleBoneBlack instance;
 	private static final String NAME = "BeagleBone Black";
 	private BBBSysFs sysFs = new BBBSysFs();
 	
-	private BeagleBoneBlack() {
+	BeagleBoneBlack() {
 		super();
 		createPins();
 		createBuses();
@@ -286,18 +284,6 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 	}
 
 	public void featureDeactivated(Object o, FeatureActivationEventArgs args) {
-	}
-
-	public synchronized static BeagleBoneBlack getInstance() {
-		if(instance == null) {
-			instance = createBoardImpl();
-		}
-		return instance;
-	}
-	
-	private static BeagleBoneBlack createBoardImpl() {
-		LinuxLibraryLoader.loadNativeLibrary();
-		return new BeagleBoneBlack();
 	}
 	
 	public void loadSlot(String deviceId) {

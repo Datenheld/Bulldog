@@ -1,1 +1,1 @@
-gradle --daemon clean bulldogSharedLibrary build bbbDistro
+gradle --daemon clean build distribution archiveDistributions

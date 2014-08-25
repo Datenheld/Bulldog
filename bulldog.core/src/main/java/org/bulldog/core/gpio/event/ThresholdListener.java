@@ -21,7 +21,7 @@ package org.bulldog.core.gpio.event;
  * The class that is interested in processing a threshold
  * event implements this interface, and the object created
  * with that class is registered with a component using the
- * component's <code>addThresholdListener<code> method. When
+ * component's {@code addThresholdListener} method. When
  * the threshold event occurs, that object's appropriate
  * method is invoked.
  *
@@ -32,7 +32,7 @@ public interface ThresholdListener {
 	 * Callback method that is triggered when the threshold is reached.
 	 */
 	void thresholdReached();
-	
+
 	/**
 	 * Checks if the threshold is reached.
 	 *
@@ -40,5 +40,5 @@ public interface ThresholdListener {
 	 * @return true, if is threshold reached - false otherwise
 	 */
 	boolean isThresholdReached(double thresholdValue);
-	
+
 }

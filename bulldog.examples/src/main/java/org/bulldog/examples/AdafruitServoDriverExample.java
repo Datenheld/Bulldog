@@ -27,10 +27,10 @@ public class AdafruitServoDriverExample {
     
     	I2cBus bus = board.getI2cBus(BBBNames.I2C_1);
     	AdafruitServoDriver servoDriver = new AdafruitServoDriver(bus, 0x70);
-    	final TowerProMicroSG90 servo0 = new TowerProMicroSG90(servoDriver.getChannel(0));
-    	final TowerProMicroSG90 servo1 = new TowerProMicroSG90(servoDriver.getChannel(1));
-    	final TowerProMicroSG90 servo2 = new TowerProMicroSG90(servoDriver.getChannel(2));
-    	final TowerProMicroSG90 servo3 = new TowerProMicroSG90(servoDriver.getChannel(3));
+    	final Servo servo0 = new TowerProMicroSG90(servoDriver.getChannel(0));
+    	final Servo servo1 = new TowerProMicroSG90(servoDriver.getChannel(1));
+    	final Servo servo2 = new TowerProMicroSG90(servoDriver.getChannel(2));
+    	final Servo servo3 = new TowerProMicroSG90(servoDriver.getChannel(3));
     	
     	ServoListener listener = new ServoListener() {
 

@@ -93,7 +93,7 @@ public abstract class AbstractDigitalInput extends AbstractPinFeature implements
 				return currentState;
 			}
 
-			delta = System.currentTimeMillis() - startTime;;
+			delta = System.currentTimeMillis() - startTime;
 		}
 
 		return currentState;
