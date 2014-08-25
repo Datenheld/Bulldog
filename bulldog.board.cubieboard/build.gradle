@@ -1,0 +1,14 @@
+ext {
+	distributions = [ new CubieboardDistribution() ]
+}
+
+class CubieboardDistribution {
+	def distributionBaseName = 'bulldog.cubieboard'
+	def distributionFiles = ['../bulldog.linux.native/build/binaries/bulldogSharedLibrary/cubieboard/libbulldog-linux.so']
+}
+
+dependencies {
+    compile project(':bulldog.core')
+    compile project(':bulldog.linux')
+    runtime fileTree(dir: project(':bulldog.linux.native').buildDir, include: '**/*.so')
+}
