@@ -12,6 +12,7 @@ model {
 	              addPlatformConfiguration(new BeagleboneArmSoftFpArchitecture())
 	              addPlatformConfiguration(new BeagleboneArmHardFpArchitecture())
 	              addPlatformConfiguration(new RaspberryPiArmArchitecture())
+				  addPlatformConfiguration(new CubieboardArchitecture())
 	        }
     }
     
@@ -30,7 +31,11 @@ model {
         	architecture "arm"
         	operatingSystem "linux"
         }
-
+		
+		cubieboard {
+        	architecture "arm"
+        	operatingSystem "linux"
+        }
     }
 }
 
@@ -150,6 +155,47 @@ class RaspberryPiArmArchitecture implements TargetPlatformConfiguration {
 
     boolean supportsPlatform(Platform element) {
     	return element.toString().contains('raspberrypi')
+    }
+
+    List<String> getCppCompilerArgs() {
+       compilerArgs
+    }
+
+    List<String> getCCompilerArgs() {
+       compilerArgs
+    }
+
+    List<String> getObjectiveCCompilerArgs() {
+        []
+    }
+
+    List<String> getObjectiveCppCompilerArgs() {
+        []
+    }
+
+    List<String> getAssemblerArgs() {
+        []
+    }
+
+    List<String> getLinkerArgs() {
+       linkerArgs
+    }
+
+    List<String> getStaticLibraryArchiverArgs() {
+        []
+    }
+}
+
+class CubieboardArchitecture implements TargetPlatformConfiguration {
+
+	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline", "-mfloat-abi=hard", 
+						 "-mlittle-endian", "-DARM", "-DARCH=\"ARM\"" , "-marm", "-mcpu=cortex-a7", 
+						 "-mtune=cortex-a7", "-mfpu=vfpv4-d16", "-mfpu=neon-vfpv4", 
+						 "-funsafe-math-optimizations"]
+	def linkerArgs =  ["--gc-sections", "-shared"]
+
+    boolean supportsPlatform(Platform element) {
+    	return element.toString().contains('cubieboard')
     }
 
     List<String> getCppCompilerArgs() {

@@ -1,7 +1,12 @@
 package org.bulldog.raspberrypi.io;
 
+<<<<<<< HEAD
 import org.bulldog.core.io.bus.i2c.I2cSignalType;
 import org.bulldog.core.pinfeatures.Pin;
+=======
+import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.io.bus.i2c.I2cSignalType;
+>>>>>>> origin/master
 import org.bulldog.linux.io.LinuxI2cBus;
 
 public class RaspberryPiI2cBus extends LinuxI2cBus {

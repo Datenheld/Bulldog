@@ -1,8 +1,15 @@
+<<<<<<< HEAD:bulldog.board.raspberrypi/src/main/java/org/bulldog/raspberrypi/pinfeatures/RaspiPwm.java
 package org.bulldog.raspberrypi.pinfeatures;
 
 import org.bulldog.core.pinfeatures.Pin;
 import org.bulldog.core.pinfeatures.PinFeatureConfiguration;
 import org.bulldog.core.pinfeatures.base.AbstractPwm;
+=======
+package org.bulldog.raspberrypi.gpio;
+
+import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.base.AbstractPwm;
+>>>>>>> origin/master:bulldog.board.raspberrypi/src/main/java/org/bulldog/raspberrypi/gpio/RaspiPwm.java
 import org.bulldog.core.util.BitMagic;
 import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.raspberrypi.BCM2835;
@@ -17,7 +24,11 @@ public class RaspiPwm extends AbstractPwm {
 	}
 
 	@Override
+<<<<<<< HEAD:bulldog.board.raspberrypi/src/main/java/org/bulldog/raspberrypi/pinfeatures/RaspiPwm.java
 	protected void setupImpl(PinFeatureConfiguration configuration) {
+=======
+	protected void setupImpl() {
+>>>>>>> origin/master:bulldog.board.raspberrypi/src/main/java/org/bulldog/raspberrypi/gpio/RaspiPwm.java
 		RaspberryPiPin pin = (RaspberryPiPin)getPin();
 		BCM2835.configureAlternateFunction(pin.getGpioNumber(), 5);
 		stopClock();

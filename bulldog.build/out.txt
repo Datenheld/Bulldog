@@ -1,6 +1,0 @@
-
-E:\Projects\Java\github\Bulldog\bulldog.build>gradle -x test --daemon clean build docs distribution archiveDistributions 
-
-BUILD FAILED
-
-Total time: 0.578 secs

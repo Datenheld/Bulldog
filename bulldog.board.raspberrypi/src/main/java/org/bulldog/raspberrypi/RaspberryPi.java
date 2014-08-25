@@ -1,5 +1,6 @@
 package org.bulldog.raspberrypi;
 
+<<<<<<< HEAD
 import org.bulldog.core.pinfeatures.Pin;
 import org.bulldog.core.pinfeatures.base.DigitalIOFeature;
 import org.bulldog.core.platform.AbstractBoard;
@@ -9,6 +10,17 @@ import org.bulldog.raspberrypi.io.RaspberryPiI2cBus;
 import org.bulldog.raspberrypi.pinfeatures.RaspiDigitalInput;
 import org.bulldog.raspberrypi.pinfeatures.RaspiDigitalOutput;
 import org.bulldog.raspberrypi.pinfeatures.RaspiPwm;
+=======
+import org.bulldog.core.gpio.Pin;
+import org.bulldog.core.gpio.base.DigitalIOFeature;
+import org.bulldog.core.platform.AbstractBoard;
+import org.bulldog.linux.io.LinuxSpiBus;
+import org.bulldog.linux.sysinfo.CpuInfo;
+import org.bulldog.raspberrypi.gpio.RaspiDigitalInput;
+import org.bulldog.raspberrypi.gpio.RaspiDigitalOutput;
+import org.bulldog.raspberrypi.gpio.RaspiPwm;
+import org.bulldog.raspberrypi.io.RaspberryPiI2cBus;
+>>>>>>> origin/master
 
 public class RaspberryPi extends AbstractBoard {
 

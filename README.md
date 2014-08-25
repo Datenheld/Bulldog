@@ -1,11 +1,11 @@
 Bulldog
 =======
 
-Bulldog is a Java library for the Beaglebone Black written in Java.
+Bulldog is a Java library for the Beaglebone Black and the Raspberry PI.
 
 Visit its website: http://www.libbulldog.org
 
-It is currently under development, but many features are already usable. If you're interested in the sources, visit the Devline1 branch. Yet, it is far from being a fully fledged API.
+It is currently under development, but many features are already usable and stable.
 
 **Intention :**
 
@@ -28,22 +28,23 @@ Bulldog currently supports the following features on the BeagleBoneBlack:
  2. Native Interrupts via epoll (easily usable on DigitalInputs)
  3. Native PWM
  4. Native ADC
- 5. I2c
+ 5. I2C
  6. All UARTs (including dynamic setup via capemgr on request)
- 7. A few devices: Simple button API, Incremental Rotary Encoder, Servos
+ 7. SPI
+ 8. A few devices: Simple button API, Incremental Rotary Encoder, Servos
 
 **Build :**
 
 You'll need gradle installed and a cross compiler for arm. You'll have to adjust the toolchain path in bulldog.build/gradle.properties
-Afterwards, just run this command to build the Beaglebone Black distribution 
+Afterwards, just run this command to build all the distributions and javadocs 
 ```java
-   gradle bulldogSharedLibrary build bbbDistro
+   gradle -x test --daemon clean build docs distribution archiveDistributions
 ```
-It will produce a single jar called ```bulldog-beagleboneblack.jar``` and a native library called ```libbulldog-linux.so```. The latter can be found in the bulldog.linux.native build directory. Alternatively, you can find them prebuilt in the ```dist``` directory.
+It will produce a single jar called ```bulldog.<boardname>.jar``` and a native library called ```libbulldog-linux.so```. The latter can be found in the bulldog.linux.native build directory. Alternatively, you can find them prebuilt in the ```dist``` directory.
     
 **Usage :**
 
-You can just reference the jar in your classpath. Make sure the native library ```libbulldog-linux.so``` is in the same directory as ```bulldog-beagleboneblack.jar```. You can find the most recent binaries in the ```dist``` directory.
+You can just reference the jar in your classpath. Make sure the native library ```libbulldog-linux.so``` is in the same directory as ```bulldog.<boardname>.jar```. You can find the most recent binaries in the ```dist``` directory.
 
 For API usage see the __bulldog.examples__ project.
 
@@ -54,4 +55,5 @@ To achieve high pin toggling speeds and maximum performance, it uses VegetableAv
 The only working lib that was found for the 3.8 kernel!
 
 Thanks VegetableAvenger!
+
 
