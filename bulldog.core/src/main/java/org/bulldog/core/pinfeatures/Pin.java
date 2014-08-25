@@ -42,7 +42,7 @@ import org.bulldog.core.pinfeatures.event.FeatureActivationListener;
  * {@code Pwm pwm = pin.as(Pwm.class); }
  * </p>
  */
-public class Pin {
+public class Pin implements PinFeatureProvider {
 
 	/** The list of features that his pin instance possesses. */
 	private List<PinFeature> features = new ArrayList<PinFeature>();
@@ -245,17 +245,7 @@ public class Pin {
 	 */
 	@SuppressWarnings("unchecked")
 	public <T extends PinFeature> T getFeature(Class<T> featureClass) {
-		PinFeature foundFeature = null;
-		for(PinFeature feature : getFeatures()) {
-			if(feature.getClass().equals(featureClass)) {
-				foundFeature = feature;
-				break;
-			} else if(foundFeature == null && featureClass.isAssignableFrom(feature.getClass())) {
-				foundFeature = feature;
-			}
-		}
-
-		return (T)foundFeature;
+		return (T)FeatureFinder.findFeature(this, featureClass);
 	}
 
 	/**
@@ -365,13 +355,7 @@ public class Pin {
 	 * 				 false otherwise.
 	 */
 	public boolean hasFeature(Class<? extends PinFeature> featureClass) {
-		for(PinFeature feature : getFeatures()) {
-			if(featureClass.isAssignableFrom(feature.getClass())) {
-				return true;
-			}
-		}
-
-		return false;
+		return FeatureFinder.findFeature(this, featureClass) != null;
 	}
 
 	/**
@@ -393,7 +377,7 @@ public class Pin {
 	 * @param feature the feature to activate
 	 */
 	private void activateFeature(PinFeature feature, PinFeatureConfiguration configuration) {
-		if(feature == getActiveFeature()) { return; }
+		if(feature == getActiveFeature() && feature.getConfiguration().equals(configuration)) { return; }
 
 		PinFeature blocker = getBlocker();
 		if(blocker != null) {

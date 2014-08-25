@@ -60,10 +60,6 @@ public abstract class AbstractPinFeature implements PinFeature {
 		return this.configuration;
 	}
 	
-	public boolean isActiveOnPin() {
-		return pin.getActiveFeature() == this;
-	}
-	
 	@Override
 	public boolean isActiveAs(Class<? extends PinFeature> featureClass) {
 		return (featureClass.isAssignableFrom(getConfiguration().getDesiredFeature())

@@ -1,7 +1,6 @@
 package org.bulldog.devices.led;
 
 import org.bulldog.core.pinfeatures.Pwm;
-import org.bulldog.core.pinfeatures.util.PwmController;
 import org.bulldog.core.util.easing.Easing;
 import org.bulldog.core.util.easing.EasingOptions;
 import org.bulldog.core.util.easing.SineEasing;
@@ -9,7 +8,6 @@ import org.bulldog.core.util.easing.SineEasing;
 public class Led {
 
 	private Pwm pwm;
-	private PwmController pwmController;
 	private Easing defaultEasing;
 	
 	public Led(Pwm pwm) {
@@ -19,7 +17,6 @@ public class Led {
 	public Led(Pwm pwm, Easing defaultEasing) {
 		this.pwm = pwm;
 		this.defaultEasing = defaultEasing;
-		this.pwmController = new PwmController();
 		pwm.setFrequency(10000.0);
 		pwm.setDuty(0.0);
 		pwm.enable();
@@ -30,7 +27,7 @@ public class Led {
 	}
 	
 	public void fadeOut(int milliseconds, Easing easing) {
-		pwmController.dutyTransition(pwm, 0.0, milliseconds, easing, EasingOptions.EaseOut);
+		pwm.dutyTransition(0.0, milliseconds, easing, EasingOptions.EaseOut);
 	}
 	
 	public void fadeIn(int milliseconds) {
@@ -38,11 +35,11 @@ public class Led {
 	}
 	
 	public void fadeIn(int milliseconds, Easing easing) {
-		pwmController.dutyTransition(pwm, 1.0, milliseconds, easing, EasingOptions.EaseIn);
+		pwm.dutyTransition(1.0, milliseconds, easing, EasingOptions.EaseIn);
 	}
 	
 	public void fadeToBrightness(int milliseconds, double toBrightness, Easing easing) {
-		pwmController.dutyTransition(pwm, toBrightness, milliseconds, easing, EasingOptions.EaseIn);
+		pwm.dutyTransition(toBrightness, milliseconds, easing, EasingOptions.EaseIn);
 	}
 	
 	public void fadeToBrightness(int milliseconds, double toBrightness) {

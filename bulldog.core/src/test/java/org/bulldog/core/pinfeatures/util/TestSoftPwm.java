@@ -58,6 +58,9 @@ public class TestSoftPwm {
 			BulldogUtil.sleepMs(1);
 		}
 		
+		TestCase.assertTrue(output.isSetup());
+		pwm.teardown();
+		TestCase.assertFalse(output.isSetup());
 	}
 	
 	

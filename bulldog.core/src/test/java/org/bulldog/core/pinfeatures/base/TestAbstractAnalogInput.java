@@ -59,6 +59,13 @@ public class TestAbstractAnalogInput {
 		BulldogUtil.sleepMs(1000);
 		input.stopMonitor();
 		TestCase.assertFalse(input.isBlocking());
+		
+		try {
+			input.startMonitor(10, null);
+			TestCase.fail();
+		} catch(IllegalArgumentException ex) {
+			
+		}
 	}
 	
 }

@@ -2,6 +2,9 @@ package org.bulldog.core.pinfeatures.base;
 
 import org.bulldog.core.pinfeatures.Pin;
 import org.bulldog.core.pinfeatures.Pwm;
+import org.bulldog.core.pinfeatures.util.PwmController;
+import org.bulldog.core.util.easing.Easing;
+import org.bulldog.core.util.easing.EasingOptions;
 
 public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 
@@ -10,6 +13,7 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 	private double duty = 0.0f;
 	private double frequency = 1.0f;
 	private boolean enabled = false;
+	private PwmController pwmController = new PwmController();
 	
 	public AbstractPwm(Pin pin) {
 		super(pin);
@@ -56,7 +60,15 @@ public abstract class AbstractPwm extends AbstractPinFeature implements Pwm {
 	public double getFrequency() {
 		return frequency;
 	}
-		
+	
+	public void dutyTransition(double toDuty, int milliseconds, Easing easing, EasingOptions option) {
+		pwmController.dutyTransition(this, toDuty, milliseconds, easing, option);
+	}
+	
+	public void frequencyTransition(double toFrequency, int milliseconds, Easing easing, EasingOptions option) {
+		pwmController.frequencyTransition(this, toFrequency, milliseconds, easing, option);
+	}
+	
 	protected abstract void setPwmImpl(double frequency, double duty);
 	protected abstract void enableImpl();
 	protected abstract void disableImpl();

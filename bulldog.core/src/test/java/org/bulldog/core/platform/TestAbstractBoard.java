@@ -145,7 +145,7 @@ public class TestAbstractBoard {
 		TestCase.assertTrue(feature1.isSetup());
 		TestCase.assertTrue(feature2.isSetup());
 		
-		board.cleanup();
+		board.shutdown();
 		
 		TestCase.assertFalse(feature1.isSetup());
 		TestCase.assertFalse(feature2.isSetup());

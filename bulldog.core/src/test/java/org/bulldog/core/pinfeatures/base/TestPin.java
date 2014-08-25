@@ -74,6 +74,7 @@ public class TestPin {
 		PinFeatureConfiguration configuration = new PinFeatureConfiguration(MockedPinFeature1.class);
 		MockedPinFeature1 feature1 = pin.as(configuration);
 		TestCase.assertEquals(type1, feature1);
+		TestCase.assertTrue(feature1.isActivatedFeature());
 		
 		pin.addFeature(type2);
 		PinFeatureConfiguration configuration2 = new PinFeatureConfiguration(MockedPinFeature2.class);

@@ -10,7 +10,7 @@ import org.bulldog.core.pinfeatures.DigitalIO;
 import org.bulldog.core.pinfeatures.DigitalInput;
 import org.bulldog.core.pinfeatures.DigitalOutput;
 import org.bulldog.core.pinfeatures.Pin;
-import org.bulldog.core.pinfeatures.base.DigitalIOFeature;
+import org.bulldog.core.pinfeatures.PinFeatureConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -69,6 +69,26 @@ public class TestDigitalIOFeature {
 	}
 	
 	@Test
+	public void testFeatureProvider() {
+		DigitalIOFeature io = pin.as(DigitalIOFeature.class);
+		TestCase.assertEquals(2, io.getFeatures().size());
+		TestCase.assertTrue(io.hasFeature(DigitalInput.class));
+		TestCase.assertTrue(io.hasFeature(DigitalOutput.class));
+		
+		DigitalOutput output = io.getFeature(DigitalOutput.class);
+		TestCase.assertNotNull(output);
+		
+		MockedDigitalOutput mockedOutput = io.getFeature(MockedDigitalOutput.class);
+		TestCase.assertNotNull(mockedOutput);
+		
+		DigitalInput input = io.getFeature(DigitalInput.class);
+		TestCase.assertNotNull(input);
+		
+		MockedDigitalInput mockedInput = io.getFeature(MockedDigitalInput.class);
+		TestCase.assertNotNull(mockedInput);
+	}
+	
+	@Test
 	public void testInputOutputSwitch() {
 		DigitalIO io = pin.as(DigitalIO.class);
 		TestCase.assertFalse(io.isOutputActive());
@@ -88,10 +108,12 @@ public class TestDigitalIOFeature {
 		io.setDirection(IODirection.Out);
 		TestCase.assertFalse(io.isInputActive());
 		TestCase.assertTrue(io.isOutputActive());
+		TestCase.assertEquals(IODirection.Out, io.getDirection());
 		
 		io.setDirection(IODirection.In);
 		TestCase.assertTrue(io.isInputActive());
 		TestCase.assertFalse(io.isOutputActive());
+		TestCase.assertEquals(IODirection.In, io.getDirection());
 	}
 	
 	@Test
@@ -103,6 +125,8 @@ public class TestDigitalIOFeature {
 		TestCase.assertFalse(pin.isFeatureActive(DigitalIO.class));
 		TestCase.assertTrue(pin.isFeatureActive(DigitalInput.class));
 		TestCase.assertFalse(pin.isFeatureActive(DigitalOutput.class));
+		input.teardown();
+		TestCase.assertFalse(input.isSetup());
 	}
 	
 	@Test
@@ -114,6 +138,8 @@ public class TestDigitalIOFeature {
 		TestCase.assertFalse(pin.isFeatureActive(DigitalIO.class));
 		TestCase.assertFalse(pin.isFeatureActive(DigitalInput.class));
 		TestCase.assertTrue(pin.isFeatureActive(DigitalOutput.class));
+		output.teardown();
+		TestCase.assertFalse(output.isSetup());
 	}
 	
 	@Test
@@ -125,6 +151,20 @@ public class TestDigitalIOFeature {
 		TestCase.assertTrue(pin.isFeatureActive(DigitalIO.class));
 		TestCase.assertTrue(pin.isFeatureActive(DigitalInput.class));
 		TestCase.assertTrue(pin.isFeatureActive(DigitalOutput.class));
+		io.teardown();
+		TestCase.assertFalse(io.isSetup());
+	}
+	
+	@Test
+	public void testSetupTeardown() {
+		MockedDigitalOutput output = pin.as(new PinFeatureConfiguration(MockedDigitalOutput.class));
+		TestCase.assertTrue(output.isSetup());
+		MockedDigitalInput input = pin.as(new PinFeatureConfiguration(MockedDigitalInput.class));
+		TestCase.assertTrue(input.isSetup());
+		TestCase.assertFalse(output.isSetup());
+		testInputOutputConfiguration();
+		testOutputConfiguration();
+		testInputConfiguration();
 	}
 	
 }

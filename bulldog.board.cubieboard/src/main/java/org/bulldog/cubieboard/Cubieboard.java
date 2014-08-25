@@ -3,28 +3,15 @@ package org.bulldog.cubieboard;
 import org.bulldog.core.pinfeatures.Pin;
 import org.bulldog.core.pinfeatures.base.DigitalIOFeature;
 import org.bulldog.core.platform.AbstractBoard;
-import org.bulldog.linux.util.LinuxLibraryLoader;
 import org.bulldog.cubieboard.pinfeatures.CubieboardDigitalInput;
 import org.bulldog.cubieboard.pinfeatures.CubieboardDigitalOutput;
 
 public class Cubieboard extends AbstractBoard {
 
 	private static final String NAME = "Cubieboard";
-	
-	private static Cubieboard instance;
-	
-	public static Cubieboard getInstance() {
-		if(instance == null) {
-			LinuxLibraryLoader.loadNativeLibrary();
-			instance = new Cubieboard();
-		}
 		
-		return instance;
-	}
-	
-	private Cubieboard() {
+	Cubieboard() {
 		super();
-
         createPins();
 	}
 
@@ -36,6 +23,7 @@ public class Cubieboard extends AbstractBoard {
 	private void createPins() {
         // PB
         getPins().add(createDigitalIOPin(CubieboardNames.PB18, 3, "B", 18, "3_pb18", false));
+        
         // PG
 		getPins().add(createDigitalIOPin(CubieboardNames.PG0, 9, "G", 0, "9_pg0", false));
 		getPins().add(createDigitalIOPin(CubieboardNames.PG1, 7, "G", 1, "7_pg1", false));

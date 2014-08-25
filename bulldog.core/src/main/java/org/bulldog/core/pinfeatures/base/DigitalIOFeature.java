@@ -1,5 +1,6 @@
 package org.bulldog.core.pinfeatures.base;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bulldog.core.Edge;
@@ -8,22 +9,28 @@ import org.bulldog.core.Signal;
 import org.bulldog.core.pinfeatures.DigitalIO;
 import org.bulldog.core.pinfeatures.DigitalInput;
 import org.bulldog.core.pinfeatures.DigitalOutput;
+import org.bulldog.core.pinfeatures.FeatureFinder;
 import org.bulldog.core.pinfeatures.Pin;
+import org.bulldog.core.pinfeatures.PinFeature;
 import org.bulldog.core.pinfeatures.PinFeatureConfiguration;
+import org.bulldog.core.pinfeatures.PinFeatureProvider;
 import org.bulldog.core.pinfeatures.event.InterruptEventArgs;
 import org.bulldog.core.pinfeatures.event.InterruptListener;
 
-public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
+public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO, PinFeatureProvider {
 
 	private static final String NAME_FORMAT = "Digital IO on Pin %s";
 	private DigitalOutput output;
 	private DigitalInput input;
 	private IODirection direction;
+	private List<PinFeature> features = new ArrayList<PinFeature>();
 	
 	public DigitalIOFeature(Pin pin, DigitalInput input, DigitalOutput output) {
 		super(pin);
 		this.output = output;
 		this.input = input;
+		features.add(input);
+		features.add(output);
 	}
 
 	@Override
@@ -219,11 +226,7 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 	
 	@Override
 	protected void setupImpl(PinFeatureConfiguration configuration) {
-		if(input.getClass().equals(configuration.getDesiredFeature())) {
-			input.setup(configuration);
-		} else if(output.getClass().equals(configuration.getDesiredFeature())) {
-			output.setup(configuration);
-		} else if(configuration.getDesiredFeature().isAssignableFrom(input.getClass())) {
+		if(configuration.getDesiredFeature().isAssignableFrom(input.getClass())) {
 			input.setup(configuration);
 		} else if(configuration.getDesiredFeature().isAssignableFrom(output.getClass())) {
 			output.setup(configuration);
@@ -234,7 +237,9 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 	protected void teardownImpl() {
 		if(isInputActive()) {
 			input.teardown();
-		} else if(isOutputActive()) {
+		}
+		
+		if(isOutputActive()) {
 			output.teardown();
 		}
 	}
@@ -267,5 +272,21 @@ public class DigitalIOFeature extends AbstractPinFeature implements DigitalIO {
 	public IODirection getDirection() {
 		return this.direction;
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends PinFeature> T getFeature(Class<T> featureClass) {
+		return (T) FeatureFinder.findFeature(this, featureClass);
+	}
+
+	@Override
+	public boolean hasFeature(Class<? extends PinFeature> featureClass) {
+		return FeatureFinder.findFeature(this, featureClass) != null;
+	}
+
+	@Override
+	public List<PinFeature> getFeatures() {
+		return features;
+	}
+
 }

@@ -2,6 +2,7 @@ package org.bulldog.cubieboard;
 
 import org.bulldog.core.platform.Board;
 import org.bulldog.core.platform.BoardFactory;
+import org.bulldog.linux.util.LinuxLibraryLoader;
 
 
 public class CubieboardBoardFactory implements BoardFactory {
@@ -13,6 +14,7 @@ public class CubieboardBoardFactory implements BoardFactory {
 
 	@Override
 	public Board createBoard() {
-		return Cubieboard.getInstance();
+		LinuxLibraryLoader.loadNativeLibrary();
+		return new Cubieboard();
 	}
 }
