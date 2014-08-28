@@ -12,14 +12,40 @@
 
 int serialSetAttributes(int fd, int speed, int parity, int readTimeout, int numDataBits, int numStopBits) {
 	struct termios tty;
+	int baudRate = B115200;
 	memset(&tty, 0, sizeof tty);
 	if (tcgetattr(fd, &tty) != 0) {
 		errorMessage("error %d from tcgetattr", errno);
 		return -1;
 	}
 
-	cfsetospeed(&tty, speed);
-	cfsetispeed(&tty, speed);
+	switch (speed)
+	  {
+	    case     50:	baudRate =     B50 ; break ;
+	    case     75:	baudRate =     B75 ; break ;
+	    case    110:	baudRate =    B110 ; break ;
+	    case    134:	baudRate =    B134 ; break ;
+	    case    150:	baudRate =    B150 ; break ;
+	    case    200:	baudRate =    B200 ; break ;
+	    case    300:	baudRate =    B300 ; break ;
+	    case    600:	baudRate =    B600 ; break ;
+	    case   1200:	baudRate =   B1200 ; break ;
+	    case   1800:	baudRate =   B1800 ; break ;
+	    case   2400:	baudRate =   B2400 ; break ;
+	    case   9600:	baudRate =   B9600 ; break ;
+	    case  19200:	baudRate =  B19200 ; break ;
+	    case  38400:	baudRate =  B38400 ; break ;
+	    case  57600:	baudRate =  B57600 ; break ;
+	    case 115200:	baudRate = B115200 ; break ;
+	    case 230400:	baudRate = B230400 ; break ;
+
+	    default:
+	      errorMessage("error setting baud rate - unknown speed: %d", speed);
+	      return -1;
+	  }
+
+	cfsetospeed(&tty, baudRate);
+	cfsetispeed(&tty, baudRate);
 
 	int bitSize = CS8;
 	if(numDataBits == 5) {
