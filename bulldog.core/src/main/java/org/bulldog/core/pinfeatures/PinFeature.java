@@ -19,6 +19,8 @@ public interface PinFeature {
 	
 	void setup(PinFeatureConfiguration configuration);
 	void teardown();
+	boolean isTornDownOnShutdown();
+	void setTeardownOnShutdown(boolean teardown);
 	
 	PinFeatureConfiguration getConfiguration();
 }

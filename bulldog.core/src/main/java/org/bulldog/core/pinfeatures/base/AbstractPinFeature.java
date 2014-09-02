@@ -8,6 +8,7 @@ public abstract class AbstractPinFeature implements PinFeature {
 
 	private Pin pin;
 	private boolean isSetup = false;
+	private boolean isTornDownOnShutdown = false;
 	private PinFeatureConfiguration configuration;
 	
 	public AbstractPinFeature(Pin pin) {
@@ -64,6 +65,14 @@ public abstract class AbstractPinFeature implements PinFeature {
 	public boolean isActiveAs(Class<? extends PinFeature> featureClass) {
 		return (featureClass.isAssignableFrom(getConfiguration().getDesiredFeature())
 				&& pin.getActiveFeature() == this);
+	}
+	
+	public boolean isTornDownOnShutdown() {
+		return this.isTornDownOnShutdown;
+	}
+	
+	public void setTeardownOnShutdown(boolean teardown) {
+		this.isTornDownOnShutdown = true;
 	}
 	
 	@Override
