@@ -5,17 +5,28 @@ import org.bulldog.core.pinfeatures.base.DigitalIOFeature;
 import org.bulldog.core.platform.AbstractBoard;
 import org.bulldog.cubieboard.pinfeatures.CubieboardDigitalInput;
 import org.bulldog.cubieboard.pinfeatures.CubieboardDigitalOutput;
+import org.bulldog.cubieboard.pinfeatures.CubieboardGpioMemory;
 
 public class Cubieboard extends AbstractBoard {
 
 	private static final String NAME = "Cubieboard";
-		
+
+    private CubieboardGpioMemory gpioMemory;
+
 	Cubieboard() {
 		super();
+
+        gpioMemory = new CubieboardGpioMemory();
         createPins();
 	}
 
-	@Override
+    @Override
+    public void cleanup() {
+        super.cleanup();
+        gpioMemory.cleanup();
+    }
+
+    @Override
 	public String getName() {
 		return NAME;
 	}
@@ -23,7 +34,6 @@ public class Cubieboard extends AbstractBoard {
 	private void createPins() {
         // PB
         getPins().add(createDigitalIOPin(CubieboardNames.PB18, 3, "B", 18, "3_pb18", false));
-        
         // PG
 		getPins().add(createDigitalIOPin(CubieboardNames.PG0, 9, "G", 0, "9_pg0", false));
 		getPins().add(createDigitalIOPin(CubieboardNames.PG1, 7, "G", 1, "7_pg1", false));
@@ -38,9 +48,14 @@ public class Cubieboard extends AbstractBoard {
 		getPins().add(createDigitalIOPin(CubieboardNames.PG11, 15, "G", 11, "4_pg11", false));
 	}
 
-	private Pin createDigitalIOPin(String name, int address, String port, int portIndex, String fsName, boolean interrupt) {
-		CubieboardPin pin = new CubieboardPin(name, address, port, portIndex, fsName, interrupt);
-		pin.addFeature(new DigitalIOFeature(pin, new CubieboardDigitalInput(pin), new CubieboardDigitalOutput(pin)));
-		return pin;
+	public Pin createDigitalIOPin(String name, int address, String port, int indexOnPort, String fsName, boolean interrupt) {
+		CubieboardPin pin = new CubieboardPin(name, address, port, indexOnPort, fsName, interrupt);
+
+        int portIndex = port.charAt(0) - 'A';
+        CubieboardDigitalInput input = new CubieboardDigitalInput(pin, gpioMemory, portIndex);
+        CubieboardDigitalOutput output = new CubieboardDigitalOutput(pin, gpioMemory, portIndex);
+        pin.addFeature(new DigitalIOFeature(pin, input, output));
+
+        return pin;
 	}
 }
