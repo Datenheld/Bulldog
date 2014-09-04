@@ -9,6 +9,14 @@ import org.bulldog.core.platform.Platform;
 import org.bulldog.core.util.BulldogUtil;
 import org.bulldog.devices.led.Led;
 
+/**
+ * 
+ * This is an example of driving an external LED via a PWM
+ * on the Beaglebone Black.
+ * 
+ * @author Datenheld
+ *
+ */
 public class LedExample {
 
 	public static void main(String... args) throws IOException {

@@ -101,7 +101,7 @@ public class LinuxDigitalInput extends AbstractDigitalInput implements LinuxEpol
 			if(lastEdge != null && lastEdge.equals(edge)) { continue; }
 			
 			long delta = System.currentTimeMillis() - lastInterruptTime;
-			if(delta <= this.getInterruptDebounceMs()) {
+			if(delta < getInterruptDebounceMs()) {
 				continue;
 			}
 			

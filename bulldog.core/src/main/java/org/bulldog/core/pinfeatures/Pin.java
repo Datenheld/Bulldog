@@ -104,7 +104,6 @@ public class Pin implements PinFeatureProvider {
 	/**
 	 * Activates a feature on a pin.
 	 *
-	 * @param <T> the type (classname) of the desired feature
 	 * @param configuration the configuration of the feature
 	 */
 	public void activateFeature(PinFeatureConfiguration configuration) {
@@ -177,7 +176,6 @@ public class Pin implements PinFeatureProvider {
 	 * This is a very important method. It is the standard way to configure
 	 * a pin for usage with a desired feature (e.g. PWM, DigitalIO).
 	 *
-	 * @param <T> the concrete type of the pin feature.
 	 * @param the configuration of the feature
 	 * @return the the concrete type of the pin feature.
 	 */

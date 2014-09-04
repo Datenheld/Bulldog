@@ -9,20 +9,15 @@ model {
             	  linker.executable = System.properties['org.bulldog.gcc.arm.linker']
             	  assembler.executable = System.properties['org.bulldog.gcc.arm.assembler']
             	  staticLibArchiver.executable = System.properties['org.bulldog.gcc.arm.archiver']
-	              addPlatformConfiguration(new BeagleboneArmSoftFpArchitecture())
-	              addPlatformConfiguration(new BeagleboneArmHardFpArchitecture())
+	              addPlatformConfiguration(new BeagleboneBlackArmArchitecture())
 	              addPlatformConfiguration(new RaspberryPiArmArchitecture())
 				  addPlatformConfiguration(new CubieboardArchitecture())
 	        }
     }
     
     platforms {
-        beagleboneblackSoftFp {
-            architecture "arm"
-            operatingSystem "linux"
-        }
         
-        beagleboneblackHardFp {
+        beagleboneblack {
             architecture "arm"
             operatingSystem "linux"
         }
@@ -71,51 +66,14 @@ libraries() {
 	}	
 }
 
-class BeagleboneArmSoftFpArchitecture implements TargetPlatformConfiguration {
+class BeagleboneBlackArmArchitecture implements TargetPlatformConfiguration {
 
-	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline", "-mtune=cortex-a8", "-mfloat-abi=softfp"]
-	def linkerArgs =  ["--gc-sections", "-shared"]
-
-    boolean supportsPlatform(Platform element) {
-    	return element.toString().contains('beagleboneblackSoftFp')
-    }
-
-    List<String> getCppCompilerArgs() {
-       compilerArgs
-    }
-
-    List<String> getCCompilerArgs() {
-       compilerArgs
-    }
-
-    List<String> getObjectiveCCompilerArgs() {
-        []
-    }
-
-    List<String> getObjectiveCppCompilerArgs() {
-        []
-    }
-
-    List<String> getAssemblerArgs() {
-        []
-    }
-
-    List<String> getLinkerArgs() {
-       linkerArgs
-    }
-
-    List<String> getStaticLibraryArchiverArgs() {
-        []
-    }
-}
-
-class BeagleboneArmHardFpArchitecture implements TargetPlatformConfiguration {
-
-	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline", "-mtune=cortex-a8", "-mfloat-abi=hard"]
-	def linkerArgs =  ["--gc-sections", "-shared"]
+	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-mthumb-interwork", "-march=armv7-a", "-fgnu89-inline",
+						 "-mtune=cortex-a8", "-mfloat-abi=hard", "-mfpu=neon"]
+	def linkerArgs =  ["-lgcc"]
 
     boolean supportsPlatform(Platform element) {
-    	return element.toString().contains('beagleboneblackHardFp')
+    	return element.toString().contains('beagleboneblack')
     }
 
     List<String> getCppCompilerArgs() {
@@ -149,9 +107,9 @@ class BeagleboneArmHardFpArchitecture implements TargetPlatformConfiguration {
 
 class RaspberryPiArmArchitecture implements TargetPlatformConfiguration {
 
-	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline", "-mfloat-abi=hard", 
+	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline", "-mfloat-abi=hard",
 						 "-mlittle-endian", "-DARM", "-DARCH=\"ARM\"" , "-marm", "-mtune=arm1176jzf-s"]
-	def linkerArgs =  ["--gc-sections", "-shared"]
+	def linkerArgs =  ["-lgcc"]
 
     boolean supportsPlatform(Platform element) {
     	return element.toString().contains('raspberrypi')
@@ -188,11 +146,11 @@ class RaspberryPiArmArchitecture implements TargetPlatformConfiguration {
 
 class CubieboardArchitecture implements TargetPlatformConfiguration {
 
-	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline", "-mfloat-abi=hard", 
+	def compilerArgs =  ["-std=gnu11", "-O3", "-fPIC", "-fgnu89-inline", "-mfloat-abi=hard",
 						 "-mlittle-endian", "-DARM", "-DARCH=\"ARM\"" , "-marm", "-mcpu=cortex-a7", 
 						 "-mtune=cortex-a7", "-mfpu=vfpv4-d16", "-mfpu=neon-vfpv4", 
 						 "-funsafe-math-optimizations"]
-	def linkerArgs =  ["--gc-sections", "-shared"]
+	def linkerArgs =  ["-lgcc"]
 
     boolean supportsPlatform(Platform element) {
     	return element.toString().contains('cubieboard')
