@@ -15,7 +15,6 @@ public class Cubieboard extends AbstractBoard {
 
 	Cubieboard() {
 		super();
-
         gpioMemory = new CubieboardGpioMemory();
         createPins();
 	}

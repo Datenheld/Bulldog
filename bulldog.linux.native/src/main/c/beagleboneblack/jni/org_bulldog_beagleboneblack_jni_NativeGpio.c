@@ -97,4 +97,3 @@ JNIEXPORT void JNICALL Java_org_bulldog_beagleboneblack_jni_NativeGpio_enableGpi
 	BBBIO_sys_Enable_GPIO(BBBIO_GPIO2);
 	BBBIO_sys_Enable_GPIO(BBBIO_GPIO3);
 }
-
