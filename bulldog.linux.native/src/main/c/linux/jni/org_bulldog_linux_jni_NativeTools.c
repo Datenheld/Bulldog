@@ -2,6 +2,9 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <errno.h>
+#include <time.h>
+#include <stdlib.h>
 #include "org_bulldog_linux_jni_NativeTools.h"
 
 
@@ -61,4 +64,58 @@ JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_open
 JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_close
 (JNIEnv * env, jclass clazz, jint fd) {
 	return close(fd);
+}
+
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeTools
+ * Method:    sleepMicros
+ * Signature: (I)I
+ */
+JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeTools_sleepMicros
+  (JNIEnv * env, jclass clazz, jint microSeconds) {
+	if(usleep(microSeconds) < 0) {
+		if(errno == EINTR) {
+			jclass interruptedExceptionType = (*env)->FindClass(env, "java/lang/InterruptedException");
+			(*env)->ThrowNew(env, interruptedExceptionType, "Signal catched during sleep!");
+		} else if(errno == EINVAL) {
+			jclass illegalArgumentExceptionType = (*env)->FindClass(env, "java/lang/IllegalArgumentException");
+			(*env)->ThrowNew(env, illegalArgumentExceptionType, "Invalid value for sleepMicros. Value needs to be between 0 and 1 000 000!");
+		}
+	}
+}
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeTools
+ * Method:    sleepNanos
+ * Signature: (I)I
+ */
+JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeTools_sleepNanos
+  (JNIEnv * env, jclass clazz, jint nanoseconds) {
+	 struct timespec *req, *rem;
+	 int returnValue = 0;
+
+	 req = malloc(sizeof(struct timespec));
+	 rem = malloc(sizeof(struct timespec));
+
+	 req->tv_sec = nanoseconds / (1000 * 1000 * 1000);
+	 req->tv_nsec = nanoseconds % (1000 * 1000 * 1000);
+	 while((returnValue = nanosleep(req, rem)) && errno==EINTR){
+	     struct timespec *tmp = req;
+	     req = rem;
+	     rem = tmp;
+	 }
+
+	 if (returnValue) {
+		if(errno == EINTR) {
+			 jclass interruptedExceptionType = (*env)->FindClass(env, "java/lang/InterruptedException");
+			 (*env)->ThrowNew(env, interruptedExceptionType, "Signal catched during sleep!");
+		} else if(errno == EINVAL) {
+			 jclass illegalArgumentExceptionType = (*env)->FindClass(env, "java/lang/IllegalArgumentException");
+			 (*env)->ThrowNew(env, illegalArgumentExceptionType, "Invalid value for sleepNanos! Value needs to be between 0 and 999 999 999!");
+		} else if(errno == EFAULT) {
+			 jclass runtimeExceptionType = (*env)->FindClass(env, "java/lang/RuntimeException");
+			 (*env)->ThrowNew(env, runtimeExceptionType, "Error while copying information from user space during sleep");
+		}
+	 }
 }

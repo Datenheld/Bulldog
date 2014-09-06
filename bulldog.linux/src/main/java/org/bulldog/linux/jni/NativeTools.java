@@ -11,5 +11,7 @@ public class NativeTools {
 	public static native FileDescriptor getJavaDescriptor(int fileDescriptor);
 	public static native int open(String filename, int flags);
 	public static native int close(int fileDescriptor);
+	public static native void sleepMicros(int microseconds);
+	public static native void sleepNanos(int nanoseconds);
 	
 }

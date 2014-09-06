@@ -32,6 +32,22 @@ JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_open
 JNIEXPORT jint JNICALL Java_org_bulldog_linux_jni_NativeTools_close
   (JNIEnv *, jclass, jint);
 
+/*
+ * Class:     org_bulldog_linux_jni_NativeTools
+ * Method:    sleepMicros
+ * Signature: (I)I
+ */
+JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeTools_sleepMicros
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     org_bulldog_linux_jni_NativeTools
+ * Method:    sleepNanos
+ * Signature: (I)I
+ */
+JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeTools_sleepNanos
+  (JNIEnv *, jclass, jint);
+
 #ifdef __cplusplus
 }
 #endif

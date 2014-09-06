@@ -23,6 +23,8 @@ public class IncrementalRotaryEncoder {
 		this.interruptSignalA = signalA;
 		this.interruptSignalB = signalB;
 
+		signalA.setInterruptDebounceMs(15);
+		signalB.setInterruptDebounceMs(15);
 		initializeClockwiseInterrupt(signalA);
 		initializeCounterClockwiseInterrupt(signalB);
 	}
