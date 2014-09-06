@@ -20,7 +20,6 @@ public class App {
 		
     	while(true) {
     		NativeTools.sleepMicros(1000);
-    		System.out.println(System.nanoTime());
     	}
 	}
 	
