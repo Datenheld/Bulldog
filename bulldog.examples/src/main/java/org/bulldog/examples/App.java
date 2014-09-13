@@ -2,8 +2,7 @@ package org.bulldog.examples;
 
 import java.io.IOException;
 
-import org.bulldog.linux.jni.NativeTools;
-import org.bulldog.linux.util.LinuxLibraryLoader;
+import org.bulldog.beagleboneblack.sysfs.BBBSysFs;
 
 /**
  * For this example, UART2 on the BeagleboneBlack is connected to UART1.
@@ -16,11 +15,8 @@ import org.bulldog.linux.util.LinuxLibraryLoader;
 public class App {
 
 	public static void main(String... args) throws IOException {
-		LinuxLibraryLoader.loadNativeLibrary();
-		
-    	while(true) {
-    		NativeTools.sleepMicros(1000);
-    	}
+		BBBSysFs sysFs = new BBBSysFs();
+		System.out.println(sysFs.getSerialNumber());
 	}
 	
 }

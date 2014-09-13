@@ -98,8 +98,9 @@ JNIEXPORT void JNICALL Java_org_bulldog_linux_jni_NativeTools_sleepNanos
 	 req = malloc(sizeof(struct timespec));
 	 rem = malloc(sizeof(struct timespec));
 
-	 req->tv_sec = nanoseconds / (1000 * 1000 * 1000);
-	 req->tv_nsec = nanoseconds % (1000 * 1000 * 1000);
+	 div_t secondsAndRemainder = div(nanoseconds, 1000 * 1000 * 1000);
+	 req->tv_sec = secondsAndRemainder.quot;
+	 req->tv_nsec = secondsAndRemainder.rem;
 	 while((returnValue = nanosleep(req, rem)) && errno==EINTR){
 	     struct timespec *tmp = req;
 	     req = rem;

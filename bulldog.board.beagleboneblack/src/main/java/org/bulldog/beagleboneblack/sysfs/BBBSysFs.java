@@ -3,6 +3,8 @@ package org.bulldog.beagleboneblack.sysfs;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,5 +104,24 @@ public class BBBSysFs extends SysFs {
 		if(slotNumber >= 0) {
 			removeSlot(slotNumber);
 		}
+	}
+	
+	public String getSerialNumber() throws IOException {
+		 File eeprom = new File("/sys/bus/i2c/devices/1-0050/eeprom");
+		 if(!eeprom.exists()) {
+			 eeprom = new File("/sys/bus/i2c/devices/0-0050/eeprom");
+		 }
+		 
+		 if(!eeprom.exists()) {
+			 throw new IOException("EEPROM not present in sysfs");
+		 }
+				   
+		 RandomAccessFile file = new RandomAccessFile(eeprom, "r");
+		 file.seek(16);
+		 byte[] serialBytes = new byte[12];
+		 file.read(serialBytes);
+		 file.close();
+		 
+		 return BulldogUtil.bytesToString(serialBytes);
 	}
 }
