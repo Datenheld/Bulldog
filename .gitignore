@@ -9,3 +9,4 @@ build/
 bin/
 bulldog.repository/
 dist/**/sources/**
+bulldog.build.android/src/main/java/**

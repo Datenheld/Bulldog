@@ -5,4 +5,5 @@ includeFlat "bulldog.core",
 			"bulldog.linux", 
 			"bulldog.board.beagleboneblack",
 			"bulldog.board.raspberrypi",
-			"bulldog.board.cubieboard"
+			"bulldog.board.cubieboard",
+			"bulldog.build.android"
