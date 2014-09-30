@@ -45,7 +45,7 @@ public class BBBSysFs extends SysFs {
 		}
 		
 		List<String> slots = readSlots();
-		if(slots.size() <= slotIndex) {
+		if(slotIndex >= slots.size()) {
 			return false;
 		}
 		
