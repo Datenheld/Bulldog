@@ -40,8 +40,22 @@ public class BBBSysFs extends SysFs {
 	}
 	
 	public boolean isSlotLoaded(int slotIndex) {
-		String slot = readSlots().get(slotIndex);
-		return slot.charAt(11) == 'L';
+		if(slotIndex < 0) {
+			return false;
+		}
+		
+		List<String> slots = readSlots();
+		if(slots.size() <= slotIndex) {
+			return false;
+		}
+		
+		String slot = slots.get(slotIndex);
+		
+		if(slot.length() > 11) {
+			return slot.charAt(11) == 'L';
+		} else {
+			return false;
+		}
 	}
 	
 	public List<String> readSlots() {
