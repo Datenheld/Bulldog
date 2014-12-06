@@ -109,8 +109,8 @@ public class BeagleBoneBlack extends AbstractBoard implements FeatureActivationL
 		getPins().add(createAnalogInputPin("P9_39",	"AIN0",		2,	3,	"P9",	39,		0));
 		getPins().add(createAnalogInputPin("P9_40",	"AIN1",		2,	4,	"P9",	40,		1));
 		
-		getPins().add(createNativeDigitalIOPin("P9_41",	"GPIO0_20",	0,	20,	"P9",	31));
-		getPins().add(createNativeDigitalIOPin("P9_42",	"GPIO0_7",	0,	 7,	"P9",	31));
+		getPins().add(createNativeDigitalIOPin("P9_41",	"GPIO0_20",	0,	20,	"P9",	41));
+		getPins().add(createNativeDigitalIOPin("P9_42",	"GPIO0_7",	0,	 7,	"P9",	42));
 		
 		getPins().add(new BeagleBonePin("J1_1", "UART01", 0, 0, "J1", 1));
 		getPins().add(new BeagleBonePin("J1_2", "UART01", 0, 0, "J1", 2));

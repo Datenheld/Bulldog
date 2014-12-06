@@ -113,17 +113,17 @@ JNIEXPORT jobjectArray JNICALL Java_org_bulldog_linux_jni_NativeEpoll_waitForInt
 	pollResults = (*env)->NewObjectArray(env, epollReturn, nativePollResult, NULL);
 	for (int i = 0; i < epollReturn; i++) {
 		int events = epoll_events->events;
-		char* buffer = malloc(1024 * sizeof(char));
-		int bytesRead = readData(epoll_events[i].data.fd, buffer, 1024);
+		char* buffer = malloc(4096 * sizeof(char));
+		int bytesRead = readData(epoll_events[i].data.fd, buffer, 4096);
 		if(bytesRead < 0) {
 			fileData = (*env)->NewByteArray(env, 0);
 		} else {
 			fileData = (*env)->NewByteArray(env, bytesRead);
-			 jbyte* bytes = (*env)->GetByteArrayElements(env, fileData, NULL);
-			 for(int k = 0; k < bytesRead; k++) {
-				 bytes[k] = buffer[k];
-			 }
-			 (*env)->SetByteArrayRegion(env, fileData, 0, bytesRead, bytes);
+			jbyte* bytes = (*env)->GetByteArrayElements(env, fileData, NULL);
+			for(int k = 0; k < bytesRead; k++) {
+				bytes[k] = buffer[k];
+			}
+			(*env)->SetByteArrayRegion(env, fileData, 0, bytesRead, bytes);
 		}
 
 

@@ -159,4 +159,9 @@ public final class BBBNames {
 	public static final String SPI_1_CS0 = "SPI_1_0";
 	public static final String SPI_1_CS1 = "SPI_1_1";
 	
+	public static final String BBB_USR0 = "USR0";
+	public static final String BBB_USR1 = "USR1";
+	public static final String BBB_USR2 = "USR2";
+	public static final String BBB_USR3 = "USR3";
+	
 }
