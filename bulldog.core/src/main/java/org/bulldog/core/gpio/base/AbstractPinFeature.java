@@ -7,6 +7,7 @@ public abstract class AbstractPinFeature implements PinFeature {
 
 	private Pin pin;
 	private boolean isSetup = false;
+	private boolean teardownOnShutdown = false;
 	
 	public AbstractPinFeature(Pin pin) {
 		this.pin = pin;
@@ -51,6 +52,15 @@ public abstract class AbstractPinFeature implements PinFeature {
 	
 	public boolean isSetup() {
 		return isSetup;
+	}
+	
+	
+	public boolean isTorndownOnShutdown() {
+		return teardownOnShutdown;
+	}
+	
+	public void setTeardownOnShutdown(boolean teardown) {
+		this.teardownOnShutdown = teardown;
 	}
 	
 	@Override
