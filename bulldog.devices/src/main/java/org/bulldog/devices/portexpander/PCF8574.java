@@ -33,8 +33,8 @@ public class PCF8574 extends AbstractPinProvider implements InterruptListener {
 	public static final String P3 = "P3";
 	public static final String P4 = "P4";
 	public static final String P5 = "P5";
-	public static final String P6 = "P5";
-	public static final String P7 = "P5";
+	public static final String P6 = "P6";
+	public static final String P7 = "P7";
 	
 	private I2cConnection connection;
 	private DigitalInput interrupt;
