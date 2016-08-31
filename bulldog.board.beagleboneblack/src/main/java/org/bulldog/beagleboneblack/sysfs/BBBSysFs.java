@@ -3,6 +3,8 @@ package org.bulldog.beagleboneblack.sysfs;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,9 @@ public class BBBSysFs extends SysFs {
 	private String SYSFS_DEVICES_PATH = "/sys/devices";
 	
 	public BBBSysFs() {
-		
+	    if (!Files.isDirectory(Paths.get(SYSFS_DEVICES_PATH))) {
+	        SYSFS_DEVICES_PATH = "/sys/devices/platform";
+	    }
 	}
 	
 	public File getCapeManager() {
@@ -40,6 +44,8 @@ public class BBBSysFs extends SysFs {
 	}
 	
 	public boolean isSlotLoaded(int slotIndex) {
+	    if (slotIndex == -1)
+	        return false;
 		String slot = readSlots().get(slotIndex);
 		return slot.charAt(11) == 'L';
 	}
