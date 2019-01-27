@@ -3,7 +3,7 @@ Bulldog
 
 Bulldog is a Java library for the Beaglebone Black and the Raspberry PI.
 
-It is currently under development, but many features are already usable and stable.
+It's development has been handed over to the fine folks at silverspoon, but many features are already usable and stable.
 
 **Intention :**
 
