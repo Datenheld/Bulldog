@@ -33,7 +33,7 @@ public class PCA9685Pwm extends AbstractPwm {
 
 	@Override
 	protected void disableImpl() {
-		driver.enableChannel(getPin().getAddress());
+		driver.disableChannel(getPin().getAddress());
 	}
 
 }
